@@ -1,0 +1,19 @@
+html, body{
+    font-family: var(--font-roboto);
+    background: 
+    
+    var(--color-primary);
+
+}
+
+/* Aplicar estilos para el tema claro */
+.light-theme {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
+/* Aplicar estilos para el tema oscuro */
+.dark-theme {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}

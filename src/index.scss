@@ -1,0 +1,7 @@
+/*abstract*/
+@use './assets/scss/abstract/variables';
+@use './assets/scss/abstract/mixins';
+
+/*base*/
+@use './assets/scss/base/reset';
+@use './assets/scss/base/base';
