@@ -1,0 +1,23 @@
+/*abstract*/
+@use './assets/scss/abstract/mixins';
+@use './assets/scss/abstract/variables';
+
+/*base*/
+@use './assets/scss/base/reset';
+@use './assets/scss/base/base';
+
+@mixin background_default($color: var(--color-secondary-4)) {
+    background-color: $color;
+}
+
+/* Aplicar estilos para el tema claro */
+.light-theme {
+    background-color: var(--background-light);
+    color: var(--text-light); 
+}
+
+/* Aplicar estilos para el tema oscuro */
+.dark-theme {  
+    @include background_default($color-primary);
+    color: var(--text-dark);
+}

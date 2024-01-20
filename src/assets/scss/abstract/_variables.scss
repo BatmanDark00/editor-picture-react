@@ -4,7 +4,7 @@
     --font-roboto: 'Roboto Thin 100';
 
     //Colores
-    --color-primary: #26b3f9;
+    --color-primary: #73e725;
 
     /* Lista de colores a partir del primario */
     --color-secondary-1: hsl(var(--hue-primary), 80%, 60%);
@@ -20,6 +20,9 @@
       /* Tema oscuro */
       --background-dark: #333333;
       --text-dark: #ffffff;
+
  
     
 }
+
+$color-primary: #5c1567;
