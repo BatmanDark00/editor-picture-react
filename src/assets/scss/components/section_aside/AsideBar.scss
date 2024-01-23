@@ -1,0 +1,41 @@
+section {
+    background-color: #272829;
+    display: flex;
+    width: 10%;
+    height: 100%;
+    position: static;
+
+    aside{
+        padding-left: 6px;
+        display: flex;
+        float: left;
+        align-items: center;
+        height: 100%;
+       
+    }
+
+    button {
+        display: flex;
+        margin: 12px 6px;
+        padding: 8px 6px;
+        color: #858585;
+    }
+
+    button:hover {
+        background-color: #555;
+        border-radius: 3px;
+    }
+    div .hr {
+        float: right;
+        background-color: whitesmoke;
+        rotate: 90deg;
+        width: 100%;
+        clear: both;
+
+    }
+
+    .clear-fixed {
+        clear: both;
+        float: none;
+    }
+}

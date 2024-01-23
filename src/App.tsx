@@ -4,6 +4,7 @@ import viteLogo from '../public/vite.svg'
 import BaseButton from './components/base/BaseButton'
 
 import NavBar from './components/base/header/NavBar'
+import AsideBar from './components/base/section_aside/AsideBar'
 
 import './App.scss'
 //import BaseButton from './components/base/BaseButton'
@@ -15,6 +16,8 @@ function App() {
   return (
     <>
     <NavBar />
+<hr />
+    <AsideBar />
       <div className="dark-theme">
 
         <a href="https://vitejs.dev" target="_blank">
@@ -29,7 +32,7 @@ function App() {
         <BaseButton />
         
       </div>
-    
+     
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
