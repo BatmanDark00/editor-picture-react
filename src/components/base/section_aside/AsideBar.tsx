@@ -1,4 +1,5 @@
-import '../../../../src/assets/scss/components/section_aside/AsideBar.scss'
+import '@assets/scss/components/section_aside/AsideBar.scss'
+
 
 export default function AsideBar() {
     return (
@@ -17,6 +18,7 @@ export default function AsideBar() {
                         <button><i className="fa-solid fa-square-pen"></i></button>
                         <button><i className="fa-solid fa-font"></i></button>
                         <button><i className="fa-solid fa-layer-group"></i></button>
+                        <button> hola</button>
 
                         <div className='clear-fixed'>
 
