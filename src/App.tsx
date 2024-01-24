@@ -16,7 +16,7 @@ function App() {
   return (
     <>
     <NavBar />
-<hr />
+
     <AsideBar />
       <div className="dark-theme">
 

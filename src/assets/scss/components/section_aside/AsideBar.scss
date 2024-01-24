@@ -1,9 +1,14 @@
 section {
     background-color: #272829;
     display: flex;
-    width: 10%;
+    width: 64px;
     height: 100%;
-    position: static;
+    position: fixed;
+    top: 56px;
+    left: 0px;
+    bottom: 40px;
+    border-right: solid;
+    border-color: #858585;
 
     aside{
         padding-left: 6px;
@@ -11,6 +16,7 @@ section {
         float: left;
         align-items: center;
         height: 100%;
+        margin-top: -96px;
        
     }
 
@@ -19,23 +25,22 @@ section {
         margin: 12px 6px;
         padding: 8px 6px;
         color: #858585;
+
     }
+    
 
     button:hover {
         background-color: #555;
         border-radius: 3px;
     }
-    div .hr {
-        float: right;
-        background-color: whitesmoke;
-        rotate: 90deg;
-        width: 100%;
-        clear: both;
-
-    }
-
-    .clear-fixed {
+      
+      .clear-fixed {
         clear: both;
         float: none;
     }
-}
+
+    }
+
+    
+
+    
