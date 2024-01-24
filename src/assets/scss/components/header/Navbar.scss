@@ -1,0 +1,54 @@
+header {
+    font-family: Mulish,Avenir Next,Trebuchet MS,sans-serif;
+    display: gr;
+    height: 56px;
+    padding: 0 16px;
+    background-color: #272829;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;  
+    border-bottom: solid;
+    border-color: #858585;  
+
+ nav {
+    justify-content: space-between; 
+    display: flex;
+}
+
+div {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+   
+}
+
+ button {
+    display: flex;
+    align-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    background-color: #353535;
+    color: whitesmoke;
+    border-radius: 3px;
+    padding: 0 8px;
+    margin: 12px 6px;
+    width: auto;
+    height: 30px;
+    
+}
+
+button:hover {
+    background-color: #555;
+}
+i {
+    margin-right: 2px;
+    margin-top: 2px;
+    margin-left: 2px;
+    width: 16px;
+    height: 16px;
+    
+}
+}

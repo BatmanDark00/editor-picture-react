@@ -5,3 +5,8 @@
 /*base*/
 @use './assets/scss/base/reset';
 @use './assets/scss/base/base';
+
+html {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
