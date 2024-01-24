@@ -1,4 +1,6 @@
 import '../../../../src/assets/scss/components/header/Navbar.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 export default function NavBar() {
   return (
@@ -6,20 +8,20 @@ export default function NavBar() {
       <header>
         <nav className='nav-bar'>
           <div>
-            <button><i className="fa-solid fa-bars"></i> Photo Editor</button>
+            <button><FontAwesomeIcon icon="fa-solid fa-bars" /> Photo Editor</button>
           </div>
 
           <div>
-            <button>Open <i className="fa-solid fa-chevron-down"></i></button>
+            <button>Open <FontAwesomeIcon icon="fa-solid fa-chevron-down"/></button>
 
-            <button>Save <i className="fa-solid fa-chevron-down"></i></button>
+            <button>Save <FontAwesomeIcon icon="fa-solid fa-chevron-down" /></button>
 
             <button>Batch</button>
           </div>
 
           <div>
-            <button><i className="fa-solid fa-info"></i></button>
-            <button><i className="fa-regular fa-user"></i></button>
+            <button><FontAwesomeIcon icon="fa-solid fa-info" /></button>
+            <button><FontAwesomeIcon icon="fa-regular fa-user" /></button>
           </div>
         </nav>
 

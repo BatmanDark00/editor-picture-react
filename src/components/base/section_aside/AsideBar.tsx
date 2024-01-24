@@ -1,4 +1,5 @@
 import '@assets/scss/components/section_aside/AsideBar.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default function AsideBar() {
@@ -8,18 +9,17 @@ export default function AsideBar() {
             <section>
                 <aside>
                     <div>
-                        <button><i className="fa-regular fa-image"></i></button>
-                        <button><i className="fa-solid fa-sliders"></i></button>
-                        <button><i className="fa-regular fa-eye"></i></button>
-                        <button><i className="fa-solid fa-wand-magic-sparkles"></i></button>
-                        <button><i className="fa-solid fa-palette"></i></button>
-                        <button><i className="fa-solid fa-panorama"></i></button>
-                        <button><i className="fa-solid fa-icons"></i></button>
-                        <button><i className="fa-solid fa-square-pen"></i></button>
-                        <button><i className="fa-solid fa-font"></i></button>
-                        <button><i className="fa-solid fa-layer-group"></i></button>
-                        <button> hola</button>
-
+                        <button><FontAwesomeIcon icon="fa-regular fa-image" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-sliders" rotation={90}/></button>
+                        <button><FontAwesomeIcon icon="fa-regular fa-eye" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-wand-magic-sparkles" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-palette" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-panorama" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-icons" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-square-pen" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-font" /></button>
+                        <button><FontAwesomeIcon icon="fa-solid fa-layer-group" /></button>
+                       
                         <div className='clear-fixed'>
 
                         </div>
