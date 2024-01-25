@@ -21,3 +21,11 @@
    //@include background_default($color-primary);
    //color: var(--text-dark);
 }*/
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
