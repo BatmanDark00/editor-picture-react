@@ -1,0 +1,103 @@
+.divbar-menu-dropdown {
+    display: flex;
+    top: 2px;
+    background-color: #272829;
+    opacity: 1;
+    z-index: 10;
+    width: 280px;
+    height: 100%;
+    min-width: 220px;
+    position: fixed;
+    padding: 6px;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+.divbar-title {
+    font-family: 'Mulish', 'Avenir Next', 'Trebuchet MS', sans-serif;
+
+    h2 {
+        padding: 4px;
+        margin: 4.5px auto;
+    }
+}
+
+.divbar-section.app {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+h3 {
+    font-size: 14px;
+    padding: 4px;
+    margin-top: 14px;
+    padding-top: 6px;
+}
+
+.divbar-son-app {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6px;
+    margin-left: 8px;
+}
+
+
+button {
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    background-color: #353535;
+    color: whitesmoke;
+    border-radius: 3px;
+    padding: 0 6px;
+    margin: 6px 4px;
+    width: auto;
+    height: 30px;
+
+    &:hover {
+        background-color: #555;
+    }
+
+.divbar-function button {
+    justify-content: left;
+    margin: 8px 4px;
+    padding: 0 6px;
+ 
+}
+
+}
+
+.divbar-login {
+    margin-top: 10px;
+
+}
+.divbar-login button {
+    display: flex;
+    width: 80%;
+    height: 36px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 16px 0;
+    padding: 0 10px;
+    background-color: #252555;
+
+
+    &:hover {
+        background-color: #252545;
+    }
+}
+
+.divbar-login button:nth-child(2) {
+    color: #353535;
+    background-color: #add8e6;
+}
+
+.divbar-login button:nth-child(2):hover {
+    background-color: #79a7b6;
+}

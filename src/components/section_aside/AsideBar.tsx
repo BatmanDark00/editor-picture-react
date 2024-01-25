@@ -15,8 +15,8 @@ export default function AsideBar() {
                     <button><FontAwesomeIcon icon={['fas', 'panorama']} /></button>
                     <button><FontAwesomeIcon icon={['fas', 'icons']} /></button>
                     <button><FontAwesomeIcon icon={['fas', 'square-pen']} /></button>
-                    <button><FontAwesomeIcon icon={['fas', 'font']} /></button>
-                    <button><FontAwesomeIcon icon={['fas', 'layer-group']} /></button>
+                    <button><FontAwesomeIcon icon={['fas', 't']} /></button>
+                    <button><FontAwesomeIcon icon={['fas', 'tarp']} /></button>
 
                     <div className='clear-fixed'></div>
                 </aside>

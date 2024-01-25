@@ -5,6 +5,7 @@ import viteLogo from "../public/vite.svg";
 import BaseButton from "@/components/base/BaseButton";
 
 import NavBar from "@/components/header/NavBar";
+import MenuEditPic from "./components/header/MenuEditPic";
 import AsideBar from "@/components/section_aside/AsideBar";
 
 import "@/App.scss";
@@ -16,7 +17,7 @@ function App() {
   return (
     <>
       <NavBar />
-
+      <MenuEditPic />
       <AsideBar />
 
       <main>

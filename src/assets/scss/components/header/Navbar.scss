@@ -1,5 +1,5 @@
 header {
-    font-family: Mulish,Avenir Next,Trebuchet MS,sans-serif;
+    font-family: 'Mulish', 'Avenir Next','Trebuchet MS',sans-serif;
     display: gr;
     height: 56px;
     padding: 0 16px;
@@ -21,10 +21,9 @@ div {
     justify-content: space-between;
     align-content: center;
 
-   
 }
 
- button {
+button {
     display: flex;
     align-content: space-between;
     flex-direction: row;
@@ -37,13 +36,10 @@ div {
     margin: 12px 6px;
     width: auto;
     height: 30px;
-    
+
+    &:hover {
+     background-color: #555;
+    }
 }
-
-button:hover {
-    background-color: #555;
-}
-
-
 
 }
