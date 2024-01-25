@@ -17,6 +17,6 @@ library.add(fas, faTwitter, faFontAwesome, faEnvelope);
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-    <FontAwesomeIcon icon=""/>
+    
   </React.StrictMode>,
 )

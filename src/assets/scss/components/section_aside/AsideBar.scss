@@ -1,6 +1,7 @@
 section {
     background-color: #272829;
     display: flex;
+    flex-direction: row;
     width: 64px;
     height: 100%;
     position: fixed;
@@ -13,10 +14,10 @@ section {
     aside{
         padding-left: 6px;
         display: flex;
-        float: left;
+        flex-direction: column;
+        flex-wrap: wrap;
         align-items: center;
-        height: 100%;
-        margin-top: -96px;
+      
        
     }
 
