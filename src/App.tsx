@@ -1,16 +1,13 @@
 import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
-
-import reactLogo from './assets/react.svg'
+import reactLogo from '@/assets/react.svg'
 import viteLogo from '../public/vite.svg'
-import BaseButton from './components/base/BaseButton'
+import BaseButton from '@/components/base/BaseButton'
 
-import NavBar from './components/header/NavBar'
-import AsideBar from './components/section_aside/AsideBar'
+import NavBar from '@/components/header/NavBar'
+import AsideBar from '@/components/section_aside/AsideBar'
 
-import './App.scss'
+import '@/App.scss'
 //import BaseButton from './components/base/BaseButton'
 
 
