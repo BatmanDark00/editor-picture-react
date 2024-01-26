@@ -16,7 +16,7 @@ function App() {
   const [isMenuEditOpen, setMenuEditOpen] = useState(false);
 
   useEffect(() => {
-    const handleOpenMenuEdit = (event) => {
+    const handleOpenMenuEdit = (event: { stopPropagation: () => void; detail: JSON; }) => {
       event.stopPropagation(); // Evita la propagación del evento
       console.log('Evento personalizado recibido:', event.detail);
       

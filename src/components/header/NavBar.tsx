@@ -2,11 +2,14 @@
 import '@/assets/scss/components/header/Navbar.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
-
 export default function NavBar() {
+  const user = {
+    name: 'Lener',
+    age: 20
+  }
+
   const handleOpenMenuEdit = () => {
-    const customEvent = new CustomEvent('openMenuEdit', {detail: "El menu ha sido abierto"});
+    const customEvent = new CustomEvent('openMenuEdit', {detail: user});
     window.dispatchEvent(customEvent);
   }
 
