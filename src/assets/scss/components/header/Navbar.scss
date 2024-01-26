@@ -12,6 +12,7 @@ header {
     border-color: #858585;  
     position:fixed;
     width:100%;
+    
 
  nav {
     justify-content: space-between; 
@@ -43,5 +44,57 @@ button {
      background-color: #555;
     }
 }
-
 }
+
+
+.dropdown-father-open {
+    display: grid;
+    position: relative;
+    transition: height 5s;
+    flex-direction: column;
+    background-color: #272829;
+    opacity: 1;
+    border-radius: 3px;
+
+
+    &:hover .dropdown-son-open{
+        width: 180px;
+        display: block;
+        height: 40%;
+        opacity: 1;
+        border-radius: 3px;
+        margin-left: 6px;
+    
+    }
+}
+
+.dropdown-son-open {
+    display: none;
+    width: auto;
+}
+
+.dropdown-father-save {
+    display: grid;
+    flex-direction: column;
+    background-color: #272829;
+    opacity: 1;
+    border-radius: 3px;
+    height: 30px;
+    transition: height .3s;
+
+    &:hover .dropdown-son-save{
+        display: block;
+        width: 200px;
+        height: 180px;
+        opacity: 1;
+        border-radius: 3px;
+        margin-left: 7px;
+    
+    }
+}
+
+.dropdown-son-save {
+    display: none;
+    width: auto;
+}
+
