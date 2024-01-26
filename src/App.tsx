@@ -1,4 +1,6 @@
 import { useState } from "react";
+import React, { useEffect } from 'react';
+
 
 
 import MainEditView from "@/views/MainEditView";
@@ -11,12 +13,37 @@ import "@/App.scss";
 //import BaseButton from './components/base/BaseButton'
 
 function App() {
-  //const [count, setCount] = useState(0);
+  const [isMenuEditOpen, setMenuEditOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenMenuEdit = (event) => {
+      event.stopPropagation(); // Evita la propagación del evento
+      console.log('Evento personalizado recibido:', event.detail);
+      
+      // Espera un breve momento antes de cerrar el menú
+      setTimeout(() => {
+        setMenuEditOpen(true);
+      }, 10);
+    };
+  
+    window.addEventListener('openMenuEdit', handleOpenMenuEdit);
+  
+    return () => {
+      window.removeEventListener('openMenuEdit', handleOpenMenuEdit);
+    };
+  }, []); 
+  
+
+  const handleCloseMenuEdit = () => {
+    console.log("Menú cerrado");
+    setMenuEditOpen(false);
+  };
 
   return (
     <>
       <NavBar />
-      <MenuEditPic />
+  
+      {isMenuEditOpen && <MenuEditPic onClose={handleCloseMenuEdit} />}
       <AsideBar />
 
       <main>  

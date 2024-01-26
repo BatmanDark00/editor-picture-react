@@ -1,15 +1,21 @@
+
 import '@/assets/scss/components/header/Navbar.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 
 export default function NavBar() {
+  const handleOpenMenuEdit = () => {
+    const customEvent = new CustomEvent('openMenuEdit', {detail: "El menu ha sido abierto"});
+    window.dispatchEvent(customEvent);
+  }
+
   return (
     <>
       <header>
         <nav className='nav-bar'>
           <div>
-            <button><FontAwesomeIcon icon={['fas', 'bars']} /> Photo Editor</button>
+            <button onClick={handleOpenMenuEdit}><FontAwesomeIcon icon={['fas', 'bars']} /> Photo Editor</button>
           </div>
           
           <div>

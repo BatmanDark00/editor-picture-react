@@ -1,12 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component, useRef, useEffect  } from 'react'
 import '@/assets/scss/components/header/MenuEditPic.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
+
+
 export default class MenuEditPic extends Component {
+    constructor(props) {
+        super(props);
+        this.menuRef = React.createRef();
+      }
+    
+      componentDidMount() {
+        document.addEventListener('click', this.handleClickOutside);
+      }
+    
+      componentWillUnmount() {
+        document.removeEventListener('click', this.handleClickOutside);
+      }
+    
+      handleClickOutside = (event) => {
+        if (this.menuRef.current && !this.menuRef.current.contains(event.target)) {
+          this.props.onClose();
+        }
+      };
+    
+    
     render() {
         return (
-            <div className='divbar-menu-dropdown'>
+            <div  ref={this.menuRef} className='divbar-menu-dropdown'>
                 <div className='divbar-title'>
                     <h2>PhotoEditor</h2>
                     <hr />
