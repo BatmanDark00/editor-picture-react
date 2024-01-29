@@ -1,6 +1,5 @@
 header {
     font-family: 'Mulish', 'Avenir Next','Trebuchet MS',sans-serif;
-    display: gr;
     height: 56px;
     padding: 0 16px;
     background-color: #272829;
@@ -10,9 +9,9 @@ header {
     justify-content: space-between;  
     border-bottom: solid;
     border-color: #858585;  
-    position:fixed;
+    position: fixed;
     width:100%;
-    
+
 
  nav {
     justify-content: space-between; 
@@ -46,16 +45,13 @@ button {
 }
 }
 
-
 .dropdown-father-open {
     display: grid;
-    position: relative;
-    transition: height 5s;
+    position: relative;  
     flex-direction: column;
     background-color: #272829;
     opacity: 1;
     border-radius: 3px;
-
 
     &:hover .dropdown-son-open{
         width: 180px;
@@ -66,12 +62,15 @@ button {
         margin-left: 6px;
     
     }
+  
 }
-
 .dropdown-son-open {
     display: none;
-    width: auto;
+   width: auto; 
+    
 }
+
+
 
 .dropdown-father-save {
     display: grid;
@@ -79,10 +78,9 @@ button {
     background-color: #272829;
     opacity: 1;
     border-radius: 3px;
-    height: 30px;
     transition: height .3s;
 
-    &:hover .dropdown-son-save{
+   &:hover .dropdown-son-save{
         display: block;
         width: 200px;
         height: 180px;

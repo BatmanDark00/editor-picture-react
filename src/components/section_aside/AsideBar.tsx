@@ -1,6 +1,8 @@
 import "@/assets/scss/components/section_aside/AsideBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
+
 export default function AsideBar() {
   return (
     <>

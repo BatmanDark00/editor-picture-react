@@ -8,6 +8,7 @@ import MainEditView from "@/views/MainEditView";
 import NavBar from "@/components/header/NavBar";
 import MenuEditPic from "./components/header/MenuEditPic";
 import AsideBar from "@/components/section_aside/AsideBar";
+import NavFooter from "./components/base/footer/NavFooter";
 
 import "@/App.scss";
 //import BaseButton from './components/base/BaseButton'
@@ -42,6 +43,7 @@ function App() {
   return (
     <>
       <NavBar />
+
   
       {isMenuEditOpen && <MenuEditPic onClose={handleCloseMenuEdit} />}
       <AsideBar />
@@ -49,6 +51,7 @@ function App() {
       <main>  
         <MainEditView/>
       </main>
+      <NavFooter />
     </>
   );
 }

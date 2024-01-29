@@ -2,6 +2,7 @@ import "@/assets/scss/components/header/Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function NavBar() {
+  
   const user = {
     name: "Lener",
     age: 20,
@@ -11,6 +12,8 @@ export default function NavBar() {
     const customEvent = new CustomEvent("openMenuEdit", { detail: user });
     window.dispatchEvent(customEvent);
   };
+
+
 
   return (
     <>
@@ -23,17 +26,17 @@ export default function NavBar() {
           </div>
           <div className="items-center">
             <div className="dropdown-father-open">
-              <button>
+              <button className="dropbtn">
                 Open <FontAwesomeIcon icon={["fas", "chevron-down"]} />
               </button>
-              <div className="dropdown-son-open">
+              <div className="dropdown-son-open" id="myDropdown">
                 <h4>Nueva imagen</h4>
                 <button>Ordenador</button>
                 <button>PhotoEditor</button>
                 <button>Google Drive</button>
                 <button>Google Fotos</button>
               </div>
-              <div className="dropdown-son-open">
+              <div className="dropdown-son-open" id="myDropdown">
                 <h4>Proyeccto existente</h4>
                 <button>Ordenador</button>
                 <button>PhotoEditor</button>

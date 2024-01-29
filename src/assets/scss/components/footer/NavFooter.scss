@@ -1,0 +1,35 @@
+#footer {
+    display: flex;    
+    width: calc(100% - 49px);
+    height: 48px;
+    background-color: #272829;
+    margin: 0;    
+    left: 44px;
+    position: absolute;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+  div {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: red;
+    justify-content: space-between;
+    align-items: center;
+    grid: 1rem;
+
+    button {
+      margin: 6px 10px;
+      padding: 8px 4px;
+      color: whitesmoke;
+      z-index: 10;
+      grid: .5rem;
+
+      &:hover {
+        border-radius: 3px;
+      }
+    }
+  }
+}
