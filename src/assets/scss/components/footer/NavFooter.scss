@@ -1,31 +1,28 @@
 #footer {
     display: flex;    
     width: calc(100% - 49px);
-    height: 48px;
     background-color: #272829;
-    margin: 0;    
-    left: 44px;
-    position: absolute;
-    overflow: hidden;
-    justify-content: space-between;
+    margin-left: 49px;    
     align-items: center;
     align-content: center;
     flex-direction: row;
+    border-top: 2px solid;
+    border-color: #858585; 
+    padding: 0 16px;
+    flex-direction: row;
+    justify-content: space-between;
+
   div {
     display: flex;
-    width: 100%;
     height: auto;
-    background-color: red;
-    justify-content: space-between;
     align-items: center;
-    grid: 1rem;
+    margin: 2px ;
+    
 
     button {
-      margin: 6px 10px;
+      margin: 6px 8px;
       padding: 8px 4px;
       color: whitesmoke;
-      z-index: 10;
-      grid: .5rem;
 
       &:hover {
         border-radius: 3px;
