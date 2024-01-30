@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import "@/assets/scss/components/header/Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -17,7 +17,7 @@ export default function NavBar() {
     window.dispatchEvent(customEvent);
   };
 
-  useEffect(() => {
+ /*  useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (dropdownRef.current && dropdownRef.current.contains(event.target as Node)) {
         
@@ -36,7 +36,7 @@ export default function NavBar() {
       document.removeEventListener('mousedown', handleClick);
     };
   }, []);
-
+ */
   const toggleDropdown = (type: string) => {
     setIsOpen(!isOpen);
     setMenuType(type);
@@ -58,7 +58,7 @@ export default function NavBar() {
             {isOpen && menuType === 'open' && (
        
             <ul className="dropdown-menu">
-              <li><a href="#" className="dropdown-link">Ordenador 1 {isOpen} </a></li>
+              <li><a href="#" className="dropdown-link">Ordenador 1</a></li>
               <li><a href="#" className="dropdown-link">Ordenador 2</a></li>
               <li><a href="#" className="dropdown-link">Ordenador 3</a></li>
               <li><a href="#" className="dropdown-link">Ordenador 4</a></li>
