@@ -17,7 +17,7 @@ export default function NavFooter() {
                 <button><FontAwesomeIcon icon={["fas", "expand"]} /></button>
                 <button><FontAwesomeIcon icon={["fas", "compress"]} /></button>
                 <button><FontAwesomeIcon icon={["fas", "minus"]} /></button>
-                <button><FontAwesomeIcon icon={["fas", "bars"]} /></button>
+                <input className="inp-range" type="range" min="1" max="10" step="0.1" value="2" />
                 <button><FontAwesomeIcon icon={["fas", "plus"]} /></button>
                 <button><FontAwesomeIcon icon={["fas", "bars"]} /></button>
             </div>
