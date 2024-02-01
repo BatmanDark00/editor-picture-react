@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "@/assets/scss/components/header/Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faL } from "@fortawesome/free-brands-svg-icons"
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,21 +55,25 @@ export default function NavBar() {
                   </li>
                   <li className="dropdown-li">
                     <a href="#" className="dropdown-link">
+                    <FontAwesomeIcon icon={["fas", "desktop"]} className="plus"/>
                       Ordenador <span>Ctrl+O</span>
                     </a>
                   </li>
                   <li className="dropdown-li">
                     <a href="#" className="dropdown-link">
+                    <FontAwesomeIcon icon={["fas", "react"]} className="plus"/>
                       PhotoEditor
                     </a>
                   </li>
                   <li className="dropdown-li">
                     <a href="#" className="dropdown-link">
+                    <FontAwesomeIcon icon={["fal", "google-drive"]} className="plus"/>
                       Google Drive
                     </a>
                   </li>
                   <li className="dropdown-li">
                     <a href="#" className="dropdown-link">
+                    <FontAwesomeIcon icon={["fas", "google-wallet"]} className="plus"/>
                       Google Fotos
                     </a>
                   </li>
@@ -85,12 +90,15 @@ export default function NavBar() {
                     <div className="dropdown-content">
                       <ul className="sub-menu">
                         <li className="sub-li">
+                        <FontAwesomeIcon icon={["fas", "file-image"]} className="plus"/>
                           <a href="#">Imagenes de Stock</a>
                         </li>
                         <li className="sub-li">
+                        <FontAwesomeIcon icon={["fas", "dropbox"]} className="plus"/>
                           <a href="#">Dropbox</a>
                         </li>
                         <li className="sub-li">
+                        <FontAwesomeIcon icon={["fas", "camera-rotate"]} className="plus"/>
                           <a href="#">Webcam</a>
                         </li>
                       </ul>
@@ -100,9 +108,11 @@ export default function NavBar() {
                     <h4>Proyecto Existente</h4>
                   </li>
                   <li className="dropdown-li">
-                    <a href="#">Ordenador</a>
+                  <FontAwesomeIcon icon={["fas", "desktop"]} className="plus"/>
+                    <a href="#">Ordenador</a><span>Ctrl+O</span>
                   </li>
                   <li className="dropdown-li">
+                  <FontAwesomeIcon icon={["fas", "phoenix-framework"]} className="plus"/>
                     <a href="#">PhotoEditor</a>
                   </li>
                 </ul>
@@ -128,20 +138,24 @@ export default function NavBar() {
                   </li>
                   <li className="dropdown-li">
                     <a href="#" className="dropdown-link">
-                      Ordenador <span>Ctrl+O</span>
+                    <FontAwesomeIcon icon={["fas", "desktop"]} className="plus"/>
+                      Ordenador <span>Ctrl+S</span>
                     </a>
                   </li>
                   <li className="dropdown-li">
+                  <FontAwesomeIcon icon={["fas", "react"]} className="plus"/>
                     <a href="#" className="dropdown-link">
                       PhotoEditor
                     </a>
                   </li>
                   <li className="dropdown-li">
+                  <FontAwesomeIcon icon={["fal", "google-drive"]} className="plus"/>
                     <a href="#" className="dropdown-link">
                       Google Drive
                     </a>
                   </li>
                   <li className="dropdown-li">
+                  <FontAwesomeIcon icon={["fas", "google-wallet"]} className="plus"/>
                     <a href="#" className="dropdown-link">
                       Google Fotos
                     </a>
@@ -159,23 +173,29 @@ export default function NavBar() {
                     <div className="dropdown-content" id="left-submenu">
                       <ul className="sub-menu">
                         <li className="sub-li">
+                        <FontAwesomeIcon icon={["fas", "facebook"]} className="plus"/>
+
                           <a href="#">Facebook</a>
                         </li>
                         <li className="sub-li">
+                        <FontAwesomeIcon icon={["fas", "dropbox"]} className="plus"/>
+
                           <a href="#">Dropbox</a>
                         </li>
                         <li className="sub-li">
+                        <FontAwesomeIcon icon={["fas", "pinterest"]} className="plus" />
                           <a href="#">Pinterest</a>
                         </li>
                         <li className="sub-li">
+                        <FontAwesomeIcon icon={["fas", "square-twitter"]} className="plus" />
                           <a href="#">Twitter</a>
                         </li>
                       </ul>
                     </div>
                   </li>
-                  
+                  <li><hr /></li>
                   <li className="drop-title bold" >
-                    <a href="">Guardar proyecto</a> <span>Ctrl+⇧+S</span></li>
+                    <a href="#">Guardar proyecto</a> <span>Ctrl+⇧+S</span></li>
                 </ul>
               )}
             </li>

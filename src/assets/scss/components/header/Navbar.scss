@@ -70,7 +70,7 @@ header {
       
         li {
           padding: 6px;
-          color: red;
+          color: whitesmoke;
         }
 
         .drop-title {
@@ -80,8 +80,16 @@ header {
         .bold {
           font-size: 15px;
           font-weight: 600;
-          border-top: 1px solid;
-          border-color: #858585;
+         // border-top: 1px solid;
+        //  border-color: #858585;
+          margin-top: 4px;
+          margin-bottom: 4px;
+
+          &:hover {
+            background-color: #444;
+            border-radius: 3px;
+            padding: 6px;
+          }
 
         }
 
@@ -93,6 +101,7 @@ header {
           padding: 4px;
           box-shadow: 1px 1px 2px #333;
           align-items: center;
+          font-weight: 100;
         }
 
         .plus {
@@ -107,7 +116,7 @@ header {
         }
 
         .li-plus {
-          height: 33px;
+          height: 30px;
           color: whitesmoke;
          
         }
@@ -130,7 +139,7 @@ header {
             color: whitesmoke;
             padding: 4px;
             transition: opacity .15s ease-out;
-            width: 160px;
+            width: 170px;
           }
 
       
@@ -147,6 +156,8 @@ header {
           }
         } */
     }
+
+
 
     #open {
       background-color: #444;
@@ -185,6 +196,11 @@ header {
       color: whitesmoke;
       display: block;
       min-width: 120px;
+    }
+
+    hr {
+     // margin: 0.25rem 0.1rem;
+    border-top: .0px solid whitesmoke;
     }
   }
 
