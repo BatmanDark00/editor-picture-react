@@ -48,7 +48,7 @@ function App() {
   
       {isMenuEditOpen && <MenuEditPic onClose={handleCloseMenuEdit} />}
 
-      <NavBarLote />
+      {/* <NavBarLote /> */}
 
       <AsideBar />
 
