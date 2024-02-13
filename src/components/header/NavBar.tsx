@@ -8,6 +8,8 @@ export default function NavBar() {
   const [isOpenPlus, setOpenPlus] = useState(false);
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [fileComputer, setFileComputer] = useState<string | null>(null);
 
   const user = {
     name: "Lener",
@@ -25,6 +27,34 @@ export default function NavBar() {
     setMenuType(type);
   };
 
+
+  const uploadFile = () => {
+    if (inputRef.current) {
+      console.log("Clic en la imagen desde el navbar");
+
+      inputRef.current.click();
+    }
+
+    const customEvent = new CustomEvent("send-file", { detail: fileComputer });
+    window.dispatchEvent(customEvent);
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    //obtener la imagen
+    const file = e.target.files![0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        if (e.target) {
+          setFileComputer(e.target.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   return (
     <>
       <header>
@@ -34,6 +64,14 @@ export default function NavBar() {
               <FontAwesomeIcon icon={["fas", "bars"]} /> Photo Editor
             </a>
           </div>
+
+          <input
+            type="file"
+            accept="image/*"
+            ref={inputRef}
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
 
           <ul className="links">
             <li
@@ -54,7 +92,7 @@ export default function NavBar() {
                     <h4>Nueva Imagen</h4>
                   </li>
                   <li className="dropdown-li">
-                    <a href="#" className="dropdown-link">
+                    <a href="#" className="dropdown-link" onClick={uploadFile}>
                     <FontAwesomeIcon icon={["fas", "desktop"]} className="plus"/>
                       Ordenador <span>Ctrl+O</span>
                     </a>

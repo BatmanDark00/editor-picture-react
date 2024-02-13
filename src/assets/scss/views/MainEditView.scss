@@ -32,5 +32,9 @@
 
       cursor: pointer;
     }
+
+    .cropper{
+      height: calc(100vh - 200px);
+    }
   }
 }

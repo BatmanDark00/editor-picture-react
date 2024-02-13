@@ -4,6 +4,7 @@ import App from './App.tsx'
 import './index.scss'
 
 
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'

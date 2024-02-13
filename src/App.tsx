@@ -28,12 +28,29 @@ function App() {
         setMenuEditOpen(true);
       }, 10);
     };
+
+    const uploadFile = (event: { stopPropagation: () => void; detail: JSON; }) => {
+      console.log('Recibiendo la imagen:', event.detail);
+      
+      // Espera un breve momento antes de cerrar el menú
+     
+      
+    }; 
   
     window.addEventListener('openMenuEdit', handleOpenMenuEdit);
+    window.addEventListener('uploadFile', uploadFile);
+    
   
     return () => {
       window.removeEventListener('openMenuEdit', handleOpenMenuEdit);
+
+
+
     };
+
+    
+
+
   }, []); 
   
 
