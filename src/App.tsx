@@ -54,6 +54,7 @@ function App() {
 
       <main>  
         <MainEditView/>
+
       </main>
       <NavFooter />
     </>
