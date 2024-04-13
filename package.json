@@ -19,6 +19,7 @@
     "bootstrap": "^5.3.2",
     "million": "^2.6.4",
     "react": "^18.2.0",
+    "react-advanced-cropper": "^0.19.6",
     "react-dom": "^18.2.0",
     "sass": "^1.70.0"
   },
