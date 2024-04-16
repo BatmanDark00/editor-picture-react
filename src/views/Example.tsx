@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CircleStencil, Cropper } from 'react-advanced-cropper';
 
 export const Example = () => {

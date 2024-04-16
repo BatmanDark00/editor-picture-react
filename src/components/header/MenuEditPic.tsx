@@ -28,7 +28,7 @@ export default class MenuEditPic extends Component {
     
     render() {
         return (
-            <div  ref={this.menuRef} className='divbar-menu-dropdown'>
+            <div  ref={this.menuRef} className='divbar-menu-dropdown' >
                 <div className='divbar-title'>
                     <h2>PhotoEditor</h2>
                     <hr />

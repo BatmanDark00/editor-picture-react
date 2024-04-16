@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { CropperRef, Cropper } from "react-advanced-cropper";
 import "react-advanced-cropper/dist/style.css";
-
 import "@/assets/scss/views/MainEditView.scss";
 import upload from "@/assets/images/upload_re_pasx.svg";
 
@@ -20,7 +19,7 @@ export default function MainEditView() {
     console.log(cropper.getCoordinates(), cropper.getCanvas());
   };
 
-  function handleClick() {
+  const handleClick = () => {
     // Simula el clic en el input de archivo cuando se hace clic en la imagen
     if (inputRef.current) {
       console.log("Clic en la imagen");
@@ -29,7 +28,7 @@ export default function MainEditView() {
     }
   }
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //obtener la imagen
     const file = e.target.files![0];
 
