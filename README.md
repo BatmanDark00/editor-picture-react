@@ -1,6 +1,14 @@
-# React + TypeScript + Vite
+# Editor de fotos (PicShur)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`PicShur` es una aplicación de edición fotográfica diseñada para ofrecerte herramientas simples y potentes para embellecer tus imágenes con facilidad. Con una interfaz intuitiva y una amplia gama de opciones de edición, puedes transformar tus fotos en obras de arte en cuestión de segundos. Desde ajustes básicos como brillo y contraste hasta filtros creativos y efectos especiales, `PicShur` te permite dar rienda suelta a tu creatividad y mejorar tus fotos de forma rápida y sencilla. Una vez que estés satisfecho con el resultado, simplemente descarga tus imágenes y compártelas con tus amigos y familiares. ¡Haz que tus recuerdos brillen con PhotoShur
+
+
+## Iniciar el proyecto
+  - npm install
+  - npm run dev
+
+## Publicar aplicación
+  - npm build
 
 Currently, two official plugins are available:
 
