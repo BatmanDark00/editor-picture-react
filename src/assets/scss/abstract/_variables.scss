@@ -1,28 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-:root{
-    --font-roboto: 'Roboto Thin 100';
+:root {
+  /* Fuentes */
+  --font-roboto: "Roboto Thin 100";
 
-    //Colores
-    --color-primary: #73e725;
+  /* Colores principales */
+  --color-primary: #057996;
 
-    /* Lista de colores a partir del primario */
-    --color-secondary-1: hsl(var(--hue-primary), 80%, 60%);
-    --color-secondary-2: hsl(var(--hue-primary), 70%, 50%);
-    --color-secondary-3: hsl(var(--hue-primary), 60%, 40%);
-    --color-secondary-4: hsl(var(--hue-primary), 50%, 30%);
-    --color-secondary-5: hsl(var(--hue-primary), 40%, 20%);
+  /* Colores secundarios */
+  --color-secondary-1: hsl(var(--hue-primary), 80%, 60%);
+  --color-secondary-2: hsl(var(--hue-primary), 70%, 50%);
+  --color-secondary-3: hsl(var(--hue-primary), 60%, 40%);
+  --color-secondary-4: hsl(var(--hue-primary), 50%, 30%);
+  --color-secondary-5: hsl(var(--hue-primary), 40%, 20%);
 
-      /* Tema claro */
-      --background-light: #ffffff;
-      --text-light: #333333;
+  /* Colores de fondo */
+  --background-color: hsl(0, 0%, 98%);
+  --background-dark: hsl(0, 0%, 10%);
+
+  /* Colores de texto */
+  --text-color: hsl(0, 0%, 10%);
+  --text-color-light: hsl(0, 0%, 90%);
+  --text-secondary: hsl(0, 0%, 30%);
   
-      /* Tema oscuro */
-      --background-dark: #333333;
-      --text-dark: #ffffff;
+  /* Colores de borde y sombra */
+  --border-color: hsl(0, 0%, 90%);
+  --border-color-dark: hsl(0, 0%, 20%);
+  --shadow-color: hsl(0, 0%, 80%);
+  --shadow-color-dark: hsl(0, 0%, 30%);
+  
+  /* Colores de estado */
+  --error-color: hsl(0, 70%, 50%);
+  --success-color: hsl(120, 70%, 50%);
+  --warning-color: hsl(40, 70%, 50%);
+  --info-color: hsl(200, 70%, 50%);
 
- 
-    
+  --toggle-bg: #f0eb9d;
+  --toggle-fg: #ffd000;
 }
 
-$color-primary: #5c1567;
+[data-theme="dark"] {
+  --background-color: var(--background-dark);
+  --text-color: var(--text-color-light);
+  --text-secondary: hsl(0, 0%, 70%);
+  --border-color: var(--border-color-dark);
+  --shadow-color: var(--shadow-color-dark);
+
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
+}

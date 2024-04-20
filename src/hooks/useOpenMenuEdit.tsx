@@ -33,5 +33,7 @@ export function useOpenMenuEdit () {
       setMenuEditOpen(isMenuEditOpen);
     }
 
-    return { movies: isMenuEditOpen, handleClosedMenuEdit }
+    return {  isMenuEditOpen, handleClosedMenuEdit }
 }
+
+export default useOpenMenuEdit;

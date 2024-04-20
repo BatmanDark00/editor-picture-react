@@ -6,7 +6,13 @@
 @use './assets/scss/base/reset';
 @use './assets/scss/base/base';
 
-html {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
+/* html {
+    background-color: var(--background-color);
+    color: var(--principal-text-color);
+} */
+
+.app {
+    background-color: var(--background-color);
+    color: var(--text-color);
+
 }
