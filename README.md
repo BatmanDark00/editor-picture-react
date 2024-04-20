@@ -222,49 +222,80 @@ function submitData() { /* ... */ }         // El verbo debe ir primero, se debe
 
 
 ```
-## PascalCase
+## <span style="color:yellow"> Pacalcase</span>
+Usado para nombres de clases, funciones constructoras y nombres de componentes React.
 
-- Nombre de clases
-- Funciones constructoras
-- Nombre de componentes
+#### <span style="color:orange"> Nombre de clases</span>
+:white_check_mark: Bien
+```ts
+type UserProfile = {
+  id: number;
+  name: string;
+  email: string;
+};
 
-## snake_case
+```
+
+:x: Mal
+```ts
+type UserProfile = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+```
+## <span style="color:yellow"> snake_case</span>
 
 - Comúnmente utilizado para campos de bases de datos y nombres de tablas.
 
-## UPPER_CASE_SNAKE_CASE
-
-- Se utiliza para constantes y nombres de variables de entorno.
-
-## kebab-case
-
-- Se utiliza para nombres de clases CSS y slugs de URL.
-
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+:white_check_mark: Bien
+```
+tbl_users
+tbl_payment_history
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+:x: Mal
+```
+usersTable          
+paymentHistory      
 
+```
+
+## <span style="color:yellow">UPPER_CASE_SNAKE_CASE</span>
+Se utiliza para constantes y nombres de variables de entorno.
+
+:white_check_mark: Bien
+```js
+DATABASE_URL
+ACCESS_TOKEN_SECRET
+REDIS_PORT
+
+```
+
+:x: Mal
+```js
+dbUrl            
+accessToken      
+RedisPort        
+
+```
+
+
+
+
+## <span style="color:yellow">kebab-case</span>
+
+Se utiliza para nombres de clases CSS y slugs de URL.
+
+:white_check_mark: Bien
+```css
+.btn-primary
+.btn-secondary
+```
+
+:x: Mal
+```css
+.btnPrimary
+.btnSecondary
+```
