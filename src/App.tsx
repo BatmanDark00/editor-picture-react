@@ -17,10 +17,11 @@ import  useOpenMenuEdit  from "@/hooks/useOpenMenuEdit";
 
 function App() {
  const { isMenuEditOpen, handleClosedMenuEdit } = useOpenMenuEdit();
- const { isDark } = useDarkMode(); 
+ const { isDark} = useDarkMode(); 
 
   return (
-    <div className="app" data-theme={isDark ? "dark": "light"}  >
+    <div className="app" data-theme={isDark ? "dark": "light"}>
+     
       <NavBar /> 
        {isMenuEditOpen && <MenuEditPic onClose={handleClosedMenuEdit} />}
       {/* <NavBarLote /> */}

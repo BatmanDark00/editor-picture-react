@@ -10,8 +10,7 @@ import Toggle from "@/components/toggle/Toggle";
 
 
 export default function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenPlus, setOpenPlus] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);  
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);

@@ -1,7 +1,8 @@
-import React from "react";
+
 import useDarkMode from "@/hooks/useDarkMode";
 
-const Toggle: React.FC = () => {    
+export default function Toggle() {
+
     const { toggleDarkMode } = useDarkMode();
 
     return (
@@ -15,6 +16,4 @@ const Toggle: React.FC = () => {
           <label htmlFor="check">Cambiar Tema</label>
         </div>
     );
-};
-
-export default Toggle;
+}
