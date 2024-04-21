@@ -17,8 +17,7 @@ const useDarkMode = () => {
      
       localStorage.setItem("isDark", newIsDark.toString());
 
-      document.body.dataset.theme = newIsDark ? "dark" : "light";   
-
+      document.body.dataset.theme = newIsDark ? "dark" : "light";  
 
 
       return newIsDark;

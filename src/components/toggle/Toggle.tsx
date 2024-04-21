@@ -1,5 +1,7 @@
+import "@/assets/scss/components/toggle/Toggle.scss";
 
 import useDarkMode from "@/hooks/useDarkMode";
+
 
 export default function Toggle() {
 
