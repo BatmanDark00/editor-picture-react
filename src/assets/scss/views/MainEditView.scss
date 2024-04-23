@@ -4,37 +4,18 @@
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
-  width: 100%;
-  height: calc(100vh - 48px);
+  align-items: center;
+ 
 
-  .upload_image {
+  height: calc(100vh - 48px);
+  justify-items: center;
+
+  .cropper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
+    height: 87vh;
     width: 100%;
-    height: 100%;
-
-    img {
-      width: 30%;
-      margin: auto;
-      cursor: pointer;
-      object-fit: contain;
-    }
-
-    .previewImage {
-      width: 90%;
-      height: 100%;
-      margin: auto;
-      object-fit: contain;
-
-      cursor: pointer;
-    }
-
-    .cropper{
-      height: calc(100vh - 200px);
-    }
+    background-color: red;
+    margin-top: 4rem;
   }
 }
