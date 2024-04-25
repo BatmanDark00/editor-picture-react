@@ -1,7 +1,8 @@
 .toggle-container {
     position: absolute;
-    top: 2em;
+    top: 1em;
     right: 2em;
+    bottom: 1rem;
   }
   
   .toggle {
@@ -22,7 +23,7 @@
     width: 2em;
     border-radius: 1em;
     background-color: var(--toggle-bg);
-    margin-right: 0.5em;
+    margin-right: 0.2em;
     transition: background-color 250ms ease-in-out;
   }
   
@@ -33,7 +34,7 @@
     border-radius: 1em;
     background-color: var(--toggle-fg);
     position: absolute;
-    left: 0.2em;
+    left: 0.7em;
     transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
   }
   

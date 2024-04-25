@@ -1,7 +1,7 @@
 #footer {
     display: flex;    
     width: calc(100% - 49px);
-    background-color: #272829;
+    background-color: var(--background-color);
     margin-left: 49px;    
     align-items: center;
     align-content: center;
@@ -22,10 +22,13 @@
     button {
       margin: 6px 8px;
       padding: 8px 4px;
-      color: whitesmoke;
+      color: var(--text-secondary);
+      cursor: not-allowed;
 
       &:hover {
+        background-color: var(--hover-color);
         border-radius: 3px;
+        transition: 0.5s ease-in-out;
       }
     }
   }

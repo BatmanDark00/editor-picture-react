@@ -8,15 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Toggle from "@/components/toggle/Toggle";
 
 
-
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);  
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [fileComputer, setFileComputer] = useState<string | null>(null);
-
-
 
 
   const user = {
@@ -47,7 +44,7 @@ export default function NavBar() {
     window.dispatchEvent(customEvent);
   }
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //obtener la imagen
     const file = e.target.files![0];
 
@@ -133,7 +130,7 @@ export default function NavBar() {
                       className="right"
                     />
 
-                    <div className="dropdown-content">
+                  {isOpen && <div className="dropdown-content"  >
                       <ul className="sub-menu">
                         <li className="sub-li">
                         <FontAwesomeIcon icon={["fas", "file-image"]} className="plus"/>
@@ -148,7 +145,7 @@ export default function NavBar() {
                           <a href="#">Webcam</a>
                         </li>
                       </ul>
-                    </div>
+                    </div>}
                   </li>
                   <li className="drop-title">
                     <h4>Proyecto Existente</h4>
@@ -246,10 +243,9 @@ export default function NavBar() {
               )}
             </li>
           </ul>
- 
-          <Toggle  />
-        
-        </nav>
+
+          <Toggle />
+      </nav>
 
       </header>
     </>

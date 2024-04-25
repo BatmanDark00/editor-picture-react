@@ -2,7 +2,7 @@ header {
   font-family: "Mulish", "Avenir Next", "Trebuchet MS", sans-serif;
   height: 56px;
   padding: 0 16px;
-  background-color: #272829;
+  background-color: var(--background-color);
   // flex-direction: row;
   align-items: center;
   align-content: center;
@@ -36,7 +36,6 @@ header {
       position: relative;
       display: inline-block;
       margin-right: 20px;
-      
 
       .dropdown-rown {
         margin-left: 8px;
@@ -50,6 +49,7 @@ header {
       #left-submenu {
         left: 17.5rem;
         width: 100px;
+    
       }
 
       &-menu {
@@ -57,25 +57,23 @@ header {
         position: absolute;
         top: 35px;
         left: 0;
-        background-color: #353535;
+        background-color: var(--background-color);
         z-index: 1;
         width: 200px;
         border-radius: 5px;
-        box-shadow: 4px 2px 4px #111;
+        box-shadow: 2px 2px 3px, 4px 2px 4px var(--shadow-color-dark);
         padding: 6px 10px;
         font-size: 14px;
         opacity: 1;
-      transition: opacity 0.5s ease-out;
-
       
         li {
           padding: 6px;
-          color: whitesmoke;
+          color: var(--text-color);
         }
 
         .drop-title {
           margin-left: -4px;
-          color: whitesmoke;
+          color: var(--text-color);
         }
         .bold {
           font-size: 15px;
@@ -86,22 +84,28 @@ header {
           margin-bottom: 4px;
 
           &:hover {
-            background-color: #444;
+            background-color: var(--hover-color);
             border-radius: 3px;
             padding: 6px;
+            transition: 0.5s ease-in-out;;
+            
           }
 
         }
 
         span {
+          
           float: right;
           font-size: 12px;
-          background-color: #444;
+          top: -2px;
+          bottom: 3px;
+          background-color: hsl(0, 0%, 52%);
           border-radius: 3px;
-          padding: 4px;
-          box-shadow: 1px 1px 2px #333;
+          padding: 3px;
+          box-shadow: -1px -1px 3px var(--shadow-color-dark);
           align-items: center;
           font-weight: 100;
+          
         }
 
         .plus {
@@ -117,7 +121,7 @@ header {
 
         .li-plus {
           height: 30px;
-          color: whitesmoke;
+          color: var(--text-color)
          
         }
 
@@ -134,73 +138,74 @@ header {
             top: 9rem;
             left: 13rem;
             opacity: 1;
-            background-color: #252525;
+            background-color: var(--background-color);
             border-radius: 3px;
-            color: whitesmoke;
+            color: var(--text-color);
             padding: 4px;
-            transition: opacity .15s ease-out;
+            transition: 0.5s ease-in-out;
             width: 170px;
+            box-shadow: -1px -1px 3px, 2px 2px 3px var(--shadow-color-dark);
+           
           }
-
-      
 
         .sub-menu .sub-li:hover {
           background-color: #444;
           border-radius: 3px;
-        }
+          transition: 0.5s ease-in-out;
+       
       }
-
-      /*  &:hover {
-          .dropdown-menu {
-            display: block;
-          }
-        } */
+      }
     }
 
 
 
     #open {
-      background-color: #444;
+      background-color: var(--background-color);
       border-radius: 3px;
       padding: 6px;
       font-size: 14px;
 
       &:hover {
-        background-color: #555;
+        background-color: var(--hover-color);
+        transition: 0.3s ease-in;
+        
       }
     }
 
     #save {
-      background-color: #444;
+      background-color: var(--background-color);
       border-radius: 3px;
       padding: 6px;
       font-size: 14px;
 
       &:hover {
-        background-color: #555;
+        background-color: var(--hover-color);
+        transition: 0.5s ease-in-out;
       }
     }
     .dropdown-li {
-      color: whitesmoke;
+      color: var(--text-color);
 
       &:hover {
-        background-color: #444;
+        background-color: var(--hover-color);
         border-radius: 3px;
+        transition: 0.5s ease-in-out;
       }
     }
     a {
-      color: whitesmoke;
+      color: var(--text-color);
     }
     .dropdown-link {
       text-decoration: none;
-      color: whitesmoke;
+      color: var(--text-color);
       display: block;
       min-width: 120px;
     }
 
     hr {
      // margin: 0.25rem 0.1rem;
-    border-top: .0px solid whitesmoke;
+    border-top: .0px solid;
+    border-top-color: var(--text-color);
     }
   }
 
@@ -214,8 +219,8 @@ header {
       flex-direction: row;
       align-items: center;
       font-size: 14px;
-      background-color: #353535;
-      color: whitesmoke;
+      background-color: var(--background-color);
+      color: var(--text-color);
       border-radius: 3px;
       padding: 0 8px;
       margin: 12px 6px;
@@ -223,8 +228,18 @@ header {
       height: 30px;
 
       &:hover {
-        background-color: #555;
+        background-color: var(--hover-color);
       }
     }
   }
+ 
+ 
 }
+
+/* .navbar-toggle {
+    align-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+    background-color: red;
+    
+  } */

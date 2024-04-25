@@ -13,9 +13,12 @@
   .cropper {
     display: flex;
     justify-content: center;
-    height: 87vh;
-    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    width: auto;
+    max-width: 100vh;
     background-color: red;
-    margin-top: 4rem;
+    margin-top: 3.5rem;
+    
   }
 }

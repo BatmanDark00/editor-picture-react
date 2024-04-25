@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useOpenMenuEdit () {
+function useOpenMenuEdit () {
     const [isMenuEditOpen, setMenuEditOpen] = useState(false);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export function useOpenMenuEdit () {
       };
     }, []); 
     
-    function handleClosedMenuEdit () {
+    const handleClosedMenuEdit = () => {
       console.log("Menú cerrado");
       setMenuEditOpen(isMenuEditOpen);
     }

@@ -15,7 +15,7 @@ export default function Toggle() {
             className="toggle"
             onChange={toggleDarkMode}
           />
-          <label htmlFor="check">Cambiar Tema</label>
+          <label htmlFor="check"></label>
         </div>
     );
 }
