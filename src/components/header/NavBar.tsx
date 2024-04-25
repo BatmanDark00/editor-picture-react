@@ -14,6 +14,7 @@ export default function NavBar() {
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [fileComputer, setFileComputer] = useState<string | null>(null);
+  const [openWindow, setOpenWIndow] = useState(false);
 
 
   const user = {
@@ -58,6 +59,14 @@ export default function NavBar() {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleClickInside = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  }
+
+  const handleOpenWindow = () => {
+    setOpenWIndow(!openWindow)
   }
 
   return (
@@ -92,7 +101,7 @@ export default function NavBar() {
                 className="dropdown-rown"
               />
               {isOpen && (menuType === "open" || menuType === "plus") && (
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu" onClick={handleClickInside}>
                   <li className="drop-title">
                     <h4>Nueva Imagen</h4>
                   </li>
@@ -120,7 +129,10 @@ export default function NavBar() {
                       Google Fotos
                     </a>
                   </li>
-                  <li className="dropdown-li li-plus" id="hoverme">
+                  <li 
+                  className="dropdown-li li-plus" 
+                  id="hoverme"
+                  onClick={handleOpenWindow}>
                     <FontAwesomeIcon icon={["fas", "plus"]} className="plus" />
                     <a href="#" className="dropdown-link-menu">
                       Más
@@ -130,7 +142,10 @@ export default function NavBar() {
                       className="right"
                     />
 
-                  {isOpen && <div className="dropdown-content"  >
+                 {openWindow && (
+                 <div 
+                 className="dropdown-content"  
+                 onClick={handleClickInside}>
                       <ul className="sub-menu">
                         <li className="sub-li">
                         <FontAwesomeIcon icon={["fas", "file-image"]} className="plus"/>
@@ -145,7 +160,7 @@ export default function NavBar() {
                           <a href="#">Webcam</a>
                         </li>
                       </ul>
-                    </div>}
+                    </div>)}
                   </li>
                   <li className="drop-title">
                     <h4>Proyecto Existente</h4>
@@ -175,12 +190,16 @@ export default function NavBar() {
                 className="dropdown-rown"
               />
               {isOpen && menuType === "save" && (
-                <ul className="dropdown-menu" id="width-plus" >
+                <ul 
+                 className="dropdown-menu" 
+                 id="width-plus" 
+                 onClick={handleClickInside}
+                >
                   <li className="drop-title">
                     <h4>Guardar como imagen</h4>
                   </li>
                   <li className="dropdown-li">
-                    <a href="#" className="dropdown-link">
+                    <a href="#" className="dropdown-link" onClick={uploadFile}>
                     <FontAwesomeIcon icon={["fas", "desktop"]} className="plus"/>
                       Ordenador <span>Ctrl+S</span>
                     </a>
@@ -203,7 +222,11 @@ export default function NavBar() {
                       Google Fotos
                     </a>
                   </li>
-                  <li className="dropdown-li li-plus" id="hoverme">
+                  <li 
+                   className="dropdown-li li-plus" 
+                   id="hoverme"  
+                   onClick={handleOpenWindow}
+                  >
                     <FontAwesomeIcon icon={["fas", "plus"]} className="plus" />
                     <a href="#" className="dropdown-link-menu">
                       Más
@@ -213,7 +236,8 @@ export default function NavBar() {
                       className="right"
                     />
 
-                    <div className="dropdown-content" id="left-submenu">
+                    {openWindow && (
+                    <div className="dropdown-content" id="left-submenu"  onClick={handleClickInside}>
                       <ul className="sub-menu">
                         <li className="sub-li">
                         <FontAwesomeIcon icon={["fas", "facebook"]} className="plus"/>
@@ -235,6 +259,7 @@ export default function NavBar() {
                         </li>
                       </ul>
                     </div>
+                  )}
                   </li>
                   <li><hr /></li>
                   <li className="drop-title bold" >

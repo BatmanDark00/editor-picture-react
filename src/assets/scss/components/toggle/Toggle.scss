@@ -31,13 +31,20 @@
     content: "";
     height: 0.8em;
     width: 0.8em;
-    border-radius: 1em;
-    background-color: var(--toggle-fg);
+   // border-radius: 1em;
+    //background-color: var(--toggle-fg);
+    background-image: url(/sun.png);
+    background-repeat: no-repeat;
+    object-fit: cover;
     position: absolute;
-    left: 0.7em;
-    transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+    left: 0.8em;
+    top: 2.5px;
+    transition: background-image 250ms ease-in-out, transform 250ms ease-in-out;
   }
   
   .toggle:checked + label::after {
     transform: translateX(100%);
+    background-image: url(/moon.png);
+    object-fit: cover;
+    transition: background-image 250ms ease-in-out, transform 250ms ease-in-out;
   }

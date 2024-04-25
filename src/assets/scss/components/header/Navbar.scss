@@ -3,7 +3,6 @@ header {
   height: 56px;
   padding: 0 16px;
   background-color: var(--background-color);
-  // flex-direction: row;
   align-items: center;
   align-content: center;
   border-bottom: 2px solid;
@@ -18,18 +17,11 @@ header {
     align-items: center;
     gap: 22rem;
     flex-direction: row;
-   
-    //justify-content: space-between;
 
     .links {
       list-style: none;
       padding: 0;
       margin: 0;
-      
-
-      /*   &:hover {
-        background-color: #555;
-      }*/
     }
 
     .dropdown {
@@ -49,7 +41,16 @@ header {
       #left-submenu {
         left: 17.5rem;
         width: 100px;
-    
+        display: block;
+        position: absolute;
+        top: 9rem;
+        opacity: 1;
+        background-color: var(--background-color);
+        border-radius: 3px;
+        color: var(--text-color);
+        padding: 4px;
+        transition: 0.5s ease-in-out;
+        box-shadow: -1px -1px 3px, 2px 2px 3px var(--shadow-color-dark);
       }
 
       &-menu {
@@ -65,7 +66,7 @@ header {
         padding: 6px 10px;
         font-size: 14px;
         opacity: 1;
-      
+
         li {
           padding: 6px;
           color: var(--text-color);
@@ -78,8 +79,6 @@ header {
         .bold {
           font-size: 15px;
           font-weight: 600;
-         // border-top: 1px solid;
-        //  border-color: #858585;
           margin-top: 4px;
           margin-bottom: 4px;
 
@@ -87,14 +86,11 @@ header {
             background-color: var(--hover-color);
             border-radius: 3px;
             padding: 6px;
-            transition: 0.5s ease-in-out;;
-            
+            transition: 0.5s ease-in-out;
           }
-
         }
 
         span {
-          
           float: right;
           font-size: 12px;
           top: -2px;
@@ -105,7 +101,6 @@ header {
           box-shadow: -1px -1px 3px var(--shadow-color-dark);
           align-items: center;
           font-weight: 100;
-          
         }
 
         .plus {
@@ -121,43 +116,34 @@ header {
 
         .li-plus {
           height: 30px;
-          color: var(--text-color)
-         
+          color: var(--text-color);
         }
 
-       
+        #hoverme:hover .dropdown-content {
+          display: block;
+        }
+
         .dropdown-content {
-          display: none;
-
-         // transition: all 0.3s;
+          display: block;
+          position: absolute;
+          top: 9rem;
+          left: 13rem;
+          opacity: 1;
+          background-color: var(--background-color);
+          border-radius: 3px;
+          color: var(--text-color);
+          padding: 4px;
+          width: 170px;
+          box-shadow: -1px -1px 3px, 2px 2px 3px var(--shadow-color-dark);
         }
-
-        .dropdown-li:hover .dropdown-content {
-            display: block;
-            position: absolute;
-            top: 9rem;
-            left: 13rem;
-            opacity: 1;
-            background-color: var(--background-color);
-            border-radius: 3px;
-            color: var(--text-color);
-            padding: 4px;
-            transition: 0.5s ease-in-out;
-            width: 170px;
-            box-shadow: -1px -1px 3px, 2px 2px 3px var(--shadow-color-dark);
-           
-          }
 
         .sub-menu .sub-li:hover {
           background-color: #444;
           border-radius: 3px;
           transition: 0.5s ease-in-out;
-       
-      }
+        }
       }
     }
-
-
 
     #open {
       background-color: var(--background-color);
@@ -168,7 +154,7 @@ header {
       &:hover {
         background-color: var(--hover-color);
         transition: 0.3s ease-in;
-        
+        cursor: pointer;
       }
     }
 
@@ -181,6 +167,7 @@ header {
       &:hover {
         background-color: var(--hover-color);
         transition: 0.5s ease-in-out;
+        cursor: pointer;
       }
     }
     .dropdown-li {
@@ -203,9 +190,8 @@ header {
     }
 
     hr {
-     // margin: 0.25rem 0.1rem;
-    border-top: .0px solid;
-    border-top-color: var(--text-color);
+      border-top: 0px solid;
+      border-top-color: var(--text-color);
     }
   }
 
@@ -215,7 +201,6 @@ header {
 
     button {
       display: flex;
-      //align-content: space-between;
       flex-direction: row;
       align-items: center;
       font-size: 14px;
@@ -232,14 +217,4 @@ header {
       }
     }
   }
- 
- 
 }
-
-/* .navbar-toggle {
-    align-content: center;
-    align-items: center;
-    margin-bottom: 4px;
-    background-color: red;
-    
-  } */
