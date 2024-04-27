@@ -1,0 +1,40 @@
+.picture-view {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr;
+
+  main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: 100%;
+
+    .editor-main {
+      display: grid;
+      grid-template-rows: 1fr auto;
+
+      .area-cropper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .upload-image {
+          display: flex;
+          align-items: center;
+        }
+
+        .cropper-picture {
+          display: flex;
+          justify-content: center;
+
+          .advanced-cropper {
+            height: auto;
+            width: auto;
+            max-width: 100vh;
+            max-height: 100vh;
+          }
+        }
+      }
+    }
+  }
+}
