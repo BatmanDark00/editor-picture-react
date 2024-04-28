@@ -8,7 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Toggle from "@/components/toggle/Toggle";
 
 
-export default function MenuHeader() {
+interface Props {
+  saveCropper: () => void;
+}
+
+
+export default function MenuHeader({ saveCropper }: Props) {
   const [isOpen, setIsOpen] = useState(false);  
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
@@ -69,6 +74,13 @@ export default function MenuHeader() {
     setOpenWIndow(!openWindow)
   }
 
+  const handleSave = () => {
+    console.log("Guardando imagen desde el navbar");
+
+    saveCropper();
+
+  }
+
   return (
     <>
       <header>
@@ -79,6 +91,8 @@ export default function MenuHeader() {
             </a>
           </div>
 
+        
+
           <input
             type="file"
             accept="image/*"
@@ -88,6 +102,11 @@ export default function MenuHeader() {
           />
 
           <ul className="links">
+            <li>
+              <a onClick={handleSave}>
+                Save
+              </a>
+              </li>
             <li
               className="dropdown"
               id="open"
@@ -276,3 +295,7 @@ export default function MenuHeader() {
     </>
   );
 }
+function saveCropper() {
+  throw new Error("Function not implemented.");
+}
+

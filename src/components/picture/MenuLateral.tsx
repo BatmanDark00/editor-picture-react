@@ -11,7 +11,7 @@ import ToolEdit from "@/components/tool_menu_lateral/ToolEdit";
 import { menuLateralData } from "@/json/picture/menuLateralData";
 
 export default function MenuLateral() {
-  const [component, setComponent] = useState<string>("Default");
+  const [component, setComponent] = useState<string>();
 
   const handleComponent = (component: string) => {
     console.log("Componente: ", component);

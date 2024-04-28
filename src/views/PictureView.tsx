@@ -45,7 +45,7 @@ export default function PictureView() {
     <>
       <div className="picture-view">
         <div className="menu-header">
-          <MenuHeader />
+          <MenuHeader saveCropper={downloadImage} />
         </div>
 
         <main>

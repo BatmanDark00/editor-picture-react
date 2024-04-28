@@ -8,7 +8,7 @@ import 'react-advanced-cropper/dist/themes/corners.css';
 
 interface Props {
   src: string;
-  downloadResult?: boolean;
+  downloadResult?: boolean; 
 }
 
 const onChange = (cropper: CropperRef) => {
