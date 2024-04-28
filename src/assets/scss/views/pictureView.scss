@@ -27,11 +27,11 @@
           display: flex;
           justify-content: center;
 
-          .advanced-cropper {
-            height: auto;
-            width: auto;
-            max-width: 100vh;
+          .advanced-cropper {    
+            margin-top: 3rem;      
+            height: 85vh;
             max-height: 100vh;
+            position: relative;
           }
         }
       }

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import "@/assets/scss/views/pictureView.scss";
 
-
 import CropperPicture from "@/components/cropper/CropperPicture";
 import UploadFile from "@/components/common/UploadFile";
 import MenuHeader from "@/components/picture/MenuHeader";
@@ -55,11 +54,7 @@ export default function PictureView() {
 
           <div className="editor-main">
             <div className="area-cropper">
-              <h1>Editor de imágenes</h1>
-              {preview && (
-                <button onClick={downloadImage}>Descargar resultado</button>
-              )}
-
+             
               {!preview && (
                 <div className="upload-image">
                   <UploadFile onFileUpload={handleFileUpload} />
@@ -71,15 +66,13 @@ export default function PictureView() {
                   <CropperPicture
                     src={preview}
                     downloadResult={downloadResult}
-                  />{" "}
+                  />
                 </div>
               )}
             </div>
             <MenuFooter/>
           </div>
-
         </main>
-
       
       </div>
     </>

@@ -1,7 +1,9 @@
 import "@/assets/scss/components/section_aside/AsideBar.scss";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-
+import { menuLateralData } from "@/json/picture/menuLateralData";
 
 export default function MenuLateral() {
   return (
@@ -9,66 +11,15 @@ export default function MenuLateral() {
       <div className="clear-fixed"></div>
       <section>
         <aside>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "image"]} />
-            </button>
-            <p>Admr. de imagénes</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "sliders"]} rotation={90} />
-            </button>
-            <p>Editar</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "eye"]} />
-            </button>
-            <p>Retoques</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "wand-magic-sparkles"]} />
-            </button>
-            <p>Efectos</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "palette"]} />
-            </button>
-            <p>Artístico</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "panorama"]} />
-            </button>
-            <p>Marcos</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "icons"]} />
-            </button>
-            <p>Gráficos</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "square-pen"]} />
-            </button>
-            <p>Superposiciones</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "t"]} />
-            </button>
-            <p>Texto</p>
-          </div>
-          <div className="item-menu">
-            <button>
-              <FontAwesomeIcon icon={["fas", "tarp"]} />
-            </button>
-            <p>Texturas</p>
-          </div>
+          {menuLateralData.map((menu, index) => (
+            <div className="item-menu" key={index}>
+              <button>
+                <FontAwesomeIcon icon={menu.icon as IconProp} />
+              </button>
+              <p>{menu.text}</p>
+            </div>
+          ))}
+
           <div className="clear-fixed"></div>
         </aside>
       </section>
