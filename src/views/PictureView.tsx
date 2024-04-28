@@ -48,13 +48,16 @@ export default function PictureView() {
           <MenuHeader />
         </div>
 
-
         <main>
-          <MenuLateral/>
+          <MenuLateral />
 
           <div className="editor-main">
             <div className="area-cropper">
-             
+              <h1>Editor de imágenes</h1>
+              {preview && (
+                <button onClick={downloadImage}>Descargar resultado</button>
+              )}
+
               {!preview && (
                 <div className="upload-image">
                   <UploadFile onFileUpload={handleFileUpload} />
@@ -66,14 +69,13 @@ export default function PictureView() {
                   <CropperPicture
                     src={preview}
                     downloadResult={downloadResult}
-                  />
+                  />{" "}
                 </div>
               )}
             </div>
-            <MenuFooter/>
+            <MenuFooter />
           </div>
         </main>
-      
       </div>
     </>
   );

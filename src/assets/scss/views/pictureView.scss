@@ -18,6 +18,14 @@
         justify-content: center;
         flex-direction: column;
 
+        button{
+          background-color: var(--background-color);
+          color: var(--text-color);
+          border: solid 1px var(--border-color);
+          padding: 0.4rem;
+          cursor: pointer;
+        }
+
         .upload-image {
           display: flex;
           align-items: center;
@@ -29,7 +37,7 @@
 
           .advanced-cropper {    
             margin-top: 3rem;      
-            height: 85vh;
+            height: 70vh;
             max-height: 100vh;
             position: relative;
           }
