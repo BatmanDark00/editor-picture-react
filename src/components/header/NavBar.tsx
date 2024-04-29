@@ -6,15 +6,18 @@ import "@/assets/scss/components/header/Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Toggle from "@/components/toggle/Toggle";
+import CropperPicture from "../cropper/CropperPicture";
 
 
 export default function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);  
+  const [isOpen, setIsOpen] = useState<boolean>(false);  
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [fileComputer, setFileComputer] = useState<string | null>(null);
-  const [openWindow, setOpenWIndow] = useState(false);
+  const [openWindow, setOpenWIndow] = useState<boolean>(false);
+  const [downloadResult, setDownloadResult] = useState<boolean>(false);
+  //const [preview, setPreview] = useState<string | null>(null);
 
 
   const user = {
@@ -68,6 +71,21 @@ export default function NavBar() {
   const handleOpenWindow = () => {
     setOpenWIndow(!openWindow)
   }
+
+  const downloadImage = () => {
+    console.log("Descargando imagen...");
+    setDownloadResult(true);
+
+    console.log("el estado es: ", downloadResult);
+  
+    console.log("el estado es falso: ", downloadResult);
+  }
+
+  React.useEffect(() => {
+    if (downloadResult) {
+     setDownloadResult(false);
+    }
+  }, [downloadResult]);
 
   return (
     <>
@@ -177,19 +195,21 @@ export default function NavBar() {
               )}
             </li>
 
-            <li
+          <li
               className="dropdown"
               id="save"
-              onClick={() => toggleDropdown("save")}
-              ref={dropdownRef}
+              onClick={downloadImage}
+              
+              /* onClick={() => toggleDropdown("save")}
+              ref={dropdownRef} */
             >
-              {" "}
-              Save{" "}
-              <FontAwesomeIcon
+              {/* {" "} */}
+              Save{/* {" "} */}
+              {/* <FontAwesomeIcon
                 icon={["fas", "chevron-down"]}
                 className="dropdown-rown"
-              />
-              {isOpen && menuType === "save" && (
+              /> */}
+              {/* {isOpen && menuType === "save" && (
                 <ul 
                  className="dropdown-menu" 
                  id="width-plus" 
@@ -265,6 +285,11 @@ export default function NavBar() {
                   <li className="drop-title bold" >
                     <a href="#">Guardar proyecto</a> <span>Ctrl+⇧+S</span></li>
                 </ul>
+              )} */}
+              {fileComputer && (
+                <div className={"cropper"}>
+                 <CropperPicture src={fileComputer} downloadResult={downloadResult} />
+               </div>
               )}
             </li>
           </ul>

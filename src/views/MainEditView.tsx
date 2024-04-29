@@ -21,14 +21,14 @@ export default function MainEditView() {
     reader.readAsDataURL(file);
   };
 
-  const downloadImage = () => {
+ /*  const downloadImage = () => {
     console.log("Descargando imagen...");
     setDownloadResult(true);
 
     console.log("el estado es: ", downloadResult);
   
     console.log("el estado es falso: ", downloadResult);
-  }
+  } */
 
   useEffect(() => {
     if (downloadResult) {
@@ -39,15 +39,15 @@ export default function MainEditView() {
   return (
     <>
       <div className="main-edit-view">
-        <h1>Editor de imágenes</h1>
-        {preview && <button onClick={downloadImage}>Descargar resultado</button>}
+        <h3>Editor de imágenes</h3>
+        {/* {preview && <button onClick={downloadImage}>Descargar resultado</button>} */}
         <div className="upload_image">
           {!preview && <UploadFile onFileUpload={handleFileUpload} />}
           {preview && (
             <div className={"cropper"}>
               <CropperPicture src={preview} downloadResult={downloadResult} />
             </div>
-          )}
+          )} 
         </div>
       </div>
     </>
