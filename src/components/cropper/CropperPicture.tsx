@@ -3,12 +3,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { CropperRef, Cropper } from "react-advanced-cropper";
 
 import "react-advanced-cropper/dist/style.css";
-import "react-advanced-cropper/dist/themes/bubble.css";
-import "@/assets/scss/views/MainEditView.scss";
+import 'react-advanced-cropper/dist/themes/corners.css';
+
 
 interface Props {
   src: string;
-  downloadResult?: boolean;
+  downloadResult?: boolean; 
 }
 
 const onChange = (cropper: CropperRef) => {
@@ -55,7 +55,7 @@ export default function CropperPicture({ src, downloadResult }: Props) {
         ref={cropperRef}
         src={src}
         onChange={onChange}
-        className={"cropper"}
+        
       ></Cropper>
     </>
   );
