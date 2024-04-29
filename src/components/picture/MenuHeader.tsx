@@ -10,16 +10,18 @@ import Toggle from "@/components/toggle/Toggle";
 
 interface Props {
   saveCropper: () => void;
+  accept?: string;
+  onFileUpload: (file: File) => void;
 }
 
 
-export default function MenuHeader({ saveCropper }: Props) {
+export default function MenuHeader({ saveCropper, accept = "image/*", onFileUpload }: Props) {
   const [isOpen, setIsOpen] = useState(false);  
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const [fileComputer, setFileComputer] = useState<string | null>(null);
-  const [openWindow, setOpenWIndow] = useState(false);
+  //const inputRef = React.useRef<HTMLInputElement>(null);
+ // const [fileComputer, setFileComputer] = useState<string | null>(null);
+  //const [openWindow, setOpenWIndow] = useState(false);
 
 
   const user = {
@@ -39,7 +41,7 @@ export default function MenuHeader({ saveCropper }: Props) {
   };
 
 
-  const uploadFile = () => {
+ /*  const uploadFile = () => {
     if (inputRef.current) {
       console.log("Clic en la imagen desde el navbar");
 
@@ -48,21 +50,14 @@ export default function MenuHeader({ saveCropper }: Props) {
 
     const customEvent = new CustomEvent("send-file", { detail: fileComputer });
     window.dispatchEvent(customEvent);
-  }
+  } */
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //obtener la imagen
     const file = e.target.files![0];
 
     if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (e) => {
-        if (e.target) {
-          setFileComputer(e.target.result as string);
-        }
-      };
-      reader.readAsDataURL(file);
+      onFileUpload(file);
     }
   };
 
@@ -70,9 +65,9 @@ export default function MenuHeader({ saveCropper }: Props) {
     e.stopPropagation();
   }
 
-  const handleOpenWindow = () => {
+ /*  const handleOpenWindow = () => {
     setOpenWIndow(!openWindow)
-  }
+  } */
 
   const handleSave = () => {
     console.log("Guardando imagen desde el navbar");
@@ -80,6 +75,11 @@ export default function MenuHeader({ saveCropper }: Props) {
     saveCropper();
 
   }
+
+ /*  const handleChange = () => {
+      onFileUpload();
+    
+  } */
 
   return (
     <>
@@ -92,21 +92,21 @@ export default function MenuHeader({ saveCropper }: Props) {
           </div>
 
         
-
+{/* 
           <input
             type="file"
             accept="image/*"
             ref={inputRef}
             style={{ display: "none" }}
             onChange={handleFileChange}
-          />
+          /> */}
 
           <ul className="links">
-            <li>
+            {/* <li>
               <a onClick={handleSave}>
                 Save
               </a>
-              </li>
+              </li> */}
             <li
               className="dropdown"
               id="open"
@@ -125,12 +125,23 @@ export default function MenuHeader({ saveCropper }: Props) {
                     <h4>Nueva Imagen</h4>
                   </li>
                   <li className="dropdown-li">
-                    <a href="#" className="dropdown-link" onClick={uploadFile}>
+                    <a 
+                     href="#" 
+                     className="dropdown-link" 
+                    >
                     <FontAwesomeIcon icon={["fas", "desktop"]} className="plus"/>
                       Ordenador <span>Ctrl+O</span>
+                      <input 
+                        id="input-file"
+                        className="input-file-change"
+                        type="file"
+                        accept={accept}
+                        /* ref={inputRef} */
+                        onChange={handleFileChange}
+                       />
                     </a>
                   </li>
-                  <li className="dropdown-li">
+                  {/* <li className="dropdown-li">
                     <a href="#" className="dropdown-link">
                     <FontAwesomeIcon icon={["fas", "react"]} className="plus"/>
                       PhotoEditor
@@ -191,20 +202,21 @@ export default function MenuHeader({ saveCropper }: Props) {
                   <li className="dropdown-li">
                   <FontAwesomeIcon icon={["fas", "phoenix-framework"]} className="plus"/>
                     <a href="#">PhotoEditor</a>
-                  </li>
+                  </li>*/}
                 </ul>
-              )}
+              )} 
             </li>
 
             <li
               className="dropdown"
               id="save"
-              onClick={() => toggleDropdown("save")}
-              ref={dropdownRef}
+              onClick={handleSave}
+             /* onClick={() => toggleDropdown("save")}
+               ref={dropdownRef} */
             >
               {" "}
               Save{" "}
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={["fas", "chevron-down"]}
                 className="dropdown-rown"
               />
@@ -284,7 +296,7 @@ export default function MenuHeader({ saveCropper }: Props) {
                   <li className="drop-title bold" >
                     <a href="#">Guardar proyecto</a> <span>Ctrl+⇧+S</span></li>
                 </ul>
-              )}
+              )} */}
             </li>
           </ul>
 

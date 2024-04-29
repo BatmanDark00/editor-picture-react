@@ -9,6 +9,7 @@ header {
   border-color: #858585;
   position: fixed;
   width: 100%;
+  z-index: 50;
 
   .nav-bar {
     width: 100%;
@@ -182,6 +183,22 @@ header {
     a {
       color: var(--text-color);
     }
+
+    .input-file-change {
+      position: absolute;
+      left: 0px;
+      top: 10px;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: red;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+
     .dropdown-link {
       text-decoration: none;
       color: var(--text-color);
