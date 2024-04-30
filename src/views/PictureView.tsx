@@ -13,8 +13,6 @@ export default function PictureView() {
   const [downloadResult, setDownloadResult] = useState<boolean>(false);
 
   const handleFileUpload = (file: File) => {
-    console.log("Archivo recibido del padre: ", file);
-
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -26,13 +24,8 @@ export default function PictureView() {
     reader.readAsDataURL(file);
   };
 
-  const downloadImage = () => {
-    console.log("Descargando imagen...");
+  const downloadImage = () => {    
     setDownloadResult(true);
-
-    console.log("el estado es: ", downloadResult);
-
-    console.log("el estado es falso: ", downloadResult);
   };
 
   useEffect(() => {
@@ -55,11 +48,7 @@ export default function PictureView() {
           <MenuLateral />
 
           <div className="editor-main">
-            <div className="area-cropper">
-              {/* {preview && (
-                <button onClick={downloadImage}>Descargar resultado</button>
-              )} */}
-
+            <div className="area-cropper">             
               {!preview && (
                 <div className="upload-image">
                   <UploadFile onFileUpload={handleFileUpload} />

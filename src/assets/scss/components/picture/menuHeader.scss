@@ -1,13 +1,11 @@
 .menu-header {
   font-family: "Mulish", "Avenir Next", "Trebuchet MS", sans-serif;
   height: 56px;
-  padding: 0 16px;
   background-color: var(--background-color);
   align-items: center;
   align-content: center;
   border-bottom: 2px solid;
   border-color: #858585;
-  position: fixed;
   width: 100%;
 
   .nav-bar {
@@ -17,6 +15,7 @@
     align-items: center;
     gap: 22rem;
     flex-direction: row;
+
 
     .links {
       list-style: none;
@@ -214,7 +213,11 @@
 
       &:hover {
         background-color: var(--hover-color);
-      } 
-    }   
+      }
+    }
+  }
+
+  input[type="file"] {
+    display: none ;
   }
 }
