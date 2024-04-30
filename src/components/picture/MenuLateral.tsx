@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import "@/assets/scss/components/picture/menuLateral.scss";
 
@@ -51,7 +51,7 @@ export default function MenuLateral() {
           <div className="clear-fixed"></div>
         </aside>
 
-        <div className="tool-menu">{renderComponent()}</div>
+        {component && <div className="tool-menu">{renderComponent()}</div>}
       </section>
     </>
   );

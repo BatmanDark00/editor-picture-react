@@ -116,7 +116,9 @@ export default function MenuHeader({
             </li>
           </ul>
 
-          <Toggle />
+          <div>
+            <Toggle />
+          </div>
         </nav>
       </div>
     </>

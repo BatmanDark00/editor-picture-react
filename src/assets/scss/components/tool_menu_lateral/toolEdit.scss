@@ -1,0 +1,33 @@
+.tool-edit {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+
+  .accordion {
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .accordion-header {
+    display: block;
+    padding-top: 10px;
+
+   
+    cursor: pointer;
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    
+  }
+
+  .collapse-checkbox {
+    display: none;
+  }
+
+  .collapse-checkbox:checked ~ .accordion-content {
+    max-height: 1000px; /* Ajusta este valor según sea necesario */
+  }
+}
