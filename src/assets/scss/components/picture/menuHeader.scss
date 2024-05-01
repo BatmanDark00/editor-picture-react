@@ -17,7 +17,6 @@
     flex-direction: row;
     justify-content: space-between;
 
-
     .links {
       list-style: none;
       padding: 0;
@@ -219,6 +218,72 @@
   }
 
   input[type="file"] {
-    display: none ;
+    display: none;
+  }
+
+  dialog {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: auto;
+    padding: 1rem;
+    border: none;
+    backdrop-filter: blur(5px);
+    width: 50rem;
+    height: 40rem;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding: auto;
+      height: 2rem;
+
+      .close {
+        cursor: pointer;
+      }
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      flex-wrap: wrap;
+      overflow: auto;
+      height: 50vh;
+
+      padding: 1rem;
+
+      .content-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 13rem;
+          height: 13rem;
+          object-fit: cover;
+          cursor: pointer;
+        }
+      }
+    }
+
+    menu {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem;
+      button {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        border-radius: 3px;
+        padding: 0 8px;
+        margin: 12px 6px;
+        width: auto;
+        height: 30px;
+        cursor: pointer;
+        &:hover {
+          background-color: var(--hover-color);
+        }
+      }
+    }
   }
 }

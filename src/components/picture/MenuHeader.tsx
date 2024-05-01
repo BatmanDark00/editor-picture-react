@@ -5,6 +5,7 @@ import "@/assets/scss/components/picture/menuHeader.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Toggle from "@/components/toggle/Toggle";
+import unplashService from "@/services/unplashService";
 
 interface Props {
   saveCropper: () => void;
@@ -19,6 +20,8 @@ export default function MenuHeader({
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [menuType, setMenuType] = React.useState<string | null>(null);
+  const [photos, setPhotos] = React.useState<any[]>([]);
+  const [page, setPage] = React.useState<number>(1);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -57,6 +60,45 @@ export default function MenuHeader({
 
   const handleSave = () => {
     saveCropper();
+  };
+
+  const imagesUnplash = () => {
+    // console.log("llmando servicio aAPI unsplash");
+
+    unplashService.search
+      .getPhotos({ query: "nature", page: page, perPage: 10 })
+      .then((result) => {
+        console.log("result", result.response?.results);
+
+        setPhotos(result.response?.results ?? []);
+      })
+      .catch((error) => {
+        console.error("Error fetching photos:", error);
+      });
+  };
+
+  const nextPage = () => {
+    setPage(page + 1);
+    imagesUnplash();
+  }
+
+  const prevPage = () => {
+    setPage(page - 1);
+    imagesUnplash();
+  }
+
+  
+
+  const openDialog = () => {
+    const dialog = document.getElementById("favDialog") as HTMLDialogElement;
+    dialog.showModal();
+
+    imagesUnplash();
+  };
+
+  const closeDialog = () => {
+    const dialog = document.getElementById("favDialog") as HTMLDialogElement;
+    dialog.close();
   };
 
   return (
@@ -111,6 +153,10 @@ export default function MenuHeader({
               )}
             </li>
 
+            <li className="dropdown" id="save" onClick={openDialog}>
+              Unplash
+            </li>
+
             <li className="dropdown" id="save" onClick={handleSave}>
               Save
             </li>
@@ -121,6 +167,30 @@ export default function MenuHeader({
           </div>
         </nav>
       </div>
+
+      <dialog id="favDialog">
+        <div className="header">
+          <p className="title">Imagenes</p>
+          <p className="close" onClick={closeDialog}>
+            X
+          </p>
+        </div>
+
+        <div className="grid">
+          {photos.map((photo) => (
+            <div key={photo.id} className="content-image">
+              <img src={photo.urls.small} alt={photo.alt_description} />
+            </div>
+          ))}
+        </div>
+
+        <menu>
+          <button id="cancel" type="button" onClick={prevPage} >
+            Anterior
+          </button>
+          <button type="button"  onClick={nextPage}>Siguiente</button>
+        </menu>
+      </dialog>
     </>
   );
 }
