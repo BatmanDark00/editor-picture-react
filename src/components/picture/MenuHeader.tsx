@@ -62,11 +62,11 @@ export default function MenuHeader({
     saveCropper();
   };
 
-  const imagesUnplash = () => {
+  const imagesUnplash = async () => {
     // console.log("llmando servicio aAPI unsplash");
 
-    unplashService.search
-      .getPhotos({ query: "nature", page: page, perPage: 10 })
+   await unplashService.search
+      .getPhotos({ query: "films", page: page, perPage: 12 })
       .then((result) => {
         console.log("result", result.response?.results);
 

@@ -247,9 +247,6 @@
       flex-direction: row;
       gap: 1rem;
       flex-wrap: wrap;
-      overflow: auto;
-      height: 50vh;
-
       padding: 1rem;
 
       .content-image {
@@ -258,8 +255,8 @@
         align-items: center;
 
         img {
-          width: 13rem;
-          height: 13rem;
+          width: 9rem;
+          height: 9rem;
           object-fit: cover;
           cursor: pointer;
         }
