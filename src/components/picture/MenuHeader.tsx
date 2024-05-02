@@ -5,7 +5,7 @@ import "@/assets/scss/components/picture/menuHeader.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Toggle from "@/components/toggle/Toggle";
-import unplashService from "@/services/unplashService";
+import Unsplash from "@/components/picture/Unsplash";
 
 interface Props {
   saveCropper: () => void;
@@ -20,10 +20,9 @@ export default function MenuHeader({
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [menuType, setMenuType] = React.useState<string | null>(null);
-  const [photos, setPhotos] = React.useState<any[]>([]);
-  const [page, setPage] = React.useState<number>(1);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const [isOpenUnsplash, setOpenUnsplash] = useState(false);
 
   const user = {
     name: "Lener",
@@ -52,6 +51,8 @@ export default function MenuHeader({
     if (file) {
       onFileUpload(file);
     }
+
+    toggleDropdown("close");
   };
 
   const handleClickInside = (e: React.MouseEvent) => {
@@ -62,43 +63,20 @@ export default function MenuHeader({
     saveCropper();
   };
 
-  const imagesUnplash = async () => {
-    // console.log("llmando servicio aAPI unsplash");
-
-   await unplashService.search
-      .getPhotos({ query: "films", page: page, perPage: 12 })
-      .then((result) => {
-        console.log("result", result.response?.results);
-
-        setPhotos(result.response?.results ?? []);
-      })
-      .catch((error) => {
-        console.error("Error fetching photos:", error);
-      });
-  };
-
-  const nextPage = () => {
-    setPage(page + 1);
-    imagesUnplash();
-  }
-
-  const prevPage = () => {
-    setPage(page - 1);
-    imagesUnplash();
-  }
-
-  
+ 
 
   const openDialog = () => {
     const dialog = document.getElementById("favDialog") as HTMLDialogElement;
     dialog.showModal();
 
-    imagesUnplash();
+    toggleDropdown("close");
+    setOpenUnsplash(true);
   };
 
   const closeDialog = () => {
     const dialog = document.getElementById("favDialog") as HTMLDialogElement;
     dialog.close();
+
   };
 
   return (
@@ -149,12 +127,12 @@ export default function MenuHeader({
                       />
                     </a>
                   </li>
+
+                  <li className="dropdown-li" onClick={openDialog}>
+                    <i className="fa-brands fa-unsplash"></i> Unsplash
+                  </li>
                 </ul>
               )}
-            </li>
-
-            <li className="dropdown" id="save" onClick={openDialog}>
-              Unplash
             </li>
 
             <li className="dropdown" id="save" onClick={handleSave}>
@@ -169,27 +147,7 @@ export default function MenuHeader({
       </div>
 
       <dialog id="favDialog">
-        <div className="header">
-          <p className="title">Imagenes</p>
-          <p className="close" onClick={closeDialog}>
-            X
-          </p>
-        </div>
-
-        <div className="grid">
-          {photos.map((photo) => (
-            <div key={photo.id} className="content-image">
-              <img src={photo.urls.small} alt={photo.alt_description} />
-            </div>
-          ))}
-        </div>
-
-        <menu>
-          <button id="cancel" type="button" onClick={prevPage} >
-            Anterior
-          </button>
-          <button type="button"  onClick={nextPage}>Siguiente</button>
-        </menu>
+        <Unsplash isOpenUnsplash={isOpenUnsplash} closeUnsplash={closeDialog} />
       </dialog>
     </>
   );
