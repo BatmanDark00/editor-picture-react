@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+
+import "@/assets/scss/components/picture/unSplash.scss";
+
 import unplashService from "@/services/unplashService";
 
 interface Props {
@@ -6,45 +9,46 @@ interface Props {
   closeUnsplash: () => void;
 }
 
-const Unsplash: React.FC<Props> = ({ isOpenUnsplash, closeUnsplash }) => {
-  const [photos, setPhotos] = useState<any[]>([]);
-  const [page, setPage] = useState<number>(1);
+export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
+  const [photos, setPhotos] = React.useState<any[]>([]);
+  const [page, setPage] = React.useState<number>(1);
 
   useEffect(() => {
-    const fetchPhotos = async () => {
-      if (isOpenUnsplash) {
-        try {
-          const result = await unplashService.search.getPhotos({
-            query: "films",
-            page,
-            perPage: 12
-          });
-          setPhotos(result.response?.results ?? []);
-        } catch (error) {
-          console.error("Error fetching photos:", error);
-        }
-      }
-    };
-    fetchPhotos();
-  }, [isOpenUnsplash, page]);
+    if (isOpenUnsplash) {
+      imagesUnplash();
+    }
+  }, [isOpenUnsplash]);
+
+  const imagesUnplash = async () => {
+    await unplashService.search
+      .getPhotos({ query: "films", page: page, perPage: 9 })
+      .then((result) => {
+        setPhotos(result.response?.results ?? []);
+      })
+      .catch((error) => {
+        console.error("Error fetching photos:", error);
+      });
+  };
 
   const nextPage = () => {
     setPage(page + 1);
+    imagesUnplash();
   };
 
   const prevPage = () => {
-    setPage(Math.max(page - 1, 1));
+    setPage(page - 1);
+    imagesUnplash();
   };
 
-  const handleClose = () => {
+  const closeDialog = () => {
     closeUnsplash();
   };
 
   return (
     <>
       <div className="header">
-        <p className="title">Imágenes</p>
-        <p className="close" onClick={handleClose}>
+        <p className="title">Imagenes</p>
+        <p className="close" onClick={closeDialog}>
           X
         </p>
       </div>
@@ -67,6 +71,4 @@ const Unsplash: React.FC<Props> = ({ isOpenUnsplash, closeUnsplash }) => {
       </menu>
     </>
   );
-};
-
-export default Unsplash;
+}

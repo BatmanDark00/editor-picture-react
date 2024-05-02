@@ -1,0 +1,61 @@
+.grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+
+  justify-content: center;
+
+  .content-image {
+    display: flex;
+
+    img {
+      width: 10rem;
+      height: 9rem;
+      object-fit: cover;
+      cursor: pointer;
+      transition: ease-in-out 0.5s, transform 2s ease-out;
+      animation: fadeInAndScale 2s ease-in-out;
+
+      @keyframes fadeInAndScale {
+        0% {
+          opacity: 0;
+          transform: scale(0.2);
+        }
+        25% {
+          opacity: 0;
+          transform: scale(0.4);
+        }
+        75% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+
+menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  button {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 3px;
+    padding: 0 8px;
+    margin: 12px 6px;
+    width: auto;
+    height: 30px;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
+}
