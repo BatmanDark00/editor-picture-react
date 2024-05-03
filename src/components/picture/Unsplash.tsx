@@ -48,6 +48,9 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     <>
       <div className="header">
         <p className="title">Imagenes</p>
+        <form >
+          <input placeholder="Buscar"/>
+        </form>
         <p className="close" onClick={closeDialog}>
           X
         </p>

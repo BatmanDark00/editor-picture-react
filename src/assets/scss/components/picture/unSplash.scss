@@ -1,3 +1,16 @@
+input {
+  border: 1px solid transparent;
+  border-bottom-color: var(--toggle-bg);
+  background-color: transparent;
+  transition: border 1s ease-in-out;
+  color: var(--text-color);
+
+  &:focus-visible {
+    outline: 1px solid var(--border-color-dark);
+    border-radius: 2px;    
+  }
+}
+
 .grid {
   display: flex;
   flex-direction: row;
@@ -11,12 +24,17 @@
     display: flex;
 
     img {
+      border-radius: 2px;
       width: 10rem;
       height: 9rem;
       object-fit: cover;
       cursor: pointer;
-      transition: ease-in-out 0.5s, transform 2s ease-out;
+      transition: width ease-in-out 0.5s, transform 1s ease-out, height ease-in-out 0.5s;
       animation: fadeInAndScale 2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.2);
+      }
 
       @keyframes fadeInAndScale {
         0% {
