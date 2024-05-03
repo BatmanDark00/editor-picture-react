@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "@/assets/scss/components/picture/menuHeader.scss";
 
@@ -23,6 +23,8 @@ export default function MenuHeader({
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isOpenUnsplash, setOpenUnsplash] = useState(false);
+
+
 
   const user = {
     name: "Lener",
@@ -66,11 +68,13 @@ export default function MenuHeader({
  
 
   const openDialog = () => {
+    setOpenUnsplash(true);
+
     const dialog = document.getElementById("favDialog") as HTMLDialogElement;
     dialog.showModal();
 
     toggleDropdown("close");
-    setOpenUnsplash(true);
+   
   };
 
   const closeDialog = () => {

@@ -8,38 +8,56 @@ interface Props {
   isOpenUnsplash: boolean;
   closeUnsplash: () => void;
 }
+interface Photo {
+  id: string;
+  alt_description: string;
+  urls: {
+    small: string;
+    full: string;
+  };
+}
 
 export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
-  const [photos, setPhotos] = React.useState<any[]>([]);
+  const [photos, setPhotos] = React.useState<Photo[]>([]);
   const [page, setPage] = React.useState<number>(1);
 
   useEffect(() => {
-    if (isOpenUnsplash) {
-      imagesUnplash();
-    }
-  }, [isOpenUnsplash]);
+    const fetchPhotos = async () => {
+      try {      
+        await unplashService.search
+          .getPhotos({ query: "wallpapers", page: page, perPage: 9 })
+          .then((result) => {
 
-  const imagesUnplash = async () => {
-    await unplashService.search
-      .getPhotos({ query: "films", page: page, perPage: 9 })
-      .then((result) => {
-        setPhotos(result.response?.results ?? []);
-      })
-      .catch((error) => {
-        console.error("Error fetching photos:", error);
-      });
-  };
+            console.log(result.response?.results);
+            const photos =
+              result.response?.results.map((photo) => ({
+                id: photo.id,
+                alt_description: photo.alt_description || "",
+                urls: {
+                  small: photo.urls.small,
+                  full: photo.urls.full,
+                },
+              })) ?? [];
+
+            setPhotos(photos);
+          });
+      } catch (error) {
+        console.log("Error al obtener las imagenes", error);
+      }
+    };
+
+    if (isOpenUnsplash) {
+      fetchPhotos();
+    }
+  }, [isOpenUnsplash, page]);
 
   const nextPage = () => {
-    setPage(page + 1);
-    imagesUnplash();
+    setPage((prevPage) => prevPage + 1);
   };
 
   const prevPage = () => {
-    setPage(page - 1);
-    imagesUnplash();
+    setPage((prevPage) => prevPage - 1);
   };
-
   const closeDialog = () => {
     closeUnsplash();
   };
@@ -48,8 +66,8 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     <>
       <div className="header">
         <p className="title">Imagenes</p>
-        <form >
-          <input placeholder="Buscar"/>
+        <form>
+          <input placeholder="Buscar" />
         </form>
         <p className="close" onClick={closeDialog}>
           X
