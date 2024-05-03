@@ -12,6 +12,12 @@ export default function PictureView() {
   const [preview, setPreview] = useState<string | null>(null);
   const [downloadResult, setDownloadResult] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (downloadResult) {
+      setDownloadResult(false);
+    }
+  }, [downloadResult]);
+
   const handleFileUpload = (file: File) => {
     const reader = new FileReader();
 
@@ -24,31 +30,30 @@ export default function PictureView() {
     reader.readAsDataURL(file);
   };
 
-  const downloadImage = () => {    
-    setDownloadResult(true);
+  const handleUnplashImage = (url: string) => {
+    setPreview(url);
   };
 
-  useEffect(() => {
-    if (downloadResult) {
-      setDownloadResult(false);
-    }
-  }, [downloadResult]);
+  const downloadImage = () => {
+    setDownloadResult(true);
+  };
 
   return (
     <>
       <div className="picture-view">
         <div className="menu-header">
-          <MenuHeader 
-           saveCropper={downloadImage}
-           onFileUpload={handleFileUpload}
-           />
+          <MenuHeader
+            saveCropper={downloadImage}
+            onFileUpload={handleFileUpload}
+            unsplashImage={handleUnplashImage} 
+          />
         </div>
 
         <main>
           <MenuLateral />
 
           <div className="editor-main">
-            <div className="area-cropper">             
+            <div className="area-cropper">
               {!preview && (
                 <div className="upload-image">
                   <UploadFile onFileUpload={handleFileUpload} />

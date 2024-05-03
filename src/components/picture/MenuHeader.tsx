@@ -11,20 +11,20 @@ interface Props {
   saveCropper: () => void;
   accept?: string;
   onFileUpload: (file: File) => void;
+  unsplashImage: (url: string) => void;
 }
 
 export default function MenuHeader({
   saveCropper,
   accept = "image/*",
   onFileUpload,
+  unsplashImage,
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isOpenUnsplash, setOpenUnsplash] = useState(false);
-
-
 
   const user = {
     name: "Lener",
@@ -82,6 +82,13 @@ export default function MenuHeader({
     dialog.close();
 
   };
+
+
+  const handleUnplashImage = (url: string) => {
+    console.log("hola que hago aqui, xd dd", url);
+
+    unsplashImage(url);
+  }
 
   return (
     <>
@@ -151,7 +158,7 @@ export default function MenuHeader({
       </div>
 
       <dialog id="favDialog">
-        <Unsplash isOpenUnsplash={isOpenUnsplash} closeUnsplash={closeDialog} />
+        <Unsplash isOpenUnsplash={isOpenUnsplash} closeUnsplash={closeDialog} getUnsplashImage={handleUnplashImage} />
       </dialog>
     </>
   );
