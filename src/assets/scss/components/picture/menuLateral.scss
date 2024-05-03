@@ -12,16 +12,17 @@ section {
   border-right: 2px solid;
   border-color: #858585;
   z-index: 1;
+  overflow: hidden;
 
   p {
     display: none;
     width: 100%;
     justify-content: left;
     opacity: 1;
-    
+      
   }
 
-  &:hover{   
+  &:hover{    
     p {
       display: inline;
       width: 160px;
@@ -30,6 +31,8 @@ section {
       margin: auto;
       margin-left: -8px;
       cursor: pointer;
+      z-index: 10;
+      animation: .8s aparicionLateral 1;
     }
   }
 
@@ -76,4 +79,12 @@ section {
   .tool-menu{
     padding: 0 calc(1.5rem - 1px) 0 1.5rem;
   }
+}
+
+@keyframes aparicionLateral {
+  0% {
+    width: 0px;
+  }
+
+  
 }

@@ -77,12 +77,16 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash, getUnsplashIma
     <>
       <div className="header">
         <p className="title">Imagenes </p>
-        <form>
-          <input placeholder="Buscar" />
+        <form className="form">
+          <input type="text" required />
+          <label className="label">  
+            <span className="text-name">Buscar</span>
+          </label>
+          
         </form>
-        <p className="close" onClick={closeDialog}>
+        <button className="close" onClick={closeDialog}>
           X
-        </p>
+        </button>
       </div>
 
       <div className="grid">

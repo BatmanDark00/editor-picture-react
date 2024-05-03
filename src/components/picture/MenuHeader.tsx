@@ -158,7 +158,11 @@ export default function MenuHeader({
       </div>
 
       <dialog id="favDialog">
-        <Unsplash isOpenUnsplash={isOpenUnsplash} closeUnsplash={closeDialog} getUnsplashImage={handleUnplashImage} />
+        <Unsplash 
+         isOpenUnsplash={isOpenUnsplash} 
+         closeUnsplash={closeDialog} 
+         getUnsplashImage={handleUnplashImage} 
+        />
       </dialog>
     </>
   );
