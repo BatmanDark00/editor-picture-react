@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import  { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import { CropperRef, Cropper } from "react-advanced-cropper";
 
@@ -18,6 +19,8 @@ const onChange = (cropper: CropperRef) => {
 export default function CropperPicture({ src, downloadResult }: Props) {
   const cropperRef = useRef<CropperRef>(null);
 
+  const imageCropper = useSelector((state: any) => state.imageCropper);
+
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
   const [image, setImage] = useState<string>();
 
@@ -32,7 +35,7 @@ export default function CropperPicture({ src, downloadResult }: Props) {
 
   const onCrop = () => {
     if (cropperRef.current) {
-      console.log("Listo para descargar");
+      console.log("Listo para descargar"); 
       setCoordinates(cropperRef.current.getCoordinates());
       // You are able to do different manipulations at a canvas
       // but there we just get a cropped image, that can be used

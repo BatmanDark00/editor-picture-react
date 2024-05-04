@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { useDispatch } from "react-redux";
+
 import "@/assets/scss/views/pictureView.scss";
 
 import CropperPicture from "@/components/cropper/CropperPicture";
@@ -8,9 +10,12 @@ import MenuHeader from "@/components/picture/MenuHeader";
 import MenuFooter from "@/components/picture/MenuFooter";
 import MenuLateral from "@/components/picture/MenuLateral";
 
+import { setImage } from "@/redux/imageCropperSlice";
+
 export default function PictureView() {
   const [preview, setPreview] = useState<string | null>(null);
   const [downloadResult, setDownloadResult] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (downloadResult) {
@@ -24,6 +29,7 @@ export default function PictureView() {
     reader.onload = () => {
       if (reader.result) {
         setPreview(reader.result as string);
+        dispatch(setImage(reader.result as string));
       }
     };
 
@@ -45,7 +51,7 @@ export default function PictureView() {
           <MenuHeader
             saveCropper={downloadImage}
             onFileUpload={handleFileUpload}
-            unsplashImage={handleUnplashImage} 
+            unsplashImage={handleUnplashImage}
           />
         </div>
 
