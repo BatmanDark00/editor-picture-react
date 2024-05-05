@@ -32,8 +32,7 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
       try {
         await unplashService.search
           .getPhotos({ query: "wallpapers", page: page, perPage: 9 })
-          .then((result) => {
-            console.log(result.response?.results);
+          .then((result) => {           
             const photos =
               result.response?.results.map((photo) => ({
                 id: photo.id,
