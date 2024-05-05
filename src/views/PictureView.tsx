@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "@/assets/scss/views/pictureView.scss";
 
 import CropperPicture from "@/components/cropper/CropperPicture";
-import UploadFile from "@/components/common/UploadFile";
-import MenuHeader from "@/components/picture/MenuHeader";
 import MenuFooter from "@/components/picture/MenuFooter";
+import MenuHeader from "@/components/picture/MenuHeader";
 import MenuLateral from "@/components/picture/MenuLateral";
+import UploadFile from "@/components/common/UploadFile";
 
-import { setImage } from "@/redux/imageCropperSlice";
+import { setUrlImage } from "@/redux/imageCropperSlice";
+import { RootState } from "@/redux";
 
 export default function PictureView() {
-  const [preview, setPreview] = useState<string | null>(null);
   const [downloadResult, setDownloadResult] = useState<boolean>(false);
+
+  const imageCropper = useSelector((state: RootState) => state.imageCropper); // Utilizando RootState para tipar el estado global
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,17 +29,12 @@ export default function PictureView() {
     const reader = new FileReader();
 
     reader.onload = () => {
-      if (reader.result) {
-        setPreview(reader.result as string);
-        dispatch(setImage(reader.result as string));
+      if (reader.result) {      
+        dispatch(setUrlImage(reader.result as string));
       }
     };
 
     reader.readAsDataURL(file);
-  };
-
-  const handleUnplashImage = (url: string) => {
-    setPreview(url);
   };
 
   const downloadImage = () => {
@@ -50,8 +47,7 @@ export default function PictureView() {
         <div className="menu-header">
           <MenuHeader
             saveCropper={downloadImage}
-            onFileUpload={handleFileUpload}
-            unsplashImage={handleUnplashImage}
+            onFileUpload={handleFileUpload}           
           />
         </div>
 
@@ -60,16 +56,15 @@ export default function PictureView() {
 
           <div className="editor-main">
             <div className="area-cropper">
-              {!preview && (
+              {!imageCropper.urlImage && (
                 <div className="upload-image">
                   <UploadFile onFileUpload={handleFileUpload} />
                 </div>
               )}
 
-              {preview && (
+              {imageCropper.urlImage && (
                 <div className="cropper-picture">
-                  <CropperPicture
-                    src={preview}
+                  <CropperPicture                  
                     downloadResult={downloadResult}
                   />{" "}
                 </div>

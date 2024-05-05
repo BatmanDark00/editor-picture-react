@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 
+import { useDispatch } from "react-redux";
+
 import "@/assets/scss/components/picture/unSplash.scss";
 
 import unplashService from "@/services/unplashService";
 
+import { setUrlImage } from "@/redux/imageCropperSlice";
 
 interface Props {
   isOpenUnsplash: boolean;
   closeUnsplash: () => void;
-  getUnsplashImage: (url: string) => void;
 }
 interface Photo {
   id: string;
@@ -19,10 +21,12 @@ interface Photo {
   };
 }
 
-export default function Unsplash({ isOpenUnsplash, closeUnsplash, getUnsplashImage }: Props) {
+export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
   const [photos, setPhotos] = React.useState<Photo[]>([]);
   const [page, setPage] = React.useState<number>(1);
-  
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
@@ -50,8 +54,6 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash, getUnsplashIma
     if (isOpenUnsplash) {
       fetchPhotos();
     }
-
-    
   }, [isOpenUnsplash, page]);
 
   const nextPage = () => {
@@ -66,12 +68,10 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash, getUnsplashIma
     closeUnsplash();
   };
 
-  const sendImageCropper = (url: string) => {
-    console.log("hola que hago aqui, xd", url);
-   
-    getUnsplashImage(url);
-    closeDialog();
-};
+  const sendImageCropper = (url: string) => {  
+    dispatch(setUrlImage(url));
+    closeDialog();  
+  };
 
   return (
     <>
@@ -79,10 +79,9 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash, getUnsplashIma
         <p className="title">Imagenes </p>
         <form className="form">
           <input type="text" required />
-          <label className="label">  
+          <label className="label">
             <span className="text-name">Buscar</span>
           </label>
-          
         </form>
         <button className="close" onClick={closeDialog}>
           X

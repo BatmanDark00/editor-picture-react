@@ -1,64 +1,60 @@
-import  { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { CropperRef, Cropper } from "react-advanced-cropper";
 
 import "react-advanced-cropper/dist/style.css";
-import 'react-advanced-cropper/dist/themes/corners.css';
+import "react-advanced-cropper/dist/themes/corners.css";
 
+import { setUrlImage } from "@/redux/imageCropperSlice";
+import { RootState } from "@/redux";
 
 interface Props {
-  src: string;
-  downloadResult?: boolean; 
+   downloadResult?: boolean;
 }
 
 const onChange = (cropper: CropperRef) => {
-  console.log(cropper.getCoordinates(), cropper.getCanvas());
+  // console.log(cropper.getCoordinates(), cropper.getCanvas());
 };
 
-export default function CropperPicture({ src, downloadResult }: Props) {
+export default function CropperPicture({ downloadResult }: Props) {
   const cropperRef = useRef<CropperRef>(null);
-
-  const imageCropper = useSelector((state: any) => state.imageCropper);
-
+  const imageCropper = useSelector((state: RootState) => state.imageCropper); 
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
-  const [image, setImage] = useState<string>();
+  const dispatch = useDispatch();
+
+
 
   useEffect(() => {
     if (downloadResult) {
-      console.log("Descargando estoy a la escucha");
+      //console.log("Descargando estoy a la escucha");
       onCrop();
     }
-    
   }, [downloadResult]);
-
 
   const onCrop = () => {
     if (cropperRef.current) {
-      console.log("Listo para descargar"); 
+      console.log("Listo para descargar");
       setCoordinates(cropperRef.current.getCoordinates());
-      // You are able to do different manipulations at a canvas
-      // but there we just get a cropped image, that can be used
-      // as src for <img/> to preview result
-      setImage(cropperRef.current.getCanvas()?.toDataURL());
+      //Aqui se puede establecer el nuevo valor de la imagen
 
       const pngData = cropperRef.current.getCanvas()?.toDataURL("image/png");
 
-      const link = document.createElement("a");
+      dispatch(setUrlImage(pngData ?? ""));
+   /*    const link = document.createElement("a");
       link.download = "batman" + ".png";
       link.href = pngData ?? ""; // Add nullish coalescing operator to provide a default value
-      // Simular un clic en el enlace para iniciar la descarga
-      link.click();
+     
+      link.click(); */
     }
   };
 
   return (
-    <>     
+    <>
       <Cropper
         ref={cropperRef}
-        src={src}
+        src={imageCropper?.urlImage}
         onChange={onChange}
-        
       ></Cropper>
     </>
   );

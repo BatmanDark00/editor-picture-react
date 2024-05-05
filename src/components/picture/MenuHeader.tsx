@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 
 import "@/assets/scss/components/picture/menuHeader.scss";
 
@@ -10,15 +10,13 @@ import Unsplash from "@/components/picture/Unsplash";
 interface Props {
   saveCropper: () => void;
   accept?: string;
-  onFileUpload: (file: File) => void;
-  unsplashImage: (url: string) => void;
+  onFileUpload: (file: File) => void; 
 }
 
 export default function MenuHeader({
   saveCropper,
   accept = "image/*",
-  onFileUpload,
-  unsplashImage,
+  onFileUpload  
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [menuType, setMenuType] = React.useState<string | null>(null);
@@ -83,12 +81,6 @@ export default function MenuHeader({
 
   };
 
-
-  const handleUnplashImage = (url: string) => {
-    console.log("hola que hago aqui, xd dd", url);
-
-    unsplashImage(url);
-  }
 
   return (
     <>
@@ -160,8 +152,7 @@ export default function MenuHeader({
       <dialog id="favDialog">
         <Unsplash 
          isOpenUnsplash={isOpenUnsplash} 
-         closeUnsplash={closeDialog} 
-         getUnsplashImage={handleUnplashImage} 
+         closeUnsplash={closeDialog}         
         />
       </dialog>
     </>
