@@ -57,7 +57,7 @@ export default function PictureView() {
           <div className="editor-main">
             <div className="area-cropper">
               {!imageCropper.urlImage && (
-                <div className="upload-image">
+                <div className="upload-image">                 
                   <UploadFile onFileUpload={handleFileUpload} />
                 </div>
               )}
@@ -66,7 +66,7 @@ export default function PictureView() {
                 <div className="cropper-picture">
                   <CropperPicture                  
                     downloadResult={downloadResult}
-                  />{" "}
+                  />
                 </div>
               )}
             </div>
