@@ -6,26 +6,21 @@ export default function ToolEdit() {
   return (
     <>
       <div className="tool-edit">
-        <h3>Editar zs</h3>
+        <h3>Editar </h3>
 
         <div className="accordion">
-          <input type="checkbox" id="collapse1" className="collapse-checkbox" />
+          <input type="checkbox" id="collapse1" className="collapse-checkbox"/>
           <label htmlFor="collapse1" className="accordion-header">
             Conceptos básicos
           </label>
           <div className="accordion-content">
+            <button><i className="fa-solid fa-crop-simple"></i>Recortar</button>
+            <button><i className="fa-solid fa-rotate-right"></i>Rotar</button>
+            <button><i className="fas fa-exchange-alt"></i>Voltear</button>
+            <button><i className="fas fa-expand-alt"></i>Redimensionar</button>
+            <button><i className="fa-solid fa-palette"></i>Color</button>
 
-            <ul>
-              <li>
-                <p>Concepto 1</p>
-              </li>
-              <li>
-                <p>Concepto 2</p>
-              </li>
-              <li>
-                <p>Concepto 3</p>
-              </li>
-            </ul>
+          
           </div>
         </div>
       </div>

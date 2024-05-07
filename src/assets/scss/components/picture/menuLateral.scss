@@ -1,4 +1,18 @@
-section {
+.menu-lateral {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: auto;
+  position: fixed;
+  top: 56px;
+  left: 0px;
+  bottom: 40px;
+  border-right: 2px solid;
+  border-color: #858585;
+  overflow: hidden;
+}
+.section-actions {
   font-family: "Mulish", "Avenir Next", "Trebuchet MS", sans-serif;
   background-color: var(--background-color);
   display: flex;
@@ -19,10 +33,9 @@ section {
     width: 100%;
     justify-content: left;
     opacity: 1;
-      
   }
 
-  &:hover{    
+  &:hover {
     p {
       display: inline;
       width: 160px;
@@ -32,7 +45,7 @@ section {
       margin-left: -8px;
       cursor: pointer;
       z-index: 10;
-      animation: .8s aparicionLateral 1;
+      animation: 0.8s aparicionLateral 1;
     }
   }
 
@@ -40,51 +53,50 @@ section {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    
 
     .item-menu {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-content: center;
-      
+
       &:hover {
         background-color: hsl(0, 0%, 52%);
         border-radius: 3px;
         transition: 0.5s ease-in-out;
         cursor: pointer;
-
       }
 
       button {
         margin: 6px 10px;
         padding: 8px 4px;
         color: hsl(0, 0%, 40%);
-        
 
         &:hover {
           border-radius: 2px;
-          transition: 0.5s ease-in-out;  
+          transition: 0.5s ease-in-out;
           cursor: pointer;
         }
       }
 
-  .clear-fixed {
-    clear: both;
-    float: none;
-  }
+      .clear-fixed {
+        clear: both;
+        float: none;
+      }
     }
   }
 
-  .tool-menu{
+  .tool-menu {
     padding: 0 calc(1.5rem - 1px) 0 1.5rem;
+  }
+
+  @keyframes aparicionLateral {
+    0% {
+      width: 0px;
+    }
   }
 }
 
-@keyframes aparicionLateral {
-  0% {
-    width: 0px;
-  }
-
-  
+.section-components {
+  margin-left: 50px;
 }
