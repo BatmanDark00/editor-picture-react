@@ -33,7 +33,8 @@ export default function MenuLateral() {
   return (
     <>
       <div className="clear-fixed"></div>
-      <section>
+      <div className="menu-lateral">
+      <section className="section-actions">
         <aside>
           {menuLateralData.map((menu, index) => (
             <div
@@ -51,8 +52,13 @@ export default function MenuLateral() {
           <div className="clear-fixed"></div>
         </aside>
 
-        {component && <div className="tool-menu">{renderComponent()}</div>}
+       
       </section>
+      <section className="section-components">
+      {component && <div className="tool-menu">{renderComponent()}</div>}
+
+      </section>
+      </div>
     </>
   );
 }
