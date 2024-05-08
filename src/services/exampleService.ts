@@ -6,7 +6,7 @@ interface Photo {
     url: string;
   }
   
-  export const fetchPhotos = async (): Promise<Photo[]> => {
+  export const fetchPhotos = async (): Promise<Photo[]> => {    
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/photos');
       if (!response.ok) {

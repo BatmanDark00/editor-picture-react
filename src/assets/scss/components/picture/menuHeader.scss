@@ -240,14 +240,14 @@
       height: 2rem;
 
       .close {
-        margin: -0.5rem 0 0 1rem;
+        margin: -0.7rem -0.7rem 0 0;
         cursor: pointer;
       }
     }
 
-  &:hover {
-    animation: 1.5s aparicion 1;
-  }
+    &:hover {
+      animation: 1.5s aparicion 1;
+    }
   }
 
   @keyframes aparicion {

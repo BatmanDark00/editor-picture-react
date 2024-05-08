@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { useDispatch } from "react-redux";
 
@@ -7,6 +7,24 @@ import "@/assets/scss/components/picture/unSplash.scss";
 import unplashService from "@/services/unplashService";
 
 import { setUrlImage } from "@/redux/imageCropperSlice";
+
+import useSearch from "@/hooks/useSearch";
+import { debounce } from "react-advanced-cropper";
+
+function NoPhotosResults () {
+  return (
+    <p style={{
+      width: '100%',
+      top: '15rem',
+      justifyContent:'center',
+      textAlign: 'center',
+      position: 'relative'
+     }}>
+      No se encontraron imágenes para esta búsqueda
+    </p>
+  )
+}
+
 
 interface Props {
   isOpenUnsplash: boolean;
@@ -24,36 +42,46 @@ interface Photo {
 export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
   const [photos, setPhotos] = React.useState<Photo[]>([]);
   const [page, setPage] = React.useState<number>(1);
+  const [loading, setLoading] = useState(false);
+  const [, setError] = useState(null);
+  const previusSearch = React.useRef('')
+  const {search, updateSearch, error} = useSearch();
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        await unplashService.search
-          .getPhotos({ query: "wallpapers", page: page, perPage: 9 })
-          .then((result) => {           
-            const photos =
-              result.response?.results.map((photo) => ({
-                id: photo.id,
-                alt_description: photo.alt_description || "",
-                urls: {
-                  small: photo.urls.small,
-                  full: photo.urls.full,
-                },
-              })) ?? [];
-
-            setPhotos(photos);
-          });
-      } catch (error) {
-        console.log("Error al obtener las imagenes", error);
-      }
-    };
-
-    if (isOpenUnsplash) {
-      fetchPhotos();
+  const fetchData = useCallback(async (searchTerm: string, pageNumber: number) => {
+    if(searchTerm === previusSearch.current) return
+    try {
+      setLoading(true);
+      setError(null);
+      previusSearch.current = searchTerm
+      const newPhotos = await unplashService.getUnsplashPhotos(searchTerm, pageNumber);
+      setPhotos(newPhotos);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-  }, [isOpenUnsplash, page]);
+  }, []);
+
+  const debouncedFetchData = useCallback(
+    debounce((searchTerm: string, pageNumber: number) => {
+      fetchData(searchTerm, pageNumber);
+    }, 300),
+    [fetchData]
+  );
+
+  useEffect(() => {
+    if (isOpenUnsplash) {
+      setPage(1); // Reset page when opening Unsplash
+    }
+  }, [isOpenUnsplash]);
+
+  useEffect(() => {
+    if (isOpenUnsplash) {
+      debouncedFetchData(search, page);
+    }
+  }, [isOpenUnsplash, page, search, debouncedFetchData]);
 
   const nextPage = () => {
     setPage((prevPage) => prevPage + 1);
@@ -72,12 +100,34 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     closeDialog();  
   };
 
+  const hasPhotos = photos?.length > 0;
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setPhotos(photos)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newSearch = e.target.value
+    updateSearch(newSearch)
+  }
+
   return (
     <>
       <div className="header">
         <p className="title">Imagenes </p>
-        <form className="form">
-          <input type="text" required />
+        <form className="form" onSubmit={handleSubmit} >
+          <input
+           style={{
+            border: '1px solid transparent',
+            borderBottomColor: error ? 'red' : 'transparent'
+            }}  
+            type="text"
+            onChange={handleChange}
+            value={search}
+            name="query" 
+            required 
+            />
           <label className="label">
             <span className="text-name">Buscar</span>
           </label>
@@ -87,7 +137,8 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
         </button>
       </div>
 
-      <div className="grid">
+      {hasPhotos 
+       ? <div className="grid">
         {photos.map((photo) => (
           <div key={photo.id} className="content-image">
             <img
@@ -98,9 +149,11 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
           </div>
         ))}
       </div>
+      : <NoPhotosResults />
+      }
 
-      <menu>
-        <button id="cancel" type="button" onClick={prevPage}>
+        <menu style={{display: hasPhotos ? 'flex' : 'none'}}>
+          <button id="cancel" type="button" onClick={prevPage}>
           Anterior
         </button>
         <button type="button" onClick={nextPage}>
