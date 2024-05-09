@@ -1,102 +1,72 @@
+
 .menu-lateral {
-  background-color: var(--background-color);
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: auto;
-  position: fixed;
-  top: 56px;
-  left: 0px;
-  bottom: 40px;
-  border-right: 2px solid;
-  border-color: #858585;
-  overflow: hidden;
-}
-.section-actions {
-  font-family: "Mulish", "Avenir Next", "Trebuchet MS", sans-serif;
-  background-color: var(--background-color);
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: auto;
-  position: fixed;
-  top: 56px;
-  left: 0px;
-  bottom: 40px;
-  border-right: 2px solid;
-  border-color: #858585;
-  z-index: 1;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr;
 
-  p {
-    display: none;
-    width: 100%;
-    justify-content: left;
-    opacity: 1;
-  }
+  .section-actions {
+    border-right: 2px solid;
+    border-color: #858585;
+   position: fixed; 
+    height: 100%;
+    background-color: var(--background-color);
+    z-index: 5;
 
-  &:hover {
     p {
-      display: inline;
-      width: 160px;
+      display: none;
+      width: 100%;
       justify-content: left;
-      font-size: 16px;
-      margin: auto;
-      margin-left: -8px;
-      cursor: pointer;
-      z-index: 10;
-      animation: 0.8s aparicionLateral 1;
+      opacity: 1;
     }
-  }
 
-  aside {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-
-    .item-menu {
+    aside {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-content: center;
+      flex-direction: column;
+      flex-wrap: wrap;
 
-      &:hover {
-        background-color: hsl(0, 0%, 52%);
-        border-radius: 3px;
-        transition: 0.5s ease-in-out;
-        cursor: pointer;
-      }
+      .item-menu {
+        display: flex;
+        flex-direction: row;
 
-      button {
-        margin: 6px 10px;
-        padding: 8px 4px;
-        color: hsl(0, 0%, 40%);
+        button {
+          margin: 6px 10px;
+          padding: 8px 4px;
+          color: hsl(0, 0%, 40%);
 
-        &:hover {
-          border-radius: 2px;
-          transition: 0.5s ease-in-out;
-          cursor: pointer;
+          &:hover {
+            border-radius: 2px;
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+          }
+        }
+
+        .clear-fixed {
+          clear: both;
+          float: none;
         }
       }
 
-      .clear-fixed {
-        clear: both;
-        float: none;
+      &:hover {
+        p {
+          display: inline;
+          width: 160px;
+          justify-content: left;
+          font-size: 16px;
+          margin: auto;
+          margin-left: -8px;
+          cursor: pointer;
+          z-index: 10;
+          animation: 0.8s aparicionLateral 1;
+        }
       }
     }
   }
 
-  .tool-menu {
-    padding: 0 calc(1.5rem - 1px) 0 1.5rem;
-  }
+  .section-components {
+    margin-left: 50px;
+    border-right: solid 1px #858585;
 
-  @keyframes aparicionLateral {
-    0% {
-      width: 0px;
-    }
+    background-color: var(--background-color);
+    height: 100%;
+    z-index: 0;
   }
-}
-
-.section-components {
-  margin-left: 50px;
 }
