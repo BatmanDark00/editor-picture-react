@@ -51,11 +51,11 @@ export default function MenuLateral() {
         </aside>
       </div>
 
-      {component && (
+      {/* {component && (
         <div className="section-components">
           <div className="tool-menu">{renderComponent()}</div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

@@ -1,13 +1,7 @@
-
 .menu-lateral {
-  display: grid;
-  grid-template-rows: 1fr;
+  display: flex;
 
   .section-actions {
-    border-right: 2px solid;
-    border-color: #858585;
-   position: fixed; 
-    height: 100%;
     background-color: var(--background-color);
     z-index: 5;
 

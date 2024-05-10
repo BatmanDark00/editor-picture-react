@@ -49,9 +49,21 @@ export default function GridView() {
           onFileUpload={handleFileUpload}
         />
       </div>
-      <div className="menu-lateral">Menu lateral</div>
-      <div className="menu-lateral-secondary">Menu lateral secondary</div>
-      <div className="editor-cropper">
+      <div className="menu-lateral">
+        <MenuLateral />
+      </div>
+
+      {imageCropper.urlImage && (
+        <div className="menu-lateral-secondary">
+          MENU SECUNDARIO
+        </div>
+      )}
+
+      <div
+        className={
+          imageCropper.urlImage ? "editor-cropper" : "editor-cropper-plus"
+        }
+      >
         {!imageCropper.urlImage && (
           <div className="upload-image">
             <UploadFile onFileUpload={handleFileUpload} />
@@ -63,7 +75,7 @@ export default function GridView() {
           </div>
         )}
       </div>
-      <div className="footer">
+      <div className={imageCropper.urlImage ? "footer" : "footer-plus"}>
         <MenuFooter />
       </div>
     </div>
