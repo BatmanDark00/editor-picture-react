@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,13 +12,11 @@ import UploadFile from "@/components/common/UploadFile";
 import { setUrlImage } from "@/redux/imageCropperSlice";
 import { RootState } from "@/redux";
 
-
 export default function GridView() {
-
   const [downloadResult, setDownloadResult] = useState<boolean>(false);
 
   const imageCropper = useSelector((state: RootState) => state.imageCropper); // Utilizando RootState para tipar el estado global
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +29,7 @@ export default function GridView() {
     const reader = new FileReader();
 
     reader.onload = () => {
-      if (reader.result) {      
+      if (reader.result) {
         dispatch(setUrlImage(reader.result as string));
       }
     };
@@ -47,25 +43,29 @@ export default function GridView() {
 
   return (
     <div className="grid-view">
-      <div className="header">  Menu header</div>
+      <div className="header">
+        <MenuHeader
+          saveCropper={downloadImage}
+          onFileUpload={handleFileUpload}
+        />
+      </div>
       <div className="menu-lateral">Menu lateral</div>
       <div className="menu-lateral-secondary">Menu lateral secondary</div>
-      <div className="editor-cropper">  {!imageCropper.urlImage && (
-                <div className="upload-image">                 
-                  <UploadFile onFileUpload={handleFileUpload} />
-                </div>
-              )}
-
-              {imageCropper.urlImage && (
-                <div className="cropper-picture">
-                  <CropperPicture                  
-                    downloadResult={downloadResult}
-                  />
-                </div>
-              )}</div>
-      <div className="footer">Footer</div>
+      <div className="editor-cropper">
+        {!imageCropper.urlImage && (
+          <div className="upload-image">
+            <UploadFile onFileUpload={handleFileUpload} />
+          </div>
+        )}
+        {imageCropper.urlImage && (
+          <div className="cropper-picture">
+            <CropperPicture downloadResult={downloadResult} />
+          </div>
+        )}
+      </div>
+      <div className="footer">
+        <MenuFooter />
+      </div>
     </div>
   );
 }
-
-

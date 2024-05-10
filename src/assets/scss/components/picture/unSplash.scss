@@ -119,3 +119,41 @@ menu {
     }
   }
 }
+
+dialog {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: auto;
+  padding: 1rem;
+  border: 0.5px solid var(--shadow-color-dark);
+  backdrop-filter: blur(5px);
+  width: 50rem;
+  height: 40rem;
+  overflow: hidden;
+  border-radius: 4px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: auto;
+    height: 2rem;
+
+    .close {
+      margin: -0.7rem -0.7rem 0 0;
+      cursor: pointer;
+    }
+  }
+
+  &:hover {
+    animation: 1.5s aparicion 1;
+  }
+}
+
+@keyframes aparicion {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
