@@ -35,18 +35,19 @@ export default function MenuLateral() {
       <div className="section-actions">
         <aside>
           {menuLateralData.map((menu, index) => (
-            <div
+            <ul
               className="item-menu"
               key={index}
               onClick={() => handleComponent(menu.component)}
             >
-              <button>
+              <li className="item-menu-li">
                 <FontAwesomeIcon icon={menu.icon as IconProp} />
-              </button>
-              <p>{menu.text} </p>
-            </div>
+                <a href="#" className="anchor">
+                  {menu.text}
+                </a>
+              </li>
+            </ul>
           ))}
-
           <div className="clear-fixed"></div>
         </aside>
       </div>
