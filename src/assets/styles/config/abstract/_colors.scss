@@ -1,6 +1,7 @@
 
 // Colores light
 $color-primary: #057996;
+$color-primary-hover: #00a6ff;
 $color-primary-light: #00a6ff;
 $color-secondary: #6c757d;
 $color-success: #28a745;
@@ -33,6 +34,7 @@ $color-toogle-fg: #ffd000;
 
   /* Color del hover */
   --hover-color: hsl(0, 0%, 52%);  
+  --color-primary-hover: $color-primary-hover;
   
   /* Colores de estado */
   --error-color: $color-danger;
