@@ -1,0 +1,41 @@
+$sm-min: 576;
+$md-min: 768;
+$lg-min: 992;
+$xl-min: 1300;
+
+$breakpoint-sm-min: 'screen and (min-width: '+$sm-min+'px)';
+$breakpoint-md-min: 'screen and (min-width: '+$md-min+'px)';
+$breakpoint-lg-min: 'screen and (min-width: '+$lg-min+'px)';
+$breakpoint-xl-min: 'screen and (min-width: '+$xl-min+'px)';
+
+$breakpoint-sm-max: 'screen and (max-width: '+$sm-min+'px)';
+$breakpoint-md-max: 'screen and (max-width: '+$md-min+'px)';
+$breakpoint-lg-max: 'screen and (max-width: '+$lg-min+'px)';
+$breakpoint-xl-max: 'screen and (max-width: '+$xl-min+'px)';
+
+:export {
+  sm: $sm-min;
+  md: $md-min;
+  lg: $lg-min;
+  xl: $xl-min;
+}
+
+$sm-max: 576;
+$md-max: 768;
+$lg-max: 992;
+$xl-max: 1300;
+$xxl-max: 1492;
+
+$breakpoint-sm-max: 'screen and (max-width: '+$sm-max+'px)';
+$breakpoint-md-max: 'screen and (max-width: '+$md-max+'px)';
+$breakpoint-lg-max: 'screen and (max-width: '+$lg-max+'px)';
+$breakpoint-xl-max: 'screen and (max-width: '+$xl-max+'px)';
+$breakpoint-xxl-max: 'screen and (max-width: '+$xxl-max+'px)';
+
+:export {
+  sm: $sm-max;
+  md: $md-max;
+  lg: $lg-max;
+  xl: $xl-max;
+  xxl: $xl-max;
+}

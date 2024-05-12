@@ -1,0 +1,17 @@
+.upload-file {
+  display: flex;
+  
+
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  input {
+    display: none;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+}

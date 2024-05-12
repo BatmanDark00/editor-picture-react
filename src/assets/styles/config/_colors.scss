@@ -1,0 +1,46 @@
+
+// Colores light
+$color-primary: #057996;
+$color-primary-light: #00a6ff;
+$color-secondary: #6c757d;
+$color-success: #28a745;
+$color-info: #00ccff;
+$color-warning: #ffc107;
+$color-danger: #dc3545;
+$color-toogle-bg: #f0eb9d;
+$color-toogle-fg: #ffd000;
+
+
+:root {
+  --color-primary: $color-primary;
+  --color-primary-light: $color-primary-light;
+ 
+  /* Colores de fondo */
+  --background-color: hsl(0, 0%, 98%);
+  --background-color-secondary: hsl(0, 0%, 95%);
+  --background-dark: hsl(0, 0%, 10%);
+
+  /* Colores de texto */
+  --text-color: hsl(0, 0%, 10%);
+  --text-color-light: hsl(0, 0%, 90%);
+  --text-secondary: hsl(0, 0%, 30%);
+  
+  /* Colores de borde y sombra */
+  --border-color: hsl(0, 0%, 90%);
+  --border-color-dark: hsl(0, 0%, 52%);
+  --shadow-color: hsl(0, 0%, 80%);
+  --shadow-color-dark: hsl(0, 0%, 30%);
+
+  /* Color del hover */
+  --hover-color: hsl(0, 0%, 52%);  
+  
+  /* Colores de estado */
+  --error-color: $color-danger;
+  --success-color: $color-success;
+  --warning-color: $color-warning;
+  --info-color: $color-info;
+
+  --toggle-bg: $color-toogle-bg;
+  --toggle-fg: $color-toogle-fg;
+}
+
