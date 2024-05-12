@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-import "@/assets/scss/components/header/Navbar.scss";
+import "@/assets/styles/components/header/Navbar.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

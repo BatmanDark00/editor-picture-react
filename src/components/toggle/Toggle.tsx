@@ -1,4 +1,4 @@
-import "@/assets/scss/components/toggle/Toggle.scss";
+import "@/assets/styles/components/toggle/Toggle.scss";
 
 import useDarkMode from "@/hooks/useDarkMode";
 

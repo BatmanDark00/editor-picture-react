@@ -1,7 +1,8 @@
-@import  './config/border';
-@import './config/breakpoints';
-@import './config/colors';
-@import './config/fonts';
-@import './config/shadows';
-@import './config/spacing';
+@import  './config/abstract/border';
+@import './config/abstract/breakpoints';
+@import './config/abstract/colors';
+@import './config/abstract/fonts';
+@import './config/abstract/shadows';
+@import './config/abstract/spacing';
+@import './config/abstract/theme_dark';
 

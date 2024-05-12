@@ -1,6 +1,6 @@
 import React from "react";
 
-import "@/assets/scss/components/tool_menu_lateral/toolEdit.scss";
+import "@/assets/styles/components/tool_menu_lateral/toolEdit.scss";
 
 export default function ToolEdit() {
   return (

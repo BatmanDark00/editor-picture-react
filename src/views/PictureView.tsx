@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import "@/assets/scss/views/pictureView.scss";
+import "@/assets/styles/views/pictureView.scss";
 
 import CropperPicture from "@/components/cropper/CropperPicture";
 import MenuFooter from "@/components/picture/MenuFooter";

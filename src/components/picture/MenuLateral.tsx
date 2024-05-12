@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "@/assets/scss/components/picture/menuLateral.scss";
+import "@/assets/styles/components/picture/menuLateral.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";

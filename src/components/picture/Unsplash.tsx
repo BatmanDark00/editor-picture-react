@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
-import "@/assets/scss/components/picture/unSplash.scss";
+import "@/assets/styles/components/picture/unSplash.scss";
 
 import unplashService from "@/services/unplashService";
 
