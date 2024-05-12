@@ -44,6 +44,8 @@
     grid-column: 2 / 3;
     grid-row: 2 / 4;
     order: 0;
+    background-color: red;    
+    padding: var(--spacing-s) var(--spacing-s);
   }
 
   .editor-cropper {

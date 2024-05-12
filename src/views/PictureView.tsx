@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "@/assets/styles/views/pictureView.scss";
 
 import CropperPicture from "@/components/cropper/CropperPicture";
+import EditMenuLateral from "@/components/tool_menu_lateral/EditMenuLateral";
 import MenuFooter from "@/components/picture/MenuFooter";
 import MenuHeader from "@/components/picture/MenuHeader";
 import MenuLateral from "@/components/picture/MenuLateral";
@@ -55,7 +56,7 @@ export default function PictureView() {
 
       {imageCropper.urlImage && (
         <div className="menu-lateral-secondary">
-          MENU SECUNDARIO
+          <EditMenuLateral />
         </div>
       )}
 

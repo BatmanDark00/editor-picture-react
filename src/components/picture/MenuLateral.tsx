@@ -1,33 +1,19 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import "@/assets/styles/components/picture/menuLateral.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-import Default from "@/components/tool_menu_lateral/Default";
-import ToolEdit from "@/components/tool_menu_lateral/ToolEdit";
-
 import { menuLateralData } from "@/json/picture/menuLateralData";
 
+import { setComponent } from "@/redux/menuLateralEditSlice";
+
 export default function MenuLateral() {
-  const [component, setComponent] = useState<string>();
+  const dispatch = useDispatch();
 
   const handleComponent = (component: string) => {
-    console.log("Componente: ", component);
-    setComponent(component);
-  };
-
-  const renderComponent = () => {
-    switch (component) {
-      case "Default":
-        return <Default />;
-      case "ToolEdit":
-        return <ToolEdit />;
-      // Agrega casos para otros componentes según sea necesario
-      default:
-        return null; // Puedes devolver null o algún componente por defecto
-    }
+    dispatch(setComponent(component));
   };
 
   return (
@@ -51,12 +37,6 @@ export default function MenuLateral() {
           <div className="clear-fixed"></div>
         </aside>
       </div>
-
-      {/* {component && (
-        <div className="section-components">
-          <div className="tool-menu">{renderComponent()}</div>
-        </div>
-      )} */}
     </div>
   );
 }
