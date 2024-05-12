@@ -39,6 +39,10 @@ export default function ToolEdit() {
       <Accordion id="accordion1" name="accordion1" title="Conceptos básicos">
       
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
+          <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
+          <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
+
+          <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
       </Accordion>
 
       <Accordion id="accordion2" name="accordion2" title="Remove replace">

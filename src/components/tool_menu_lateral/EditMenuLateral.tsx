@@ -23,7 +23,7 @@ export default function EditMenuLateral() {
 
   return (
     <>
-      <div className="tool-menu">{renderComponent()}</div>
+      <div className="tool-menu">{renderComponent()}</div>     
     </>
   );
 }

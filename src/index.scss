@@ -1,6 +1,8 @@
 /*abstract*/
 @use "./assets/styles/config/abstract/mixins";
-@use "./assets/styles/config/abstract/variables";
+@use "./assets/styles/global.scss";
+
+
 
 /*base*/
 @use "./assets/styles/config/base/reset";

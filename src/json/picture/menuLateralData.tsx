@@ -1,5 +1,5 @@
 export const menuLateralData = [
-    { icon: ["fas", "image"], text: "Admr. de imágenes", component:"Default" },
+    { icon: ["fas", "image"], text: "Admr.\u00A0de\u00A0imágenes", component:"Default" },
     { icon: ["fas", "sliders"], rotation: 90, text: "Editar", component: "ToolEdit" },
     { icon: ["fas", "eye"], text: "Retoques",   component: "Default" },
     { icon: ["fas", "wand-magic-sparkles"], text: "Efectos", component: "Default" },
