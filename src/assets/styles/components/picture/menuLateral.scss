@@ -15,23 +15,26 @@
       display: none;
       text-decoration: none;
       color: var(--text-color);
-      justify-content: left;
+      //justify-content: left;
       opacity: 1;
     }
 
-    &:hover {
-      .anchor {
+    &:hover .anchor {
         display: block;
         width: 140px;
         float: right;
-        margin: 1px 0 1px 4px;
-        justify-content: left;
+        top: -2rem;
+        right: 4rem;
+        margin-left: 4px;
         font-size: 14px;
         cursor: pointer;
         z-index: 10;
-        animation: 1s margin-left ease-out;
-        animation: 0.8s aparicionLateral 1;
-      }
+        animation: 0.7s aparicionLateral 1;
+    }
+
+    &:active .anchor {
+      width: 0;
+      animation: 0.8s reverseAside 1;
     }
 
     aside {
@@ -40,19 +43,23 @@
       flex-wrap: wrap;
 
       .item-menu {
-        display: flex;
+        display: block;
         list-style: none;
-        flex-direction: row;
         justify-content: left;
         align-content: center;
 
         .item-menu-li {
-          display: flex;
-          align-items: center;
-          flex-direction: row;
+          display: block;
+          flex-direction: column;
+          justify-content: left;
           margin: 6px 8px;
           padding: 4px 8px 6px 8px;
           color: hsl(0, 0%, 40%);
+
+          &:active {
+            color: red;
+          }
+        
 
           &:hover {
             background-color: var(--hover-color);
@@ -74,5 +81,14 @@
         width: 0px;
       }
     }
+
+  @keyframes reverseAside {
+      0% {
+        width: 140px;
+      }
+      100% {
+        width: 0px;
+      }
+    } 
   }
 }
