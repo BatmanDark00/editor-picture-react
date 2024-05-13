@@ -1,5 +1,5 @@
 import React, { Component, useRef, useEffect  } from 'react'
-import '@/assets/scss/components/header/MenuEditPic.scss'
+import '@/assets/styles/components/header/MenuEditPic.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 

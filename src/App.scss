@@ -1,10 +1,10 @@
-/*abstract*/
-@use './assets/scss/abstract/mixins';
-@use './assets/scss/abstract/variables';
+
+/*global*/
+@use './assets/styles/global';
 
 /*base*/
-@use './assets/scss/base/reset';
-@use './assets/scss/base/base';
+@use './assets/styles/config/base/reset';
+@use './assets/styles/config/base/base';
 
 
 

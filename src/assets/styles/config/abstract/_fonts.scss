@@ -1,0 +1,98 @@
+$fonts-path: "~@/assets/fonts";
+
+$weight-light: 200;
+$weight-normal: normal;
+$weight-semi-bold: 500;
+$weight-bold: bold;
+$weight-bolder: 800;
+
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Light.ttf') format('ttf');
+  font-weight: #{$weight-light};
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Light.ttf') format('ttf');
+  font-weight: #{$weight-light};
+  font-style: italic;
+}
+
+// Regular
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Regular.ttf') format('ttf');
+  font-weight: #{$weight-normal};
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Regular.ttf') format('ttf');
+  font-weight: #{$weight-normal};
+  font-style: italic;
+}
+
+// SemiBold
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Bold.ttf') format('ttf');
+  font-weight: #{$weight-semi-bold};
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Bold.ttf') format('ttf');
+  font-weight: #{$weight-semi-bold};
+  font-style: italic;
+}
+
+// Bold
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Bold.ttf') format('ttf');
+  font-weight: #{$weight-bold};
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Bold.ttf') format('ttf');
+  font-weight: #{$weight-bold};
+  font-style: italic;
+}
+
+// ExtraBold
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Bold.ttf') format('ttf');
+  font-weight: #{$weight-bolder};
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  src: url('#{$fonts-path}/oxygen/Oxygen-Bold.ttf') format('ttf');
+  font-weight: #{$weight-bolder};
+  font-style: italic;
+}
+
+:root {
+  --font-size-2xs: 0.6rem;
+  --font-size-xs: 0.75rem;
+  --font-size-s: 0.875rem;
+  --font-size-m: 1rem;
+  --font-size-l: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 3rem;
+  --font-size-5xl: 4rem;
+  --font-size-6xl: 5rem;
+
+  --font-family-primary: 'Oxygen', sans-serif;
+  --font-family-secondary: 'Oxygen', sans-serif;
+}

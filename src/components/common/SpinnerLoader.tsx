@@ -1,5 +1,5 @@
 
-import '@/assets/scss/components/common/spinnerLoader.scss'
+import '@/assets/styles/components/common/spinnerLoader.scss'
 
 export default function SpinnerLoader() {
   return (

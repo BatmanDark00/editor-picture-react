@@ -1,4 +1,4 @@
-import '@/assets/scss/components/picture/menuFooter.scss'
+import '@/assets/styles/components/picture/menuFooter.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 

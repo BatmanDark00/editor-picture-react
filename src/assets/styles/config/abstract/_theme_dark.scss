@@ -1,0 +1,12 @@
+[data-theme="dark"] {
+  --background-color: var(--background-dark);
+  --background-color-secondary: hsl(0, 0%, 15%);
+  --text-color: var(--text-color-light);
+  --text-secondary: hsl(0, 0%, 70%);
+  --border-color: var(--border-color-dark);
+  --shadow-color: var(--shadow-color-dark);
+
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
+  --color-primary-light: #00a6ff;
+}

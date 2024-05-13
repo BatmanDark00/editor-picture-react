@@ -1,0 +1,78 @@
+.menu-lateral {
+  display: flex;
+
+  .section-actions {
+    font-family: "Mulish", "Avenir Next", "Trebuchet MS", sans-serif;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: row;
+    border-right: 2px solid;
+    border-color: var(--border-color);
+    z-index: 1;
+    overflow: hidden;
+
+    .anchor {
+      display: none;
+      text-decoration: none;
+      color: var(--text-color);
+      justify-content: left;
+      opacity: 1;
+    }
+
+    &:hover {
+      .anchor {
+        display: block;
+        width: 140px;
+        float: right;
+        margin: 1px 0 1px 4px;
+        justify-content: left;
+        font-size: 14px;
+        cursor: pointer;
+        z-index: 10;
+        animation: 1s margin-left ease-out;
+        animation: 0.8s aparicionLateral 1;
+      }
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      .item-menu {
+        display: flex;
+        list-style: none;
+        flex-direction: row;
+        justify-content: left;
+        align-content: center;
+
+        .item-menu-li {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          margin: 6px 8px;
+          padding: 4px 8px 6px 8px;
+          color: hsl(0, 0%, 40%);
+
+          &:hover {
+            background-color: var(--hover-color);
+            border-radius: 2px;
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+          }
+        }
+
+        .clear-fixed {
+          clear: both;
+          float: none;
+        }
+      }
+    }
+
+    @keyframes aparicionLateral {
+      0% {
+        width: 0px;
+      }
+    }
+  }
+}

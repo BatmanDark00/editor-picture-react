@@ -2,7 +2,7 @@ import React from "react";
 
 import upload from "@/assets/images/upload_re_pasx.svg";
 
-import "@/assets/scss/components/common/uploadFile.scss";
+import "@/assets/styles/components/common/uploadFile.scss";
 
 interface Props {
   accept?: string;

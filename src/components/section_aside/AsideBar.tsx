@@ -1,4 +1,4 @@
-import "@/assets/scss/components/section_aside/AsideBar.scss";
+import "@/assets/styles/components/section_aside/AsideBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 

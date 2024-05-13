@@ -1,3 +1,8 @@
+// clave 1: rhU-MQW7-BUMW1Mfp-whWdXjkGmuisyD9IQwS8IUSjo
+
+// clave 2: 6MuGQBKKjgoDPlAq2SIbukrjuKEROgXRU4Q-IeET-n0
+
+
 import { createApi } from 'unsplash-js';
 interface Photo {
   id: string;
@@ -8,8 +13,7 @@ interface Photo {
   };
 }
 
-const accessKey ="rhU-MQW7-BUMW1Mfp-whWdXjkGmuisyD9IQwS8IUSjo";
-
+const accessKey ="6MuGQBKKjgoDPlAq2SIbukrjuKEROgXRU4Q-IeET-n0";
 interface UnplashService {
   // se crea una funcion para tener nuestro objeto con nuestras propias opciones
   search: {
@@ -23,6 +27,8 @@ interface UnplashService {
 const unplashService: UnplashService = {
   search: createApi({ accessKey: accessKey }).search,
   getUnsplashPhotos: async (search: string, page: number) => {
+    console.log("neuva pagiana", page);
+
     if(search === '') return null;
 
     try {
@@ -35,6 +41,10 @@ const unplashService: UnplashService = {
           full: photo.urls.full,
         },
       })) ?? [];
+
+
+
+      console.log(result.response?.results);
 
       return photos;
     } catch (e) {

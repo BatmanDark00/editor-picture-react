@@ -1,0 +1,14 @@
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+    border: solid 1px var(--color-primary-hover);
+    color: var(--text-color);
+  }
+}
