@@ -8,12 +8,15 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { menuLateralData } from "@/json/picture/menuLateralData";
 
 import { setComponent } from "@/redux/menuLateralEditSlice";
+import { useState } from "react";
 
 export default function MenuLateral() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const dispatch = useDispatch();
 
-  const handleComponent = (component: string) => {
+  const handleComponent = (component: string, index: number) => {
     dispatch(setComponent(component));
+    setActiveIndex(index)
   };
 
   return (
@@ -23,11 +26,11 @@ export default function MenuLateral() {
           <ul className="item-menu">
           {menuLateralData.map((menu, index) => (
               <li 
-               className="item-menu-li"
+              className={index === activeIndex ? "item-menu-li active" : "item-menu-li"}
                key={index}
-              onClick={() => handleComponent(menu.component)}
+               onClick={() => handleComponent(menu.component, index)}
               >
-                <FontAwesomeIcon icon={menu.icon as IconProp} />
+                <FontAwesomeIcon icon={menu.icon as IconProp} className="icon"/>
                 <a href="#" className="anchor">
                   {menu.text}
                 </a>

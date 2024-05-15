@@ -1,6 +1,7 @@
 .tool-edit {
   width: 100%;
   height: 100%;
+  animation: 0.8s aparicion ease-out;
 
   .accordion {
     width: 100%;
@@ -51,5 +52,14 @@
     .collapse-checkbox:checked ~ .accordion-content {
       max-height: 1000px; /* Ajusta este valor según sea necesario */
     }
+  }
+}
+
+@keyframes aparicion {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
