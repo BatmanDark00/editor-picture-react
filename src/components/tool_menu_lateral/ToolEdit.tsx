@@ -9,10 +9,10 @@ export default function ToolEdit() {
   return (
     <>
       <div className="tool-edit">
-        <h3>Editar </h3>
+        <h3 className="title-section-tool-edit">Editar </h3>
 
        {/*  <div className="accordion">
-          <input type="checkbox" id="collapse1" className="collapse-checkbox" />
+        <input type="checkbox" id="collapse1" className="collapse-checkbox" /S>
           <label htmlFor="collapse1" className="accordion-header">
             Conceptos básicos
           </label>
@@ -41,7 +41,6 @@ export default function ToolEdit() {
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
-
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i>Recortar</ButtonBase>
       </Accordion>
 

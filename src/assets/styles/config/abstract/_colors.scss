@@ -20,9 +20,14 @@ $color-toogle-fg: #ffd000;
   --background-dark: hsl(0, 0%, 10%);
 
   /* Colores de texto */
-  --text-color: hsl(0, 0%, 10%);
+  --text-color: hsl(0, 0%, 20%);
   --text-color-light: hsl(0, 0%, 90%);
   --text-secondary: hsl(0, 0%, 30%);
+
+  /* Colores de iconos */
+  --color-icon-hover: hsl(0, 0%, 70%);
+  --color-icon-disabled: hsl(0, 0%, 40%);
+  --color-icon-actived: hsl(0, 0%, 52%);
 
   /* Colores de borde y sombra */
   --border-color: hsl(0, 0%, 90%);

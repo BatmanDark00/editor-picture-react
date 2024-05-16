@@ -23,7 +23,7 @@
       width: 140px;
       position: relative;
       float: right;
-      top: -18px;
+      top: -17px;
       right: -1.3rem;
       margin-left: 4px;
       font-size: 14px;
@@ -59,7 +59,7 @@
           justify-content: left;
           margin: 6px 8px;
           padding: 4px 8px 6px 8px;
-          color: hsl(0, 0%, 40%);
+          color: var(--color-icon-actived);
 
           &.active {
             .icon {

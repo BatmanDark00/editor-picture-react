@@ -2,6 +2,7 @@
   color: var(--theme);
   border-radius: 0.5rem;
   overflow: hidden;
+  margin-left: -4px;
 
   .tab {
     input {
@@ -35,12 +36,18 @@
       display: flex;
       color: var(--color-text);
       background: var(--theme);
-      cursor: pointer;
+      cursor: pointer;   
+
+      &:hover {
+        color: var(--hover-color);
+        transition: 0.4s ease-out;
+      }
     }
 
     &__label {
       justify-content: space-between;
       padding: 1rem;
+      margin-left: -10px;
 
       &::after {
         content: "\276F";
