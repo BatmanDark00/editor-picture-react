@@ -3,6 +3,7 @@ $color-primary: #057996;
 $color-primary-hover: #00a6ff;
 $color-primary-light: #00a6ff;
 $color-secondary: #6c757d;
+$color-secondary-hover: #5a6268;
 $color-success: #28a745;
 $color-info: #00ccff;
 $color-warning: #ffc107;
@@ -10,9 +11,15 @@ $color-danger: #dc3545;
 $color-toogle-bg: #f0eb9d;
 $color-toogle-fg: #ffd000;
 
+// color theme buttons
+$color-theme-button: #057996;
+
 :root {
   --color-primary: #{$color-primary};
   --color-primary-light: #{$color-primary-light};
+
+  --color-secondary: #{$color-secondary};
+  --color-secondary-hover: #{$color-secondary-hover};
 
   /* Colores de fondo */
   --background-color: hsl(0, 0%, 98%);
@@ -47,4 +54,23 @@ $color-toogle-fg: #ffd000;
 
   --toggle-bg: #{$color-toogle-bg};
   --toggle-fg: #{$color-toogle-fg};
+
+
+  --secondary-000: white;
+  --secondary-100: #FAFAFA;
+  --secondary-200: #F8F8FB;
+  --secondary-300: #ECECF5;
+  --secondary-400: #D7D8E3;
+  --secondary-500: #84809D;
+  --secondary-600: #5D5B75;
+  --secondary-700: #221E46;
+  --secondary-800: #1D1B2F;
+  --primary-100: #ECECFF;
+  --primary-200: #ACC3FD;
+  --primary-300: #6472EE;
+  --primary-400: #5656FA;
+  --primary-500: #3A36E4;
+  --primary-600: #2811B4;
+
+
 }

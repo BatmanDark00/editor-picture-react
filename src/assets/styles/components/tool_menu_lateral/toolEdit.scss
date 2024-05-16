@@ -10,9 +10,6 @@
     margin-right: 6px;
   }
 
-  .accordion {
-    width: 100%;
-    padding-top: 10px;
 
     .accordion-header {
       justify-content: space-between;
@@ -23,7 +20,7 @@
     }
 
     .accordion-content {
-      max-height: 0;
+      height: 0;
       overflow: hidden;
       transition: max-height 0.2s ease-out;
       display: flex;
@@ -56,7 +53,8 @@
       max-height: 1000px; /* Ajusta este valor según sea necesario */
     }
   }
-}
+
+
 
 @keyframes aparicion {
   0% {

@@ -57,20 +57,25 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
   }, [isOpenUnsplash, page]);
 
   const nextPage = () => {
-    setPage((prevPage) => prevPage + 1);
+    setPage((prevPage) => {
+      return prevPage + 1;
+    });
+    console.log("🚀 ~ nextPage ~ nextPage:" + "add page", prevPage);
   };
 
   const prevPage = () => {
-    setPage((prevPage) => prevPage - 1);
+    setPage((prevPage) => {
+      return prevPage - 1;
+    });
   };
 
   const closeDialog = () => {
     closeUnsplash();
   };
 
-  const sendImageCropper = (url: string) => {  
+  const sendImageCropper = (url: string) => {
     dispatch(setUrlImage(url));
-    closeDialog();  
+    closeDialog();
   };
 
   return (

@@ -1,0 +1,113 @@
+// Definición de variables
+$color-primary: var(--color-primary);
+$color-primary-hover: var(--color-primary-hover);
+$text-color: var(--text-color);
+
+// Estilos base para todos los botones
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem;
+  text-align: left;
+
+  // Modificadores de tamaño
+  &[data-size="small"] {
+    padding: 4px 8px;
+    height: 2rem; // Ajusta la altura según tu necesidad
+  }
+
+  &[data-size="medium"] {
+    padding: 6px 12px;
+    height: 3rem; // Ajusta la altura según tu necesidad
+  }
+
+  &[data-size="large"] {
+    padding: 10px 20px;
+    height: 4rem; // Ajusta la altura según tu necesidad
+  }  
+}
+
+// Estilos para el botón primario
+.btn_primary {
+  background-color: var(--color-icon-actived);
+  color: var(--text-color);
+  font-size: 14px;
+  text-align: left;
+  border-radius: 3px;
+  margin: 2px;
+  margin-left: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--color-icon-hover);
+    //border: solid 1px var(--color-primary-hover);
+    color: var(--text-color);
+    transition: .4s ease-out;
+  }
+}
+
+.btn_secondary {
+  background-color: var(--color-secondary);
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--color-secondary-hover);
+    border: solid 1px var(--color-secondary-hover);
+    color: $text-color;
+  }
+
+  &[data-size="small"] {
+    padding: 4px 8px;
+    height: 2rem; // Ajusta la altura según tu necesidad
+  }
+}
+
+.btn_theme {
+  background-color: var(--secondary-000);
+  color: var(--text-color);
+  box-shadow: var(--shadow-elevation-2);
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  border: none;
+  width: 100%;
+  background-size: 300% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; // Aquí cambia a 0.4s para que sea consistente con la transición de hover
+
+  &:hover {
+    background-position: 100% 0;
+    background-image: linear-gradient(
+      to left,
+      var(--primary-100),
+      var(--primary-200),
+      var(--primary-300),
+      var(--primary-400)
+    );
+    transition: all 0.8s ease-in-out; // Transición al hacer hover
+  }
+
+  &:focus {
+    background-image: linear-gradient(
+      90deg,
+      var(--secondary-100),
+      var(--primary-200)
+    );
+    box-shadow: var(--shadow-elevation-3);
+  }
+
+  &[data-margin="small"] {
+    margin: 2px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

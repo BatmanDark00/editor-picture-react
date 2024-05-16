@@ -1,15 +1,16 @@
-import '@/assets/styles/components/common/buttonBase.scss';
+import  buttonBase from '@/assets/styles/components/common/buttonBase.module.scss';
 
 interface Props {
   className?: string;
-  size?: string;
+  size?: 'small' | 'medium' | 'large'; 
+  margin?: 'none' | 'small' | 'medium' | 'large';
   children: React.ReactNode;
 }
 
-function ButtonBase({ className = "btn-primary", size, children }: Props) {
+function ButtonBase({ className = "btn_theme", size="small", margin="small", children }: Props) {
   return (
     <>
-      <button className={className} data-size={size}>{children}</button>
+      <button className={buttonBase[className]} data-size={size} data-margin={margin}>{children}</button>
     </>
   );
 }
