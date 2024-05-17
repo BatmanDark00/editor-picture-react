@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Toggle from "@/components/toggle/Toggle";
 import Unsplash from "@/components/picture/Unsplash";
+import ModalBase from "@/components/common/ModalBase";
 
 interface Props {
   saveCropper: () => void;
@@ -23,6 +24,7 @@ export default function MenuHeader({
   const dropdownRef = React.useRef<HTMLLIElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isOpenUnsplash, setOpenUnsplash] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const user = {
     name: "Lener",
@@ -76,6 +78,16 @@ export default function MenuHeader({
     const dialog = document.getElementById("favDialog") as HTMLDialogElement;
     dialog.close();
   };
+
+  const handleModalSaveFile = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModalSaveFile = () => {
+    setIsModalOpen(false);
+
+    console.log("Cerrando modal");
+  }
 
   return (
     <>
@@ -136,6 +148,10 @@ export default function MenuHeader({
             <li className="dropdown" id="save" onClick={handleSave}>
               Save
             </li>
+
+            <li className="dropdown" id="save" onClick={handleModalSaveFile}>
+              OpenModal
+            </li>
           </ul>
 
           <div>
@@ -147,6 +163,10 @@ export default function MenuHeader({
       <dialog id="favDialog">
         <Unsplash isOpenUnsplash={isOpenUnsplash} closeUnsplash={closeDialog} />
       </dialog>
+
+      <ModalBase title="Titulo para guardar" isOpen={isModalOpen} closeModal={closeModalSaveFile}>
+        <p>Aqui va el contenido de la accion</p>
+      </ModalBase>
     </>
   );
 }

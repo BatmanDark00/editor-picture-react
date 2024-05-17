@@ -1,0 +1,105 @@
+@mixin sizeHeaderAndContent {
+  @media screen and (min-width: 768px) {
+    &[modal-size="full"] {
+      width: 100%;
+      height: 100%;
+    }
+
+    &[modal-size="large"] {
+      width: 75%;
+    }
+
+    &[modal-size="medium"] {
+      width: 50%;
+    }
+
+    &[modal-size="small"] {
+      width: 25%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &[modal-size="full"] {
+      width: 100%;
+      height: 100%;
+    }
+
+    &[modal-size="large"] {
+      width: 100%;
+    }
+
+    &[modal-size="medium"] {
+      width: 100%;
+    }
+
+    &[modal-size="small"] {
+      width: 100%;
+    }
+  }
+}
+
+.modalBase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  opacity: 1;
+  transition: opacity 0.25s;
+  backdrop-filter: blur(1px);
+  flex-direction: column;
+  z-index: 10;
+  margin: auto;
+
+  animation: slide-fwd-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+  @keyframes slide-fwd-center {
+    0% {
+      scale: 0.9;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
+  &[modal-size="full"] {
+    display: grid;
+    grid-template-rows: 3rem 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  &__header {
+    background-color: var(--secondary-300);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: var(--text-color);
+    @include sizeHeaderAndContent;
+
+    &__close {
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__content {
+    background-color: var(--secondary-400);
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    @include sizeHeaderAndContent;
+  }
+
+  @media screen and (min-width: 768px) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
