@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Toggle from "@/components/toggle/Toggle";
 import Unsplash from "@/components/picture/Unsplash";
 import ModalBase from "@/components/common/ModalBase";
+import CropperResult from "@/components/cropper/CropperResult";
 
 interface Props {
   saveCropper: () => void;
@@ -87,7 +88,7 @@ export default function MenuHeader({
     setIsModalOpen(false);
 
     console.log("Cerrando modal");
-  }
+  };
 
   return (
     <>
@@ -164,8 +165,12 @@ export default function MenuHeader({
         <Unsplash isOpenUnsplash={isOpenUnsplash} closeUnsplash={closeDialog} />
       </dialog>
 
-      <ModalBase title="Titulo para guardar" isOpen={isModalOpen} closeModal={closeModalSaveFile}>
-        <p>Aqui va el contenido de la accion</p>
+      <ModalBase
+        title="Titulo para guardar"
+        isOpen={isModalOpen}
+        closeModal={closeModalSaveFile}
+      >
+        <CropperResult/>
       </ModalBase>
     </>
   );
