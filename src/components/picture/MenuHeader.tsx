@@ -169,6 +169,7 @@ export default function MenuHeader({
         title="Titulo para guardar"
         isOpen={isModalOpen}
         closeModal={closeModalSaveFile}
+        size="medium"
       >
         <CropperResult/>
       </ModalBase>

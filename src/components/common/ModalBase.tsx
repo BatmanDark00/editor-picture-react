@@ -1,5 +1,5 @@
 import modalBase from "@/assets/styles/components/common/modalBase.module.scss";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface ModalBaseProps {
   title: string;
@@ -15,11 +15,13 @@ export default function ModalBase({
   title,
   children,
   isHeader = true,
-  size = "medium",
+  size = "large",
   idModal = String(Math.random()),
   isOpen = false,
   closeModal,
 }: ModalBaseProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const modal = document.getElementById(idModal);
 
@@ -28,6 +30,25 @@ export default function ModalBase({
     } else {
       modal?.setAttribute("style", "display: none");
     }
+
+    /* const handeOutsideClick = (event: MouseEvent) => {
+      console.log("click");
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        const modalContent = document.getElementById("modalRef");
+        modalContent?.removeAttribute("animation");
+        modalContent?.setAttribute("animation", "true");
+
+       
+        setTimeout(() => {
+          modalContent?.removeAttribute("animation");
+        }, 2000);
+      }
+    }; */
+
+    /* document.addEventListener("click", handeOutsideClick); */
   });
 
   const closeInstanceModal = () => {
@@ -41,22 +62,29 @@ export default function ModalBase({
 
   return (
     <div className={modalBase.modalBase} modal-size={size} id={idModal}>
-      {isHeader && (
-        <div className={modalBase.modalBase__header} modal-size={size}>
-          {title}
-          <p className={modalBase.modalBase__header__title}></p>
-          <p
-            className={modalBase.modalBase__header__close}
-            onClick={closeInstanceModal}
+      <div
+        className={modalBase.modalBase__content}
+        modal-size={size}
+        ref={modalRef}
+        id="modalRef"
+      >
+        {isHeader && (
+          <div
+            className={modalBase.modalBase__content__header}
+            modal-size={size}
           >
-            {" "}
-            X
-          </p>
-        </div>
-      )}
-
-      <div className={modalBase.modalBase__content} modal-size={size}>
-        {children}
+            {title}
+            <p className={modalBase.modalBase__content__header__title}></p>
+            <p
+              className={modalBase.modalBase__content__header__close}
+              onClick={closeInstanceModal}
+            >
+              {" "}
+              X
+            </p>
+          </div>
+        )}
+        <div className={modalBase.modalBase__content__body}>{children}</div>
       </div>
     </div>
   );

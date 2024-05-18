@@ -12,7 +12,7 @@ export default function CropperResult() {
     <>
       <div className="cropper-result">
         <div className="content">
-          <img src={imageCropper?.urlImage}></img>
+          <img src={imageCropper?.urlImage} alt="result"></img>
         </div>
 
         <div className="save-image">
