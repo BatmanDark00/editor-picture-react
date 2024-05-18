@@ -76,8 +76,9 @@ export default function MenuHeader({
   };
 
   const closeDialog = () => {
-    const dialog = document.getElementById("favDialog") as HTMLDialogElement;
-    dialog.close();
+    /*  const dialog = document.getElementById("favDialog") as HTMLDialogElement;
+    dialog.close(); */
+    setOpenUnsplash(false);
   };
 
   const handleModalSaveFile = () => {
@@ -161,9 +162,15 @@ export default function MenuHeader({
         </nav>
       </div>
 
-      <dialog id="favDialog">
+      <ModalBase
+        idModal="modal-unplash"
+        title="Imagenes de Unsplash"
+        isOpen={isOpenUnsplash}
+        closeModal={closeDialog}
+        size="medium"
+      >
         <Unsplash isOpenUnsplash={isOpenUnsplash} closeUnsplash={closeDialog} />
-      </dialog>
+      </ModalBase>
 
       <ModalBase
         title="Titulo para guardar"
@@ -171,7 +178,7 @@ export default function MenuHeader({
         closeModal={closeModalSaveFile}
         size="medium"
       >
-        <CropperResult/>
+        <CropperResult />
       </ModalBase>
     </>
   );
