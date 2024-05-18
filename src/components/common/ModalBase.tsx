@@ -31,24 +31,18 @@ export default function ModalBase({
       modal?.setAttribute("style", "display: none");
     }
 
-    /* const handeOutsideClick = (event: MouseEvent) => {
-      console.log("click");
+ /*    const handeOutsideClick = (event: MouseEvent) => {
+    
       if (
+        isOpen &&
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
       ) {
-        const modalContent = document.getElementById("modalRef");
-        modalContent?.removeAttribute("animation");
-        modalContent?.setAttribute("animation", "true");
-
-       
-        setTimeout(() => {
-          modalContent?.removeAttribute("animation");
-        }, 2000);
+        closeInstanceModal();
       }
-    }; */
+    }; 
 
-    /* document.addEventListener("click", handeOutsideClick); */
+     document.addEventListener("click", handeOutsideClick);  */
   });
 
   const closeInstanceModal = () => {
