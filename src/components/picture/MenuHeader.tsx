@@ -173,7 +173,7 @@ export default function MenuHeader({
       </ModalBase>
 
       <ModalBase
-        title="Titulo para guardar"
+        title=""        
         isOpen={isModalOpen}
         closeModal={closeModalSaveFile}
         size="medium"
