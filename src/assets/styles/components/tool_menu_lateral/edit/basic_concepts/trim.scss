@@ -1,4 +1,39 @@
 .trim-menu {
-    background-color: red;
-    color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+
+  color: var(--text-color);
+
+  .trim-menu-option {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--secondary-100);
+    padding: var(--spacing-s);
+
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .orientation-option {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+      }
+    }
+  }
 }

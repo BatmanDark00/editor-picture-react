@@ -1,74 +1,65 @@
 import { useState } from "react";
-import "@/components/tool_menu_lateral/edit/"
+
+import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/trim.scss";
+
+import ButtonBase from "@/components/common/ButtonBase";
 
 const listSizePhotos = [
   {
     id: 1,
+    value: "formFree",
     name: "Forma Libre",
   },
   {
     id: 2,
+    value: "photo4x6",
     name: "Foto 4x6",
   },
   {
     id: 3,
+    value: "square1x1",
     name: "Cuadrado 1x1",
   },
   {
     id: 4,
+    value: "cine",
     name: "Cine",
   },
 ];
 
 function Trim() {
-  const [name, setName] = useState<string>();
-
-  const listButton = listSizePhotos;
-
-  const handleChange = (e: React.ChangeEvent<HTMLButtonElement>): void => {
-    setName(e.target.value);
-  };
-
   return (
     <div className="trim-menu">
-      <div className="trim-menu-header">
-        <button>&lt;-</button>
-        <h3 className="title">Recortar</h3>
-      </div>
-
       <div className="trim-menu-option">
-        <button className="trim-menu-new-option">{name}</button>
-        <div className="menu-options-trim">
-          {listButton.map((item) => (
-            <button 
-             value={item.name} 
-             key={item.id} 
-             onChange={handleChange}
-             className="trim-option"
-            >
+        <select>
+          {listSizePhotos.map((item) => (
+            <option value={item.value} key={item.id}>
               {item.name}
-            </button>
+            </option>
           ))}
+        </select>
+
+
+        <div className="orientation-option">
+          <p className="title">Orientación</p>
+          <div className="actions">
+            <ButtonBase>Retrato</ButtonBase>
+            <ButtonBase>Paisaje</ButtonBase>
+          </div>
         </div>
-      
 
-      <div className="orientation-option">
-        <p className="text">Orientación</p>
-        <button>Retrato</button>
-        <button>Paisaje</button>
-      </div>
-      <div className="size-option">
-        <p className="text">anchura</p>
-        <button>32px</button>
+       {/*  <div className="size-option">
+          <p className="text">anchura</p>
+          <ButtonBase>32px</ButtonBase>
 
-        <p className="text">Altura</p>
-        <button>32px</button>
-      </div>
+          <p className="text">Altura</p>
+          <ButtonBase>32px</ButtonBase>
+        </div>
 
-      <div className="option-aplication">
-        <button className="cancel">Cancelar</button>
-        <button className="aplic">Aplicar</button>
-      </div>
+        <div className="option-aplication">
+          <ButtonBase className="cancel">Cancelar</ButtonBase>
+          <ButtonBase className="aplic">Aplicar</ButtonBase>
+        </div> */}
       </div>
     </div>
   );

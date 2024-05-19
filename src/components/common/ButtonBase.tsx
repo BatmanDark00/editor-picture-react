@@ -6,6 +6,8 @@ interface Props {
   margin?: "none" | "small" | "medium" | "large";
   children: React.ReactNode;
   onClick?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLButtonElement>) => void;
+  value?: string;
 }
 
 function ButtonBase({
@@ -14,6 +16,7 @@ function ButtonBase({
   margin = "small",
   children,
   onClick,
+  onChange 
 }: Props) {
   return (
     <>
@@ -22,6 +25,7 @@ function ButtonBase({
         data-size={size}
         data-margin={margin}
         onClick={onClick}
+        onChange={onChange}       
       >
         {children}
       </button>
