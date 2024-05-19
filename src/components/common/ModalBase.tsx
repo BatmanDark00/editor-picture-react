@@ -55,7 +55,7 @@ export default function ModalBase({
   };
 
   return (
-    <div className={modalBase.modalBase} modal-size={size} id={idModal}>
+    <div className={modalBase.modalBase} modal-size={size} id={idModal} >
       <div
         className={modalBase.modalBase__content}
         modal-size={size}
