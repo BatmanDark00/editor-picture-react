@@ -77,7 +77,7 @@ export default function PictureView() {
         )}
       </div>
       <div className={imageCropper.urlImage ? "footer" : "footer-plus"}>
-        <MenuFooter />
+       {/*  <MenuFooter /> */}
       </div>
     </div>
   );

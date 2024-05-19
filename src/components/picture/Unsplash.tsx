@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 
 import "@/assets/styles/components/picture/unSplash.scss";
 
+import ButtonBase from "@/components/common/ButtonBase";
+
 import unplashService from "@/services/unplashService";
 
 import { setUrlImage } from "@/redux/imageCropperSlice";
@@ -80,7 +82,7 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
 
   return (
     <>
-      <div className="header">
+      {/*  <div className="header">
         <p className="title">Imagenes </p>
         <form className="form">
           <input type="text" required />
@@ -91,11 +93,12 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
         <button className="close" onClick={closeDialog}>
           X
         </button>
-      </div>
+      </div> */}
 
       <div className="grid">
         {photos.map((photo) => (
           <div key={photo.id} className="content-image">
+            {}
             <img
               src={photo.urls.small}
               alt={photo.alt_description}
@@ -106,12 +109,8 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
       </div>
 
       <menu>
-        <button id="cancel" type="button" onClick={prevPage}>
-          Anterior
-        </button>
-        <button type="button" onClick={nextPage}>
-          Siguiente
-        </button>
+        <ButtonBase onClick={prevPage}> Anterior</ButtonBase>
+        <ButtonBase onClick={nextPage}> Siguiente</ButtonBase>
       </menu>
     </>
   );
