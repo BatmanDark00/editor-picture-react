@@ -4,6 +4,7 @@ import Accordion from "@/components/common/Accordion";
 import ButtonBase from "@/components/common/ButtonBase";
 
 export default function ToolEdit() {
+
   return (
     <>
       <div className="tool-edit">
@@ -19,7 +20,7 @@ export default function ToolEdit() {
       </Accordion>
 
       <Accordion id="accordion2" name="accordion2" title="Remove replace" open={true}>
-      <ButtonBase> <i className="fa-solid fa-crop-simple"></i> Otra cosa</ButtonBase>
+          <ButtonBase> <i className="fa-solid fa-crop-simple"></i> Otra cosa</ButtonBase>
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i> Recortar</ButtonBase>
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i> Recortar</ButtonBase>
           <ButtonBase> <i className="fa-solid fa-crop-simple"></i> Recortar</ButtonBase>
