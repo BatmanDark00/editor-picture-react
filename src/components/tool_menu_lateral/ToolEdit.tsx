@@ -51,7 +51,7 @@ export default function ToolEdit() {
               title="Conceptos básicos"
               open={true}
             >
-              <ButtonBase onClick={() => selectComponent("Trim", "Recortar")}>
+              <ButtonBase  onClick={() => selectComponent("Trim", "Recortar")}>
                 {" "}
                 <i className="fa-solid fa-crop-simple"></i> Recortar
               </ButtonBase>

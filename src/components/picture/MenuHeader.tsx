@@ -68,27 +68,20 @@ export default function MenuHeader({
 
   const openDialog = () => {
     setOpenUnsplash(true);
-
-    const dialog = document.getElementById("favDialog") as HTMLDialogElement;
-    dialog.showModal();
-
     toggleDropdown("close");
   };
 
   const closeDialog = () => {
-    /*  const dialog = document.getElementById("favDialog") as HTMLDialogElement;
-    dialog.close(); */
     setOpenUnsplash(false);
   };
 
   const handleModalSaveFile = () => {
     setIsModalOpen(true);
+    handleSave();
   };
 
   const closeModalSaveFile = () => {
     setIsModalOpen(false);
-
-    console.log("Cerrando modal");
   };
 
   return (
@@ -147,12 +140,8 @@ export default function MenuHeader({
               )}
             </li>
 
-            <li className="dropdown" id="save" onClick={handleSave}>
-              Save
-            </li>
-
             <li className="dropdown" id="save" onClick={handleModalSaveFile}>
-              OpenModal
+              Save
             </li>
           </ul>
 
@@ -173,7 +162,7 @@ export default function MenuHeader({
       </ModalBase>
 
       <ModalBase
-        title=""        
+        title=""
         isOpen={isModalOpen}
         closeModal={closeModalSaveFile}
         size="medium"

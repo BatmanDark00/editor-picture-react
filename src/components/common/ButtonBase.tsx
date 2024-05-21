@@ -8,6 +8,7 @@ interface Props {
   onClick?: () => void;
   onChange?: (e: React.ChangeEvent<HTMLButtonElement>) => void;
   value?: string;
+  textAlign?: "center" | "left" | "right";
 }
 
 function ButtonBase({
@@ -16,16 +17,18 @@ function ButtonBase({
   margin = "small",
   children,
   onClick,
-  onChange 
+  onChange,
+  textAlign = "left",
 }: Props) {
   return (
     <>
       <button
         className={buttonBase[className]}
         data-size={size}
-        data-margin={margin}
+        data-margin={margin}       
         onClick={onClick}
-        onChange={onChange}       
+        onChange={onChange}  
+        style={{ textAlign: textAlign  }}     
       >
         {children}
       </button>

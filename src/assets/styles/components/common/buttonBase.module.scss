@@ -9,8 +9,6 @@ button {
   outline: none;
   cursor: pointer;
   padding: 1rem;
-  text-align: left;
-
   // Modificadores de tamaño
   &[data-size="small"] {
     padding: 4px 8px;

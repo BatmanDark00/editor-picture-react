@@ -6,7 +6,7 @@ import { CropperRef, Cropper } from "react-advanced-cropper";
 import "react-advanced-cropper/dist/style.css";
 import "react-advanced-cropper/dist/themes/corners.css";
 
-import { setUrlImage } from "@/redux/imageCropperSlice";
+import { setUrlImage, setImageCanvas } from "@/redux/imageCropperSlice";
 import { RootState } from "@/redux";
 
 interface Props {
@@ -33,19 +33,20 @@ export default function CropperPicture({ downloadResult }: Props) {
   }, [downloadResult]);
 
   const onCrop = () => {
-    if (cropperRef.current) {
-      console.log("Listo para descargar");
+    if (cropperRef.current) {     
       setCoordinates(cropperRef.current.getCoordinates());
       //Aqui se puede establecer el nuevo valor de la imagen
 
       const pngData = cropperRef.current.getCanvas()?.toDataURL("image/png");
+      dispatch(setImageCanvas(pngData ?? ""))
+
 
       dispatch(setUrlImage(pngData ?? ""));
-   /*    const link = document.createElement("a");
-      link.download = "batman" + ".png";
+     /* const link = document.createElement("a");
+      link.download = "batman" + ".jpg";
       link.href = pngData ?? ""; // Add nullish coalescing operator to provide a default value
      
-      link.click(); */
+      link.click(); */ 
     }
   };
 
