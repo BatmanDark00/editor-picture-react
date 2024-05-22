@@ -23,6 +23,15 @@
       "settings": "Settings",
       "help": "Help",
       "home": "Home",
-      "about": "About"
+      "about": "About",
+      "open": "Open"
+    },
+    "menuHeader":{
+      "newImage": "New image",
+      "computer": "Computer",
+      "unsplash": "Unsplash"
+    },
+    "cropperResult": {
+      "saveInComputer": "Save in computer"
     }
   }

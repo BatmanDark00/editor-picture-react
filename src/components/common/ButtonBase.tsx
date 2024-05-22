@@ -9,6 +9,7 @@ interface Props {
   onChange?: (e: React.ChangeEvent<HTMLButtonElement>) => void;
   value?: string;
   textAlign?: "center" | "left" | "right";
+  disabled?: boolean;
 }
 
 function ButtonBase({
@@ -19,6 +20,7 @@ function ButtonBase({
   onClick,
   onChange,
   textAlign = "left",
+  disabled,
 }: Props) {
   return (
     <>
@@ -28,7 +30,9 @@ function ButtonBase({
         data-margin={margin}       
         onClick={onClick}
         onChange={onChange}  
-        style={{ textAlign: textAlign  }}     
+        style={{ textAlign: textAlign  }}    
+        disabled={disabled}
+
       >
         {children}
       </button>

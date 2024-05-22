@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import "@/assets/styles/components/picture/menuHeader.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import ChangeLocale from "@/components/locale/ChangeLocale";
+import CropperResult from "@/components/cropper/CropperResult";
 import Toggle from "@/components/toggle/Toggle";
 import Unsplash from "@/components/picture/Unsplash";
+
 import ModalBase from "@/components/common/ModalBase";
-import CropperResult from "@/components/cropper/CropperResult";
 
 interface Props {
   saveCropper: () => void;
@@ -20,6 +23,7 @@ export default function MenuHeader({
   accept = "image/*",
   onFileUpload,
 }: Props) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [menuType, setMenuType] = React.useState<string | null>(null);
   const dropdownRef = React.useRef<HTMLLIElement>(null);
@@ -101,7 +105,7 @@ export default function MenuHeader({
               onClick={() => toggleDropdown("open")}
               ref={dropdownRef}
             >
-              Open
+              {t("common.open")} 
               <FontAwesomeIcon
                 icon={["fas", "chevron-down"]}
                 className="dropdown-rown"
@@ -109,7 +113,7 @@ export default function MenuHeader({
               {isOpen && (menuType === "open" || menuType === "plus") && (
                 <ul className="dropdown-menu" onClick={handleClickInside}>
                   <li className="drop-title">
-                    <h4>Nueva Imagen</h4>
+                    <h4> {t("menuHeader.newImage")}</h4>
                   </li>
                   <li className="dropdown-li">
                     <a
@@ -121,7 +125,7 @@ export default function MenuHeader({
                         icon={["fas", "desktop"]}
                         className="plus"
                       />
-                      Ordenador <span>Ctrl+O</span>
+                       {t("menuHeader.computer")} <span>Ctrl+O</span>
                       <input
                         id="input-file"
                         className="input-file-change"
@@ -134,18 +138,19 @@ export default function MenuHeader({
                   </li>
 
                   <li className="dropdown-li" onClick={openDialog}>
-                    <i className="fa-brands fa-unsplash"></i> Unsplash
+                    <i className="fa-brands fa-unsplash"></i> {t("menuHeader.unsplash")}
                   </li>
                 </ul>
               )}
             </li>
 
             <li className="dropdown" id="save" onClick={handleModalSaveFile}>
-              Save
+              {t("common.save")}
             </li>
           </ul>
 
           <div>
+            <ChangeLocale />
             <Toggle />
           </div>
         </nav>

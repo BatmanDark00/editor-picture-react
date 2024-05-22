@@ -22,7 +22,13 @@
     "settings": "Configuración",
     "help": "Ayuda",
     "home": "Inicio",
-    "about": "Acerca de"
+    "about": "Acerca de",
+    "open": "Abrir"
+  },
+  "menuHeader": {
+    "newImage": "Nueva imagen",
+    "computer": "Ordenador",
+    "unsplash": "Unsplash"
   },
   "cropperResult": {
     "saveInComputer": "Guardar en el ordenador"
