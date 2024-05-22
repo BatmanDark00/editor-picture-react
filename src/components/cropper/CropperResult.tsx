@@ -1,12 +1,15 @@
 import { useState } from "react";
+
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux";
+import { useTranslation } from "react-i18next";
 
 import "@/assets/styles/components/cropper/cropperResult.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
 
 export default function CropperResult() {
+  const { t } = useTranslation();
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
   const [extension, setExtension] = useState<string>("jpg");
   const [nameFile, setNameFile] = useState<string>("Picshur");
@@ -47,10 +50,11 @@ export default function CropperResult() {
         <div className="content">
           <img src={imageCropper?.urlImage} alt="result"></img>
         </div>
+        
 
         <div className="save-image">
           <div className="name-file">
-            <h3>Guardar en el ordenador </h3>
+            <h3>{ t('cropperResult.saveInComputer')}  </h3>
             <input
               type="text"
               placeholder="Nombre del archivo"
@@ -75,13 +79,13 @@ export default function CropperResult() {
           </div>
 
           <div className="actions">
-            <ButtonBase textAlign="center">Cancelar</ButtonBase>
+            <ButtonBase textAlign="center">  {t("common.cancel")}</ButtonBase>
             <ButtonBase
               textAlign="center"
               className="btn_primary"
               onClick={resultCropper}
             >
-              Guardar
+              {t("common.save")}
             </ButtonBase>
           </div>
         </div>

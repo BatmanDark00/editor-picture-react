@@ -1,0 +1,30 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "reset": "Reiniciar",
+    "download": "Descargar",
+    "upload": "Subir",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Añadir",
+    "search": "Buscar",
+    "copy": "Copiar",
+    "cut": "Cortar",
+    "paste": "Pegar",
+    "undo": "Deshacer",
+    "redo": "Rehacer",
+    "selectAll": "Seleccionar todo",
+    "unselectAll": "Deseleccionar todo",
+    "remove": "Quitar",
+    "refresh": "Actualizar",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "home": "Inicio",
+    "about": "Acerca de"
+  },
+  "cropperResult": {
+    "saveInComputer": "Guardar en el ordenador"
+  }
+}
