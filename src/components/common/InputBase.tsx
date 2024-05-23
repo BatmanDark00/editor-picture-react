@@ -12,12 +12,12 @@ interface InputProps {
 function InputBase({ onChange, value, children }: InputProps) {
   return (
     <>
-      <form className="form" >
+      <div className="form" >
         <input type="text" onChange={onChange} value={value} required />
         <label className="label">
           <span className="text-name">{children}</span>
         </label>
-      </form>
+      </div>
     </>
   );
 }
