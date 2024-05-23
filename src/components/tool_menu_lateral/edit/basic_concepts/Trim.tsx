@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/trim.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
