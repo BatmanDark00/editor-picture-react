@@ -24,7 +24,7 @@ export default function CropperResult() {
   const resultCropper = () => {
     if (imageCropper?.imageCanvas) return downloadImageCanvas();
 
-   return downloadImageCropper();
+    return downloadImageCropper();
   };
 
   const downloadImageCanvas = () => {
@@ -51,15 +51,14 @@ export default function CropperResult() {
         <div className="content">
           <img src={imageCropper?.urlImage} alt="result"></img>
         </div>
-        
 
         <div className="save-image">
           <div className="name-file">
-            <h3>{ t('cropperResult.saveInComputer')}  </h3>
-            <InputBase 
-             onChange={addNameFile}
-             value={nameFile}
-             children='Nombre del Archivo'
+            <h3>{t("cropperResult.saveInComputer")} </h3>
+            <InputBase
+              onChange={addNameFile}
+              value={nameFile}
+              children="Nombre del Archivo"
             />
           </div>
 
@@ -67,11 +66,9 @@ export default function CropperResult() {
             {listExtensions.map((ext) => (
               <ButtonBase
                 key={ext.id}
+                className="btn_secondary"
                 textAlign="center"
                 onClick={() => setExtension(ext.value)}
-                className={
-                  extension === ext.value ? "btn_primary" : "btn_theme"
-                }
               >
                 {ext.name}
               </ButtonBase>
@@ -79,7 +76,10 @@ export default function CropperResult() {
           </div>
 
           <div className="actions">
-            <ButtonBase textAlign="center">  {t("common.cancel")}</ButtonBase>
+            <ButtonBase textAlign="center" className="btn_tertiary">
+              {" "}
+              {t("common.cancel")}
+            </ButtonBase>
             <ButtonBase
               textAlign="center"
               className="btn_primary"

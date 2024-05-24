@@ -68,19 +68,18 @@
   }
 
   &__content {
-    background-color: var(--secondary-400);   
+    background-color: var(--secondary-000);
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-elevation-1);
-    border: solid 1px var(--border-color);
-    border-radius: var(--border-radius-m);
+    border: solid 1px var(--secondary-200);    
     animation: slide-fwd-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     transition: all 0.8s ease-out;
     @include sizeHeaderAndContent;
-  
 
     &__header {
-      background-color: var(--secondary-300);
+      background-color: var(--secondary-000);
+      border-bottom: solid 2px var(--secondary-200);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -107,7 +106,7 @@
     min-height: 100%;
   }
 
-  @media screen and (max-width: 768px) {   
+  @media screen and (max-width: 768px) {
     bottom: 0;
     left: 0;
     width: 100%;

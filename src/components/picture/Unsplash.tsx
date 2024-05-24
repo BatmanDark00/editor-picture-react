@@ -109,11 +109,19 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
       </div>
 
       <menu>
-        <ButtonBase textAlign="center" onClick={prevPage}>
+        <ButtonBase
+          className="btn_elevated"
+          textAlign="center"
+          onClick={prevPage}
+        >
           {" "}
           Anterior
         </ButtonBase>
-        <ButtonBase textAlign="center" onClick={nextPage}>
+        <ButtonBase
+          className="btn_elevated"
+          textAlign="center"
+          onClick={nextPage}
+        >
           {" "}
           Siguiente
         </ButtonBase>
