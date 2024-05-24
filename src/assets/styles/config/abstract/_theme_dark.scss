@@ -32,9 +32,8 @@
   --color-primary-button: #057996;
   --color-primary-button-hover: #046277;
 
-  --color-secondary-button: hsl(0, 0%, 15%);
-  --color-secondary-button-hover: hsl(0, 0%, 50%);
-  --color-secondary-button-border: #fff;
+  --color-theme-button: var(--secondary-100);
+  --color-theme-button-hover: var(--secondary-200);
 
   --color-thiarty-button: hsl(0, 0%, 50%);
   --color-thiarty-button-hover: hsl(0, 0%, 60%);

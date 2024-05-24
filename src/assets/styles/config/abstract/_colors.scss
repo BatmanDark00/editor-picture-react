@@ -80,6 +80,9 @@ $color-theme-button: #057996;
   --color-primary-button: #057996;
   --color-primary-button-hover: #046277;
 
+  --color-theme-button: var(--secondary-000);
+  --color-theme-button-hover: var(--secondary-100);
+
   --color-secondary-button: hsl(0, 0%, 90%);
   --color-secondary-button-hover: hsl(0, 0%, 89%);
   --color-secondary-button-border: #057996;
