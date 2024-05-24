@@ -211,8 +211,8 @@ button {
   &:focus {
     background-image: linear-gradient(
       30deg,
-      var(--secondary-400),
-      var(--secondary-500)
+      var(--secondary-000),
+      var(--secondary-100)
     );
     box-shadow: var(--shadow-elevation-3);
   }
