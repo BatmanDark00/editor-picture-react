@@ -5,7 +5,33 @@
   border-radius: 4px;
   padding: 6px;
 
-  input[type='range'] {
+  p {
+    color: var(--text-color);
+  }
+
+  .section-slider-change {
+    background-color: var(--secondary-300);
+    border-radius: 2px;
+    display: block;
+    justify-content: right;
+    top: -1rem;
+    left: 10.2rem;
+    position: relative;
+    padding: 1px 4px;
+    width: 2.5rem;
+    text-align: center;
+
+    p {
+      font-size: 12px;
+
+      span {
+       font-size: 11px;
+       margin-left: 1px;
+      } 
+    }
+  }
+
+  /* input[type='range'] {
     appearance: none;
     background: transparent;
     cursor: pointer;
@@ -42,7 +68,8 @@
   }
   
   input:focus::-webkit-slider-thumb {
-    animation: .2s ease-out;
+    transition: .4s ease-out;
+    background-color: lightblue;
     outline: 3px solid lightblue;
     margin-top: -5px;
     height: 1.2rem;
@@ -73,5 +100,11 @@
         rgb(255, 153, 0) 100%);
     border-radius: .4rem;
     height: .6rem;
+  }
+ */
+  .section-optional {
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
   }
 }

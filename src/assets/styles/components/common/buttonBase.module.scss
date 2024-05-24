@@ -47,6 +47,7 @@ button {
   width: 100%;
   transition: background-color 0.3s;
   background-size: 300% 100%;
+  border-radius: 2px;
 
   &:hover {
     background-color: var(--color-primary-button-hover);
@@ -190,6 +191,7 @@ button {
   width: 100%;
   transition: background-color 0.3s;
   background-size: 300% 100%;
+  border-radius: 2px;
 
   &:hover {
     background-color: var(--color-secondary-button-hover);
