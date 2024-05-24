@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CropperRef, Cropper } from "react-advanced-cropper";
@@ -10,7 +10,7 @@ import { setUrlImage, setImageCanvas } from "@/redux/imageCropperSlice";
 import { RootState } from "@/redux";
 
 interface Props {
-   downloadResult?: boolean;
+  downloadResult?: boolean;
 }
 
 const onChange = (cropper: CropperRef) => {
@@ -19,11 +19,11 @@ const onChange = (cropper: CropperRef) => {
 
 export default function CropperPicture({ downloadResult }: Props) {
   const cropperRef = useRef<CropperRef>(null);
-  const imageCropper = useSelector((state: RootState) => state.imageCropper); 
-  const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
+  const imageCropper = useSelector((state: RootState) => state.imageCropper);
+
   const dispatch = useDispatch();
 
-
+  const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
 
   useEffect(() => {
     if (downloadResult) {
@@ -33,20 +33,20 @@ export default function CropperPicture({ downloadResult }: Props) {
   }, [downloadResult]);
 
   const onCrop = () => {
-    if (cropperRef.current) {     
+    if (cropperRef.current) {
       setCoordinates(cropperRef.current.getCoordinates());
       //Aqui se puede establecer el nuevo valor de la imagen
 
       const pngData = cropperRef.current.getCanvas()?.toDataURL("image/png");
-      dispatch(setImageCanvas(pngData ?? ""))
-
+      dispatch(setImageCanvas(pngData ?? ""));
 
       dispatch(setUrlImage(pngData ?? ""));
-     /* const link = document.createElement("a");
+
+      /* const link = document.createElement("a");
       link.download = "batman" + ".jpg";
       link.href = pngData ?? ""; // Add nullish coalescing operator to provide a default value
      
-      link.click(); */ 
+      link.click(); */
     }
   };
 
@@ -56,6 +56,7 @@ export default function CropperPicture({ downloadResult }: Props) {
         ref={cropperRef}
         src={imageCropper?.urlImage}
         onChange={onChange}
+        style={{ filter: `hue-rotate(${imageCropper.toneCropper}deg)` }}
       ></Cropper>
     </>
   );
