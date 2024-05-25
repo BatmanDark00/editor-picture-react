@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import "@/assets/styles/components/picture/unSplash.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
+import InputBase from "@/components/common/InputBase";
 
 import unplashService from "@/services/unplashService";
 
@@ -26,6 +27,8 @@ interface Photo {
 export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
   const [photos, setPhotos] = React.useState<Photo[]>([]);
   const [page, setPage] = React.useState<number>(1);
+  const [search, setSearch] = React.useState<string>("");
+  const [enter, setEnter] = React.useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -33,7 +36,11 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     const fetchPhotos = async () => {
       try {
         await unplashService.search
-          .getPhotos({ query: "wallpapers", page: page, perPage: 9 })
+          .getPhotos({
+            query: search !== "" ? search : "nature",
+            page: page,
+            perPage: 9,
+          })
           .then((result) => {
             console.log(result.response?.results);
             const photos =
@@ -56,13 +63,17 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     if (isOpenUnsplash) {
       fetchPhotos();
     }
-  }, [isOpenUnsplash, page]);
+
+    if (enter) {
+      fetchPhotos();
+      setEnter(false);
+    }
+  }, [isOpenUnsplash, page, enter]);
 
   const nextPage = () => {
     setPage((prevPage) => {
       return prevPage + 1;
     });
-    console.log("🚀 ~ nextPage ~ nextPage:" + "add page", prevPage);
   };
 
   const prevPage = () => {
@@ -80,20 +91,29 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     closeDialog();
   };
 
+  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const handleOnkeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (search.length > 0) {
+        setEnter(true);
+        setPage(1);
+      }
+    }
+  };
+
   return (
     <>
-      {/*  <div className="header">
-        <p className="title">Imagenes </p>
-        <form className="form">
-          <input type="text" required />
-          <label className="label">
-            <span className="text-name">Buscar</span>
-          </label>
-        </form>
-        <button className="close" onClick={closeDialog}>
-          X
-        </button>
-      </div> */}
+      <div className="search">
+        <InputBase
+          value={search}
+          onChange={handleChangeSearch}
+          onKeyDown={handleOnkeyDown}
+          children="Buscar imágenes"
+        />
+      </div>
 
       <div className="grid">
         {photos.map((photo) => (
