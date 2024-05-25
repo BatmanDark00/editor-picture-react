@@ -74,7 +74,7 @@ button {
 
 .btn_secondary {
   background-color: var(--secondary-000);
-  color: var(--color-secondary-button-border);
+  color: var( --color-secondary-button-color);
   border: solid 1px var(--color-secondary-button-border);
   padding: 8px 16px;
   cursor: pointer;
@@ -184,7 +184,7 @@ button {
 .btn_elevated {
   background-color: var(--secondary-000);
   border: solid 1px var(--secondary-300);
-  color: var(--color-secondary-button-border);
+  color: var(--text-color);
   box-shadow: var(--shadow-elevation-1);
   padding: 8px 16px;
   cursor: pointer;

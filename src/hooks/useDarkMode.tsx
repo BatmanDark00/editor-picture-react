@@ -1,30 +1,27 @@
-import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import { useEffect } from "react";
+
+import { setThemeMode } from "@/redux/themeModeSlice";
 
 const useDarkMode = () => {
-  const [isDark, setIsDark] = useState(() => {   
+  const dispatch = useDispatch();
+
+  useEffect(() => {
     const isDarkLocalStorage = localStorage.getItem("isDark");
-    return isDarkLocalStorage === "true";
+    dispatch(setThemeMode(isDarkLocalStorage === "true" ? "dark" : "light"));
   });
 
-  useEffect(() => {    
-    const isDarkLocalStorage = localStorage.getItem("isDark");
-    setIsDark(isDarkLocalStorage === "true");
-  }, []);
-
   const toggleDarkMode = () => {
-    setIsDark((prevIsDark) => {
-      const newIsDark = !prevIsDark;
-     
-      localStorage.setItem("isDark", newIsDark.toString());
+    const isDarkLocalStorage = localStorage.getItem("isDark");
+    const isDark = isDarkLocalStorage === "true";
 
-      document.body.dataset.theme = newIsDark ? "dark" : "light";  
-
-
-      return newIsDark;
-    });
+    localStorage.setItem("isDark", (!isDark).toString());
+    dispatch(setThemeMode(isDark ? "light" : "dark"));
+    document.body.dataset.theme = isDark ? "light" : "dark";
   };
 
-  return { isDark, toggleDarkMode };
+  return { toggleDarkMode };
 };
 
 export default useDarkMode;

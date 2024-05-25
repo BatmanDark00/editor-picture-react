@@ -1,16 +1,15 @@
+import { useSelector } from "react-redux";
 import { RouterProvider } from "react-router-dom";
+import { RootState } from "@/redux";
 
 import "@/App.scss";
-import { useSelector } from "react-redux";
-import { RootState } from "./redux/index";
 import router from "@/routes";
 
 function App() {
-  const darkMode = useSelector(
-    (state: RootState) => state.darkMode.mode)
+  const themeMode = useSelector((state: RootState) => state.themeMode?.themeMode);
 
   return (
-    <div className="app" data-theme={darkMode ? "dark" : "light" }>
+    <div className="app" data-theme={themeMode ?? 'dark'}>    
       <RouterProvider router={router} />
     </div>
   );

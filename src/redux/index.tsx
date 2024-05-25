@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import imageCropperSlice from "./imageCropperSlice";
 import menuLateralEditSlice from "./menuLateralEditSlice";
-import darkModeChangeSlice from "./DarkModeChangeSlice";
+import themeModeSlice from "./themeModeSlice";
 
 const rootReducer = {
   imageCropper: imageCropperSlice,
   menuLateralEdit: menuLateralEditSlice,
-  darkMode: darkModeChangeSlice,
+  themeMode: themeModeSlice,
 };
 
 export const store = configureStore({
