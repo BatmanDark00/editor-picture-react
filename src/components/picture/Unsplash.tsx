@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 
 import { useDispatch } from "react-redux";
 
@@ -8,7 +8,6 @@ import unplashService from "@/services/unplashService";
 
 import { setUrlImage } from "@/redux/imageCropperSlice";
 
-<<<<<<< HEAD
 import useSearch from "@/hooks/useSearch";
 import { debounce } from "react-advanced-cropper";
 
@@ -28,8 +27,6 @@ function NoPhotosResults() {
   );
 }
 
-=======
->>>>>>> eb9c7b5b90421fca2feb36409d19bb97d5794abd
 interface Props {
   isOpenUnsplash: boolean;
   closeUnsplash: () => void;
@@ -46,7 +43,6 @@ interface Photo {
 export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
   const [photos, setPhotos] = React.useState<Photo[]>([]);
   const [page, setPage] = React.useState<number>(1);
-<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
   const [, setError] = useState(null);
   const { search, updateSearch, error } = useSearch();
@@ -82,41 +78,12 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
       setPage(1);
     }
   }, [isOpenUnsplash]);
-=======
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        await unplashService.search
-          .getPhotos({ query: "wallpapers", page: page, perPage: 9 })
-          .then((result) => {
-            console.log(result.response?.results);
-            const photos =
-              result.response?.results.map((photo) => ({
-                id: photo.id,
-                alt_description: photo.alt_description || "",
-                urls: {
-                  small: photo.urls.small,
-                  full: photo.urls.full,
-                },
-              })) ?? [];
-
-            setPhotos(photos);
-          });
-      } catch (error) {
-        console.log("Error al obtener las imagenes", error);
-      }
-    };
->>>>>>> eb9c7b5b90421fca2feb36409d19bb97d5794abd
 
     if (isOpenUnsplash) {
-<<<<<<< HEAD
+
       debouncedFetchData(search);//al abrir la pestaña del unplash, este sera controlado por el debounce para que detenga las llamadas a la api
-=======
-      fetchPhotos();
->>>>>>> eb9c7b5b90421fca2feb36409d19bb97d5794abd
+
     }
   }, [isOpenUnsplash, page]);
 
@@ -142,7 +109,6 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     closeDialog();
   };
 
-<<<<<<< HEAD
   const hasPhotos = photos?.length > 0;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -155,13 +121,11 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
     updateSearch(newSearch);
   };
 
-=======
->>>>>>> eb9c7b5b90421fca2feb36409d19bb97d5794abd
+
   return (
     <>
       <div className="header">
         <p className="title">Imagenes </p>
-<<<<<<< HEAD
         <form className="form" onSubmit={handleSubmit}>
           <input
             style={{
@@ -174,10 +138,7 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
             name="query"
             required
           />
-=======
-        <form className="form">
-          <input type="text" required />
->>>>>>> eb9c7b5b90421fca2feb36409d19bb97d5794abd
+
           <label className="label">
             <span className="text-name">Buscar</span>
           </label>
@@ -186,8 +147,6 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
           X
         </button>
       </div>
-
-<<<<<<< HEAD
       {hasPhotos ? (
         <div className="grid">
           {photos.map((photo) => (
@@ -205,21 +164,6 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
       )}
 
       <menu style={{ display: hasPhotos ? "flex" : "none" }}>
-=======
-      <div className="grid">
-        {photos.map((photo) => (
-          <div key={photo.id} className="content-image">
-            <img
-              src={photo.urls.small}
-              alt={photo.alt_description}
-              onClick={() => sendImageCropper(photo.urls.full)}
-            />
-          </div>
-        ))}
-      </div>
-
-      <menu>
->>>>>>> eb9c7b5b90421fca2feb36409d19bb97d5794abd
         <button id="cancel" type="button" onClick={prevPage}>
           Anterior
         </button>
@@ -229,4 +173,3 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
       </menu>
     </>
   );
-}
