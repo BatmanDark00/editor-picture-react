@@ -1,5 +1,5 @@
 import Default from "@/components/tool_menu_lateral/Default";
-import ToolEdit from "@/components/tool_menu_lateral/ToolEdit";
+import ToolEdit from "@/components/tool_menu_lateral/tool_edit/main/ToolEdit";
 
 import { RootState } from "@/redux";
 import { useSelector } from "react-redux";
