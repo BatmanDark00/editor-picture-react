@@ -43,24 +43,25 @@ export default function PictureView() {
   };
 
   return (
-    <div className="picture-view">
-      <div className="header">
+    <main className="picture-view">
+      <section className="header">
          <MenuHeader
           saveCropper={downloadImage}
           onFileUpload={handleFileUpload}
         /> 
-      </div>
-      <div className="menu-lateral">
+      </section>
+
+      <section className="menu-lateral">
         <MenuLateral />
-      </div>
+      </section>
 
       {imageCropper.urlImage && (
-        <div className="menu-lateral-secondary">
+        <section className="menu-lateral-secondary">
           <EditMenuLateral />
-        </div>
+        </section>
       )}
 
-      <div
+      <section
         className={
           imageCropper.urlImage ? "editor-cropper" : "editor-cropper-plus"
         }
@@ -75,10 +76,11 @@ export default function PictureView() {
             <CropperPicture downloadResult={downloadResult} />
           </div>
         )}
-      </div>
-      <div className={imageCropper.urlImage ? "footer" : "footer-plus"}>
+      </section>
+
+      <section className={imageCropper.urlImage ? "footer" : "footer-plus"}>
        {/*  <MenuFooter /> */}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

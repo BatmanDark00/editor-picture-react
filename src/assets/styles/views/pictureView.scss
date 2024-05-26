@@ -25,20 +25,17 @@
   grid-template-columns: 50px max(250px) max(100px) repeat(2, 1fr);
   grid-template-rows: 3rem 1fr 3rem;
 
-  & > div {
-    border: solid 1px var(--color-primary);
-  }
-
   .header {
     grid-column: 1 / 6;
     grid-row: 1 / 2;
+    border-bottom: solid 1px var(--border-color);
   }
 
   .menu-lateral {
     grid-column: 1;
     grid-row: 2 / 4;
     order: 1;
-    
+    border-right: solid 1px var(--border-color);
   }
 
   .menu-lateral-secondary {
@@ -47,7 +44,8 @@
     order: 0;
     padding: var(--spacing-s) var(--spacing-s);
     overflow: scroll;
-   scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    border-right: solid 1px var(--border-color);
   }
 
   .editor-cropper {
@@ -63,6 +61,7 @@
   .footer {
     grid-column: 3/6;
     grid-row: 3 / 4;
+    border-top: solid 1px var(--border-color);
   }
 
   .footer-plus {

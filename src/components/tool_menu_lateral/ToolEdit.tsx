@@ -8,14 +8,46 @@ import Typography from "@/components/typography/Typography";
 import Color from "@/components/tool_menu_lateral/edit/basic_concepts/Color";
 import Trim from "@/components/tool_menu_lateral/edit/basic_concepts/Trim";
 
+interface State {
+  component: string | null;
+  titleComponent: string | null;}
+
+interface Action {
+  type: "SET_COMPONENT" | "CLEAR_COMPONENT";
+  payload: {
+    component: string | null;
+    titleComponent: string | null;
+  };
+}
+
+const initialState: State = {
+  component: null,
+  titleComponent: null,
+};
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "SET_COMPONENT":
+      return {
+        ...state,
+        component: action.payload.component,
+        titleComponent: action.payload.titleComponent,
+      };
+    case "CLEAR_COMPONENT":
+      return {
+        ...state,
+        component: null,
+        titleComponent: null,
+      };
+    default:
+      return state;
+  }
+}
 export default function ToolEdit() {
-  const [component, setComponent] = React.useState<string | null>(null);
-  const [titleComponent, setTitleComponent] = React.useState<string | null>(
-    null
-  );
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const renderComponent = () => {
-    switch (component) {
+    switch (state.component) {
       case "Trim":
         return <Trim />;
       case "Color":
@@ -27,24 +59,38 @@ export default function ToolEdit() {
   };
 
   const selectComponent = (component: string, titleComponent: string) => {
-    setComponent(component);
-    setTitleComponent(titleComponent);
-    console.log(component);
+    dispatch({
+      type: "SET_COMPONENT",
+      payload: {
+        component: component,
+        titleComponent: titleComponent,
+      },
+    });
+  };
+
+  const clearComponent = () => {
+    dispatch({
+      type: "CLEAR_COMPONENT",
+      payload: {
+        component: null,
+        titleComponent: null,
+      },
+    });
   };
 
   return (
     <>
       <div className="tool-edit">
-        {component && (
+        {state.component && (
           <>
-            <ButtonBase onClick={() => setComponent(null)}>
+            <ButtonBase onClick={() => clearComponent()}>
               {" "}
-              <i className="fa-solid fa-arrow-left"></i> {titleComponent}
+              <i className="fa-solid fa-arrow-left"></i> {state.titleComponent}
             </ButtonBase>
           </>
         )}
 
-        {!component && (
+        {!state.component && (
           <>
             <Typography variant="h3">Editar </Typography>
 
