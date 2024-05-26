@@ -1,0 +1,61 @@
+/* src/components/Typography.css */
+.typography {
+    margin: 0;
+  }
+  
+  .typography.h1 {
+    font-size: 2em;
+  }
+  
+  .typography.h2 {
+    font-size: 1.5em;
+  }
+  
+  .typography.h3 {
+    font-size: 1.17em;
+  }
+  
+  .typography.h4 {
+    font-size: 1em;
+  }
+  
+  .typography.h5 {
+    font-size: 0.83em;
+  }
+  
+  .typography.h6 {
+    font-size: 0.67em;
+  }
+  
+  .typography.p {
+    font-size: 1em;
+  }
+  
+  .typography.light {
+    font-weight: 300;
+  }
+  
+  .typography.regular {
+    font-weight: 400;
+  }
+  
+  .typography.bold {
+    font-weight: 700;
+  }
+  
+  .typography.left {
+    text-align: left;
+  }
+  
+  .typography.center {
+    text-align: center;
+  }
+  
+  .typography.right {
+    text-align: right;
+  }
+  
+  .typography.justify {
+    text-align: justify;
+  }
+  

@@ -3,13 +3,16 @@ import "@/assets/styles/components/tool_menu_lateral/toolEdit.scss";
 
 import Accordion from "@/components/common/Accordion";
 import ButtonBase from "@/components/common/ButtonBase";
+import Typography from "@/components/typography/Typography";
 
 import Color from "@/components/tool_menu_lateral/edit/basic_concepts/Color";
 import Trim from "@/components/tool_menu_lateral/edit/basic_concepts/Trim";
 
 export default function ToolEdit() {
   const [component, setComponent] = React.useState<string | null>(null);
-  const [titleComponent, setTitleComponent] = React.useState<string | null>(null);
+  const [titleComponent, setTitleComponent] = React.useState<string | null>(
+    null
+  );
 
   const renderComponent = () => {
     switch (component) {
@@ -23,7 +26,7 @@ export default function ToolEdit() {
     }
   };
 
-  const selectComponent = (component: string, titleComponent:string) => {
+  const selectComponent = (component: string, titleComponent: string) => {
     setComponent(component);
     setTitleComponent(titleComponent);
     console.log(component);
@@ -32,26 +35,26 @@ export default function ToolEdit() {
   return (
     <>
       <div className="tool-edit">
-
         {component && (
           <>
-          <ButtonBase onClick={() => setComponent(null)}>
-            {" "}
-            <i className="fa-solid fa-arrow-left"></i> {titleComponent}
-          </ButtonBase>
+            <ButtonBase onClick={() => setComponent(null)}>
+              {" "}
+              <i className="fa-solid fa-arrow-left"></i> {titleComponent}
+            </ButtonBase>
           </>
         )}
 
         {!component && (
           <>
-            <h3>Editar </h3>
+            <Typography variant="h3">Editar </Typography>
+
             <Accordion
               id="accordion1"
               name="accordion1"
               title="Conceptos básicos"
               open={true}
             >
-              <ButtonBase  onClick={() => selectComponent("Trim", "Recortar")}>
+              <ButtonBase onClick={() => selectComponent("Trim", "Recortar")}>
                 {" "}
                 <i className="fa-solid fa-crop-simple"></i> Recortar
               </ButtonBase>

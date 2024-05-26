@@ -38,6 +38,7 @@
     grid-column: 1;
     grid-row: 2 / 4;
     order: 1;
+    
   }
 
   .menu-lateral-secondary {
@@ -45,6 +46,8 @@
     grid-row: 2 / 4;
     order: 0;
     padding: var(--spacing-s) var(--spacing-s);
+    overflow: scroll;
+   scroll-behavior: smooth;
   }
 
   .editor-cropper {
