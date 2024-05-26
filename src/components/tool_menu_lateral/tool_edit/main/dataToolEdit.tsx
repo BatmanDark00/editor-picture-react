@@ -13,10 +13,12 @@ const dataToolEdit = {
       actions: [
         {
           name: "common.cut",
+          icon:["fas", "crop"],
           component: <Trim />,
         },
         {
           name: "menuLateral.toolEditor.color",
+          icon:["fas", "palette"],
           component: <Color />,
         },
       ],

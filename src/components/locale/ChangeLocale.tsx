@@ -19,6 +19,7 @@ export default function ChangeLocale() {
             disabled={
               i18n.language === locales[key as keyof typeof locales].locale
             }
+            key={key}
           >
             {key}
           </ButtonBase>

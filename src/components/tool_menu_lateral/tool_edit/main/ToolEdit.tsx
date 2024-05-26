@@ -9,6 +9,9 @@ import { useTranslation } from "react-i18next";
 
 import dataToolEdit from "@/components/tool_menu_lateral/tool_edit/main/dataToolEdit";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 interface State {
   component: React.ReactNode | null;
   titleComponent: string | null;
@@ -109,7 +112,8 @@ export default function ToolEdit() {
                     }
                   >
                     {" "}
-                    <i className="fa-solid fa-crop-simple"></i> {t(action.name)}
+                    <FontAwesomeIcon icon={action.icon as IconProp} />
+                    <span> {t(action.name)}</span>
                   </ButtonBase>
                 ))}
               </Accordion>
