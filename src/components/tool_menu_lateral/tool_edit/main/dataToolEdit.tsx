@@ -1,22 +1,22 @@
 // component form basic concept
-import Trim from "@/components/tool_menu_lateral/tool_edit/basic_concepts/Trim";
 import Color from "@/components/tool_menu_lateral/tool_edit/basic_concepts/Color";
+import Trim from "@/components/tool_menu_lateral/tool_edit/basic_concepts/Trim";
 
 const dataToolEdit = {
-  title: "Editar",
+  title: "menuLateral.toolEditor.title",
   accordions: [
     {
       id: "accordion1",
       name: "accordion1",
-      title: "Conceptos básicos",
+      title: "menuLateral.toolEditor.basicConcepts", //esto lo encuentras en el archivo de idioma
       open: true,
       actions: [
-        {                 
-          name: "Recortar",
+        {
+          name: "common.cut",
           component: <Trim />,
         },
-        {                  
-          name: "Color",
+        {
+          name: "menuLateral.toolEditor.color",
           component: <Color />,
         },
       ],

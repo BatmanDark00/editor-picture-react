@@ -32,5 +32,14 @@
   },
   "cropperResult": {
     "saveInComputer": "Guardar en el ordenador"
+  },
+
+  "menuLateral": {
+    "toolEditor": {
+      "title": "Editor",
+      "basicConcepts": "Elementos básicos",
+      "color": "Color"
+      
+    }
   }
 }

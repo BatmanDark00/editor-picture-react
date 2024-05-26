@@ -5,6 +5,8 @@ import Accordion from "@/components/common/Accordion";
 import ButtonBase from "@/components/common/ButtonBase";
 import Typography from "@/components/typography/Typography";
 
+import { useTranslation } from "react-i18next";
+
 import dataToolEdit from "@/components/tool_menu_lateral/tool_edit/main/dataToolEdit";
 
 interface State {
@@ -45,6 +47,7 @@ function reducer(state: State, action: Action): State {
 }
 
 export default function ToolEdit() {
+  const { t } = useTranslation();
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const renderComponent = () => {
@@ -59,7 +62,7 @@ export default function ToolEdit() {
       type: "SET_COMPONENT",
       payload: {
         component: component,
-        titleComponent: titleComponent,
+        titleComponent: t(titleComponent),
       },
     });
   };
@@ -88,14 +91,14 @@ export default function ToolEdit() {
 
         {!state.component && (
           <>
-            <Typography variant="h3">{dataToolEdit.title} </Typography>
+            <Typography variant="h3">{t(dataToolEdit.title)}</Typography>
 
             {dataToolEdit.accordions.map((accordion) => (
               <Accordion
                 key={accordion.id}
                 id={accordion.id}
                 name={accordion.name}
-                title={accordion.title}
+                title={t(accordion.title)}
                 open={accordion.open}
               >
                 {accordion.actions.map((action) => (
@@ -106,7 +109,7 @@ export default function ToolEdit() {
                     }
                   >
                     {" "}
-                    <i className="fa-solid fa-crop-simple"></i> {action.name}
+                    <i className="fa-solid fa-crop-simple"></i> {t(action.name)}
                   </ButtonBase>
                 ))}
               </Accordion>
