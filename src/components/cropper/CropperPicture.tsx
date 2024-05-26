@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { CSSProperties, useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CropperRef, Cropper } from "react-advanced-cropper";
@@ -36,18 +36,20 @@ export default function CropperPicture({ downloadResult }: Props) {
     if (cropperRef.current) {
       setCoordinates(cropperRef.current.getCoordinates());
       //Aqui se puede establecer el nuevo valor de la imagen
+      
 
       const pngData = cropperRef.current.getCanvas()?.toDataURL("image/png");
+
+      //add style to image
       dispatch(setImageCanvas(pngData ?? ""));
 
-      dispatch(setUrlImage(pngData ?? ""));
-
-      /* const link = document.createElement("a");
-      link.download = "batman" + ".jpg";
-      link.href = pngData ?? ""; // Add nullish coalescing operator to provide a default value
-     
-      link.click(); */
+      dispatch(setUrlImage(pngData ?? ""));     
     }
+  };
+
+  const style: CSSProperties = {
+    filter: `hue-rotate(${imageCropper.toneCropper}deg) sepia(10%)`,   
+    
   };
 
   return (
@@ -56,7 +58,7 @@ export default function CropperPicture({ downloadResult }: Props) {
         ref={cropperRef}
         src={imageCropper?.urlImage}
         onChange={onChange}
-        style={{ filter: `hue-rotate(${imageCropper.toneCropper}deg)` }}
+        style={style}
       ></Cropper>
     </>
   );
