@@ -36,20 +36,18 @@ export default function CropperPicture({ downloadResult }: Props) {
     if (cropperRef.current) {
       setCoordinates(cropperRef.current.getCoordinates());
       //Aqui se puede establecer el nuevo valor de la imagen
-      
 
       const pngData = cropperRef.current.getCanvas()?.toDataURL("image/png");
 
       //add style to image
       dispatch(setImageCanvas(pngData ?? ""));
 
-      dispatch(setUrlImage(pngData ?? ""));     
+      dispatch(setUrlImage(pngData ?? ""));
     }
   };
 
   const style: CSSProperties = {
-    filter: `hue-rotate(${imageCropper.toneCropper}deg) sepia(10%)`,   
-    
+    filter: `hue-rotate(${imageCropper.toneCropper}deg) sepia(10%)`,
   };
 
   return (
@@ -58,7 +56,22 @@ export default function CropperPicture({ downloadResult }: Props) {
         ref={cropperRef}
         src={imageCropper?.urlImage}
         onChange={onChange}
+        onReady={() => {console.log("Cropper is ready")}}
         style={style}
+        stencilProps={{
+          handlers: {
+            n: true,
+            e: true,
+            s: true,
+            w: true,
+          },
+          lines: {
+            n: true,
+            e: true,
+            s: true,
+            w: true,
+          },
+        }}
       ></Cropper>
     </>
   );
