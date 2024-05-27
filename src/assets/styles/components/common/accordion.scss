@@ -1,6 +1,6 @@
 .accordion {
   color: var(--theme);
-  border-radius: 0.5rem;
+ 
   overflow: hidden;
 
   .tab {
@@ -15,7 +15,7 @@
       }
 
       &:checked ~ .tab__content {
-        max-height: 10rem;
+        height: auto;
       }
 
       &:checked + .tab__label::after {
@@ -24,7 +24,7 @@
     }
 
     &__content {
-      max-height: 0;
+      height: 0;
       overflow: hidden;
       transition: all 0.35s;
      
