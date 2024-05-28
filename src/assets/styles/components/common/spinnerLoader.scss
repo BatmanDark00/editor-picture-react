@@ -5,6 +5,9 @@
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
+  position: absolute;
+  z-index: 9999;
+
 
   @keyframes spin {
     0% {
