@@ -6,6 +6,8 @@ import { CropperRef, Cropper, Priority } from "react-advanced-cropper";
 import "react-advanced-cropper/dist/style.css";
 import "react-advanced-cropper/dist/themes/corners.css";
 
+import SpinnerLoaderBase from "@/components/common/SpinnerLoaderBase";
+
 import { setUrlImage, setImageCanvas } from "@/redux/imageCropperSlice";
 import { RootState } from "@/redux";
 
@@ -27,13 +29,7 @@ export default function CropperPicture({ downloadResult }: Props) {
   const dispatch = useDispatch();
 
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
-  const [defaultCoordinates, setDefaultCoordinates] =
-    useState<CoordinatesInterface>({
-      x: 0,
-      y: 0,
-      width: 400,
-      height: 400,
-    });
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (downloadResult) {
@@ -58,6 +54,7 @@ export default function CropperPicture({ downloadResult }: Props) {
 
   const onChange = (cropper: CropperRef) => {
     console.log("oNchabge", cropper.getCoordinates(), cropper.getCanvas());
+    setIsLoaded(true);
   };
 
   const onReady = (cropper: CropperRef) => {
@@ -67,13 +64,6 @@ export default function CropperPicture({ downloadResult }: Props) {
       return;
     }
     //Tamaño de la imagen
-
-    setDefaultCoordinates({
-      x: 0,
-      y: 0,
-      width: cropper.getCanvas()?.width ?? 0,
-      height: 100,
-    });
 
     console.log("Default Coordinates", cropper.getCanvas()?.width);
   };
@@ -91,6 +81,8 @@ export default function CropperPicture({ downloadResult }: Props) {
 
   return (
     <>
+      {!isLoaded && <SpinnerLoaderBase />}
+
       <Cropper
         ref={cropperRef}
         src={imageCropper?.urlImage}
