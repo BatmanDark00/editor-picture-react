@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "@/assets/styles/components/tool_menu_lateral/toolEdit.scss";
 
 import Accordion from "@/components/common/Accordion";
@@ -52,6 +52,8 @@ function reducer(state: State, action: Action): State {
 export default function ToolEdit() {
   const { t } = useTranslation();
   const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
+  const [isOpened, setIsOpened] = useState<boolean>(false);
 
   const renderComponent = () => {
     return state.component;
@@ -68,6 +70,7 @@ export default function ToolEdit() {
         titleComponent: t(titleComponent),
       },
     });
+    setIsOpened(true);
   };
 
   const clearComponent = () => {
@@ -78,6 +81,8 @@ export default function ToolEdit() {
         titleComponent: null,
       },
     });
+    setIsOpened(false);
+    setTimeout(() => setSelectedComponent(null), 500);
   };
 
   return (

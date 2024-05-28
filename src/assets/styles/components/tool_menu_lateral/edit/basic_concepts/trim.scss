@@ -1,7 +1,6 @@
 .trim-menu {
   display: flex;
   flex-direction: column;
-
   color: var(--text-color);
 
   .trim-menu-option {
@@ -11,13 +10,52 @@
     background-color: var(--secondary-100);
     padding: var(--spacing-s);
 
-    select {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid var(--border-color);
-
+    .selected-header {
       background-color: var(--background-color);
       color: var(--text-color);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      width: 100%;
+      padding: 6px;
+
+      &.focus-selected {
+        background-color: var(--color-secondary-button-hover);
+        transition: 0.4s ease-out;
+        background-position: 100% 0;
+        background-image: linear-gradient(
+          to left,
+          var(--secondary-100),
+          var(--secondary-200),
+          var(--secondary-300) var(--secondary-400)
+        );
+        border-color: solid 1px var(--secondary-300);;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+
+        i {
+          display: block;
+          transform: rotate(180deg);
+          transition: transform 0.3s ease-out;
+        }
+      }
+
+      span {
+        float: right;
+
+        i {
+          transition: 0.3s ease-out;
+        }
+      }
+
+    }
+
+    .section-selections {
+      position: absolute;
+      width: 12.2rem;
+      display: block;
+      height: 11rem;
+      top: 9rem;
+
     }
 
     .orientation-option {
@@ -37,3 +75,4 @@
     }
   }
 }
+

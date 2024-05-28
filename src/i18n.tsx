@@ -15,10 +15,10 @@ i18next
     debug: true,
 
     resources: {
-      en: {
+      English: {
         translation: en,
       },
-      es: {
+      Español: {
         translation: es,
       },
     },

@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/trim.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
+import SelectBase from "@/components/common/SelectBase";
 
 const listSizePhotos = [
   {
@@ -23,20 +25,54 @@ const listSizePhotos = [
     value: "cine",
     name: "Cine",
   },
+  {
+    id: 5,
+    value: "image 4:3",
+    name: "Imagen 4:3",
+  },
+  {
+    id: 6,
+    value: "image 4:5",
+    name: "Imagen 4:5",
+  },
 ];
 
 function Trim() {
+  const [selectedOption, setSelectedOption] = useState<string>("Forma Libre");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const list = listSizePhotos;
+
+  const handleChange = (selectedValue: string) => {
+    setSelectedOption(selectedValue);
+  };
+
+  const openSeletorClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="trim-menu">
       <div className="trim-menu-option">
-        <select>
-          {listSizePhotos.map((item) => (
-            <option value={item.value} key={item.id}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-
+        <div
+          className={`selected-header ${isOpen ? "focus-selected" : ""}`}
+          onClick={openSeletorClick}
+        >
+          {selectedOption}
+          <span>
+            <i className="fa-solid fa-angle-down"></i>
+          </span>
+        </div>
+        <div className="section-selections">
+          {isOpen && (
+            <SelectBase
+              onChange={handleChange}
+              options={list.map((item) => ({
+                value: item.value,
+                label: item.name,
+              }))}
+            />
+          )}
+        </div>
 
         <div className="orientation-option">
           <p className="title">Orientación</p>
@@ -46,7 +82,7 @@ function Trim() {
           </div>
         </div>
 
-       {/*  <div className="size-option">
+        {/*  <div className="size-option">
           <p className="text">anchura</p>
           <ButtonBase>32px</ButtonBase>
 

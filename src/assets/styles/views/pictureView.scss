@@ -46,6 +46,8 @@
     overflow: scroll;
     scroll-behavior: smooth;
     border-right: solid 1px var(--border-color);
+    width: 100%;
+    animation: width .2s ease-out;
   }
 
   .editor-cropper {
@@ -67,5 +69,11 @@
   .footer-plus {
     grid-column: 2/6;
     grid-row: 3 / 4;
+  }
+}
+
+@keyframes width {
+  0% {
+    width: 0%;
   }
 }
