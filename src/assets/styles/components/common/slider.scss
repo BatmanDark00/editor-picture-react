@@ -1,0 +1,45 @@
+/* input[type='range'] {
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    margin: 0rem 0 1.5rem 0.4rem;
+    width: 100%;
+
+    &:focus {
+     outline: none;
+    } 
+  } */
+
+.input-zoom::-webkit-slider-runnable-track {
+  background-color: lightblue;
+  border-radius: 0.4rem;
+  height: 2px;
+}
+
+.input-zoom::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -3px;
+  background-color: lightblue;
+  border-radius: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.input-zoom:focus::-webkit-slider-thumb {
+  transition: 0.4s ease-out;
+  background-color: rgb(255, 255, 255);
+  appearance: none;
+  margin-top: -3px;
+  border-radius: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.input-zoom:hover::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -3px;
+  background-color: lightblue;
+  border-radius: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+}

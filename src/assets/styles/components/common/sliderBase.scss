@@ -77,10 +77,15 @@ input[type='range'] {
     height: .6rem;
 }
 
-.input-zoom::-webkit-slider-runnable-track {
-    background-color: red;
+/* .input-zoom::-webkit-slider-runnable-track {
+    background-color: lightblue;
     border-radius: .4rem;
     height: 2px;
+}
+
+.input-zoom::-webkit-slider-thumb {
+    position: static;
+    background-color: aqua;
 }
 
 .input-zoom::-webkit-slider-thumb {
@@ -109,4 +114,4 @@ input[type='range'] {
     margin-top: -7px;
     height: 1rem;
     width: 1rem;
-}
+} */

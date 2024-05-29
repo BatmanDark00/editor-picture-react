@@ -47,7 +47,7 @@ function Trim() {
   };
 
   const openSeletorClick = () => {
-    setIsOpen(!isOpen);
+      setIsOpen(!isOpen)
   };
 
   return (
@@ -62,7 +62,7 @@ function Trim() {
             <i className="fa-solid fa-angle-down"></i>
           </span>
         </div>
-        <div className="section-selections">
+        <div className="section-selections" onClick={openSeletorClick}>
           {isOpen && (
             <SelectBase
               onChange={handleChange}

@@ -10,6 +10,7 @@ interface SelectProps {
   options: listOptions[];
   value?: string;
   onChange?: (value: string) => void;
+  onClick?: () => void;
 }
 
 function SelectBase({ options, onChange, value }: SelectProps) {
@@ -24,7 +25,7 @@ function SelectBase({ options, onChange, value }: SelectProps) {
 
   return (
     <>
-      <ul className="list-options">
+      <ul className="list-options" >
         {options.map((option, index) => (
           <li 
            key={index} 

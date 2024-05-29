@@ -43,11 +43,15 @@
     grid-row: 2 / 4;
     order: 0;
     padding: var(--spacing-s) var(--spacing-s);
-    overflow: scroll;
     scroll-behavior: smooth;
     border-right: solid 1px var(--border-color);
     width: 100%;
     animation: width .2s ease-out;
+  }
+
+  .asidebar-secondary {
+    width: 0%;
+    animation: .2s closed ease-out;
   }
 
   .editor-cropper {
@@ -75,5 +79,11 @@
 @keyframes width {
   0% {
     width: 0%;
+  }
+}
+
+@keyframes closed {
+  0% {
+    width: 100%;
   }
 }

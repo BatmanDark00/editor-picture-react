@@ -7,7 +7,8 @@
   border-radius: 4px;
   background-color: var(--background-color);
   color: var(--text-color);
-  overflow-y: scroll;
+  overflow: auto;
+  height: auto;
   max-height: 11rem;
   animation: height 0.3s ease-out;
   

@@ -47,7 +47,7 @@ export default function ChangeLocale() {
         {selectLenguage}
       </div>
 
-      <div className="select-lenguages">
+      <div className="select-lenguages" onClick={openSeletorClick}>
         {isOpen && (
           <SelectBase
             options={Object.keys(locales).map((key) => ({

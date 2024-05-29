@@ -12,6 +12,7 @@ import { useState } from "react";
 
 export default function MenuLateral() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const dispatch = useDispatch();
 
   const handleComponent = (component: string, index: number) => {
@@ -19,10 +20,14 @@ export default function MenuLateral() {
     setActiveIndex(index)
   };
 
+  const openListClick = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <div className="menu-lateral">
       <div className="section-actions">
-        <aside> 
+        <aside onClick={openListClick}> 
           <ul className="item-menu">
           {menuLateralData.map((menu, index) => (
               <li 
@@ -31,9 +36,10 @@ export default function MenuLateral() {
                onClick={() => handleComponent(menu.component, index)}
               >
                 <FontAwesomeIcon icon={menu.icon as IconProp} className="icon"/>
+               {isOpen && (
                 <a href="#" className="anchor">
                   {menu.text}
-                </a>
+                </a>)}
               </li>
            ))} 
            </ul>
