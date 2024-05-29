@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/trim.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
@@ -81,19 +81,6 @@ function Trim() {
             <ButtonBase>Paisaje</ButtonBase>
           </div>
         </div>
-
-        {/*  <div className="size-option">
-          <p className="text">anchura</p>
-          <ButtonBase>32px</ButtonBase>
-
-          <p className="text">Altura</p>
-          <ButtonBase>32px</ButtonBase>
-        </div>
-
-        <div className="option-aplication">
-          <ButtonBase className="cancel">Cancelar</ButtonBase>
-          <ButtonBase className="aplic">Aplicar</ButtonBase>
-        </div> */}
       </div>
     </div>
   );

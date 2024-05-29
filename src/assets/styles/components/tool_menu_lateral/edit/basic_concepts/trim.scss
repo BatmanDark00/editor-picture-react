@@ -28,7 +28,7 @@
           var(--secondary-200),
           var(--secondary-300) var(--secondary-400)
         );
-        border-color: solid 1px var(--secondary-300);;
+        border-color: solid 1px var(--secondary-300);
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
 
@@ -46,16 +46,6 @@
           transition: 0.3s ease-out;
         }
       }
-
-    }
-
-    .section-selections {
-      position: absolute;
-      width: 12.2rem;
-      display: block;
-      height: 11rem;
-      top: 9rem;
-
     }
 
     .orientation-option {
@@ -75,4 +65,3 @@
     }
   }
 }
-
