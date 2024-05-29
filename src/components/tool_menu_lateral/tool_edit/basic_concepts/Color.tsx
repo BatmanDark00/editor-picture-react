@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/color.scss";
-import ButtonBase from "@/components/common/ButtonBase";
+
 import SliderBase from "@/components/common/SliderBase";
 
 import { setToneCropper } from "@/redux/imageCropperSlice";
 
-export default function Color() {
+interface Props {
+  clearProperties: () => void;
+}
+
+export default function Color({ clearProperties }: Props) {
   const dispatch = useDispatch();
   const [tone, setTone] = useState<number>(0);
   const [saturation, setSaturation] = useState<number>(0);
   const [temperature, setTemperature] = useState<number>(0);
+
+  useEffect(() => {
+    clearPropertiesSelected();
+  }, [clearProperties]);
 
   const handleToneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTone(parseInt(event.target.value));
@@ -27,6 +35,12 @@ export default function Color() {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setTemperature(parseInt(event.target.value));
+  };
+
+  const clearPropertiesSelected = () => {
+    setTone(0);
+    setSaturation(0);
+    setTemperature(0);
   };
 
   return (
@@ -75,15 +89,6 @@ export default function Color() {
         max={100}
         onChange={handleTemperatureChange}
       />
-
-      <div className="section-optional">
-        <ButtonBase className="btn_elevated" textAlign="center">
-          Cancelar
-        </ButtonBase>
-        <ButtonBase className="btn_primary" textAlign="center">
-          Aplicar
-        </ButtonBase>
-      </div>
     </div>
   );
 }

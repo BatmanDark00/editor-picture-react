@@ -1,17 +1,15 @@
 .accordion {
-  color: var(--theme);
- 
+  color: var(--color-text);
   overflow: hidden;
-  margin-left: -4px;
 
   .tab {
     input {
       position: absolute;
       opacity: 0;
       z-index: -1;
-      
+
       &:checked + .tab__label {
-        background: var(--theme);
+        background: var(--background-color);
         color: var(--color-text);
       }
 
@@ -28,15 +26,14 @@
       height: 0;
       overflow: hidden;
       transition: all 0.35s;
-     
     }
 
     &__label,
     &__close {
       display: flex;
       color: var(--color-text);
-      background: var(--theme);
-      cursor: pointer;   
+      background: var(--background-color);
+      cursor: pointer;
 
       &:hover {
         color: var(--hover-color);

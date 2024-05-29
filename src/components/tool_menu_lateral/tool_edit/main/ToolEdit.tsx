@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "@/assets/styles/components/tool_menu_lateral/toolEdit.scss";
 
 import Accordion from "@/components/common/Accordion";
@@ -52,12 +52,6 @@ function reducer(state: State, action: Action): State {
 export default function ToolEdit() {
   const { t } = useTranslation();
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
-  const [isOpened, setIsOpened] = useState<boolean>(false);
-
-  const renderComponent = () => {
-    return state.component;
-  };
 
   const selectComponent = (
     component: React.ReactNode | null,
@@ -70,7 +64,6 @@ export default function ToolEdit() {
         titleComponent: t(titleComponent),
       },
     });
-    setIsOpened(true);
   };
 
   const clearComponent = () => {
@@ -81,20 +74,15 @@ export default function ToolEdit() {
         titleComponent: null,
       },
     });
-    setIsOpened(false);
-    setTimeout(() => setSelectedComponent(null), 500);
   };
 
   return (
     <>
       <div className="tool-edit">
         {state.component && (
-          <>
-            <ButtonBase onClick={() => clearComponent()}>
-              {" "}
-              <i className="fa-solid fa-arrow-left"></i> {state.titleComponent}
-            </ButtonBase>
-          </>
+          <ButtonBase onClick={() => clearComponent()} className="btn_tertiary">
+            <i className="fa-solid fa-arrow-left"></i> {state.titleComponent}
+          </ButtonBase>
         )}
 
         {!state.component && (
@@ -126,7 +114,22 @@ export default function ToolEdit() {
           </>
         )}
 
-        {renderComponent()}
+        {state.component}
+
+        {state.component && (
+          <div className="actions">
+            <ButtonBase
+              className="btn_elevated"
+              textAlign="center"
+              onClick={() => clearComponent()}
+            >
+              Cancelar
+            </ButtonBase>
+            <ButtonBase className="btn_primary" textAlign="center">
+              Aplicar
+            </ButtonBase>
+          </div>
+        )}
       </div>
     </>
   );
