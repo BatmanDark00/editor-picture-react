@@ -12,6 +12,10 @@ import dataToolEdit from "@/components/tool_menu_lateral/tool_edit/main/dataTool
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
+import { RootState } from "@/redux";
+import { useDispatch, useSelector } from "react-redux";
+import {  setComponentMain, setApplyChanges} from "@/redux/menuLateralEditSlice";
+
 interface State {
   component: React.ReactNode | null;
   titleComponent: string | null;
@@ -50,6 +54,11 @@ function reducer(state: State, action: Action): State {
 }
 
 export default function ToolEdit() {
+  const dispatchRedux = useDispatch();
+  const menuLateralEditSlice = useSelector(
+    (state: RootState) => state.menuLateralEdit
+  );
+
   const { t } = useTranslation();
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
@@ -64,9 +73,12 @@ export default function ToolEdit() {
         titleComponent: t(titleComponent),
       },
     });
+
+    dispatchRedux(setComponentMain(false));
+  
   };
 
-  const clearComponent = () => {
+  const resetComponent = (applyChangesValue:boolean) => {
     dispatch({
       type: "CLEAR_COMPONENT",
       payload: {
@@ -74,7 +86,19 @@ export default function ToolEdit() {
         titleComponent: null,
       },
     });
+  
+    dispatchRedux(setComponentMain(true));
+    dispatchRedux(setApplyChanges(applyChangesValue));
   };
+  
+  const clearComponent = () => {
+    resetComponent(false);
+  };
+  
+  const applyChanges = () => {
+    resetComponent(true);
+  };
+  
 
   return (
     <>
@@ -114,9 +138,9 @@ export default function ToolEdit() {
           </>
         )}
 
-        {state.component}
+        {!menuLateralEditSlice.isComponentMain && <>{state.component}</>}
 
-        {state.component && (
+        {!menuLateralEditSlice.isComponentMain && (
           <div className="actions">
             <ButtonBase
               className="btn_elevated"
@@ -125,7 +149,11 @@ export default function ToolEdit() {
             >
               Cancelar
             </ButtonBase>
-            <ButtonBase className="btn_primary" textAlign="center">
+            <ButtonBase
+              className="btn_primary"
+              textAlign="center"
+              onClick={applyChanges}
+            >
               Aplicar
             </ButtonBase>
           </div>

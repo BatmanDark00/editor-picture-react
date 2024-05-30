@@ -27,7 +27,7 @@ const dataToolEdit = {
           name: "menuLateral.toolEditor.color",
           icon: ["fas", "palette"],
 
-          component: <Color clearProperties={clearProperties} />,
+          component: <Color />,
         },
       ],
     },
