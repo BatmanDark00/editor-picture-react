@@ -11,7 +11,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/editor-picture/',
+  base: '/picshur',
   plugins: [million.vite({ auto: true }), react()],
   test: {
     environment: 'jsdom',

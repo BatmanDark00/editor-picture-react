@@ -6,11 +6,11 @@ import PictureView from '@/views/PictureView.tsx';
 
 const routes: RouteObject[] = [
     {
-      path: "/editor-picture/home",
+      path: "/picshur/",
       Component: HomeView,
     },
     {
-      path: "/editor-picture",
+      path: "/picshur/editor",
       Component: PictureView,
     },    
   
