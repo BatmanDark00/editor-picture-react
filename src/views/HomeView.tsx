@@ -5,6 +5,7 @@ import landscape from "@/assets/images/home/landscape.svg";
 import camera from "@/assets/images/home/camera.svg";
 
 import girlsFlowers from "@/assets/images/home/girls_flowers.png";
+import grid_girls from "@/assets/images/home/grid_girls.png";
 
 import ButtonBase from "@/components/common/ButtonBase";
 
@@ -46,7 +47,7 @@ function HomeView() {
           </div>
 
           <div className={homeViewModule.main__home_page_section__image}>
-            <img src={landscape} alt="landscape" />
+            <img src={grid_girls} alt="landscape" />
           </div>
         </section>
 
