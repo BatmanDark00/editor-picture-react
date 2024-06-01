@@ -1,14 +1,23 @@
 import { CSSProperties, useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { CropperRef, Cropper, Priority } from "react-advanced-cropper";
+import {
+  CircleStencil,
+  CropperRef,
+  Cropper,
+  Priority,
+} from "react-advanced-cropper";
 
 import "react-advanced-cropper/dist/style.css";
 import "react-advanced-cropper/dist/themes/corners.css";
 
 import SpinnerLoaderBase from "@/components/common/SpinnerLoaderBase";
 
-import { setUrlImage, setImageCanvas } from "@/redux/imageCropperSlice";
+import {
+  setUrlImage,
+  setImageCanvas,
+  setApplyCrop,
+} from "@/redux/imageCropperSlice";
 import { RootState } from "@/redux";
 
 interface Props {
@@ -31,12 +40,16 @@ export default function CropperPicture({ downloadResult }: Props) {
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const minAspectRatio = imageCropper?.stencilProps?.minAspectRatio ?? 0;
+  const maxAspectRatio = imageCropper?.stencilProps?.maxAspectRatio ?? 0;
+
   useEffect(() => {
-    if (downloadResult) {
+    if (imageCropper.isCrop) {
       //console.log("Descargando estoy a la escucha");
       onCrop();
+      dispatch(setApplyCrop(false));
     }
-  }, [downloadResult]);
+  });
 
   const onCrop = () => {
     if (cropperRef.current) {
@@ -91,18 +104,7 @@ export default function CropperPicture({ downloadResult }: Props) {
         style={style}
         defaultSize={defaultSize}
         stencilProps={{
-          handlers: {
-            n: true,
-            e: true,
-            s: true,
-            w: true,
-          },
-          lines: {
-            n: true,
-            e: true,
-            s: true,
-            w: true,
-          },
+          aspectRatio: minAspectRatio / maxAspectRatio,
           grid: true,
         }}
       ></Cropper>

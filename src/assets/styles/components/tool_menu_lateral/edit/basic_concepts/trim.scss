@@ -26,7 +26,8 @@
           to left,
           var(--secondary-100),
           var(--secondary-200),
-          var(--secondary-300) var(--secondary-400)
+          var(--secondary-300),
+          var(--secondary-400)
         );
         border-color: solid 1px var(--secondary-300);
         border-bottom-left-radius: 0px;
@@ -46,15 +47,13 @@
           transition: 0.3s ease-out;
         }
       }
-
-  }
+    }
 
     .section-selections {
       position: absolute;
       width: 12.55rem;
       display: block;
       top: 8.5rem;
-
     }
 
     .orientation-option {
@@ -70,6 +69,38 @@
         display: flex;
         flex-direction: row;
         gap: 1rem;
+      }
+    }
+
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background-color: var(--secondary-100);
+      color: var(--text-color);
+    }
+
+    .preview-container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      height: 100px;
+      align-items: center;
+
+      .preview-box {
+        border: 1px solid var(--border-color);
+        background-color: var(--background-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.75rem;
+        color: var(--text-color);
+        max-width: 100px;
+        max-height: 100px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
       }
     }
   }

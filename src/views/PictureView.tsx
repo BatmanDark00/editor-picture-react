@@ -10,7 +10,7 @@ import MenuHeader from "@/components/picture/MenuHeader";
 import MenuLateral from "@/components/picture/MenuLateral";
 import UploadFile from "@/components/common/UploadFile";
 
-import { setUrlImage } from "@/redux/imageCropperSlice";
+import { setUrlImage, setApplyCrop } from "@/redux/imageCropperSlice";
 import { RootState } from "@/redux";
 
 export default function PictureView() {
@@ -39,7 +39,9 @@ export default function PictureView() {
   };
 
   const downloadImage = () => {
+  //  dispatch(setApplyCrop(true));
     setDownloadResult(true);
+
   };
 
   return (

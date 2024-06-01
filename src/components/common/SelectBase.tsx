@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "@/assets/styles/components/common/selectBase.scss";
 
 interface listOptions {
@@ -14,7 +14,9 @@ interface SelectProps {
 }
 
 function SelectBase({ options, onChange, value }: SelectProps) {
-    const [selectedOption, setSelectedOption] = useState<string | undefined>(value);
+  const [selectedOption, setSelectedOption] = useState<string | undefined>(
+    value
+  );
 
   const handleItemClick = (selectedValue: string) => {
     setSelectedOption(selectedValue);
@@ -25,12 +27,13 @@ function SelectBase({ options, onChange, value }: SelectProps) {
 
   return (
     <>
-      <ul className="list-options" >
+      <ul className="list-options">
         {options.map((option, index) => (
-          <li 
-           key={index} 
-           onClick={() => handleItemClick(option.label || "")} 
-           className={option.label === selectedOption ? "selected" : ""}>
+          <li
+            key={index}
+            onClick={() => handleItemClick(option.label || "")}
+            className={option.value === selectedOption ? "selected" : ""}
+          >
             {option.label}
           </li>
         ))}
