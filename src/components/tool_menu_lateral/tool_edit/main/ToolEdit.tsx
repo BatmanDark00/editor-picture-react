@@ -95,10 +95,10 @@ export default function ToolEdit() {
     resetComponent(false);
   };
   
-  const applyChanges = () => {
+ /*  const applyChanges = () => {
     resetComponent(true);
   };
-  
+   */
 
   return (
     <>
@@ -140,7 +140,7 @@ export default function ToolEdit() {
 
         {!menuLateralEditSlice.isComponentMain && <>{state.component}</>}
 
-        {!menuLateralEditSlice.isComponentMain && (
+      {/*   {!menuLateralEditSlice.isComponentMain && (
           <div className="actions">
             <ButtonBase
               className="btn_elevated"
@@ -157,7 +157,7 @@ export default function ToolEdit() {
               Aplicar
             </ButtonBase>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

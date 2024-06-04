@@ -1,27 +1,25 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import homeViewModule from "@/assets/styles/views/homeView.module.scss";
-import landscape from "@/assets/images/home/landscape.svg";
-import camera from "@/assets/images/home/camera.svg";
-
 import girlsFlowers from "@/assets/images/home/girls_flowers.png";
+import grid_girls from "@/assets/images/home/grid_girls.png";
 
 import ButtonBase from "@/components/common/ButtonBase";
 
 import Header from "@/components/home/Header.tsx";
+import Footer from "@/components/home/Footer";
 
 function HomeView() {
-
   const navigate = useNavigate();
-  const handleClick = () => navigate('/picshur/editor');
+  const handleClick = () => navigate("/picshur/editor");
 
   return (
     <>
       <Header />
 
       <main className={homeViewModule.main}>
-        <section className={homeViewModule.main__home_page_section}>
-          <div className={homeViewModule.main__home_page_section__title}>
+        <section className={homeViewModule.main__section_one}>
+          <div className={homeViewModule.main__section_one__content}>
             <h1>Transforma tus fotos con Picshur</h1>
             <h3>
               De retoques simples a transformaciones creativas,{" "}
@@ -31,7 +29,7 @@ function HomeView() {
 
             <div
               className={
-                homeViewModule.main__home_page_section__title__acccess_picture
+                homeViewModule.main__section_one__content__acccess_picture
               }
             >
               <ButtonBase
@@ -45,27 +43,27 @@ function HomeView() {
             </div>
           </div>
 
-          <div className={homeViewModule.main__home_page_section__image}>
-            <img src={landscape} alt="landscape" />
+          <div className={homeViewModule.main__section_one__image}>
+            <img src={grid_girls} alt="landscape" />
           </div>
         </section>
 
-        <section className={homeViewModule.main__home_page_section_two}>
-          <div className={homeViewModule.main__home_page_section_two__image}>
+        <section className={homeViewModule.main__section_two}>
+          <div className={homeViewModule.main__section_two__image}>
             <img src={girlsFlowers} alt="camera" />
           </div>
 
-          <div className={homeViewModule.main__home_page_section_two__content}>
+          <div className={homeViewModule.main__section_two__content}>
             <p
               className={
-                homeViewModule.main__home_page_section_two__content__title
+                homeViewModule.main__section_two__content__title
               }
             >
-              Explora Efectos Únicos en Picshur
+              Explora efectos únicos en Picshur
             </p>
             <p
               className={
-                homeViewModule.main__home_page_section_two__content__description
+                homeViewModule.main__section_two__content__description
               }
             >
               Descubre una amplia variedad de efectos creativos en Picshur y
@@ -76,6 +74,8 @@ function HomeView() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </>
   );
 }

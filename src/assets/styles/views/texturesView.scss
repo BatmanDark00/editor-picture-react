@@ -1,0 +1,107 @@
+@function randomBokeh($size: 100, $spread: 3) {
+  // $randomColor: rgba(random() * 255, random() * 255, random() * 255, random());
+  $randomColor: rgba(255, 255, 255, random());
+  $singleBokeh: radial-gradient(
+    random() * $size + px at random() * $size * $spread + px random() * $size *
+      $spread + px,
+    $randomColor,
+    $randomColor 96%,
+    transparent
+  );
+  @return $singleBokeh;
+}
+
+@function gimmeBokehs($howMany: 10, $size: 100, $spread: 3) {
+  $bgList: ();
+  @for $i from 1 through $howMany {
+    $bgList: append($bgList, randomBokeh($size, $spread), comma);
+  }
+  @return $bgList;
+}
+
+.textures-view {
+  background-color: rgb(253, 251, 251);
+  color: black;
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+
+    figure {
+      margin: 0 10px;
+      font-size: 1.5em;
+      max-width: 600px;
+      max-height: 600px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .image-color-blend {
+      height: auto;
+      background-size: contain;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-image: url("https://images.unsplash.com/photo-1717144618589-720502c350f9?q=80&w=1970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        -webkit-filter: invert(1);
+        filter: invert(1);
+        height: 600px;
+        background-size: cover;
+        mix-blend-mode: color;
+      }
+    }
+
+    .image-play-hue {
+      height: auto;
+      background-size: cover;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-image: url("https://images.unsplash.com/photo-1717496376319-ee3d354ac2d8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        -webkit-filter: invert(1);
+        filter: invert(5) saturate(0.78) hue-rotate(100deg);
+        height: 600px;
+        background-size: cover;
+        mix-blend-mode: color;
+      }
+    }
+
+    .image-texture {
+      height: auto;
+      background-size: cover;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: gimmeBokehs(20, 80, 10);
+        -webkit-filter: invert(1);
+        filter: sepia(0.5) opacity(0.3);
+        height: 100%;
+      }
+    }
+
+    .bokehs {
+      width: 300px;
+      height: 400px;
+      //background: gimmeBokehs(20, 60, 10);
+    }
+  }
+}
