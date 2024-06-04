@@ -1,16 +1,55 @@
 import { useState } from "react";
 import "@/assets/styles/components/picture/menuFooter.scss";
-import Slider from "@/components/common/Slider"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ButtonBase from "../common/ButtonBase";
+import SliderZoom from "@/components/common/SliderZoom";
 
 export default function MenuFooter() {
-  const [temperature, setTemperature] = useState<number>(0);
+  const [sliderZoom, setSliderZoom] = useState<number>(0);
+  const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
 
-  const handleTemperatureChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setTemperature(parseInt(event.target.value));
+  const handleZoomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSliderZoom(parseInt(e.target.value));
   };
+
+  const handleOnkeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setSliderZoom(parseInt(sliderZoom.toString()));
+    }
+    console.log(sliderZoom, "entrando");
+  };
+
+  const moreZoom = () => {
+    setSliderZoom((m) => Math.min(m + 20, 200));
+  };
+
+  const lessZoom = () => {
+    setSliderZoom((m) => Math.max(m - 20, 0));
+  };
+
+
+  const expandFullScreen = () => {
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen();
+    }
+    setIsFullScreen(true);
+  };
+
+  const exitFullScreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+    setIsFullScreen(false);
+  };
+
 
   return (
     <>
@@ -28,32 +67,55 @@ export default function MenuFooter() {
         </div>
 
         <div>
-          <button disabled>
-            <FontAwesomeIcon icon={["fas", "expand"]} />
-          </button>
-          <button disabled>
-            {" "}
-            <FontAwesomeIcon icon={["fas", "compress"]} />
-          </button>
-          <button disabled>
-            <FontAwesomeIcon icon={["fas", "minus"]} />
-          </button>
-          <div className="section-slider">
-            <Slider
-              className="input-zoom"
-              value={temperature}
-              min={-100}
-              max={100}
-              onChange={handleTemperatureChange}
-            />
+          <div className="div-buttom-expand">
+            <ButtonBase
+              onClick={expandFullScreen}
+            >
+              <FontAwesomeIcon icon={["fas", "expand"]} />
+            </ButtonBase>
           </div>
-          <button disabled>
-            {" "}
-            <FontAwesomeIcon icon={["fas", "plus"]} />
-          </button>
-          <button disabled>
-            <FontAwesomeIcon icon={["fas", "bars"]} />
-          </button>
+          <div className="div-buttom-compress">
+            <ButtonBase
+              onClick={exitFullScreen}
+            >
+              <FontAwesomeIcon icon={["fas", "compress"]} />
+            </ButtonBase>
+          </div>
+          <div className="div-buttom-minus">
+            <ButtonBase onClick={lessZoom}>
+              <FontAwesomeIcon icon={["fas", "minus"]} />
+            </ButtonBase>
+          </div>
+          <div className="section-slider">
+            <SliderZoom
+              min={0}
+              max={200}
+              value={sliderZoom}
+              onChange={handleZoomChange}
+            />
+            <div
+              className="div-range-slider-zoom"
+              style={{ width: `${sliderZoom}px` }}
+            >
+              {sliderZoom}
+            </div>
+          </div>
+          <div className="div-buttom-plus">
+            <ButtonBase onClick={moreZoom}>
+              <FontAwesomeIcon icon={["fas", "plus"]} />
+            </ButtonBase>
+          </div>
+          <div className="slider-data">
+            <input
+              type="number"
+              value={sliderZoom}
+              className="input-slider-zoom"
+              onChange={handleZoomChange}
+              onKeyDown={handleOnkeyDown}
+              // onBlur={handleInputBlur}
+            />
+            <span className="value-minus">%</span>
+          </div>
         </div>
 
         <div>

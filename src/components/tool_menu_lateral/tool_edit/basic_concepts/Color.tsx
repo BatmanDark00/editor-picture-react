@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/color.scss";
 
-import ButtonBase from "@/components/common/ButtonBase";
 import SliderBase from "@/components/common/SliderBase";
 
 import { setToneCropper } from "@/redux/imageCropperSlice";
@@ -73,7 +72,7 @@ export default function Color() {
         />
 
         <p>Temperatura</p>
-        <div className="section-slider-change">
+         <div className="section-slider-change">
           <p>
             {temperature}
             <span>%</span>
@@ -85,7 +84,7 @@ export default function Color() {
           min={-100}
           max={100}
           onChange={handleTemperatureChange}
-        />
+        /> 
       </div>
     </>
   );

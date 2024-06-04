@@ -79,7 +79,7 @@ export default function PictureView() {
       </section>
 
       <section className={imageCropper.urlImage ? "footer" : "footer-plus"}>
-       {/*  <MenuFooter /> */}
+        <MenuFooter /> 
       </section>
     </main>
   );

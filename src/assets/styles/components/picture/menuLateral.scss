@@ -6,8 +6,6 @@
     background-color: var(--background-color);
     display: flex;
     flex-direction: row;
-   // border-right: 1px solid;
-   // border-color: var(--border-color);
     z-index: 1;
     overflow: hidden;
 
@@ -90,10 +88,10 @@
     }
 
     @keyframes reverseAside {
-      0% {
+      from {
         width: 140px;
       }
-      100% {
+      to {
         width: 0px;
       }
     }

@@ -1,0 +1,48 @@
+.slider-zoom[type="range"] {
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.input-zoom::-webkit-slider-runnable-track {
+  background-color: lightblue;
+  border-radius: 0.4rem;
+  height: 4px;
+}
+
+.input-zoom::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -4.5px;
+  background-color: hsl(247, 85%, 8%);
+  border-radius: 50%;
+  height: 13px;
+  width: 13px;
+  outline: 2px solid lightblue;
+  z-index: 3;
+  position: relative;
+}
+
+.input-zoom:focus::-webkit-slider-thumb {
+  transition: 0.4s ease-out;
+  background-color: hsl(247, 85%, 8%);
+  outline: 3px solid lightblue;
+  margin-top: -5px;
+  height: 15px;
+  width: 15px;
+  outline: 2px solid lightblue;
+}
+
+.input-zoom:hover::-webkit-slider-thumb {
+  transition: 0.4s ease-out;
+  background-color: hsl(247, 85%, 8%);
+  outline: 3px solid lightblue;
+  margin-top: -5px;
+  height: 15px;
+  width: 15px;
+  outline: 2px solid lightblue;
+}

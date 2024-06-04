@@ -20,6 +20,15 @@ export default function MenuLateral() {
     setActiveIndex(index)
   };
 
+
+  const handleMouseEnter = () => {
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsOpen(false);
+  };
+
   const openListClick = () => {
     setIsOpen(!isOpen)
   }
@@ -27,7 +36,10 @@ export default function MenuLateral() {
   return (
     <div className="menu-lateral">
       <div className="section-actions">
-        <aside onClick={openListClick}> 
+        <aside 
+         onMouseEnter={handleMouseEnter} 
+         onMouseLeave={handleMouseLeave} 
+         onClick={openListClick}> 
           <ul className="item-menu">
           {menuLateralData.map((menu, index) => (
               <li 
