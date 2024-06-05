@@ -1,0 +1,117 @@
+.containerFilter {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  max-height: 87vh;
+  margin-left: 2px;
+  border-radius: 4px;
+
+  .divFilter {
+    display: block;
+    margin-top: 6px;
+    border-radius: 4px;
+    height: 8.2rem;
+    width: 13.2rem;
+
+    &.actived {
+        animation: aparicion 0.4s ease-out 1 ;
+    }
+
+    &.disabled {
+        animation: aparicionReverse 0.4s ease-out 1 ;
+    }
+
+    figure {
+      display: flex;
+      flex-direction: column;
+      height: 8rem;
+      width: 100%;
+
+      &:hover {
+        cursor: pointer;
+
+        .img {
+          transition: 0.4s ease-out;
+          opacity: 0.8;
+        }
+
+        .figcaption {
+          transition: 0.4s ease-out;
+          background-color: var(--secondary-300);
+        }
+      }
+
+      .img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+      }
+
+      .figcaption {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-color);
+        background-color: var(--secondary-200);
+        padding: 10px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        position: relative;
+        bottom: 2rem;
+      }
+    }
+
+    .divOption {
+      place-items: center;
+      width: 80%;
+
+      .divInput {
+        position: relative;
+        top: 2rem;
+        left: 0.6rem;
+
+        .divRange {
+            font-size: 4px;
+            color: transparent;
+            position: absolute;
+            bottom: 23.5px;
+            left: 7px;
+            background-color: aliceblue;
+            border-radius: 4px;
+            max-width: 100%;
+        }
+      }
+
+      .divButtonSelect {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        place-content: center;
+        width: 100%;
+        top: 2rem;
+        left: 1rem;
+      }
+    }
+  }
+}
+
+//Por ahora estas animaciones
+@keyframes aparicion {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}
+
+@keyframes aparicionReverse {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
