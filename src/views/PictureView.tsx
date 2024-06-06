@@ -39,23 +39,20 @@ export default function PictureView() {
   };
 
   const downloadImage = () => {
-  //  dispatch(setApplyCrop(true));
+    //  dispatch(setApplyCrop(true));
     setDownloadResult(true);
-
   };
 
   return (
     <main className="picture-view">
       <section className="header">
-         <MenuHeader
+        <MenuHeader
           saveCropper={downloadImage}
           onFileUpload={handleFileUpload}
-        /> 
+        />
       </section>
 
-      <section className="menu-lateral">
-        <MenuLateral />
-      </section>
+      <section className="menu-lateral">  <MenuLateral /> </section>
 
       {imageCropper.urlImage && (
         <section className="menu-lateral-secondary">
@@ -69,7 +66,7 @@ export default function PictureView() {
         }
       >
         {!imageCropper.urlImage && (
-          <div className="upload-image">
+          <div>
             <UploadFile onFileUpload={handleFileUpload} />
           </div>
         )}
@@ -81,7 +78,7 @@ export default function PictureView() {
       </section>
 
       <section className={imageCropper.urlImage ? "footer" : "footer-plus"}>
-        <MenuFooter /> 
+        {<MenuFooter />}
       </section>
     </main>
   );

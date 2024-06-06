@@ -1,6 +1,5 @@
 .upload-file {
   display: flex;
-  
 
   flex-direction: row;
   align-items: center;
@@ -12,5 +11,10 @@
     max-width: 50vh;
     object-fit: cover;
     cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
+      padding: 2rem;
+    }
   }
 }
