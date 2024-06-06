@@ -46,10 +46,10 @@ export default function PictureView() {
   return (
     <main className="picture-view">
       <section className="header">
-        <MenuHeader
+         <MenuHeader
           saveCropper={downloadImage}
           onFileUpload={handleFileUpload}
-        />
+        /> 
       </section>
 
       <section className="menu-lateral">  <MenuLateral /> </section>

@@ -55,15 +55,15 @@ export default function MenuFooter() {
     <>
       <footer id="menu-footer">
         <div>
-          <button disabled>
+           <ButtonBase disabled>
             <FontAwesomeIcon icon={["fas", "layer-group"]} />
-          </button>
-          <button disabled>
+          </ButtonBase>
+           <ButtonBase disabled>
             <FontAwesomeIcon icon={["fas", "clone"]} />
-          </button>
-          <button disabled>
+          </ButtonBase>
+           <ButtonBase disabled>
             <FontAwesomeIcon icon={["fas", "border-all"]} />
-          </button>
+          </ButtonBase>
         </div>
 
         <div>

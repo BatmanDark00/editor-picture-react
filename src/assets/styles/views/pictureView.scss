@@ -68,11 +68,13 @@
     grid-column: 3/6;
     grid-row: 3 / 4;
     border-top: solid 1px var(--border-color);
+    
   }
 
   .footer-plus {
     grid-column: 2/6;
     grid-row: 3 / 4;
+    border-top: solid 1px var(--border-color);
   }
 
   @media screen and (max-width: 768px) {
@@ -121,6 +123,7 @@
       grid-column-start: 1;
       grid-column-end: 3;
        background-color: rgb(17, 185, 185);
+       display: none;
     }
 
     .footer-plus{
@@ -129,6 +132,7 @@
       grid-column-start: 1;
       grid-column-end: 3;
       background-color: rgb(17, 185, 185); 
+      display: none;
     }
     
   }
