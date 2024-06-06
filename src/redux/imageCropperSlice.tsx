@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ImageCropperState {
   urlImage: string;
   imageCanvas?: string;
-  toneCropper?: number;
+  toneCropper?: string;
+  toneTypeCropper?: string;
+  filterValCropper?: number;
   stencilProps?: {
     minAspectRatio?: number | 0;
     maxAspectRatio?: number | 0;
@@ -19,7 +21,9 @@ interface StencilProps {
 const initialState: ImageCropperState = {
   urlImage: "",
   imageCanvas: "",
-  toneCropper: 0,
+  toneCropper: "",
+  toneTypeCropper: "",
+  filterValCropper: 0,
   stencilProps: {
     minAspectRatio: 0,
     maxAspectRatio: 0,
@@ -39,9 +43,19 @@ export const imageCropperSlice = createSlice({
       state.imageCanvas = action.payload;
     },
 
-    setToneCropper: (state, action: PayloadAction<number>) => {
+    setToneCropper: (state, action: PayloadAction<string>) => {
       state.toneCropper = action.payload;
       console.log("Tone", state.toneCropper);
+    },
+
+    setToneTypeCropper: (state, action: PayloadAction<string>) => {
+      state.toneTypeCropper = action.payload;
+      console.log("Type", state.toneTypeCropper);
+    },
+
+    setFilterValCropper: (state, action: PayloadAction<number>) => {
+      state.filterValCropper = action.payload;
+      console.log("Color", state.filterValCropper);
     },
 
     setStencilProps: (state, action: PayloadAction<StencilProps>) => {
@@ -58,6 +72,6 @@ export const imageCropperSlice = createSlice({
   },
 });
 
-export const { setUrlImage, setImageCanvas, setToneCropper, setStencilProps, setApplyCrop } =
+export const { setUrlImage, setImageCanvas, setToneCropper, setToneTypeCropper, setFilterValCropper, setStencilProps, setApplyCrop } =
   imageCropperSlice.actions;
 export default imageCropperSlice.reducer;

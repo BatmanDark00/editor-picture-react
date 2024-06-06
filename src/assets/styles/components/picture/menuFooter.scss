@@ -36,10 +36,12 @@
   }
 
   .section-slider {
-    display: block;
+    display: flex;
     position: relative;
     width: 12rem;
     margin-right: 10px;
+    float: left;
+    top: 0.7rem;
 
     .div-range-slider-zoom {
       font-size: 4px;

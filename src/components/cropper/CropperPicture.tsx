@@ -89,7 +89,7 @@ export default function CropperPicture({ downloadResult }: Props) {
   };
 
   const style: CSSProperties = {
-    filter: `hue-rotate(${imageCropper.toneCropper}deg) sepia(10%)`,
+    filter: `${imageCropper.toneCropper}(${imageCropper.filterValCropper}${imageCropper.toneTypeCropper})`,
   };
 
   return (

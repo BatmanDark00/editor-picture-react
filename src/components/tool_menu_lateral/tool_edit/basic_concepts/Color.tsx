@@ -4,88 +4,97 @@ import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/color.s
 
 import SliderBase from "@/components/common/SliderBase";
 
-import { setToneCropper } from "@/redux/imageCropperSlice";
+import { setToneCropper, setFilterValCropper, setToneTypeCropper } from "@/redux/imageCropperSlice";
 import { setComponentMain } from "@/redux/menuLateralEditSlice";
+
+const listsFiltersColors = [
+  {
+    id: 0,
+    nameValue: "hue-rotate",
+    name: "Tone",
+    className: "input-tone",
+    typeVal: "°",
+    type: "deg",
+    min: 0,
+    max: 360,
+  },
+  {
+    id: 1,
+    nameValue: "saturate",
+    name: "Saturation",
+    className: "input-saturation",
+    typeVal: "%",
+    type: "%",
+    min: 0,
+    max: 300,
+  },
+  {
+    id: 2,
+    nameValue: "sepia",
+    name: "Temperature",
+    className: "input-temperature",
+    typeVal: "%",
+    type: "%",
+    min: 0,
+    max: 100,
+  }
+]
 
 export default function Color() {
   const dispatch = useDispatch();
-  const [tone, setTone] = useState<number>(0);
-  const [saturation, setSaturation] = useState<number>(0);
-  const [temperature, setTemperature] = useState<number>(0);
+  const [toneFilter, setToneFilter] = useState<number[]>(Array(listsFiltersColors.length).fill(0));
+  const [selectFilterColor, setSelectFilterColor] = useState(listsFiltersColors[0].id)
 
-  const handleToneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTone(parseInt(event.target.value));
-    dispatch(setToneCropper(parseInt(event.target.value)));
+  const handleColorsChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const newValue = [...toneFilter];
+    newValue[index] = parseInt(event.target.value)
+    setToneFilter(newValue);
+    dispatch(setFilterValCropper(parseInt(event.target.value)));
+
+    const selectedValue = parseInt(event.target.value);
+    setSelectFilterColor(selectedValue);
+
+    const selectFilter = listsFiltersColors.find(
+      (item) => item.id === index);
+
+      if (selectFilter){
+        dispatch(setToneCropper(selectFilter.nameValue));
+        dispatch(setToneTypeCropper(selectFilter.type));
+      }
   };
 
-  const handleSaturationChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSaturation(parseInt(event.target.value));
-  };
-
-  const handleTemperatureChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setTemperature(parseInt(event.target.value));
-  };
-
+/*  
   const clearPropertiesSelected = () => {
     setTone(0);
     setSaturation(0);
     setTemperature(0);
 
     dispatch(setComponentMain(true));
-  };
+  };*/
 
   return (
     <>
-      <div className="menu-color">
-        <p>Tono</p>
-        <div className="section-slider-change">
-          <p>
-            {tone}
-            <span>°</span>
-          </p>
+    <div className="menu-color">
+      {listsFiltersColors.map((item, index) => (
+        <div className="container-input-color">
+          <p>{item.name}</p>
+          <div className="section-slider-change">
+           <p>{toneFilter[index]}
+             <span>{item.typeVal}</span>
+           </p>
+         </div>
+         
+         <SliderBase
+           key={item.id}
+           className={item.className}
+           value={toneFilter[index]}
+           min={item.min}
+           max={item.max}
+           onChange={(e) => handleColorsChange(e, index)}
+         />
         </div>
-        <SliderBase
-          className="input-tone"
-          value={tone}
-          min={-180}
-          max={180}
-          onChange={handleToneChange}
-        />
-
-        <p>Saturacion</p>
-        <div className="section-slider-change">
-          <p>
-            {saturation}
-            <span>%</span>
-          </p>
-        </div>
-        <SliderBase
-          className="input-saturation"
-          value={saturation}
-          min={-100}
-          max={100}
-          onChange={handleSaturationChange}
-        />
-
-        <p>Temperatura</p>
-         <div className="section-slider-change">
-          <p>
-            {temperature}
-            <span>%</span>
-          </p>
-        </div>
-        <SliderBase
-          className="input-temperature"
-          value={temperature}
-          min={-100}
-          max={100}
-          onChange={handleTemperatureChange}
-        /> 
-      </div>
+        ))}
+    </div>
     </>
   );
 }
