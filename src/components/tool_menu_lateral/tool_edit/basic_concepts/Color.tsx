@@ -6,6 +6,8 @@ import SliderBase from "@/components/common/SliderBase";
 
 import { setToneCropper, setFilterValCropper, setToneTypeCropper } from "@/redux/imageCropperSlice";
 import { setComponentMain } from "@/redux/menuLateralEditSlice";
+import { setApplyStyles} from "@/redux/imageCropperSlice";
+import ButtonBase from "@/components/common/ButtonBase";
 
 const listsFiltersColors = [
   {
@@ -63,6 +65,11 @@ export default function Color() {
       }
   };
 
+
+  const applyStyles = () => {
+    dispatch(setApplyStyles(true));
+  }
+
 /*  
   const clearPropertiesSelected = () => {
     setTone(0);
@@ -95,6 +102,15 @@ export default function Color() {
         </div>
         ))}
     </div>
+
+    <ButtonBase
+          className="btn_primary"
+          textAlign="center"
+          size="small"
+          onClick={applyStyles}
+        >
+          Aplicar
+        </ButtonBase>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { s } from "vitest/dist/reporters-LqC_WI4d.js";
 
 interface ImageCropperState {
   urlImage: string;
@@ -11,6 +12,7 @@ interface ImageCropperState {
     maxAspectRatio?: number | 0;
   };
   isCrop?: boolean;
+  isApplyStyles?: boolean;
 }
 
 interface StencilProps {
@@ -29,6 +31,8 @@ const initialState: ImageCropperState = {
     maxAspectRatio: 0,
   },
   isCrop: false,
+  isApplyStyles: false,
+  
 };
 
 export const imageCropperSlice = createSlice({
@@ -40,6 +44,7 @@ export const imageCropperSlice = createSlice({
     },
 
     setImageCanvas: (state, action: PayloadAction<string>) => {
+      console.log("imagen canva");
       state.imageCanvas = action.payload;
     },
 
@@ -65,13 +70,15 @@ export const imageCropperSlice = createSlice({
     },
 
     setApplyCrop: (state, action: PayloadAction<boolean>) => {
-      state.isCrop = action.payload;
-
-      
+      state.isCrop = action.payload;      
     },
+
+    setApplyStyles: (state, action: PayloadAction<boolean>) => {
+      state.isApplyStyles = action.payload;
+    }
   },
 });
 
-export const { setUrlImage, setImageCanvas, setToneCropper, setToneTypeCropper, setFilterValCropper, setStencilProps, setApplyCrop } =
+export const { setUrlImage, setImageCanvas, setToneCropper, setToneTypeCropper, setFilterValCropper, setStencilProps, setApplyCrop, setApplyStyles } =
   imageCropperSlice.actions;
 export default imageCropperSlice.reducer;
