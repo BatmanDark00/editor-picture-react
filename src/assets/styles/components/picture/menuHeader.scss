@@ -1,22 +1,12 @@
 .menu-header {
-  font-family: "Mulish", "Avenir Next", "Trebuchet MS", sans-serif;
-  //height: 56px;
-  background-color: var(--background-color);
-  align-items: center;
-  align-content: center;
-
-  //border-color: #858585;
-  width: 100%;
-  height: 100%;
+  padding: var(--spacing-s);
 
   .nav-bar {
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
-    gap: 22rem;
     flex-direction: row;
     justify-content: space-between;
+    //   background-color: red;
 
     .links {
       list-style: none;
@@ -54,15 +44,14 @@
       }
 
       &-menu {
-        display: block;
         position: absolute;
-        top: 35px;
         left: 0;
-        background-color: var(--background-color);
+        margin-top: 0.7rem;
+        background-color: var(--secondary-100);
         z-index: 1;
         width: 200px;
         border-radius: 5px;
-        box-shadow: 2px 2px 3px, 4px 2px 4px var(--shadow-color-dark);
+        box-shadow: var(--shadow-elevation-1);
         padding: 6px 10px;
         font-size: 14px;
         opacity: 1;
@@ -142,6 +131,17 @@
           border-radius: 3px;
           transition: 0.5s ease-in-out;
         }
+
+        @media screen and (max-width: 768px) {
+          position: fixed;
+          bottom: 1rem;
+          right: 0;
+          width: 90%;
+          margin: auto;
+          li {
+            padding: 1rem;
+          }
+        }
       }
     }
 
@@ -220,43 +220,5 @@
 
   input[type="file"] {
     display: none;
-  }
-
-  dialog {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: auto;
-    padding: 1rem;
-    border: 0.5px solid var(--shadow-color-dark);
-    backdrop-filter: blur(5px);
-    width: 50rem;
-    height: 40rem;
-    overflow: hidden;
-    border-radius: 4px;
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      padding: auto;
-      height: 2rem;
-
-      .close {
-        margin: -0.7rem -0.7rem 0 0;
-        cursor: pointer;
-      }
-    }
-
-    &:hover {
-      animation: 1.5s aparicion 1;
-    }
-  }
-
-  @keyframes aparicion {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.8;
-    }
   }
 }

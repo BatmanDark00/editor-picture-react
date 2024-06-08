@@ -79,7 +79,7 @@
 
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 3rem 3rem 1fr 3rem;
+    grid-template-rows: 3rem 4rem 5rem 1fr 3rem;
     height: 100vh;
     
     .menu-lateral{
@@ -94,27 +94,27 @@
     .menu-lateral-secondary{
       grid-column-start: 1;
       grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 3 ;
+      grid-row-start: 3;
+      grid-row-end: 4 ;
       border: none;
 
-     /*  background-color: rgb(155, 19, 182); */
+      background-color: rgb(182, 19, 19); 
     }
 
     .editor-cropper{
-      grid-row-start: 3;
-      grid-row-end: 4;
+      grid-row-start: 4;
+      grid-row-end: 5;
       grid-column-start: 1;
       grid-column-end: 3;
-      background-color: rgb(173, 41, 140); 
+     // background-color: rgb(173, 41, 140); 
     }
 
    .editor-cropper-plus{
-      grid-row-start: 3;
-      grid-row-end: 4;
+      grid-row-start: 4;
+      grid-row-end: 5;
       grid-column-start: 1;
       grid-column-end: 3;
-      background-color: rgb(173, 41, 140); 
+      //background-color: rgb(173, 41, 140); 
     }
 
     .footer{

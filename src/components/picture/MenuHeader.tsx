@@ -14,7 +14,7 @@ import ModalBase from "@/components/common/ModalBase";
 
 interface Props {
   saveCropper: () => void;
-  accept?: string;
+  accept?: string;CHAG
   onFileUpload: (file: File) => void;
 }
 
@@ -91,7 +91,7 @@ export default function MenuHeader({
 
   return (
     <>
-      <div className="menu-header">
+      <section className="menu-header">
         <nav className="nav-bar">
           <div>
             <a onClick={handleOpenMenuEdit}>
@@ -155,7 +155,7 @@ export default function MenuHeader({
             <Toggle />
           </div>
         </nav>
-      </div>
+      </section>
 
       <ModalBase
         idModal="modal-unplash"
