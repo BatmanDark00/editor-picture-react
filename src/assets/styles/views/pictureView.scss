@@ -79,7 +79,7 @@
 
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 4rem 3rem 5rem 1fr 3rem;
+    grid-template-rows: 4rem 5rem 5rem 1fr 3rem;
     height: 100vh;
     
     .menu-lateral{
@@ -88,7 +88,7 @@
       grid-row-start: 2;
       grid-row-end: 3 ;
     
-      background-color: rgb(13, 103, 155); 
+     
     }
 
     .menu-lateral-secondary{

@@ -36,13 +36,13 @@ export default function MenuHeader({
     age: 20,
   };
 
-  useEffect(() => {
+ /*  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, []); */
 
   const handleOpenMenuEdit = () => {
     const customEvent = new CustomEvent("openMenuEdit", { detail: user });
@@ -65,13 +65,15 @@ export default function MenuHeader({
   function handleClickFile() {
     if (inputRef.current) {
       inputRef.current.click();
-      setIsOpen(false);
+      console.log("click file");
+    
     }
+     
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
-
+    
     if (file) {
       onFileUpload(file);
     }
