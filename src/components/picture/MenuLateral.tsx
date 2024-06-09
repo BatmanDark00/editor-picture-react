@@ -40,7 +40,7 @@ export default function MenuLateral() {
           onMouseLeave={handleMouseLeave}
           onClick={openListClick}
         >
-          <ul className="item-menu-desktop">
+          <ul className="item-menu">
             {menuLateralData.map((menu, index) => (
               <li
                 className={
@@ -58,27 +58,11 @@ export default function MenuLateral() {
                     {menu.text}
                   </a>
                 )}
+                <p className="text">{menu.text}</p>
               </li>
             ))}
           </ul>
-
-          <ul className="item-menu-mobile">
-            {menuLateralData.map((menu, index) => (
-              <li
-                className={
-                  index === activeIndex ? "item-menu-li active" : "item-menu-li"
-                }
-                key={index}
-                onClick={() => handleComponent(menu.component, index)}
-              >
-                <FontAwesomeIcon
-                  icon={menu.icon as IconProp}
-                  className="icon"
-                />
-                {menu.text}
-              </li>
-            ))}
-          </ul>
+      
 
           <div className="clear-fixed"></div>
         </aside>
