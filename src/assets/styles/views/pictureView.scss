@@ -79,7 +79,7 @@
 
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 3rem 4rem 5rem 1fr 3rem;
+    grid-template-rows: 4rem 3rem 5rem 1fr 3rem;
     height: 100vh;
     
     .menu-lateral{
@@ -87,8 +87,8 @@
       grid-column-end: 3;
       grid-row-start: 2;
       grid-row-end: 3 ;
-      border: none;
-     /*  background-color: rgb(27, 131, 35); */
+    
+      background-color: rgb(13, 103, 155); 
     }
 
     .menu-lateral-secondary{
@@ -114,7 +114,7 @@
       grid-row-end: 5;
       grid-column-start: 1;
       grid-column-end: 3;
-      //background-color: rgb(173, 41, 140); 
+      background-color: rgb(173, 41, 140); 
     }
 
     .footer{
@@ -135,17 +135,5 @@
       display: none;
     }
     
-  }
-}
-
-@keyframes width {
-  0% {
-    width: 0%;
-  }
-}
-
-@keyframes closed {
-  0% {
-    width: 100%;
   }
 }

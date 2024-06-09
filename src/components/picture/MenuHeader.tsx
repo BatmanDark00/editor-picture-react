@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "@/assets/styles/components/picture/menuHeader.scss";
@@ -14,7 +14,7 @@ import ModalBase from "@/components/common/ModalBase";
 
 interface Props {
   saveCropper: () => void;
-  accept?: string;CHAG
+  accept?: string;
   onFileUpload: (file: File) => void;
 }
 
@@ -36,6 +36,14 @@ export default function MenuHeader({
     age: 20,
   };
 
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleOpenMenuEdit = () => {
     const customEvent = new CustomEvent("openMenuEdit", { detail: user });
     window.dispatchEvent(customEvent);
@@ -46,9 +54,18 @@ export default function MenuHeader({
     setMenuType(type);
   };
 
+  const handleClickOutside = (e: MouseEvent) => {
+    console.log("click outside");
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+
   function handleClickFile() {
     if (inputRef.current) {
       inputRef.current.click();
+      setIsOpen(false);
     }
   }
 
@@ -103,14 +120,55 @@ export default function MenuHeader({
             <li
               className="dropdown"
               id="open"
-              onClick={() => toggleDropdown("open")}
+              onClick={() => toggleDropdown("open")}             
               ref={dropdownRef}
             >
-              {t("common.open")} 
+
+             <span className="version-desktop"> {t("common.open")} </span>
               <FontAwesomeIcon
                 icon={["fas", "chevron-down"]}
-                className="dropdown-rown"
+                className="dropdown-rown version-desktop"
               />
+              
+              <FontAwesomeIcon
+                icon={["fas", "folder-open"]}
+                className="version-mobile"
+              />
+
+
+              {isOpen && (menuType === "open" || menuType === "plus") && (
+                <ul className="dropdown-menu" onClick={handleClickInside}>
+                  <li className="drop-title">
+                    <h4> {t("menuHeader.newImage")}</h4>
+                  </li>
+                  <li className="dropdown-li">
+                    <a
+                      href="#"
+                      className="dropdown-link"
+                      onClick={handleClickFile}
+                    >
+                      <FontAwesomeIcon
+                        icon={["fas", "desktop"]}
+                        className="plus"
+                      />
+                       {t("menuHeader.computer")} <span>Ctrl+O</span>
+                      <input
+                        id="input-file"
+                        className="input-file-change"
+                        type="file"
+                        accept={accept}
+                        ref={inputRef}
+                        onChange={handleFileChange}
+                      />
+                    </a>
+                  </li>
+
+                  <li className="dropdown-li" onClick={openDialog}>
+                    <i className="fa-brands fa-unsplash"></i>
+                     {t("menuHeader.unsplash")}
+                  </li>
+                </ul>
+              )}              
               {isOpen && (menuType === "open" || menuType === "plus") && (
                 <ul className="dropdown-menu" onClick={handleClickInside}>
                   <li className="drop-title">
@@ -146,7 +204,13 @@ export default function MenuHeader({
             </li>
 
             <li className="dropdown" id="save" onClick={handleModalSaveFile}>
-              {t("common.save")}
+              <span className="version-desktop">{t("common.save")}</span>
+            
+
+              <FontAwesomeIcon
+                icon={["fas", "download"]}
+                className="version-mobile"
+                ></FontAwesomeIcon>
             </li>
           </ul>
 

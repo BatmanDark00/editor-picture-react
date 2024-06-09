@@ -6,7 +6,8 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    //   background-color: red;
+    align-content: center; 
+
 
     .links {
       list-style: none;
@@ -18,6 +19,10 @@
       position: relative;
       display: inline-block;
       margin-right: 20px;
+
+      .version-mobile{
+        display: none;
+      }
 
       .dropdown-rown {
         margin-left: 8px;
@@ -143,6 +148,18 @@
           }
         }
       }
+
+      @media screen and (max-width: 768px) {
+        .version-desktop {
+          display: none;
+        }
+
+        .version-mobile {
+          display: inline-block;
+          font-size: 20px;
+        }
+        
+      }
     }
 
     #open {
@@ -179,6 +196,7 @@
         transition: 0.5s ease-in-out;
       }
     }
+    
     a {
       color: var(--text-color);
     }
