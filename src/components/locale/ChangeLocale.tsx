@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import "@/assets/styles/components/locale/changeLocale.scss";
@@ -19,7 +19,7 @@ export default function ChangeLocale() {
     <img src={traductor} alt="Traductor" />
   );
   const { i18n } = useTranslation();
-  const locales: { [key: string]: Locale } = {
+  const locales: { [key: string]: Locale } = useMemo(() => ({
     English: {
       nativeName: "English",
       locale: "en",
@@ -30,7 +30,11 @@ export default function ChangeLocale() {
       locale: "es",
       flag: <img src={spain} alt="ES" />,
     },
-  };
+  }), []);
+
+  useEffect(() => {
+    setSelectLenguaje(locales[i18n.language]?.flag);
+  }, [i18n?.language, locales]);
 
   const handleChangeLenguaje = (value: string) => {
     i18n.changeLanguage(value);
