@@ -35,7 +35,7 @@ interface CoordinatesInterface {
 export default function CropperPicture({ downloadResult }: Props) {
   const cropperRef = useRef<CropperRef>(null);
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
-
+ 
   const dispatch = useDispatch();
 
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
@@ -134,9 +134,25 @@ export default function CropperPicture({ downloadResult }: Props) {
     };
   };
 
+/*    const FilterStyle = (): CSSProperties => {
+    const { toneCropper, filterValCropper, toneTypeCropper } = imageCropper;
+
+    if (imageCropper.isApplyStyles) {
+      return {
+        filter: `${toneCropper}(${filterValCropper}${toneTypeCropper}) 
+                 ${toneCropper}(${filterValCropper}${toneTypeCropper}) 
+                 ${toneCropper}(${filterValCropper}${toneTypeCropper})`,
+      };
+    } else {
+      return {
+        filter: `${toneCropper}(${filterValCropper}${toneTypeCropper})`,
+      };
+    }
+  };  */
+
   const style: CSSProperties = {
     filter: `${imageCropper.toneCropper}(${imageCropper.filterValCropper}${imageCropper.toneTypeCropper})`,
-  };
+  }
 
   return (
     <>

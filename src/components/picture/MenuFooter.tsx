@@ -9,7 +9,8 @@ export default function MenuFooter() {
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
 
   const handleZoomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSliderZoom(parseInt(e.target.value));
+    setSliderZoom(parseInt(e.target.value))
+    
   };
 
   const handleOnkeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

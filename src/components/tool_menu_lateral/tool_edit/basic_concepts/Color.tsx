@@ -4,9 +4,13 @@ import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/color.s
 
 import SliderBase from "@/components/common/SliderBase";
 
-import { setToneCropper, setFilterValCropper, setToneTypeCropper } from "@/redux/imageCropperSlice";
+import {
+  setToneCropper,
+  setFilterValCropper,
+  setToneTypeCropper,
+} from "@/redux/imageCropperSlice";
 import { setComponentMain } from "@/redux/menuLateralEditSlice";
-import { setApplyStyles} from "@/redux/imageCropperSlice";
+import { setApplyStyles } from "@/redux/imageCropperSlice";
 import ButtonBase from "@/components/common/ButtonBase";
 
 const listsFiltersColors = [
@@ -39,38 +43,43 @@ const listsFiltersColors = [
     type: "%",
     min: 0,
     max: 100,
-  }
-]
+  },
+];
 
 export default function Color() {
   const dispatch = useDispatch();
-  const [toneFilter, setToneFilter] = useState<number[]>(Array(listsFiltersColors.length).fill(0));
-  const [selectFilterColor, setSelectFilterColor] = useState(listsFiltersColors[0].id)
+  const [filtersValues, setFiltersValues] = useState<number[]>(
+    Array(listsFiltersColors.length).fill(0)
+  );
+   const [selectFilterColor, setSelectFilterColor] = useState(
+    listsFiltersColors[0].id
+  ); 
 
-  const handleColorsChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    const newValue = [...toneFilter];
-    newValue[index] = parseInt(event.target.value)
-    setToneFilter(newValue);
+  const handleColorsChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const newValue = [...filtersValues];
+    newValue[index] = parseInt(event.target.value);
+    setFiltersValues(newValue);
     dispatch(setFilterValCropper(parseInt(event.target.value)));
 
     const selectedValue = parseInt(event.target.value);
     setSelectFilterColor(selectedValue);
 
-    const selectFilter = listsFiltersColors.find(
-      (item) => item.id === index);
+    const selectFilter = listsFiltersColors.find((item) => item.id === index);
 
-      if (selectFilter){
-        dispatch(setToneCropper(selectFilter.nameValue));
-        dispatch(setToneTypeCropper(selectFilter.type));
-      }
+    if (selectFilter) {
+      dispatch(setToneCropper(selectFilter.nameValue));
+      dispatch(setToneTypeCropper(selectFilter.type));
+    }
   };
-
 
   const applyStyles = () => {
     dispatch(setApplyStyles(true));
-  }
+  };
 
-/*  
+  /*  
   const clearPropertiesSelected = () => {
     setTone(0);
     setSaturation(0);
@@ -81,36 +90,36 @@ export default function Color() {
 
   return (
     <>
-    <div className="menu-color">
-      {listsFiltersColors.map((item, index) => (
-        <div className="container-input-color">
-          <p>{item.name}</p>
-          <div className="section-slider-change">
-           <p>{toneFilter[index]}
-             <span>{item.typeVal}</span>
-           </p>
-         </div>
-         
-         <SliderBase
-           key={item.id}
-           className={item.className}
-           value={toneFilter[index]}
-           min={item.min}
-           max={item.max}
-           onChange={(e) => handleColorsChange(e, index)}
-         />
-        </div>
-        ))}
-    </div>
+      <div className="menu-color">
+        {listsFiltersColors.map((item, index) => (
+          <div className="container-input-color" key={item.id}>
+            <p>{item.name}</p>
+            <div className="section-slider-change">
+              <p>
+                {filtersValues[index]}
+                <span>{item.typeVal}</span>
+              </p>
+            </div>
 
-    <ButtonBase
-          className="btn_primary"
-          textAlign="center"
-          size="small"
-          onClick={applyStyles}
-        >
-          Aplicar
-        </ButtonBase>
+            <SliderBase
+              className={item.className}
+              value={filtersValues[index]}
+              min={item.min}
+              max={item.max}
+              onChange={(e) => handleColorsChange(e, index)}
+            />
+          </div>
+        ))}
+      </div>
+
+      <ButtonBase
+        className="btn_primary"
+        textAlign="center"
+        size="small"
+        onClick={applyStyles}
+      >
+        Aplicar
+      </ButtonBase>
     </>
   );
 }

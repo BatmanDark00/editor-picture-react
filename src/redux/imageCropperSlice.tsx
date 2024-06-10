@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { s } from "vitest/dist/reporters-LqC_WI4d.js";
 
 interface ImageCropperState {
   urlImage: string;
