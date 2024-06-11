@@ -86,7 +86,7 @@ function Filters() {
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
   const [indexVal, setIndexVal] = useState<number | null>(null);
   const [filtersVal, setFiltersVal] = useState<number[]>(
-    Array(dataFilterComponent.length).fill(50)
+    Array(dataFilterComponent.length).fill(400)
   );
   const [selectFilterColor, setSelectFilterColor] = useState(
     dataFilterComponent[0].id
@@ -147,7 +147,7 @@ function Filters() {
                 index === indexVal ? "var(--secondary-200)" : ""
               }`,
             }}
-            key={item.id}
+            key={index}
             onClick={() => handleOptionClick(index)}
           >
             {index === indexVal ? (
@@ -167,10 +167,10 @@ function Filters() {
                   </div>
                 </div>
                 <div className={styles.divButtonSelect}>
-                  <ButtonBase onClick={() => handleCloseOptionClick(index)}>
+                  <ButtonBase textAlign="center" onClick={() => handleCloseOptionClick(index)}>
                     <FontAwesomeIcon icon={["fas", "xmark"]} />
                   </ButtonBase>
-                  <ButtonBase className="btn_primary" onClick={applyStyles}>
+                  <ButtonBase textAlign="center" className="btn_primary" onClick={applyStyles}>
                     <FontAwesomeIcon icon={["fas", "check"]} />
                   </ButtonBase>
                 </div>
@@ -184,7 +184,7 @@ function Filters() {
                   src={imageCropper?.urlImage}
                   alt={`picture with ${item.title}`}
                   className={styles.img}
-                  style={{ filter: `${item.nameValue}(${filtersVal[index]}%)` }}
+                  style={{ filter: `${item.nameValue}(${filtersVal[index]}${item.type})` }}
                 />
                 <figcaption className={styles.figcaption}>
                   {item.title}
