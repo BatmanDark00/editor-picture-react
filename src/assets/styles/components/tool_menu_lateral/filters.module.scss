@@ -117,11 +117,12 @@
   .containerFilter {
     display: flex;
     flex-direction: row;
-    gap: 1rem;    
-    height: 5cm;
+    gap: 1rem;   
+    height: 10rem; 
+   
 
     .divFilter {
-      min-width: 8rem;
+      min-width: 10rem;
       height: 5rem;
     }
   }

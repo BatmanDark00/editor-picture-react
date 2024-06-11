@@ -31,6 +31,52 @@ const dataToolEdit = {
         },
       ],
     },
+
+    {
+      id: "accordion2",
+      name: "accordion2",
+      title: "menuLateral.toolEditor.basicConcepts",
+      open: true,
+      actions: [
+        {
+          name: "common.cut",
+          icon: ["fas", "crop"],
+          get clearProperties() {
+            return clearProperties;
+          },
+          component: <Trim />,
+        },
+        {
+          name: "menuLateral.toolEditor.color",
+          icon: ["fas", "palette"],
+
+          component: <Color />,
+        },
+      ],
+    },
+
+    {
+      id: "accordion3",
+      name: "accordion3",
+      title: "menuLateral.toolEditor.basicConcepts",
+      open: true,
+      actions: [
+        {
+          name: "common.cut",
+          icon: ["fas", "crop"],
+          get clearProperties() {
+            return clearProperties;
+          },
+          component: <Trim />,
+        },
+        {
+          name: "menuLateral.toolEditor.color",
+          icon: ["fas", "palette"],
+
+          component: <Color />,
+        },
+      ],
+    },
   ],
 };
 

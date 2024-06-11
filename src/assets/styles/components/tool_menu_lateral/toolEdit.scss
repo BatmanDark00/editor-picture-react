@@ -3,10 +3,33 @@
   animation: slide-in-fwd-center 1s ease;
 
   .actions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    margin-top: 1rem;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tool-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    .accordion {
+      display: none;
+    }
+    .actions {
+      display: flex;
+      flex-direction: row;    
+      overflow: auto;
+      column-gap: 0.5rem;
+      
+
+      .buttons {  
+        margin-bottom: var(--spacing-s);      
+        min-width: 8rem;
+        min-height: 2rem;
+        
+      }
+    }
   }
 }
 

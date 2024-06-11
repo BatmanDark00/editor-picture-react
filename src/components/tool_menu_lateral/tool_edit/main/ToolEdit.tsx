@@ -14,7 +14,10 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 import { RootState } from "@/redux";
 import { useDispatch, useSelector } from "react-redux";
-import {  setComponentMain, setApplyChanges} from "@/redux/menuLateralEditSlice";
+import {
+  setComponentMain,
+  setApplyChanges,
+} from "@/redux/menuLateralEditSlice";
 
 interface State {
   component: React.ReactNode | null;
@@ -75,10 +78,9 @@ export default function ToolEdit() {
     });
 
     dispatchRedux(setComponentMain(false));
-  
   };
 
-  const resetComponent = (applyChangesValue:boolean) => {
+  const resetComponent = (applyChangesValue: boolean) => {
     dispatch({
       type: "CLEAR_COMPONENT",
       payload: {
@@ -86,16 +88,16 @@ export default function ToolEdit() {
         titleComponent: null,
       },
     });
-  
+
     dispatchRedux(setComponentMain(true));
     dispatchRedux(setApplyChanges(applyChangesValue));
   };
-  
+
   const clearComponent = () => {
     resetComponent(false);
   };
-  
- /*  const applyChanges = () => {
+
+  /*  const applyChanges = () => {
     resetComponent(true);
   };
    */
@@ -135,12 +137,36 @@ export default function ToolEdit() {
                 ))}
               </Accordion>
             ))}
+
+            <div className="actions">
+              {dataToolEdit.accordions.map((accordion) => (
+                <>
+                  {accordion.actions.map((action) => (
+                    <div className="buttons">
+                      <ButtonBase
+                        key={action.name}
+                        className="btn_elevated"
+                        size="large"
+                        textAlign="center"
+                        onClick={() =>
+                          selectComponent(action.component, action.name)
+                        }
+                      >
+                        {" "}
+                        <FontAwesomeIcon icon={action.icon as IconProp} />
+                        <span> {t(action.name)}</span>
+                      </ButtonBase>
+                    </div>
+                  ))}
+                </>
+              ))}
+            </div>
           </>
         )}
 
         {!menuLateralEditSlice.isComponentMain && <>{state.component}</>}
 
-      {/*   {!menuLateralEditSlice.isComponentMain && (
+        {/*   {!menuLateralEditSlice.isComponentMain && (
           <div className="actions">
             <ButtonBase
               className="btn_elevated"

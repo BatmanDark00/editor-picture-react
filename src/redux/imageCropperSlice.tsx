@@ -31,7 +31,6 @@ const initialState: ImageCropperState = {
   },
   isCrop: false,
   isApplyStyles: false,
-  
 };
 
 export const imageCropperSlice = createSlice({
@@ -69,15 +68,23 @@ export const imageCropperSlice = createSlice({
     },
 
     setApplyCrop: (state, action: PayloadAction<boolean>) => {
-      state.isCrop = action.payload;      
+      state.isCrop = action.payload;
     },
 
     setApplyStyles: (state, action: PayloadAction<boolean>) => {
       state.isApplyStyles = action.payload;
-    }
+    },
   },
 });
 
-export const { setUrlImage, setImageCanvas, setToneCropper, setToneTypeCropper, setFilterValCropper, setStencilProps, setApplyCrop, setApplyStyles } =
-  imageCropperSlice.actions;
+export const {
+  setUrlImage,
+  setImageCanvas,
+  setToneCropper,
+  setToneTypeCropper,
+  setFilterValCropper,
+  setStencilProps,
+  setApplyCrop,
+  setApplyStyles,
+} = imageCropperSlice.actions;
 export default imageCropperSlice.reducer;
