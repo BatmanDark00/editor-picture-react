@@ -1,10 +1,19 @@
 import { useState } from "react";
+
+import { isNumber } from "react-advanced-cropper";
+
 import "@/assets/styles/components/picture/menuFooter.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ButtonBase from "../common/ButtonBase";
 import SliderZoom from "@/components/common/SliderZoom";
 
-export default function MenuFooter() {
+interface ZoomProps {
+  zoom?: number;
+  onZoom?: (value: number, transitions?: boolean) => void;
+  disabled?: unknown;
+}
+
+export default function MenuFooter({ onZoom, zoom }: ZoomProps) {
   const [sliderZoom, setSliderZoom] = useState<number>(0);
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
 
@@ -20,13 +29,13 @@ export default function MenuFooter() {
     console.log(sliderZoom, "entrando");
   };
 
-  const moreZoom = () => {
+   const moreZoom = () => {
     setSliderZoom((m) => Math.min(m + 20, 200));
   };
 
   const lessZoom = () => {
     setSliderZoom((m) => Math.max(m - 20, 0));
-  };
+  }; 
 
 
   const expandFullScreen = () => {
