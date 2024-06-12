@@ -46,7 +46,7 @@
           background-color: var(--secondary-300);
         }
       }
-    }
+    } 
 
 
     .div-buttons-cut {
@@ -79,8 +79,6 @@
         filter: brightness(70%);
         max-width: 195px;
         max-height: 80px;
-        min-width: 10px;
-        min-height: 20px;
         position: absolute;
         top: 1.8rem;
       }
@@ -142,5 +140,106 @@
     width: 0px;
     height: 0px;
     opacity: 1;
+  }
+}
+
+@media screen and (width >= 769px) {
+  .trim-menu-option {
+    display: block;
+    height: 100%;
+    max-height: 80vh;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .trim-menu-option {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-height: 140px;
+    flex-direction: row;
+    overflow-y: hidden;
+
+    .preview-container {
+      display: block;
+      max-width: 160px;
+      height: 120px;
+      width: 100%;
+
+      &.animated {
+        display: flex;
+        width: 160px;
+        height: 120px;
+        animation: 0.4s ease-out sizeOn 1;
+        border-radius: 4px;
+        margin-left: auto;
+        padding-right: 160px;
+      }
+
+      &.not-animated {
+          animation: 0.4s ease-out reverseSize 1;
+          margin-right: 10.5rem;
+      } 
+
+      .div-buttons-cut {
+        display: flex;
+        width: 100%;
+        position: absolute;
+      }
+
+     .container-preview-cut {
+      display: flex;
+
+       .button-transparent {
+         width: 160px;
+         height: 120px;
+       }
+
+       .preview-box {
+        display: block;
+        position: absolute;
+        max-width: 130px;
+        margin-right: 2rem;
+       }
+ 
+       .figure-cut {
+         width: 160px;
+         height: 100px;
+ 
+         .image-preview-cut {
+           width: 100%;
+           height: 100px;
+           min-height: 120px;
+         }
+ 
+         .figcaption-cut {
+           display: flex;
+           align-items: center;
+           font-size: 12px;
+           padding: 6px;
+           height: 2rem;
+           bottom: 1.6rem;
+         }
+       }
+     }
+    }
+  }
+
+  @keyframes sizeOn {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.6;
+    }
+  }
+  
+  @keyframes reverseSize {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
