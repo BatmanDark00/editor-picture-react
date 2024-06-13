@@ -9,7 +9,7 @@ import InputBase from "@/components/common/InputBase";
 
 import unplashService from "@/services/unplashService";
 
-import { setImageCropper } from "@/redux/imageCropperSlice";
+import { setImageCropper, setUrlImage } from "@/redux/imageCropperSlice";
 
 interface Props {
   isOpenUnsplash: boolean;
@@ -88,6 +88,7 @@ export default function Unsplash({ isOpenUnsplash, closeUnsplash }: Props) {
 
   const sendImageCropper = (url: string) => {
     dispatch(setImageCropper(url));
+    dispatch(setUrlImage(url));
     closeDialog();
   };
 
