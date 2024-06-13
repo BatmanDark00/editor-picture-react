@@ -10,7 +10,11 @@ import MenuHeader from "@/components/picture/MenuHeader";
 import MenuLateral from "@/components/picture/MenuLateral";
 import UploadFile from "@/components/common/UploadFile";
 
-import { setUrlImage, setApplyCrop } from "@/redux/imageCropperSlice";
+import {
+  setUrlImage,
+  setImageCropper,
+  setApplyCrop,
+} from "@/redux/imageCropperSlice";
 import { RootState } from "@/redux";
 
 export default function PictureView() {
@@ -32,6 +36,7 @@ export default function PictureView() {
     reader.onload = () => {
       if (reader.result) {
         dispatch(setUrlImage(reader.result as string));
+        dispatch(setImageCropper(reader.result as string));
       }
     };
 
@@ -46,13 +51,16 @@ export default function PictureView() {
   return (
     <main className="picture-view">
       <section className="header">
-         <MenuHeader
+        <MenuHeader
           saveCropper={downloadImage}
           onFileUpload={handleFileUpload}
-        /> 
+        />
       </section>
 
-      <section className="menu-lateral">  <MenuLateral /> </section>
+      <section className="menu-lateral">
+        {" "}
+        <MenuLateral />{" "}
+      </section>
 
       {imageCropper.urlImage && (
         <section className="menu-lateral-secondary">

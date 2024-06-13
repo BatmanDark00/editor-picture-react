@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ImageCropperState {
   urlImage: string;
-  imageCanvas?: string;
+  imageCropper: string;
   toneCropper?: string;
   toneTypeCropper?: string;
   filterValCropper?: number;
@@ -21,7 +21,7 @@ interface StencilProps {
 
 const initialState: ImageCropperState = {
   urlImage: "",
-  imageCanvas: "",
+  imageCropper: "",
   toneCropper: "",
   toneTypeCropper: "",
   filterValCropper: 0,
@@ -41,9 +41,9 @@ export const imageCropperSlice = createSlice({
       state.urlImage = action.payload;
     },
 
-    setImageCanvas: (state, action: PayloadAction<string>) => {
-      console.log("imagen canva");
-      state.imageCanvas = action.payload;
+    setImageCropper: (state, action: PayloadAction<string>) => {
+      console.log("imagen canva xd",action.payload);
+      state.imageCropper = action.payload;
     },
 
     setToneCropper: (state, action: PayloadAction<string>) => {
@@ -79,7 +79,7 @@ export const imageCropperSlice = createSlice({
 
 export const {
   setUrlImage,
-  setImageCanvas,
+  setImageCropper,
   setToneCropper,
   setToneTypeCropper,
   setFilterValCropper,
