@@ -22,7 +22,7 @@ export default function CropperResult() {
   ];
 
   const resultCropper = () => {
-    if (imageCropper?.imageCanvas) return downloadImageCanvas();
+    if (imageCropper?.imageCropper) return downloadImageCanvas();
 
     return downloadImageCropper();
   };
@@ -30,14 +30,14 @@ export default function CropperResult() {
   const downloadImageCanvas = () => {
     const link = document.createElement("a");
     link.download = `${nameFile}.${extension}`;
-    link.href = imageCropper?.imageCanvas ?? "";
+    link.href = imageCropper?.imageCropper ?? "";
     link.click();
   };
 
   const downloadImageCropper = () => {
     const link = document.createElement("a");
     link.download = `${nameFile}.${extension}`;
-    link.href = imageCropper?.urlImage ?? "";
+    link.href = imageCropper?.imageCropper ?? "";
     link.click();
   };
 
@@ -49,7 +49,7 @@ export default function CropperResult() {
     <>
       <div className="cropper-result">
         <div className="content">
-          <img src={imageCropper?.urlImage} alt="result"></img>
+          <img src={imageCropper?.imageCropper} alt="result"></img>
         </div>
 
         <div className="save-image">

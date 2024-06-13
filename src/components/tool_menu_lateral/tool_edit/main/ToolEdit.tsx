@@ -97,94 +97,65 @@ export default function ToolEdit() {
     resetComponent(false);
   };
 
-  /*  const applyChanges = () => {
-    resetComponent(true);
-  };
-   */
-
   return (
-    <>
-      <div className="tool-edit">
-        {state.component && (
-          <ButtonBase onClick={() => clearComponent()} className="btn_tertiary">
-            <i className="fa-solid fa-arrow-left"></i> {state.titleComponent}
-          </ButtonBase>
-        )}
+    <div className="tool-edit">
+      {state.component && (
+        <ButtonBase onClick={clearComponent} className="btn_tertiary">
+          <i className="fa-solid fa-arrow-left"></i> {state.titleComponent}
+        </ButtonBase>
+      )}
 
-        {!state.component && (
-          <>
-            <Typography variant="h3">{t(dataToolEdit.title)}</Typography>
+      {!state.component && (
+        <>
+          <Typography variant="h3">{t(dataToolEdit.title)}</Typography>
 
-            {dataToolEdit.accordions.map((accordion) => (
-              <Accordion
-                key={accordion.id}
-                id={accordion.id}
-                name={accordion.name}
-                title={t(accordion.title)}
-                open={accordion.open}
-              >
-                {accordion.actions.map((action) => (
-                  <ButtonBase
-                    key={action.name}
-                    onClick={() =>
-                      selectComponent(action.component, action.name)
-                    }
-                  >
-                    {" "}
-                    <FontAwesomeIcon icon={action.icon as IconProp} />
-                    <span> {t(action.name)}</span>
-                  </ButtonBase>
-                ))}
-              </Accordion>
-            ))}
-
-            <div className="actions">
-              {dataToolEdit.accordions.map((accordion) => (
-                <>
-                  {accordion.actions.map((action) => (
-                    <div className="buttons">
-                      <ButtonBase
-                        key={action.name}
-                        className="btn_elevated"
-                        size="large"
-                        textAlign="center"
-                        onClick={() =>
-                          selectComponent(action.component, action.name)
-                        }
-                      >
-                        {" "}
-                        <FontAwesomeIcon icon={action.icon as IconProp} />
-                        <span> {t(action.name)}</span>
-                      </ButtonBase>
-                    </div>
-                  ))}
-                </>
+          {dataToolEdit.accordions.map((accordion) => (
+            <Accordion
+              key={accordion.id}
+              id={accordion.id}
+              name={accordion.name}
+              title={t(accordion.title)}
+              open={accordion.open}
+            >
+              {accordion.actions.map((action) => (
+                <ButtonBase
+                  key={action.name}
+                  onClick={() =>
+                    selectComponent(action.component, action.name)
+                  }
+                >
+                  <FontAwesomeIcon icon={action.icon as IconProp} />
+                  <span> {t(action.name)}</span>
+                </ButtonBase>
               ))}
-            </div>
-          </>
-        )}
+            </Accordion>
+          ))}
 
-        {!menuLateralEditSlice.isComponentMain && <>{state.component}</>}
-
-        {/*   {!menuLateralEditSlice.isComponentMain && (
-          <div className="actions">
-            <ButtonBase
-              className="btn_elevated"
-              textAlign="center"
-              onClick={() => clearComponent()}
-            >
-              Cancelar
-            </ButtonBase>
-            <ButtonBase
-              className="btn_primary"
-              textAlign="center"
-              onClick={applyChanges}
-            >
-              Aplicar
-            </ButtonBase>
+          <div className="actions" key="action-section">
+            {dataToolEdit.accordions.map((accordion) => (
+              <div key={accordion.id}>
+                {accordion.actions.map((action, key) => (
+                  <div className="buttons" key={`${accordion.id}-${key}`}>
+                    <ButtonBase
+                      className="btn_elevated"
+                      size="large"
+                      textAlign="center"
+                      onClick={() =>
+                        selectComponent(action.component, action.name)
+                      }
+                    >
+                      <FontAwesomeIcon icon={action.icon as IconProp} />
+                      <span> {t(action.name)}</span>
+                    </ButtonBase>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
-        )} */}
-      </div>
-    </>
+        </>
+      )}
+
+      {!menuLateralEditSlice.isComponentMain && state.component}
+    </div>
   );
 }

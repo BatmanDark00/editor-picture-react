@@ -15,7 +15,7 @@ import SpinnerLoaderBase from "@/components/common/SpinnerLoaderBase";
 
 import {
   setUrlImage,
-  setImageCanvas,
+  setImageCropper,
   setApplyCrop,
   setApplyStyles,
 } from "@/redux/imageCropperSlice";
@@ -64,9 +64,9 @@ export default function CropperPicture({ downloadResult }: Props) {
 
       const pngData = cropperRef.current.getCanvas()?.toDataURL("image/png");
 
-      dispatch(setImageCanvas(pngData ?? ""));
+      dispatch(setImageCropper(pngData ?? ""));
 
-      dispatch(setUrlImage(pngData ?? ""));
+      
     }
   };
 
@@ -76,7 +76,7 @@ export default function CropperPicture({ downloadResult }: Props) {
     const context = canva.getContext("2d");
 
     const image = new Image();
-    image.src = imageCropper.urlImage;
+    image.src = imageCropper.imageCropper;
 
     console.log("Image", image.width, image.height);
 
@@ -98,8 +98,7 @@ export default function CropperPicture({ downloadResult }: Props) {
       context?.drawImage(image, 0, 0);
 
       console.log("Canva rewsd", canva.toDataURL());
-      dispatch(setImageCanvas(canva.toDataURL()));
-      dispatch(setUrlImage(canva.toDataURL()));
+      dispatch(setImageCropper(canva.toDataURL()));      
     };
 
     // const pngData = canva.toDataURL("image/png");
@@ -119,7 +118,7 @@ export default function CropperPicture({ downloadResult }: Props) {
   const onReady = (cropper: CropperRef) => {
     console.log("Cropper ready", cropper.getCanvas());
 
-    if (imageCropper.urlImage === "") {
+    if (imageCropper.imageCropper === "") {
       return;
     }
     //Tamaño de la imagen
@@ -160,7 +159,7 @@ export default function CropperPicture({ downloadResult }: Props) {
 
       <Cropper
         ref={cropperRef}
-        src={imageCropper?.urlImage}
+        src={imageCropper?.imageCropper}
         onChange={onChange}
         onReady={onReady}
         style={style}
