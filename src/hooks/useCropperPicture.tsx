@@ -8,6 +8,8 @@ import {
   setApplyStyles,
 } from "@/redux/imageCropperSlice";
 
+import { composeFilterString } from "@/redux/imageCropperSlice";
+
 const useCropperPicture = () => {
   const cropperRef = useRef<CropperRef>(null);
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
@@ -54,7 +56,7 @@ const useCropperPicture = () => {
 
     context?.fillRect(0, 0, canva.width, canva.height);
     if (context) {
-      context.filter = `${imageCropper.toneCropper}(${imageCropper.filterValCropper}${imageCropper.toneTypeCropper})`;
+      context.filter = composeFilterString(imageCropper.filters);
     }
 
     context?.drawImage(image, canva.width, canva.height);

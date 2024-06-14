@@ -6,6 +6,11 @@ interface ImageCropperState {
   toneCropper?: string;
   toneTypeCropper?: string;
   filterValCropper?: number;
+  filters: {
+    hueRotate: number;
+    saturate: number;
+    sepia: number;
+  };
   stencilProps?: {
     minAspectRatio?: number | 0;
     maxAspectRatio?: number | 0;
@@ -19,18 +24,33 @@ interface StencilProps {
   maxAspectRatio?: number;
 }
 
+interface FilterProps {
+  hueRotate: number;
+  saturate: number;
+  sepia: number;
+}
+
 const initialState: ImageCropperState = {
   urlImage: "",
   imageCropper: "",
   toneCropper: "",
   toneTypeCropper: "",
   filterValCropper: 0,
+  filters: {
+    hueRotate: 0,
+    saturate: 100,
+    sepia: 0,
+  },
   stencilProps: {
     minAspectRatio: 0,
     maxAspectRatio: 0,
   },
   isCrop: false,
   isApplyStyles: false,
+};
+
+export const composeFilterString = (filters: FilterProps) => {
+  return `hue-rotate(${filters.hueRotate}deg) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`;
 };
 
 export const imageCropperSlice = createSlice({
@@ -42,8 +62,24 @@ export const imageCropperSlice = createSlice({
     },
 
     setImageCropper: (state, action: PayloadAction<string>) => {
-      console.log("imagen canva xd",action.payload);
       state.imageCropper = action.payload;
+    },
+
+    setFilters: (state, action: PayloadAction<FilterProps>) => {
+      console.log("Filters", action.payload);
+      state.filters = action.payload;
+    },
+
+    setHueRotate: (state, action: PayloadAction<number>) => {
+      state.filters.hueRotate = action.payload;
+    },
+
+    setSaturate: (state, action: PayloadAction<number>) => {
+      state.filters.saturate = action.payload;
+    },
+
+    setSepia: (state, action: PayloadAction<number>) => {
+      state.filters.sepia = action.payload;
     },
 
     setToneCropper: (state, action: PayloadAction<string>) => {
@@ -54,7 +90,6 @@ export const imageCropperSlice = createSlice({
     setToneTypeCropper: (state, action: PayloadAction<string>) => {
       state.toneTypeCropper = action.payload;
 
-      
       console.log("Type", state.toneTypeCropper);
     },
 
@@ -85,6 +120,10 @@ export const {
   setToneCropper,
   setToneTypeCropper,
   setFilterValCropper,
+  setFilters,
+  setHueRotate,
+  setSaturate,
+  setSepia,
   setStencilProps,
   setApplyCrop,
   setApplyStyles,
