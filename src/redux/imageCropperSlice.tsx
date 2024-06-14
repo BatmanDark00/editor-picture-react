@@ -53,6 +53,8 @@ export const imageCropperSlice = createSlice({
 
     setToneTypeCropper: (state, action: PayloadAction<string>) => {
       state.toneTypeCropper = action.payload;
+
+      
       console.log("Type", state.toneTypeCropper);
     },
 

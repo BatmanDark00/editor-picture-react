@@ -12,14 +12,12 @@ import Unsplash from "@/components/picture/Unsplash";
 
 import ModalBase from "@/components/common/ModalBase";
 
-interface Props {
-  saveCropper: () => void;
+interface Props { 
   accept?: string;
   onFileUpload: (file: File) => void;
 }
 
-export default function MenuHeader({
-  saveCropper,
+export default function MenuHeader({  
   accept = "image/*",
   onFileUpload,
 }: Props) {
@@ -85,10 +83,7 @@ export default function MenuHeader({
     e.stopPropagation();
   };
 
-  const handleSave = () => {
-    saveCropper();
-  };
-
+  
   const openDialog = () => {
     setOpenUnsplash(true);
     toggleDropdown("close");
@@ -99,9 +94,7 @@ export default function MenuHeader({
   };
 
   const handleModalSaveFile = () => {
-    setIsModalOpen(true);
-    
-    handleSave();
+    setIsModalOpen(true);     
   };
 
   const closeModalSaveFile = () => {
