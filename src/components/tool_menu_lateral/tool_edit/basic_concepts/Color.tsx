@@ -8,10 +8,11 @@ import {
   setToneCropper,
   setFilterValCropper,
   setToneTypeCropper,
+  setApplyStyles,
+  setFilters,
 } from "@/redux/imageCropperSlice";
-import { setComponentMain } from "@/redux/menuLateralEditSlice";
-import { setApplyStyles } from "@/redux/imageCropperSlice";
 import ButtonBase from "@/components/common/ButtonBase";
+import { list } from "unsplash-js/dist/methods/photos";
 
 const listsFiltersColors = [
   {
@@ -23,6 +24,7 @@ const listsFiltersColors = [
     type: "deg",
     min: 0,
     max: 360,
+    value: 0,
   },
   {
     id: 1,
@@ -33,6 +35,7 @@ const listsFiltersColors = [
     type: "%",
     min: 0,
     max: 300,
+    value: 0,
   },
   {
     id: 2,
@@ -43,6 +46,7 @@ const listsFiltersColors = [
     type: "%",
     min: 0,
     max: 100,
+    value: 0,
   },
 ];
 
@@ -51,9 +55,6 @@ export default function Color() {
   const [filtersValues, setFiltersValues] = useState<number[]>(
     Array(listsFiltersColors.length).fill(0)
   );
-   const [selectFilterColor, setSelectFilterColor] = useState(
-    listsFiltersColors[0].id
-  ); 
 
   const handleColorsChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -61,32 +62,51 @@ export default function Color() {
   ) => {
     const newValue = [...filtersValues];
     newValue[index] = parseInt(event.target.value);
+
+    listsFiltersColors[index].value = parseInt(event.target.value);
+    // setFiltersValues(listsFiltersColors[index].value);
+
     setFiltersValues(newValue);
-    dispatch(setFilterValCropper(parseInt(event.target.value)));
 
-    const selectedValue = parseInt(event.target.value);
-    setSelectFilterColor(selectedValue);
-
-    const selectFilter = listsFiltersColors.find((item) => item.id === index);
+    const selectFilter = listsFiltersColors[index];
 
     if (selectFilter) {
-      dispatch(setToneCropper(selectFilter.nameValue));
-      dispatch(setToneTypeCropper(selectFilter.type));
+      dispatch(
+        setFilters({
+          hueRotate: listsFiltersColors[0].value,
+          saturate: listsFiltersColors[1].value,
+          sepia: listsFiltersColors[2].value,
+        })
+      );
+
+      // resetear los valores de los filtros
+
+      /* dispatch(setToneCropper(selectFilter.nameValue));
+      dispatch(setToneTypeCropper(selectFilter.type)); */
+      //  dispatch(setFilterValCropper(newValue[index]));
     }
   };
 
   const applyStyles = () => {
     dispatch(setApplyStyles(true));
+
+    listsFiltersColors[0].value = 0;
+    listsFiltersColors[1].value = 100;
+    listsFiltersColors[2].value = 0;
+
+    setFiltersValues(Array(listsFiltersColors.length).fill(0));
+
+    setFilters({
+      hueRotate: 0,
+      saturate: 0,
+      sepia: 0,
+    });
+
+    // resetear los valores de los filtros
+
+    // resetear los valores de los filtros
+    // setFiltersValues(Array(listsFiltersColors.length).fill(0));
   };
-
-  /*  
-  const clearPropertiesSelected = () => {
-    setTone(0);
-    setSaturation(0);
-    setTemperature(0);
-
-    dispatch(setComponentMain(true));
-  };*/
 
   return (
     <>
@@ -96,17 +116,17 @@ export default function Color() {
             <p>{item.name}</p>
             <div className="section-slider-change">
               <p>
-                {filtersValues[index]}
+                {item.value}
                 <span>{item.typeVal}</span>
               </p>
             </div>
             <div className="section-slider-input-color">
-             <SliderBase
-              className={item.className}
-              value={filtersValues[index]}
-              min={item.min}
-              max={item.max}
-              onChange={(e) => handleColorsChange(e, index)}
+              <SliderBase
+                className={item.className}
+                value={item.value}
+                min={item.min}
+                max={item.max}
+                onChange={(e) => handleColorsChange(e, index)}
               />
             </div>
           </div>
