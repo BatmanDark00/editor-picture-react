@@ -176,6 +176,16 @@ function Filters() {
                 </div>
               </div>
             ) : (
+              <div className={styles.divImagePreview}>
+              <input 
+                 type="button"
+                 className={styles.buttonTransparent}
+                 value={filtersVal[index]}
+                 onClick={() => {
+                  dispatch(setToneCropper(item.nameValue));
+                  dispatch(setFilterValCropper(item.max))
+                 }}
+                />
               <figure
                 key={index}
                 style={{ display: `${index === indexVal ? "none" : "flex"}` }}
@@ -190,6 +200,7 @@ function Filters() {
                   {item.title}
                 </figcaption>
               </figure>
+            </div>
             )}
           </div>
         ))}

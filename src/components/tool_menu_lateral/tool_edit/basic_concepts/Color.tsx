@@ -100,14 +100,15 @@ export default function Color() {
                 <span>{item.typeVal}</span>
               </p>
             </div>
-
-            <SliderBase
+            <div className="section-slider-input-color">
+             <SliderBase
               className={item.className}
               value={filtersValues[index]}
               min={item.min}
               max={item.max}
               onChange={(e) => handleColorsChange(e, index)}
-            />
+              />
+            </div>
           </div>
         ))}
       </div>

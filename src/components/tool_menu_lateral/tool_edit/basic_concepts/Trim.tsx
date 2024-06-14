@@ -11,6 +11,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const listSizePhotos = [
   {
     id: 0,
+    value: "10/10",
+    name: "Forma Libre",
+    minAspectRatio: 0,
+    maxAspectRatio: 0,
+    //widthAspect: 70,
+    //heightAspect: 70,
+  },
+  {
+    id: 1,
     value: "1/1",
     name: "Cuadrado 1x1",
     minAspectRatio: 1,
@@ -20,7 +29,7 @@ const listSizePhotos = [
     left: 3.5,
   },
   {
-    id: 1,
+    id: 2,
     value: "4/6",
     name: "Foto 4x6",
     minAspectRatio: 4,
@@ -30,7 +39,7 @@ const listSizePhotos = [
     left: 4.2,
   },
   {
-    id: 2,
+    id: 3,
     value: "5/7",
     name: "Foto 5x7",
     minAspectRatio: 5,
@@ -40,7 +49,7 @@ const listSizePhotos = [
     left: 4.1,
   },
   {
-    id: 3,
+    id: 4,
     value: "8/10",
     name: "Foto 8x10",
     minAspectRatio: 4,
@@ -50,7 +59,7 @@ const listSizePhotos = [
     left: 4,
   },
   {
-    id: 4,
+    id: 5,
     value: "4/3",
     name: "Imagen 4:3",
     minAspectRatio: 4,
@@ -60,7 +69,7 @@ const listSizePhotos = [
     left: 2.7,
   },
   {
-    id: 5,
+    id: 6,
     value: "16/9",
     name: "Imagen 16:9",
     minAspectRatio: 16,
@@ -70,7 +79,7 @@ const listSizePhotos = [
     left: 1.5,
   },
   {
-    id: 6,
+    id: 7,
     value: "11/14",
     name: "Imagen 11x14",
     minAspectRatio: 11,
@@ -80,7 +89,7 @@ const listSizePhotos = [
     left: 4,
   },
   {
-    id: 7,
+    id: 8,
     value: "2.39/1",
     name: "Cine 2.39:1",
     minAspectRatio: 2.39,
@@ -90,7 +99,7 @@ const listSizePhotos = [
     left: 0,
   },
   {
-    id: 8,
+    id: 9,
     value: "2/1",
     name: "Panorámica 2:1",
     minAspectRatio: 2,
@@ -100,7 +109,7 @@ const listSizePhotos = [
     left: 1,
   },
   {
-    id: 9,
+    id: 10,
     value: "A4",
     name: "Imagen A4",
     minAspectRatio: 210,

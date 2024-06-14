@@ -11,43 +11,61 @@
     display: block;
     margin-top: 6px;
     border-radius: 4px;
-    height: 8.2rem;
-    width: 13.2rem;
+    height: 8rem;
+    width: 200px;
+    position: relative;
 
     &.actived {
       animation: aparicion 0.4s ease-out 1;
+      height: 120px;
+      margin-bottom: 1rem;
     }
 
     &.disabled {
       animation: aparicionReverse 0.4s ease-out 1;
     }
 
-    figure {
-      display: flex;
-      flex-direction: column;
-      height: 12rem;
-      width: 100%;
+    .divImagePreview {
+      cursor: pointer;
 
       &:hover {
-        cursor: pointer;
+        figure {
 
-        .img {
-          transition: 0.3s ease-out;
-          opacity: 0.8;
-        }
-
-        .figcaption {
-          transition: 0.4s ease-out;
-          background-color: var(--secondary-300);
+          .img {
+            transition: 0.3s ease-out;
+            opacity: 0.8;
+          }
+  
+          .figcaption {
+            transition: 0.4s ease-out;
+            background-color: var(--secondary-300);
+          }
         }
       }
+
+      .buttonTransparent {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        width: 190px;
+        height: 110px;
+        background-color: transparent;
+        color: transparent;
+        z-index: 1;
+      }
+  
+      figure {
+        display: flex;
+        flex-direction: column;
+        height: 8rem;
+        width: 100%;   
 
       .img {
         object-fit: cover;
         width: 100%;
-        height: 7.5rem;
+        height: 7rem;
         border-radius: 4px;
-        min-width: 7.5rem;
+        min-height: 7rem;
       }
 
       .figcaption {
@@ -59,12 +77,12 @@
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
         position: relative;
-        bottom: 2.2rem;
+        bottom: 1.5rem;
       }
     }
+  }
 
     .divOption {
-      place-items: center;
       width: 80%;
 
       .divInput {
@@ -114,13 +132,13 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   .containerFilter {
     display: flex;
     flex-direction: row;
     gap: 1rem;   
     height: 10rem; 
-   overflow-y: hidden;
+    overflow-y: hidden;
 
     .divFilter {
       min-width: 10rem;
@@ -139,9 +157,48 @@
   }
 }
 
-@media screen and (width >= 769px) {
+ @media screen and (769px <= width <= 1023px) {
   .containerFilter {
     display: block;
-    max-height: 81.5vh;
+    height: 100%;
+    max-height: 80vh;
+
+    .divFilter {
+      //min-width: 10rem;
+      //height: 7.5rem;
+
+      .divOption {
+        width: 80%;
+
+        .divInput {
+          .divRange {
+            max-width: 10rem;
+          }
+        }
+      }
+    }
+  }
+} 
+
+@media screen and (width >= 1024px) {
+  .containerFilter {
+    display: block;
+    height: 100%;
+    max-height: 86vh;
+
+    .divFilter {
+      //min-width: 10rem;
+      //height: 7.5rem;
+
+      .divOption {
+        width: 80%;
+
+        .divInput {
+          .divRange {
+            max-width: 10rem;
+          }
+        }
+      }
+    }
   }
 }
