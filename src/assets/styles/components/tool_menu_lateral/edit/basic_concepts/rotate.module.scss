@@ -1,0 +1,61 @@
+.rotateContainer {
+  background-color: var(--secondary-200);
+  height: 25vh;
+  border-radius: 4px;
+  .rotateMenu {
+    display: flex;
+    justify-content: space-between;
+
+    .divRotateFunction {
+      margin: 1rem;
+
+      .titleFunction {
+        font-size: 14px;
+      }
+
+      .divButtonsFunction {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        margin-top: 6px;
+        margin-left: 2px;
+
+        img {
+          width: 16px;
+          height: 16px;
+          filter: drop-shadow(-1px -1px white) invert(100%);
+        }
+      }
+    }
+  }
+
+  .divButtonsConfirm {
+    display: flex;
+    margin: 10px;
+  }
+}
+
+@media screen and (width <= 1024px) {
+  .rotateContainer {
+    height: 30vh;
+  }
+}  
+
+@media screen and (width <= 768px) {
+  .rotateContainer {
+    height: 23vh;
+
+    .rotateMenu {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .divButtonsFunction {
+        width: 50%;
+      }
+    }
+    .divButtonsConfirm {
+      margin: 0px;
+    }
+  }
+}

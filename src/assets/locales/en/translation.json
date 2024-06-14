@@ -38,7 +38,8 @@
     "toolEditor": {
       "title": "Edit",
       "basicConcepts": "Basic Elements",
-      "color": "Color"
+      "color": "Color",
+      "rotate": "Rotate"
     }
   }
 }
