@@ -38,7 +38,7 @@ const initialState: ImageCropperState = {
   filterValCropper: 0,
   filters: {
     hueRotate: 0,
-    saturate: 100,
+    saturate: 0,
     sepia: 0,
   },
   stencilProps: {
@@ -50,7 +50,17 @@ const initialState: ImageCropperState = {
 };
 
 export const composeFilterString = (filters: FilterProps) => {
-  return `hue-rotate(${filters.hueRotate}deg) saturate(${filters.saturate}%) sepia(${filters.sepia}%)`;
+  const filterStrings = [];
+  if (filters.hueRotate !== 0) {
+    filterStrings.push(`hue-rotate(${filters.hueRotate}deg)`);
+  }
+  if (filters.saturate !== 0) {
+    filterStrings.push(`saturate(${filters.saturate}%)`);
+  }
+  if (filters.sepia !== 0) {
+    filterStrings.push(`sepia(${filters.sepia}%)`);
+  }
+  return filterStrings.join(" ");
 };
 
 export const imageCropperSlice = createSlice({
@@ -110,6 +120,14 @@ export const imageCropperSlice = createSlice({
 
     setApplyStyles: (state, action: PayloadAction<boolean>) => {
       state.isApplyStyles = action.payload;
+
+      if (!state.isApplyStyles) {
+        state.filters = {
+          hueRotate: 0,
+          saturate: 0,
+          sepia: 0,
+        };
+      }
     },
   },
 });

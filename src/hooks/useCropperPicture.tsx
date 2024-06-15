@@ -6,6 +6,7 @@ import {
   setImageCropper,
   setApplyCrop,
   setApplyStyles,
+  setFilters,
 } from "@/redux/imageCropperSlice";
 
 import { composeFilterString } from "@/redux/imageCropperSlice";
@@ -18,7 +19,6 @@ const useCropperPicture = () => {
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   useEffect(() => {
     if (imageCropper.isCrop) {
       onCrop();
@@ -30,6 +30,10 @@ const useCropperPicture = () => {
     if (imageCropper.isApplyStyles) {
       applyStylesImageCanva();
       dispatch(setApplyStyles(false));
+
+      console.log("Apply Styles", imageCropper.filters);
+
+      //dispatch(setFilters(imageCropper.filters));
     }
   });
 
@@ -45,28 +49,32 @@ const useCropperPicture = () => {
   const applyStylesImageCanva = () => {
     const canva = document.createElement("canvas");
     const context = canva.getContext("2d");
-
+  
     const image = new Image();
     image.src = imageCropper.imageCropper;
-
-    console.log("Image", image.width, image.height);
-
-    canva.height = image.height;
-    canva.width = image.width;
-
-    context?.fillRect(0, 0, canva.width, canva.height);
-    if (context) {
-      context.filter = composeFilterString(imageCropper.filters);
-    }
-
-    context?.drawImage(image, canva.width, canva.height);
-
+  
     image.onload = () => {
-      context?.drawImage(image, 0, 0);
-      dispatch(setImageCropper(canva.toDataURL()));
+      console.log("Image", image.width, image.height);
+  
+      canva.width = image.width;
+      canva.height = image.height;
+  
+      // Aplicar filtros
+      if (context) {
+        context.filter = composeFilterString(imageCropper.filters);
+  
+        // Dibujar la imagen con los filtros aplicados
+        context.drawImage(image, 0, 0, canva.width, canva.height);
+  
+        // Obtener la nueva imagen procesada
+        const newImage = canva.toDataURL();
+  
+        // Despachar la acción para actualizar la imagen
+        dispatch(setImageCropper(newImage));
+      }
     };
   };
-
+  
   const onChange = (cropper: CropperRef) => {
     console.log("oNchabge", cropper.getCoordinates(), cropper.getCanvas());
     setIsLoaded(true);
@@ -96,8 +104,8 @@ const useCropperPicture = () => {
     isLoaded,
     onChange,
     onReady,
-    defaultSize
-  }
+    defaultSize,
+  };
 };
 
 export default useCropperPicture;

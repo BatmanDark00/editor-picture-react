@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/color.scss";
 
 import SliderBase from "@/components/common/SliderBase";
 
 import {
-  setToneCropper,
-  setFilterValCropper,
-  setToneTypeCropper,
   setApplyStyles,
   setFilters,
 } from "@/redux/imageCropperSlice";
 import ButtonBase from "@/components/common/ButtonBase";
-import { list } from "unsplash-js/dist/methods/photos";
+
 
 const listsFiltersColors = [
   {
@@ -79,11 +76,7 @@ export default function Color() {
         })
       );
 
-      // resetear los valores de los filtros
-
-      /* dispatch(setToneCropper(selectFilter.nameValue));
-      dispatch(setToneTypeCropper(selectFilter.type)); */
-      //  dispatch(setFilterValCropper(newValue[index]));
+     
     }
   };
 
@@ -91,21 +84,22 @@ export default function Color() {
     dispatch(setApplyStyles(true));
 
     listsFiltersColors[0].value = 0;
-    listsFiltersColors[1].value = 100;
+    listsFiltersColors[1].value = 0;
     listsFiltersColors[2].value = 0;
 
-    setFiltersValues(Array(listsFiltersColors.length).fill(0));
+  // setFiltersValues(Array(listsFiltersColors.length).fill(0));
 
     setFilters({
       hueRotate: 0,
       saturate: 0,
       sepia: 0,
-    });
+    }); 
 
+   
     // resetear los valores de los filtros
 
     // resetear los valores de los filtros
-    // setFiltersValues(Array(listsFiltersColors.length).fill(0));
+     setFiltersValues(Array(listsFiltersColors.length).fill(0));
   };
 
   return (
@@ -116,7 +110,7 @@ export default function Color() {
             <p>{item.name}</p>
             <div className="section-slider-change">
               <p>
-                {item.value}
+                {item.value} 
                 <span>{item.typeVal}</span>
               </p>
             </div>

@@ -23,12 +23,15 @@ export default function CropperPicture() {
   const maxAspectRatio = imageCropper?.stencilProps?.maxAspectRatio ?? 0;
 
   const style: CSSProperties = {
-    filter: `${imageCropper.toneCropper}(${imageCropper.filterValCropper}${imageCropper.toneTypeCropper})`,
+    //filter: `${imageCropper.toneCropper}(${imageCropper.filterValCropper}${imageCropper.toneTypeCropper})`,
+    filter: composeFilterString(imageCropper.filters),
   };
 
   return (
     <>
       {!isLoaded && <SpinnerLoaderBase />}
+
+    
 
       <Cropper
         ref={cropperRef}
