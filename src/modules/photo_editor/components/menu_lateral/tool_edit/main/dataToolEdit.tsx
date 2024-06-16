@@ -1,6 +1,6 @@
 // component form basic concept
-import Color from "@/modules/photo_editor/components/tool_menu_lateral/tool_edit/basic_concepts/Color";
-import Trim from "@/modules/photo_editor/components/tool_menu_lateral/tool_edit/basic_concepts/Trim";
+import Color from "@/modules/photo_editor/components/menu_lateral/tool_edit/basic_concepts/Color";
+import Trim from "@/modules/photo_editor/components/menu_lateral/tool_edit/basic_concepts/Trim";
 import Rotate from "../basic_concepts/Rotate";
 
 const clearProperties = () => {

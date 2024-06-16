@@ -1,6 +1,6 @@
-import Default from "@/modules/photo_editor/components/tool_menu_lateral/Default";
-import ToolEdit from "@/modules/photo_editor/components/tool_menu_lateral/tool_edit/main/ToolEdit";
-import Filters from "@/modules/photo_editor/components/tool_menu_lateral/Filters"
+import Default from "@/modules/photo_editor/components/menu_lateral/Default";
+import ToolEdit from "@/modules/photo_editor/components/menu_lateral/tool_edit/main/ToolEdit";
+import Filters from "@/modules/photo_editor/components/menu_lateral/Filters"
 
 import { RootState } from "@/redux";
 import { useSelector } from "react-redux";
