@@ -4,9 +4,9 @@ import styles from "@/assets/styles/components/tool_menu_lateral/filters.module.
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux";
 
-import ButtonBase from "../common/ButtonBase";
+import ButtonBase from "@/components/common/ButtonBase";
 import SliderZoom from "@/components/common/SliderZoom";
-import Typography from "../../modules/common/components/typography/Typography";
+import Typography from "@/modules/common/components/typography/Typography";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   setToneCropper,
