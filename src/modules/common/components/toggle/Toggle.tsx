@@ -1,7 +1,7 @@
 import { RootState } from "@/redux";
 import { useSelector } from "react-redux";
 
-import "@/assets/styles/components/toggle/Toggle.scss";
+import "@/modules/common/components/toggle/toggle.scss";
 
 import useDarkMode from "@/modules/photo_editor/hooks/useDarkMode";
 

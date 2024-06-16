@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ChangeLocale from "@/components/locale/ChangeLocale";
 import CropperResult from "@/modules/photo_editor/components/cropper_result/CropperResult";
-import Toggle from "@/components/toggle/Toggle";
+import Toggle from "@/modules/common/components/toggle/Toggle";
 import Unsplash from "@/modules/photo_editor/components/main/unsplash/Unsplash";
 
 import ModalBase from "@/components/common/ModalBase";

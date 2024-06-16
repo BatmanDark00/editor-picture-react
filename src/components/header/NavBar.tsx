@@ -5,7 +5,7 @@ import "@/assets/styles/components/header/Navbar.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Toggle from "@/components/toggle/Toggle";
+import Toggle from "@/modules/common/components/toggle/Toggle";
 import CropperPicture from "../cropper/CropperPicture";
 
 

@@ -1,4 +1,4 @@
-import Toggle from "@/components/toggle/Toggle";
+import Toggle from "@/modules/common/components/toggle/Toggle";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("Toggle", () => {
