@@ -1,8 +1,8 @@
 import { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import "@/assets/styles/components/locale/changeLocale.scss";
-import SelectBase from "../common/SelectBase";
+import "@/modules/common/components/locale/changeLocale.scss";
+import SelectBase from "@/components/common/SelectBase";
 import spain from "@/assets/images/spain.png";
 import uk from "@/assets/images/united-kingdom.png";
 import traductor from "@/assets/images/traductor.png";

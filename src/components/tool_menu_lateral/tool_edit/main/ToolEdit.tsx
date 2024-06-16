@@ -3,7 +3,7 @@ import "@/assets/styles/components/tool_menu_lateral/toolEdit.scss";
 
 import Accordion from "@/components/common/Accordion";
 import ButtonBase from "@/components/common/ButtonBase";
-import Typography from "@/components/typography/Typography";
+import Typography from "@/modules/common/components/typography/Typography";
 
 import { useTranslation } from "react-i18next";
 

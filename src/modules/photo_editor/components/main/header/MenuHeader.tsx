@@ -5,7 +5,7 @@ import "@/modules/photo_editor/components/main/header/menuHeader.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import ChangeLocale from "@/components/locale/ChangeLocale";
+import ChangeLocale from "@/modules/common/components/locale/ChangeLocale";
 import CropperResult from "@/modules/photo_editor/components/cropper_result/CropperResult";
 import Toggle from "@/modules/common/components/toggle/Toggle";
 import Unsplash from "@/modules/photo_editor/components/main/unsplash/Unsplash";
