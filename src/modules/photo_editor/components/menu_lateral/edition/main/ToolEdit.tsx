@@ -7,7 +7,7 @@ import Typography from "@/modules/common/components/typography/Typography";
 
 import { useTranslation } from "react-i18next";
 
-import dataToolEdit from "@/modules/photo_editor/components/menu_lateral/tool_edit/main/dataToolEdit";
+import dataToolEdit from "@/modules/photo_editor/components/menu_lateral/edition/main/dataToolEdit";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";

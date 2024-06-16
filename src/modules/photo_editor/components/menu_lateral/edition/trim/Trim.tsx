@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux";
 import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/trim.scss";

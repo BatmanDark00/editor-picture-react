@@ -6,7 +6,7 @@ import { RootState } from "@/redux";
 import { setUrlImage, setImageCropper } from "@/redux/imageCropperSlice";
 
 import CropperPicture from "@/modules/photo_editor/components/cropper_preview/CropperPicture";
-import EditMenuLateral from "@/modules/photo_editor/components/menu_lateral/EditMenuLateral";
+import MenuEdit from "@/modules/photo_editor/components/menu_lateral/menu/MenuEdit";
 import MenuFooter from "@/modules/photo_editor/components/main/footer/MenuFooter";
 import MenuHeader from "@/modules/photo_editor/components/main/header/MenuHeader";
 import MenuLateral from "@/modules/photo_editor/components/main/lateral/MenuLateral";
@@ -42,7 +42,7 @@ export default function PictureView() {
 
       {imageCropper.urlImage && (
         <section className="menu-lateral-secondary">
-          <EditMenuLateral />
+          <MenuEdit />
         </section>
       )}
 

@@ -1,11 +1,11 @@
 import Default from "@/modules/photo_editor/components/menu_lateral/Default";
-import ToolEdit from "@/modules/photo_editor/components/menu_lateral/tool_edit/main/ToolEdit";
-import Filters from "@/modules/photo_editor/components/menu_lateral/Filters"
+import ToolEdit from "@/modules/photo_editor/components/menu_lateral/edition/main/ToolEdit";
+import Filters from "@/modules/photo_editor/components/menu_lateral/filter/Filters"
 
 import { RootState } from "@/redux";
 import { useSelector } from "react-redux";
 
-export default function EditMenuLateral() {
+export default function MenuEdit() {
   const menuLateralEdit = useSelector(
     (state: RootState) => state.menuLateralEdit
   );
