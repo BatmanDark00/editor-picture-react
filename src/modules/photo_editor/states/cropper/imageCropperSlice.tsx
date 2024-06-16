@@ -1,16 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 interface ImageCropperState {
   urlImage: string;
   imageCropper: string;
   toneCropper?: string;
   toneTypeCropper?: string;
   filterValCropper?: number;
-  filters: {
-    hueRotate: number;
-    saturate: number;
-    sepia: number;
-  };
   stencilProps?: {
     minAspectRatio?: number | 0;
     maxAspectRatio?: number | 0;
@@ -24,43 +18,18 @@ interface StencilProps {
   maxAspectRatio?: number;
 }
 
-interface FilterProps {
-  hueRotate: number;
-  saturate: number;
-  sepia: number;
-}
-
 const initialState: ImageCropperState = {
   urlImage: "",
   imageCropper: "",
   toneCropper: "",
   toneTypeCropper: "",
   filterValCropper: 0,
-  filters: {
-    hueRotate: 0,
-    saturate: 0,
-    sepia: 0,
-  },
   stencilProps: {
     minAspectRatio: 0,
     maxAspectRatio: 0,
   },
   isCrop: false,
   isApplyStyles: false,
-};
-
-export const composeFilterString = (filters: FilterProps) => {
-  const filterStrings = [];
-  if (filters.hueRotate !== 0) {
-    filterStrings.push(`hue-rotate(${filters.hueRotate}deg)`);
-  }
-  if (filters.saturate !== 0) {
-    filterStrings.push(`saturate(${filters.saturate}%)`);
-  }
-  if (filters.sepia !== 0) {
-    filterStrings.push(`sepia(${filters.sepia}%)`);
-  }
-  return filterStrings.join(" ");
 };
 
 export const imageCropperSlice = createSlice({
@@ -75,12 +44,7 @@ export const imageCropperSlice = createSlice({
       state.imageCropper = action.payload;
     },
 
-    setFilters: (state, action: PayloadAction<FilterProps>) => {
-      console.log("Filters", action.payload);
-      state.filters = action.payload;
-    },
-
-    setHueRotate: (state, action: PayloadAction<number>) => {
+    /*  setHueRotate: (state, action: PayloadAction<number>) => {
       state.filters.hueRotate = action.payload;
     },
 
@@ -91,7 +55,7 @@ export const imageCropperSlice = createSlice({
     setSepia: (state, action: PayloadAction<number>) => {
       state.filters.sepia = action.payload;
     },
-
+ */
     setToneCropper: (state, action: PayloadAction<string>) => {
       state.toneCropper = action.payload;
       console.log("Tone", state.toneCropper);
@@ -120,14 +84,6 @@ export const imageCropperSlice = createSlice({
 
     setApplyStyles: (state, action: PayloadAction<boolean>) => {
       state.isApplyStyles = action.payload;
-
-      if (!state.isApplyStyles) {
-        state.filters = {
-          hueRotate: 0,
-          saturate: 0,
-          sepia: 0,
-        };
-      }
     },
   },
 });
@@ -138,10 +94,10 @@ export const {
   setToneCropper,
   setToneTypeCropper,
   setFilterValCropper,
-  setFilters,
+  /*   setFilters,
   setHueRotate,
   setSaturate,
-  setSepia,
+  setSepia, */
   setStencilProps,
   setApplyCrop,
   setApplyStyles,

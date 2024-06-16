@@ -4,12 +4,10 @@ import "@/modules/photo_editor/components/menu_lateral/edition/color/color.scss"
 
 import SliderBase from "@/components/common/SliderBase";
 
-import {
-  setApplyStyles,
-  setFilters,
-} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
-import ButtonBase from "@/components/common/ButtonBase";
+import { setApplyStyles } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
 
+import ButtonBase from "@/components/common/ButtonBase";
 
 const listsFiltersColors = [
   {
@@ -75,8 +73,6 @@ export default function Color() {
           sepia: listsFiltersColors[2].value,
         })
       );
-
-     
     }
   };
 
@@ -87,19 +83,18 @@ export default function Color() {
     listsFiltersColors[1].value = 0;
     listsFiltersColors[2].value = 0;
 
-  // setFiltersValues(Array(listsFiltersColors.length).fill(0));
+    // setFiltersValues(Array(listsFiltersColors.length).fill(0));
 
     setFilters({
       hueRotate: 0,
       saturate: 0,
       sepia: 0,
-    }); 
-
-   
-    // resetear los valores de los filtros
+    });
 
     // resetear los valores de los filtros
-     setFiltersValues(Array(listsFiltersColors.length).fill(0));
+
+    // resetear los valores de los filtros
+    setFiltersValues(Array(listsFiltersColors.length).fill(0));
   };
 
   return (
@@ -110,7 +105,7 @@ export default function Color() {
             <p>{item.name}</p>
             <div className="section-slider-change">
               <p>
-                {item.value} 
+                {item.value}
                 <span>{item.typeVal}</span>
               </p>
             </div>

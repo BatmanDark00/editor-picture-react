@@ -6,13 +6,14 @@ import {
   setImageCropper,
   setApplyCrop,
   setApplyStyles,
-  setFilters,
 } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
-import { composeFilterString } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
+import { composeFilterString } from "@/modules/photo_editor/states/cropper/filterSlice";
 
 const useCropperPicture = () => {
   const cropperRef = useRef<CropperRef>(null);
+  const filtersCropper = useSelector((state: RootState) => state.filter);
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ const useCropperPicture = () => {
       applyStylesImageCanva();
       dispatch(setApplyStyles(false));
 
-      console.log("Apply Styles", imageCropper.filters);
+      console.log("Apply Styles", filtersCropper.filters);
 
       //dispatch(setFilters(imageCropper.filters));
     }
@@ -49,32 +50,41 @@ const useCropperPicture = () => {
   const applyStylesImageCanva = () => {
     const canva = document.createElement("canvas");
     const context = canva.getContext("2d");
-  
+
     const image = new Image();
     image.src = imageCropper.imageCropper;
-  
+
     image.onload = () => {
       console.log("Image", image.width, image.height);
-  
+
       canva.width = image.width;
       canva.height = image.height;
-  
+
       // Aplicar filtros
       if (context) {
-        context.filter = composeFilterString(imageCropper.filters);
-  
+        context.filter = composeFilterString(filtersCropper.filters);
+
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
-  
+
         // Obtener la nueva imagen procesada
         const newImage = canva.toDataURL();
-  
+
         // Despachar la acción para actualizar la imagen
         dispatch(setImageCropper(newImage));
+
+        //filtros
+        dispatch(
+          setFilters({
+            hueRotate: 0,
+            saturate: 0,
+            sepia: 0,
+          })
+        );
       }
     };
   };
-  
+
   const onChange = (cropper: CropperRef) => {
     console.log("oNchabge", cropper.getCoordinates(), cropper.getCanvas());
     setIsLoaded(true);
@@ -99,6 +109,7 @@ const useCropperPicture = () => {
 
   return {
     cropperRef,
+    filtersCropper,
     imageCropper,
     coordinates,
     isLoaded,

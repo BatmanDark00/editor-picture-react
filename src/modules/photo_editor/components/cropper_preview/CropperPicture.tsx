@@ -7,11 +7,12 @@ import "react-advanced-cropper/dist/themes/corners.css";
 import SpinnerLoaderBase from "@/components/common/SpinnerLoaderBase";
 import useCropperPicture from "@/modules/photo_editor/hooks/useCropperPicture";
 
-import { composeFilterString } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+import { composeFilterString } from "@/modules/photo_editor/states/cropper/filterSlice";
 
 export default function CropperPicture() {
   const {
     cropperRef,
+    filtersCropper,
     imageCropper,   
     isLoaded,
     onChange,
@@ -24,7 +25,7 @@ export default function CropperPicture() {
 
   const style: CSSProperties = {
     //filter: `${imageCropper.toneCropper}(${imageCropper.filterValCropper}${imageCropper.toneTypeCropper})`,
-    filter: composeFilterString(imageCropper.filters),
+    filter: composeFilterString(filtersCropper.filters),
   };
 
   return (
