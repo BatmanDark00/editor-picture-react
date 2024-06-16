@@ -1,4 +1,4 @@
-import footerModule from "@/assets/styles/components/home/footer.module.scss";
+import footerModule from "@/modules/common/components/home/footer/footer.module.scss";
 
 export default function Footer() {
   const year = new Date().getFullYear();

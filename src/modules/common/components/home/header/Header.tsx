@@ -1,5 +1,5 @@
 
-import headerModule from "@/assets/styles/components/home/header.module.scss";
+import headerModule from "@/modules/common/components/home/header/header.module.scss";
 
 export default function Header() {
   return (

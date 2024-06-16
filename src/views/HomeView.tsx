@@ -6,8 +6,8 @@ import grid_girls from "@/assets/images/home/grid_girls.png";
 
 import ButtonBase from "@/components/common/ButtonBase";
 
-import Header from "@/components/home/Header.tsx";
-import Footer from "@/components/home/Footer";
+import Header from "@/modules/common/components/home/header/Header";
+import Footer from "@/modules/common/components/home/footer/Footer";
 
 function HomeView() {
   const navigate = useNavigate();
