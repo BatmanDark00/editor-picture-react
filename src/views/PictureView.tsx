@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "@/assets/styles/views/pictureView.scss";
@@ -6,11 +5,11 @@ import "@/assets/styles/views/pictureView.scss";
 import { RootState } from "@/redux";
 import { setUrlImage, setImageCropper } from "@/redux/imageCropperSlice";
 
-import CropperPicture from "@/components/cropper/CropperPicture";
+import CropperPicture from "@/modules/photo_editor/components/cropper_preview/CropperPicture";
 import EditMenuLateral from "@/components/tool_menu_lateral/EditMenuLateral";
-import MenuFooter from "@/components/picture/MenuFooter";
-import MenuHeader from "@/components/picture/MenuHeader";
-import MenuLateral from "@/components/picture/MenuLateral";
+import MenuFooter from "@/modules/photo_editor/components/main/footer/MenuFooter";
+import MenuHeader from "@/modules/photo_editor/components/main/header/MenuHeader";
+import MenuLateral from "@/modules/photo_editor/components/main/lateral/MenuLateral";
 import UploadFile from "@/components/common/UploadFile";
 
 export default function PictureView() {

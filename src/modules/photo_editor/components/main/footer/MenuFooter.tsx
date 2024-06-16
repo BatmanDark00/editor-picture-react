@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import { isNumber } from "react-advanced-cropper";
 
-import "@/assets/styles/components/picture/menuFooter.scss";
+import "@/modules/photo_editor/components/main/footer/menuFooter.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ButtonBase from "../common/ButtonBase";
+import ButtonBase from "@/components/common/ButtonBase";
 import SliderZoom from "@/components/common/SliderZoom";
 
 interface ZoomProps {

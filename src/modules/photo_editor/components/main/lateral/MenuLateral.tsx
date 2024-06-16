@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import "@/assets/styles/components/picture/menuLateral.scss";
+import "@/modules/photo_editor/components/main/lateral/menuLateral.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import "@/assets/styles/components/picture/menuHeader.scss";
+import "@/modules/photo_editor/components/main/header/menuHeader.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ChangeLocale from "@/components/locale/ChangeLocale";
-import CropperResult from "@/components/cropper/CropperResult";
+import CropperResult from "@/modules/photo_editor/components/cropper_result/CropperResult";
 import Toggle from "@/components/toggle/Toggle";
-import Unsplash from "@/components/picture/Unsplash";
+import Unsplash from "@/modules/photo_editor/components/main/unsplash/Unsplash";
 
 import ModalBase from "@/components/common/ModalBase";
 

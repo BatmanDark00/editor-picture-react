@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
-import "@/assets/styles/components/picture/unSplash.scss";
+import "@/modules/photo_editor/components/main/unsplash/unSplash.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
 import InputBase from "@/components/common/InputBase";

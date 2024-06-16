@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux";
 import { useTranslation } from "react-i18next";
 
-import "@/assets/styles/components/cropper/cropperResult.scss";
+import "@/modules/photo_editor/components/cropper_result/cropperResult.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
 import InputBase from "@/components/common/InputBase";
