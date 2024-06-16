@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "@/assets/styles/views/pictureView.scss";
 
-import { RootState } from "@/redux";
-import { setUrlImage, setImageCropper } from "@/redux/imageCropperSlice";
+import { RootState } from "@/states";
+import { setUrlImage, setImageCropper } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 import CropperPicture from "@/modules/photo_editor/components/cropper_preview/CropperPicture";
 import MenuEdit from "@/modules/photo_editor/components/menu_lateral/menu/MenuEdit";

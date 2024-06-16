@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "@/modules/photo_editor/components/menu_lateral/filter/filters.module.scss";
 
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 
 import ButtonBase from "@/components/common/ButtonBase";
 import SliderZoom from "@/components/common/SliderZoom";
@@ -13,7 +13,7 @@ import {
   setFilterValCropper,
   setToneTypeCropper,
   setApplyStyles,
-} from "@/redux/imageCropperSlice";
+} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 const dataFilterComponent = [
   {

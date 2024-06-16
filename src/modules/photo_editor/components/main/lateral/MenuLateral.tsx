@@ -7,7 +7,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 import { menuLateralData } from "@/json/picture/menuLateralData";
 
-import { setComponent } from "@/redux/menuLateralEditSlice";
+import { setComponent } from "@/modules/photo_editor/states/menu_lateral/menuLateralEditSlice";
 import { useState } from "react";
 
 export default function MenuLateral() {

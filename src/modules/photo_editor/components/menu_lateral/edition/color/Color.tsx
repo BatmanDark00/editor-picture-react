@@ -7,7 +7,7 @@ import SliderBase from "@/components/common/SliderBase";
 import {
   setApplyStyles,
   setFilters,
-} from "@/redux/imageCropperSlice";
+} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 import ButtonBase from "@/components/common/ButtonBase";
 
 

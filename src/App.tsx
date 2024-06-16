@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RouterProvider } from "react-router-dom";
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 
 import "@/App.scss";
 import router from "@/routes";

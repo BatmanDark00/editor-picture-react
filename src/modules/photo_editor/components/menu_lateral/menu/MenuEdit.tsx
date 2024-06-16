@@ -2,7 +2,7 @@ import Default from "@/modules/photo_editor/components/menu_lateral/Default";
 import ToolEdit from "@/modules/photo_editor/components/menu_lateral/edition/main/ToolEdit";
 import Filters from "@/modules/photo_editor/components/menu_lateral/filter/Filters"
 
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 import { useSelector } from "react-redux";
 
 export default function MenuEdit() {

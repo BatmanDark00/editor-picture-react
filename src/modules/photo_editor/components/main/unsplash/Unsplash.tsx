@@ -9,7 +9,7 @@ import InputBase from "@/components/common/InputBase";
 
 import unplashService from "@/services/unplashService";
 
-import { setImageCropper, setUrlImage } from "@/redux/imageCropperSlice";
+import { setImageCropper, setUrlImage } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 interface Props {
   isOpenUnsplash: boolean;

@@ -7,7 +7,7 @@ import "react-advanced-cropper/dist/themes/corners.css";
 import SpinnerLoaderBase from "@/components/common/SpinnerLoaderBase";
 import useCropperPicture from "@/modules/photo_editor/hooks/useCropperPicture";
 
-import { composeFilterString } from "@/redux/imageCropperSlice";
+import { composeFilterString } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 export default function CropperPicture() {
   const {

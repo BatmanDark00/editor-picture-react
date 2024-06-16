@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CropperRef, Coordinates } from "react-advanced-cropper";
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 import {
   setImageCropper,
   setApplyCrop,
   setApplyStyles,
   setFilters,
-} from "@/redux/imageCropperSlice";
+} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
-import { composeFilterString } from "@/redux/imageCropperSlice";
+import { composeFilterString } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 const useCropperPicture = () => {
   const cropperRef = useRef<CropperRef>(null);

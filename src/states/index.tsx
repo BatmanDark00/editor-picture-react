@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import imageCropperSlice from "./imageCropperSlice";
-import menuLateralEditSlice from "./menuLateralEditSlice";
+import imageCropperSlice from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+import menuLateralEditSlice from "@/modules/photo_editor/states/menu_lateral/menuLateralEditSlice";
 import themeModeSlice from "./themeModeSlice";
 
 const rootReducer = {

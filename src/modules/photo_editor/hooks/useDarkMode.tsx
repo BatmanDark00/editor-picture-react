@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { useEffect } from "react";
 
-import { setThemeMode } from "@/redux/themeModeSlice";
+import { setThemeMode } from "@/states/themeModeSlice";
 
 const useDarkMode = () => {
   const dispatch = useDispatch();

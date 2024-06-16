@@ -12,12 +12,12 @@ import dataToolEdit from "@/modules/photo_editor/components/menu_lateral/edition
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setComponentMain,
   setApplyChanges,
-} from "@/redux/menuLateralEditSlice";
+} from "@/modules/photo_editor/states/menu_lateral/menuLateralEditSlice";
 
 interface State {
   component: React.ReactNode | null;

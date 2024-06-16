@@ -1,11 +1,11 @@
 import  { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 import "@/modules/photo_editor/components/menu_lateral/edition/trim/trim.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
 
-import { setStencilProps, setApplyCrop } from "@/redux/imageCropperSlice";
+import { setStencilProps, setApplyCrop } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const listSizePhotos = [

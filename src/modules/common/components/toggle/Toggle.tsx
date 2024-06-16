@@ -1,4 +1,4 @@
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 import { useSelector } from "react-redux";
 
 import "@/modules/common/components/toggle/toggle.scss";

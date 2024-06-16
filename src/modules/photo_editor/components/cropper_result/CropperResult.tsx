@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux";
+import { RootState } from "@/states";
 import { useTranslation } from "react-i18next";
 
 import "@/modules/photo_editor/components/cropper_result/cropperResult.scss";
