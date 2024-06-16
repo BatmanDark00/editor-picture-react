@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import "@/assets/styles/components/toggle/Toggle.scss";
 
-import useDarkMode from "@/hooks/useDarkMode";
+import useDarkMode from "@/modules/photo_editor/hooks/useDarkMode";
 
 export default function Toggle() {
   const darkMode = useSelector((state: RootState) => state.themeMode.themeMode);
