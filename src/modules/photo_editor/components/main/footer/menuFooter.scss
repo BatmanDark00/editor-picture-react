@@ -1,0 +1,98 @@
+#menu-footer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+
+  border-color: #858585;
+  padding: 0 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: var(--text-color);
+
+  div {
+    display: flex;
+
+    align-items: center;
+    margin: 2px;
+
+    /*  button {
+      margin: 6px 8px;
+      padding: 8px 4px;
+      color: var(--text-secondary);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: var(--hover-color);
+        border-radius: 3px;
+        transition: 0.5s ease-in-out;
+      }
+    } */
+  }
+
+  .section-slider {
+    display: flex;
+    position: relative;
+    width: 12rem;
+    margin-right: 10px;
+    float: left;
+    top: 0.7rem;
+
+    .div-range-slider-zoom {
+      font-size: 4px;
+      color: transparent;
+      background-color: aliceblue;
+      position: absolute;
+      left: 3px;
+      bottom: 21px;
+      border-radius: 4px;
+      max-width: 180px;
+    }
+  }
+
+  .slider-data {
+    background-color: var(--color-theme-button);
+    color: var(--text-color);
+    height: 2rem;
+    border: none;
+    border-radius: 4px;
+    width: 3rem;
+    background-size: 300% 100%;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+
+    .input-slider-zoom[type="number"] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+      font-size: 14px;
+      width: 100%;
+      height: 1.5rem;
+      background-color: var(--color-theme-button);
+      color: var(--text-color);
+      outline: 1px solid var(--color-theme-button);
+      text-align: center;
+      border-radius: 4px;
+      border: none;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      &:focus {
+        outline: 1px solid var(--color-theme-button);
+      }
+    }
+
+    .value-minus {
+      font-size: 12px;
+      padding-right: 6px;
+    }
+  }
+}

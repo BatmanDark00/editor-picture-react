@@ -1,23 +1,31 @@
-/*abstract*/
-@use './assets/scss/abstract/mixins';
-@use './assets/scss/abstract/variables';
+
+/*global*/
+@use './assets/styles/global';
 
 /*base*/
-@use './assets/scss/base/reset';
-@use './assets/scss/base/base';
+@use './assets/styles/config/base/reset';
+@use './assets/styles/config/base/base';
 
-@mixin background_default($color: var(--color-secondary-4)) {
-    background-color: $color;
-}
 
-/* Aplicar estilos para el tema claro */
-.light-theme {
-    background-color: var(--background-light);
-    color: var(--text-light); 
-}
 
-/* Aplicar estilos para el tema oscuro */
-.dark-theme {  
-   //@include background_default($color-primary);
-   //color: var(--text-dark);
-}
+ /* width */
+ ::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+  }
+  
+ 
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background:var(--secondary-000);
+  }
+ 
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary-300);
+  }
+ 
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background:  var(--secondary-400);
+  }

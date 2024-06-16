@@ -1,12 +1,17 @@
 /*abstract*/
-@use './assets/scss/abstract/mixins';
-@use './assets/scss/abstract/variables';
+@use "./assets/styles/config/abstract/mixins";
+@use "./assets/styles/global.scss";
 
 /*base*/
-@use './assets/scss/base/reset';
-@use './assets/scss/base/base';
+@use "./assets/styles/config/base/reset";
+@use "./assets/styles/config/base/base";
 
-html {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
+.app {
+  background-color: var(--background-color);
+  color: var(--text-color);  
+
+
+
 }
+
+

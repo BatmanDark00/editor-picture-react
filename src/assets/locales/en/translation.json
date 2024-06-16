@@ -1,0 +1,45 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "reset": "Reset",
+    "download": "Download",
+    "upload": "Upload",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "copy": "Copy",
+    "cut": "Cut",
+    "paste": "Paste",
+    "undo": "Undo",
+    "redo": "Redo",
+    "selectAll": "Select all",
+    "unselectAll": "Unselect all",
+    "remove": "Remove",
+    "refresh": "Refresh",
+    "settings": "Settings",
+    "help": "Help",
+    "home": "Home",
+    "about": "About",
+    "open": "Open"
+  },
+  "menuHeader": {
+    "newImage": "New image",
+    "computer": "Computer",
+    "unsplash": "Unsplash"
+  },
+  "cropperResult": {
+    "saveInComputer": "Save in computer"
+  },
+
+  "menuLateral": {
+    "toolEditor": {
+      "title": "Edit",
+      "basicConcepts": "Basic Elements",
+      "color": "Color",
+      "rotate": "Rotate"
+    }
+  }
+}

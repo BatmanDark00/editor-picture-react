@@ -1,0 +1,204 @@
+.containerFilter {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  max-height: 87vh;
+  margin-left: 2px;
+  border-radius: 4px;
+
+  .divFilter {
+    display: block;
+    margin-top: 6px;
+    border-radius: 4px;
+    height: 8rem;
+    width: 200px;
+    position: relative;
+
+    &.actived {
+      animation: aparicion 0.4s ease-out 1;
+      height: 120px;
+      margin-bottom: 1rem;
+    }
+
+    &.disabled {
+      animation: aparicionReverse 0.4s ease-out 1;
+    }
+
+    .divImagePreview {
+      cursor: pointer;
+
+      &:hover {
+        figure {
+
+          .img {
+            transition: 0.3s ease-out;
+            opacity: 0.8;
+          }
+  
+          .figcaption {
+            transition: 0.4s ease-out;
+            background-color: var(--secondary-300);
+          }
+        }
+      }
+
+      .buttonTransparent {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        width: 190px;
+        height: 110px;
+        background-color: transparent;
+        color: transparent;
+        z-index: 1;
+      }
+  
+      figure {
+        display: flex;
+        flex-direction: column;
+        height: 8rem;
+        width: 100%;   
+
+      .img {
+        object-fit: cover;
+        width: 100%;
+        height: 7rem;
+        border-radius: 4px;
+        min-height: 7rem;
+      }
+
+      .figcaption {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-color);
+        background-color: var(--secondary-200);
+        padding: 10px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        position: relative;
+        bottom: 1.5rem;
+      }
+    }
+  }
+
+    .divOption {
+      width: 80%;
+
+      .divInput {
+        position: relative;
+        top: 2rem;
+        left: 0.6rem;
+
+        .divRange {
+          font-size: 4px;
+          color: transparent;
+          position: absolute;
+          bottom: 23.5px;
+          left: 7px;
+          background-color: aliceblue;
+          border-radius: 4px;
+          max-width: 10.5rem;
+        }
+      }
+
+      .divButtonSelect {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        place-content: center;
+        width: 100%;
+        top: 2rem;
+        left: 1rem;
+      }
+    }
+  }
+}
+
+//Por ahora estas animaciones
+@keyframes aparicion {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aparicionReverse {
+  from {
+    opacity: 0.4;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .containerFilter {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;   
+    height: 10rem; 
+    overflow-y: hidden;
+
+    .divFilter {
+      min-width: 10rem;
+      height: 7.5rem;
+
+      .divOption {
+        width: 80%;
+
+        .divInput {
+          .divRange {
+            max-width: 7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+ @media screen and (769px <= width <= 1023px) {
+  .containerFilter {
+    display: block;
+    height: 100%;
+    max-height: 80vh;
+
+    .divFilter {
+      //min-width: 10rem;
+      //height: 7.5rem;
+
+      .divOption {
+        width: 80%;
+
+        .divInput {
+          .divRange {
+            max-width: 10rem;
+          }
+        }
+      }
+    }
+  }
+} 
+
+@media screen and (width >= 1024px) {
+  .containerFilter {
+    display: block;
+    height: 100%;
+    max-height: 86vh;
+
+    .divFilter {
+      //min-width: 10rem;
+      //height: 7.5rem;
+
+      .divOption {
+        width: 80%;
+
+        .divInput {
+          .divRange {
+            max-width: 10rem;
+          }
+        }
+      }
+    }
+  }
+}

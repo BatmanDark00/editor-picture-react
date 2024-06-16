@@ -1,0 +1,56 @@
+.list-options {
+  display: block;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow: auto;
+  height: auto;
+  max-height: 11rem;
+  animation: height 0.3s ease-out;
+  
+
+  li {
+    background-color: var(--secondary-000);
+    color: var(--color-secondary-button-color);
+    padding: 8px 16px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    transition: background-color 0.4s;
+
+    &.selected {
+      background-color: var(--color-secondary-button-hover);
+      transition: 0.4s ease-out;
+      background-position: 100% 0;
+      background-image: linear-gradient(
+        to left,
+        var(--secondary-100),
+        var(--secondary-200),
+        var(--secondary-300)
+        var(--secondary-400)
+      );
+    }
+
+    &:hover {
+      background-color: var(--color-secondary-button-hover);
+      transition: 0.4s ease-out;
+      background-position: 100% 0;
+      background-image: linear-gradient(
+        to left,
+        var(--secondary-000),
+        var(--secondary-200),
+      );
+    }
+  }
+}
+
+@keyframes height {
+  0% {
+    max-height: 0rem;
+  }
+}
+

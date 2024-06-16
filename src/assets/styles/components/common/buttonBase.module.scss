@@ -1,0 +1,221 @@
+// Definición de variables
+$color-primary: var(--color-primary);
+$color-primary-hover: var(--color-primary-hover);
+$text-color: var(--text-color);
+
+// Estilos base para todos los botones
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem;
+  // Modificadores de tamaño
+  &[data-size="small"] {
+    padding: 4px 8px;
+    height: 2rem; // Ajusta la altura según tu necesidad
+    font-size: 12px;
+  }
+
+  &[data-size="medium"] {
+    padding: 6px 12px;
+    height: 3rem; // Ajusta la altura según tu necesidad
+    font-size: 14px;
+  }
+
+  &[data-size="large"] {
+    padding: 10px 20px;
+    height: 4rem; // Ajusta la altura según tu necesidad
+    font-size: 16px;
+  }
+
+  &[data-margin="small"] {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+// Estilos para el botón primario
+.btn_primary {
+  background-color: var(--color-primary-button);
+  color: #fff;
+  font-size: 14px;
+  text-align: left;
+  margin: 2px;
+  margin-left: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  background-size: 300% 100%;
+  border-radius: 2px;
+
+  &:hover {
+    background-color: var(--color-primary-button-hover);
+
+    transition: 0.4s ease-out;
+    background-position: 100% 0;
+    background-image: linear-gradient(
+      to left,
+      var(--primary-600),
+      var(--primary-500),
+      var(--primary-600)
+    );
+  }
+
+  &:focus {
+    background-image: linear-gradient(
+      30deg,
+      var(--primary-400),
+      var(--primary-500)
+    );
+    box-shadow: var(--shadow-elevation-3);
+  }
+}
+
+.btn_secondary {
+  background-color: var(--secondary-000);
+  color: var( --color-secondary-button-color);
+  border: solid 1px var(--color-secondary-button-border);
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  background-size: 300% 100%;
+
+  &:hover {
+    background-color: var(--color-secondary-button-hover);
+    transition: 0.4s ease-out;
+    background-position: 100% 0;
+    background-image: linear-gradient(
+      to left,
+      var(--secondary-100),
+      var(--secondary-200),
+      var(--secondary-300)
+    );
+  }
+
+  &[data-size="small"] {
+    padding: 4px 8px;
+    height: 2rem; // Ajusta la altura según tu necesidad
+  }
+
+  &:focus {
+    background-image: linear-gradient(
+      30deg,
+      var(--secondary-400),
+      var(--secondary-500)
+    );
+    box-shadow: var(--shadow-elevation-3);
+  }
+}
+
+.btn_theme {
+  background-color: var(--color-theme-button);
+  color: var(--text-color);
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  border: none;
+  width: 100%;
+  font-weight: 0;
+  background-size: 300% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background-position: 100% 0;
+    background-image: linear-gradient(
+      to left,
+      var(--secondary-100),
+      var(--secondary-200),
+      var(--secondary-300),
+      var(--secondary-400)
+    );
+    transition: all 0.8s ease-in-out; // Transición al hacer hover
+  }
+
+  &:focus {
+    background-image: linear-gradient(
+      90deg,
+      var(--secondary-100),
+      var(--secondary-200)
+    );
+    box-shadow: var(--shadow-elevation-3);
+  }
+}
+
+.btn_tertiary {
+  background-color: var(--secondary-000);
+  color: var(--text-color);
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  border: none;
+  width: 100%;
+  font-weight: 0;
+  background-size: 300% 100%;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background-position: 100% 0;
+    background-image: linear-gradient(
+      to left,
+      var(--secondary-100),
+      var(--secondary-200),
+      var(--secondary-300),
+      var(--secondary-400)
+    );
+    transition: all 0.8s ease-in-out; // Transición al hacer hover
+  }
+
+  &:focus {
+    background-image: linear-gradient(
+      90deg,
+      var(--secondary-100),
+      var(--secondary-200)
+    );
+    box-shadow: var(--shadow-elevation-3);
+  }
+}
+
+.btn_elevated {
+  background-color: var(--secondary-000);
+  border: solid 1px var(--secondary-300);
+  color: var(--text-color);
+  box-shadow: var(--shadow-elevation-1);
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  background-size: 300% 100%;
+  border-radius: 2px;
+
+  &:hover {
+    background-color: var(--color-secondary-button-hover);
+    transition: 0.4s ease-out;
+    background-position: 100% 0;
+    background-image: linear-gradient(
+      to left,
+      var(--secondary-100),
+      var(--secondary-200),
+      var(--secondary-300)
+    );
+  }
+
+  &[data-size="small"] {
+    padding: 4px 8px;
+    height: 2rem; // Ajusta la altura según tu necesidad
+  }
+
+  &:focus {
+    background-image: linear-gradient(
+      30deg,
+      var(--secondary-000),
+      var(--secondary-100)
+    );
+    box-shadow: var(--shadow-elevation-3);
+  }
+}

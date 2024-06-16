@@ -1,0 +1,84 @@
+.section {
+    display: flex;
+    background-color: red;
+    position: absolute;
+    /* padding: 16px 0; */
+    z-index: 10;
+    width: calc(90% - 20px);
+   
+    height: 95vh;
+    border-radius: 6px;
+    /* left: 1rem; */
+    /* bottom: 1rem; */
+    top: 1rem;
+    box-shadow: 2rem 2rem 2rem #111, -2rem -2rem 2rem #111;
+
+
+  #header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    #title-lote{
+        flex: 1;
+    }
+
+    .div-buttons{
+        background-color: red;
+    } 
+
+
+    /* display: flex;
+    width: 190vh;
+    height: 56px;
+    background-color: teal;
+    top: 1rem;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    justify-content: space-between;
+    align-items: center;
+
+    .div-buttons {
+      float: right;
+      background-color: yellow;
+    } */
+  }
+
+  .container{
+    display: flex;   
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    #div-fixed{        
+        background: yellow;
+    }
+
+    #nav{
+        flex:1;
+        background-color: red;
+    }
+  }
+
+/*   #nav {
+    display: flex;
+    background-color: forestgreen;
+    height: 48px;
+    margin-top: 2.5rem;
+    margin-left: 40vh;
+    align-items: center;
+    padding: 0 22rem;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    border-color: #858585;
+  }
+
+  #div-fixed {
+    display: flex;
+    background-color: aqua;
+    float: left;
+    position: fixed;
+    width: 40vh;
+    height: 80vh;
+    margin-top: 0;
+  } */
+}

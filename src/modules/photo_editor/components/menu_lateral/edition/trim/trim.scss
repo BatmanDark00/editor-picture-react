@@ -1,0 +1,253 @@
+.trim-menu-option {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 86vh;
+  border-radius: 4px;
+  overflow: auto;
+
+  .preview-container {
+    display: block;
+    margin-bottom: 9rem;
+    margin-left: 0.5rem;
+    height: 130px;
+    width: 200px;   
+    position: relative;
+    top: -0.9rem;
+    z-index: 2;
+
+    &.animated {
+      display: flex;
+      position: relative;
+      top: 0.1rem;
+      width: 195px;
+      height: 130px;
+      animation: 0.4s ease-out sizeOn 1;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+    &.not-animated {
+        width: 0px;
+        height: 0px;
+        //margin-bottom: 1.5rem;
+        animation: 0.4s ease-out reverseSize 1;
+    } 
+
+    &:hover {
+      cursor: pointer;
+      .figure-cut {
+        .image-preview-cut {
+          transition: 0.3s ease-out;
+          opacity: 0.6;
+        }
+  
+        .figcaption-cut {
+          transition: 0.4s ease-out;
+          background-color: var(--secondary-300);
+        }
+      }
+    } 
+
+
+    .div-buttons-cut {
+      display: flex;
+      position: relative;
+      align-content: center;
+      top: 3rem;
+      width: 100%;
+    }
+
+    .container-preview-cut {
+      width: 195px;
+      height: 120px;
+      margin-bottom: 0rem;
+
+      .button-transparent {
+        width: 195px;
+        height: 130px;
+        pointer-events: all;
+        z-index: 1;
+        background-color: transparent;
+        position: absolute;
+        top: 1rem;
+      }
+
+      .preview-box {
+        display: block;
+        border: 1px solid var(--border-color);
+        background-color: white;
+        filter: brightness(70%);
+        max-width: 195px;
+        max-height: 80px;
+        position: absolute;
+        top: 1.8rem;
+      }
+    }
+
+    .figure-cut {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      position: relative;
+      top: 1rem;
+      max-width: 195px;
+      max-height: 100px;
+
+      .image-preview-cut {  
+        object-fit: cover;
+        width: 100%;
+        height: 130px;
+        opacity: 0.5;
+        min-height: 130px;
+        border-radius: 4px;
+      }
+
+      .figcaption-cut {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-color);
+        background-color: var(--secondary-200);
+        padding: 10px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        position: relative;
+        bottom: 2rem;
+      }
+    }
+  }
+}
+
+@keyframes sizeOn {
+  from {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  to {
+    width: 195px;
+    height: 130px;
+    opacity: 0.6;
+  }
+}
+
+@keyframes reverseSize {
+  from {
+    width: 195px;
+    height: 130px;
+    opacity: 0.6;
+  }
+  to {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+}
+
+@media screen and (width >= 769px) {
+  .trim-menu-option {
+    display: block;
+    height: 100%;
+    max-height: 80vh;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .trim-menu-option {
+    display: block;
+    height: 100%;
+    max-height: 86vh;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .trim-menu-option {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-height: 140px;
+    flex-direction: row;
+    overflow-y: hidden;
+
+    .preview-container {
+      display: block;
+      max-width: 160px;
+      height: 120px;
+      width: 100%;
+
+      &.animated {
+        display: flex;
+        width: 160px;
+        height: 120px;
+        animation: 0.4s ease-out sizeOn 1;
+        border-radius: 4px;
+        margin-left: auto;
+        padding-right: 160px;
+      }
+
+      &.not-animated {
+          animation: 0.4s ease-out reverseSize 1;
+          margin-right: 10.5rem;
+      } 
+
+      .div-buttons-cut {
+        display: flex;
+        width: 100%;
+        position: absolute;
+      }
+
+     .container-preview-cut {
+      display: flex;
+
+       .button-transparent {
+         width: 160px;
+         height: 120px;
+       }
+
+       .preview-box {
+        display: block;
+        position: absolute;
+        max-width: 130px;
+        margin-right: 2rem;
+       }
+ 
+       .figure-cut {
+         width: 160px;
+         height: 100px;
+ 
+         .image-preview-cut {
+           width: 100%;
+           height: 100px;
+           min-height: 120px;
+         }
+ 
+         .figcaption-cut {
+           display: flex;
+           align-items: center;
+           font-size: 12px;
+           padding: 6px;
+           height: 2rem;
+           bottom: 1.6rem;
+         }
+       }
+     }
+    }
+  }
+
+  @keyframes sizeOn {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.6;
+    }
+  }
+  
+  @keyframes reverseSize {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

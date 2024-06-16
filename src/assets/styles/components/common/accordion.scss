@@ -1,0 +1,65 @@
+.accordion {
+  color: var(--color-text);
+  overflow: hidden;
+
+  .tab {
+    input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+
+      &:checked + .tab__label {
+        background: var(--background-color);
+        color: var(--color-text);
+      }
+
+      &:checked ~ .tab__content {
+        height: auto;
+      }
+
+      &:checked + .tab__label::after {
+        transform: rotate(270deg);
+      }
+    }
+
+    &__content {
+      height: 0;
+      overflow: hidden;
+      transition: all 0.35s;
+    }
+
+    &__label,
+    &__close {
+      display: flex;
+      color: var(--color-text);
+      background: var(--background-color);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--hover-color);
+        transition: 0.4s ease-out;
+      }
+    }
+
+    &__label {
+      justify-content: space-between;
+      padding: 1rem;
+      margin-left: -10px;
+
+      &::after {
+        content: "\276F";
+        width: 1em;
+        height: 1em;
+        text-align: center;
+        transform: rotate(90deg);
+        transition: all 0.35s;
+      }
+    }
+
+    &__close {
+      justify-content: flex-end;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+  }
+}

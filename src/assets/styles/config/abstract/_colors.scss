@@ -1,0 +1,90 @@
+// Colores light
+$color-primary: #057996;
+$color-primary-hover: #00a6ff;
+$color-primary-light: #00a6ff;
+$color-secondary: #6c757d;
+$color-secondary-hover: #5a6268;
+$color-success: #28a745;
+$color-info: #00ccff;
+$color-warning: #ffc107;
+$color-danger: #dc3545;
+$color-toogle-bg: #f0eb9d;
+$color-toogle-fg: #ffd000;
+
+// color theme buttons
+$color-theme-button: #057996;
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-primary-light: #{$color-primary-light};
+
+  --color-secondary: #{$color-secondary};
+  --color-secondary-hover: #{$color-secondary-hover};
+
+  /* Colores de fondo */
+  --background-color: hsl(0, 0%, 100%);
+  --background-color-secondary: hsl(0, 0%, 95%);
+  --background-dark: hsl(0, 0%, 10%);
+
+  /* Colores de texto */
+  --text-color: hsl(0, 0%, 20%);
+  --text-color-light: hsl(0, 0%, 90%);
+  --text-secondary: hsl(0, 0%, 30%);
+
+  /* Colores de iconos */
+  --color-icon-hover: hsl(0, 0%, 70%);
+  --color-icon-disabled: hsl(0, 0%, 40%);
+  --color-icon-actived: hsl(0, 0%, 52%);
+
+  /* Colores de borde y sombra */
+  --border-color: hsl(0, 0%, 90%);
+  --border-color-dark: hsl(0, 0%, 52%);
+  --shadow-color: hsl(0, 0%, 80%);
+  --shadow-color-dark: hsl(0, 0%, 30%);
+
+  /* Color del hover */
+  --hover-color: hsl(0, 0%, 52%);
+  --color-primary-hover: #{$color-primary-hover};
+
+  /* Colores de estado */
+  --error-color: #{$color-danger};
+  --success-color: #{$color-success};
+  --warning-color: #{$color-warning};
+  --info-color: #{$color-info};
+
+  --toggle-bg: #{$color-toogle-bg};
+  --toggle-fg: #{$color-toogle-fg};
+
+
+  --secondary-000: #FFFFFF;
+  --secondary-100: #E6F7FA;
+  --secondary-200: #CCEFF5;
+  --secondary-300: #99DFF0;
+  --secondary-400: #66CFEB;
+  --secondary-500: #339FE6;
+  --secondary-600: #057996;
+  --secondary-700: #045F75;
+  --secondary-800: #034354;
+
+  --primary-100: #E6F4F8;
+  --primary-200: #CCEAEE;
+  --primary-300: #99D5DD;
+  --primary-400: #66C0CC;
+  --primary-500: #33ACBB;
+  --primary-600: #057996;
+  --primary-700: #045F75;
+  --primary-800: #034354;
+
+
+
+  --color-primary-button: #057996;
+  --color-primary-button-hover: #046277;
+
+  --color-theme-button: var(--secondary-000);
+  --color-theme-button-hover: var(--secondary-100);
+
+  --color-secondary-button: hsl(0, 0%, 90%);
+  --color-secondary-button-hover: hsl(0, 0%, 89%);
+  --color-secondary-button-border: #057996;
+  --color-secondary-button-color: #057996; 
+}

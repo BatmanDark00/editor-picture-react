@@ -1,0 +1,47 @@
+.tool-edit {
+  transition: all 0.5s;
+  animation: slide-in-fwd-center 1s ease;
+
+  .actions {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tool-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    .accordion {
+      display: none;
+    }
+    .actions {
+      display: flex;
+      flex-direction: row;    
+      overflow: auto;
+      column-gap: 0.5rem;
+      
+
+      .buttons {  
+        margin-bottom: var(--spacing-s);      
+        min-width: 8rem;
+        min-height: 2rem;
+        
+      }
+    }
+  }
+}
+
+/* @keyframes slide-in-fwd-center {
+  0% {
+    -webkit-transform: translateZ(-1400px);
+            transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+} */

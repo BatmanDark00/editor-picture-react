@@ -1,0 +1,46 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "reset": "Reiniciar",
+    "download": "Descargar",
+    "upload": "Subir",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Añadir",
+    "search": "Buscar",
+    "copy": "Copiar",
+    "cut": "Cortar",
+    "paste": "Pegar",
+    "undo": "Deshacer",
+    "redo": "Rehacer",
+    "selectAll": "Seleccionar todo",
+    "unselectAll": "Deseleccionar todo",
+    "remove": "Quitar",
+    "refresh": "Actualizar",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "home": "Inicio",
+    "about": "Acerca de",
+    "open": "Abrir"
+  },
+  "menuHeader": {
+    "newImage": "Nueva imagen",
+    "computer": "Ordenador",
+    "unsplash": "Unsplash"
+  },
+  "cropperResult": {
+    "saveInComputer": "Guardar en el ordenador"
+  },
+
+  "menuLateral": {
+    "toolEditor": {
+      "title": "Editor",
+      "basicConcepts": "Elementos básicos",
+      "color": "Color",
+      "rotate": "Rotar"
+      
+    }
+  }
+}
