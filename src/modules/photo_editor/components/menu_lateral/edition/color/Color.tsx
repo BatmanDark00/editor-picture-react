@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/color.scss";
+import "@/modules/photo_editor/components/menu_lateral/edition/color/color.scss";
 
 import SliderBase from "@/components/common/SliderBase";
 

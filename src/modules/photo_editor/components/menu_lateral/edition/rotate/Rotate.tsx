@@ -1,5 +1,4 @@
-import React from "react";
-import rotate from "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/rotate.module.scss"
+import rotate from "@/modules/photo_editor/components/menu_lateral/edition/rotate/rotate.module.scss"
 import ButtonBase from "@/components/common/ButtonBase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import reflect from "@/assets/images/horizontal_reflect_icon_216768.svg"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "@/assets/styles/components/tool_menu_lateral/filters.module.scss";
+import styles from "@/modules/photo_editor/components/menu_lateral/filter/filters.module.scss";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux";

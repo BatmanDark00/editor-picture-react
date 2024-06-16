@@ -1,5 +1,5 @@
 import React from "react";
-import "@/assets/styles/components/tool_menu_lateral/toolEdit.scss";
+import "@/modules/photo_editor/components/menu_lateral/edition/main/toolEdit.scss";
 
 import Accordion from "@/components/common/Accordion";
 import ButtonBase from "@/components/common/ButtonBase";

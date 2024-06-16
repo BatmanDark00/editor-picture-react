@@ -1,7 +1,7 @@
 import  { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux";
-import "@/assets/styles/components/tool_menu_lateral/edit/basic_concepts/trim.scss";
+import "@/modules/photo_editor/components/menu_lateral/edition/trim/trim.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
 
