@@ -20,7 +20,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
-    value: 0,
+    value: 100,
   },
   {
     id: 1,
@@ -30,7 +30,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
-    value: 0,
+    value: 100,
   },
   {
     id: 2,
@@ -40,7 +40,7 @@ const dataFilterComponent = [
     min: 0,
     max: 400,
     typeRange: "px",
-    value: 0,
+    value: 400,
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
-    value: 0,
+    value: 50,
   },
   {
     id: 4,
@@ -60,7 +60,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
-    value: 0,
+    value: 50,
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ const dataFilterComponent = [
     min: 0,
     max: 400,
     typeRange: "px",
-    value: 0,
+    value: 400,
   },
   {
     id: 6,
@@ -80,7 +80,7 @@ const dataFilterComponent = [
     min: 0,
     max: 10,
     typeRange: "rem",
-    value: 0,
+    value: 4,
   },
 ];
 
@@ -97,6 +97,15 @@ function Filters() {
   const handleOptionClick = (index: number) => {
     if (index !== indexVal) {
       setIndexVal(index);
+
+      console.log("index", index);
+      const selectFilterTone = dataFilterComponent[index];           
+
+      dispatch(
+        setFilters({
+          [selectFilterTone.nameValue]: `${selectFilterTone.value}`,
+        })
+      );
     }
   };
 
@@ -106,18 +115,17 @@ function Filters() {
   ) => {
     const newFiltersVal = [...filtersVal];
     newFiltersVal[index] = parseInt(e.target.value);
-   
-    dataFilterComponent[index].value = parseInt(e.target.value)
+
+    dataFilterComponent[index].value = parseInt(e.target.value);
     setFiltersVal(newFiltersVal);
 
     const selectFilterTone = dataFilterComponent[index];
 
     if (selectFilterTone) {
+      console.log("selectFilterTone", selectFilterTone);
       dispatch(
         setFilters({
-          //grayscale: dataFilterComponent[0].value,
-          sepia: dataFilterComponent[1].value,
-          saturate: dataFilterComponent[2].value,
+          [selectFilterTone.nameValue]: `${selectFilterTone.value}`,
         })
       );
     }
@@ -130,13 +138,12 @@ function Filters() {
       newFiltersVal[index] = 0;
       setFiltersVal(newFiltersVal);
     } */
-   dispatch(setApplyStyles(false))
-
+    dispatch(setApplyStyles(false));
   };
 
-  const applyStyles = () => { 
+  const applyStyles = () => {
     dispatch(setApplyStyles(true));
-  }
+  };
 
   return (
     <>
@@ -173,42 +180,51 @@ function Filters() {
                   </div>
                 </div>
                 <div className={styles.divButtonSelect}>
-                  <ButtonBase textAlign="center" onClick={()  => handleCloseOptionClick()}>
+                  <ButtonBase
+                    textAlign="center"
+                    onClick={() => handleCloseOptionClick()}
+                  >
                     <FontAwesomeIcon icon={["fas", "xmark"]} />
                   </ButtonBase>
-                  <ButtonBase textAlign="center" className="btn_primary" onClick={applyStyles}>
+                  <ButtonBase
+                    textAlign="center"
+                    className="btn_primary"
+                    onClick={applyStyles}
+                  >
                     <FontAwesomeIcon icon={["fas", "check"]} />
                   </ButtonBase>
                 </div>
               </div>
             ) : (
               <div className={styles.divImagePreview}>
-              <input 
-                 type="button"
-                 className={styles.buttonTransparent}
-                 value={item.value}
-                /*  onClick={() => {
+                <input
+                  type="button"
+                  className={styles.buttonTransparent}
+                  value={item.value}
+                  /*  onClick={() => {
                   dispatch(setFilters({
                     sepia: dataFilterComponent[1].value
                   }));
                   
                  }} */
                 />
-              <figure
-                key={index}
-                style={{ display: `${index === indexVal ? "none" : "flex"}` }}
-              >
-                <img
-                  src={imageCropper?.urlImage}
-                  alt={`picture with ${item.title}`}
-                  className={styles.img}
-                  style={{ filter: `${item.nameValue}(${item.max}${item.type})` }}
-                />
-                <figcaption className={styles.figcaption}>
-                  {item.title}
-                </figcaption>
-              </figure>
-            </div>
+                <figure
+                  key={index}
+                  style={{ display: `${index === indexVal ? "none" : "flex"}` }}
+                >
+                  <img
+                    src={imageCropper?.urlImage}
+                    alt={`picture with ${item.title}`}
+                    className={styles.img}
+                    style={{
+                      filter: `${item.nameValue}(${item.max}${item.type})`,
+                    }}
+                  />
+                  <figcaption className={styles.figcaption}>
+                    {item.title}
+                  </figcaption>
+                </figure>
+              </div>
             )}
           </div>
         ))}
