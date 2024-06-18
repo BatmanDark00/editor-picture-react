@@ -8,12 +8,8 @@ import ButtonBase from "@/components/common/ButtonBase";
 import SliderZoom from "@/components/common/SliderZoom";
 import Typography from "@/modules/common/components/typography/Typography";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  setToneCropper,
-  setFilterValCropper,
-  setToneTypeCropper,
-  setApplyStyles,
-} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+import { setApplyStyles } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
 
 const dataFilterComponent = [
   {
@@ -24,6 +20,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
+    value: 0,
   },
   {
     id: 1,
@@ -33,6 +30,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
+    value: 0,
   },
   {
     id: 2,
@@ -42,6 +40,7 @@ const dataFilterComponent = [
     min: 0,
     max: 400,
     typeRange: "px",
+    value: 0,
   },
   {
     id: 3,
@@ -51,6 +50,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
+    value: 0,
   },
   {
     id: 4,
@@ -60,6 +60,7 @@ const dataFilterComponent = [
     min: 0,
     max: 100,
     typeRange: "%",
+    value: 0,
   },
   {
     id: 5,
@@ -69,6 +70,7 @@ const dataFilterComponent = [
     min: 0,
     max: 400,
     typeRange: "px",
+    value: 0,
   },
   {
     id: 6,
@@ -78,6 +80,7 @@ const dataFilterComponent = [
     min: 0,
     max: 10,
     typeRange: "rem",
+    value: 0,
   },
 ];
 
@@ -86,10 +89,8 @@ function Filters() {
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
   const [indexVal, setIndexVal] = useState<number | null>(null);
   const [filtersVal, setFiltersVal] = useState<number[]>(
-    Array(dataFilterComponent.length).fill(400)
-  );
-  const [selectFilterColor, setSelectFilterColor] = useState(
-    dataFilterComponent[0].id
+    //dataFilterComponent.map((filter) => filter.max)
+    Array(dataFilterComponent.length).fill(0)
   );
   const listsFilters = dataFilterComponent;
 
@@ -105,27 +106,32 @@ function Filters() {
   ) => {
     const newFiltersVal = [...filtersVal];
     newFiltersVal[index] = parseInt(e.target.value);
+   
+    dataFilterComponent[index].value = parseInt(e.target.value)
     setFiltersVal(newFiltersVal);
-    dispatch(setFilterValCropper(parseInt(e.target.value)));
 
-    const selectedValue = parseInt(e.target.value);
-    setSelectFilterColor(selectedValue);
+    const selectFilterTone = dataFilterComponent[index];
 
-    const selectFilter = dataFilterComponent.find((item) => item.id === index);
-
-    if (selectFilter) {
-      dispatch(setToneCropper(selectFilter.nameValue));
-      dispatch(setToneTypeCropper(selectFilter.type));
+    if (selectFilterTone) {
+      dispatch(
+        setFilters({
+          //grayscale: dataFilterComponent[0].value,
+          sepia: dataFilterComponent[1].value,
+          saturate: dataFilterComponent[2].value,
+        })
+      );
     }
   };
 
-  const handleCloseOptionClick = (index: number) => {
+  const handleCloseOptionClick = (/*index: number*/) => {
     setIndexVal(null);
-    if (index !== null) {
+    /* if (index !== null) {
       const newFiltersVal = [...filtersVal];
       newFiltersVal[index] = 0;
       setFiltersVal(newFiltersVal);
-    }
+    } */
+   dispatch(setApplyStyles(false))
+
   };
 
   const applyStyles = () => { 
@@ -156,7 +162,7 @@ function Filters() {
                   <SliderZoom
                     min={item.min}
                     max={item.max}
-                    value={filtersVal[index]}
+                    value={item.value}
                     onChange={(e) => handleSliderChange(e, index)}
                   />
                   <div
@@ -167,7 +173,7 @@ function Filters() {
                   </div>
                 </div>
                 <div className={styles.divButtonSelect}>
-                  <ButtonBase textAlign="center" onClick={() => handleCloseOptionClick(index)}>
+                  <ButtonBase textAlign="center" onClick={()  => handleCloseOptionClick()}>
                     <FontAwesomeIcon icon={["fas", "xmark"]} />
                   </ButtonBase>
                   <ButtonBase textAlign="center" className="btn_primary" onClick={applyStyles}>
@@ -180,11 +186,13 @@ function Filters() {
               <input 
                  type="button"
                  className={styles.buttonTransparent}
-                 value={filtersVal[index]}
-                 onClick={() => {
-                  dispatch(setToneCropper(item.nameValue));
-                  dispatch(setFilterValCropper(item.max))
-                 }}
+                 value={item.value}
+                /*  onClick={() => {
+                  dispatch(setFilters({
+                    sepia: dataFilterComponent[1].value
+                  }));
+                  
+                 }} */
                 />
               <figure
                 key={index}
@@ -194,7 +202,7 @@ function Filters() {
                   src={imageCropper?.urlImage}
                   alt={`picture with ${item.title}`}
                   className={styles.img}
-                  style={{ filter: `${item.nameValue}(${filtersVal[index]}${item.type})` }}
+                  style={{ filter: `${item.nameValue}(${item.max}${item.type})` }}
                 />
                 <figcaption className={styles.figcaption}>
                   {item.title}

@@ -3,16 +3,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface FilterState {
   filters: {
-    hueRotate: number;
-    saturate: number;
-    sepia: number;
+    hueRotate?: number;
+    saturate?: number;
+    sepia?: number;
+    //grayscale?: number;
   };
 }
 
 interface FilterProps {
-  hueRotate: number;
-  saturate: number;
-  sepia: number;
+  hueRotate?: number;
+  saturate?: number;
+  sepia?: number;
+  //grayscale?: number;
 }
 
 const initialState: FilterState = {
@@ -20,6 +22,7 @@ const initialState: FilterState = {
     hueRotate: 0,
     saturate: 0,
     sepia: 0,
+    //grayscale: 0,
   },
 };
 
@@ -34,6 +37,9 @@ export const composeFilterString = (filters: FilterProps) => {
   if (filters.sepia !== 0) {
     filterStrings.push(`sepia(${filters.sepia}%)`);
   }
+ /*  if (filters.grayscale !== 0) {
+    filterStrings.push(`grayscale(${filters.grayscale}%)`);
+  } */  
   return filterStrings.join(" ");
 };
 

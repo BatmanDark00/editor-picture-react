@@ -6,7 +6,7 @@ import {
   setImageCropper,
   setApplyCrop,
   setApplyStyles,
-} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+ } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
 import { composeFilterString } from "@/modules/photo_editor/states/cropper/filterSlice";
@@ -63,7 +63,6 @@ const useCropperPicture = () => {
       // Aplicar filtros
       if (context) {
         context.filter = composeFilterString(filtersCropper.filters);
-
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
 
@@ -79,6 +78,7 @@ const useCropperPicture = () => {
             hueRotate: 0,
             saturate: 0,
             sepia: 0,
+            //grayscale: 0,
           })
         );
       }
