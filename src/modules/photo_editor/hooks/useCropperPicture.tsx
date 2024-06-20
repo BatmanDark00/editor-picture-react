@@ -10,11 +10,13 @@ import {
 
 import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
 import { composeFilterString } from "@/modules/photo_editor/states/cropper/filterSlice";
+import { composeTransform } from '../states/cropper/transformSlice';
 
 const useCropperPicture = () => {
   const cropperRef = useRef<CropperRef>(null);
   const filtersCropper = useSelector((state: RootState) => state.filter);
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
+  const transformCropper = useSelector((state: RootState) => state.transform);
   const dispatch = useDispatch();
 
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
@@ -37,6 +39,22 @@ const useCropperPicture = () => {
       //dispatch(setFilters(imageCropper.filters));
     }
   });
+
+useEffect(() => {
+  console.log("aplicando transformacion", transformCropper);
+  if (cropperRef.current) {
+    const cropper = cropperRef.current;
+    
+    cropper.transformImage({
+      rotate: transformCropper.rotate,
+      flip: {
+          horizontal: transformCropper.flip?.horizontal,
+          vertical: transformCropper.flip?.vertical,
+      },
+  });
+  }
+  }, [transformCropper]);
+
 
   const onCrop = () => {
     if (cropperRef.current) {
@@ -63,12 +81,14 @@ const useCropperPicture = () => {
       // Aplicar filtros
       if (context) {
         context.filter = composeFilterString(filtersCropper.filters);
+        
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
 
         // Obtener la nueva imagen procesada
         const newImage = canva.toDataURL();
 
+        
         // Despachar la acción para actualizar la imagen
         dispatch(setImageCropper(newImage));
 
@@ -78,7 +98,6 @@ const useCropperPicture = () => {
             hueRotate: 0,
             saturate: 0,
             sepia: 0,
-            //grayscale: 0,
           })
         );
       }
@@ -116,6 +135,7 @@ const useCropperPicture = () => {
     onChange,
     onReady,
     defaultSize,
+    transformCropper
   };
 };
 

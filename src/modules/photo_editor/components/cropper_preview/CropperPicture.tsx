@@ -18,6 +18,7 @@ export default function CropperPicture() {
     onChange,
     onReady,
     defaultSize,
+    transformCropper
   } = useCropperPicture();
 
   const minAspectRatio = imageCropper?.stencilProps?.minAspectRatio ?? 0;
@@ -32,13 +33,12 @@ export default function CropperPicture() {
     <>
       {!isLoaded && <SpinnerLoaderBase />}
 
-    
-
       <Cropper
         ref={cropperRef}
         src={imageCropper?.imageCropper}
         onChange={onChange}
         onReady={onReady}
+        defaultTransforms={transformCropper}
         style={style}
         defaultSize={defaultSize}
         stencilProps={{

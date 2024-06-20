@@ -3,12 +3,14 @@ import imageCropperSlice from "@/modules/photo_editor/states/cropper/imageCroppe
 import filterSlice from "@/modules/photo_editor/states/cropper/filterSlice";
 import menuLateralEditSlice from "@/modules/photo_editor/states/menu_lateral/menuLateralEditSlice";
 import themeModeSlice from "./themeModeSlice";
+import transformSlice from "@/modules/photo_editor/states/cropper/transformSlice";
 
 const rootReducer = {
   imageCropper: imageCropperSlice,
   filter: filterSlice,
   menuLateralEdit: menuLateralEditSlice,
   themeMode: themeModeSlice,
+  transform: transformSlice,
 };
 
 export const store = configureStore({
