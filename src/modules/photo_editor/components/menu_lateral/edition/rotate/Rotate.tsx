@@ -1,4 +1,4 @@
-//import React, { useState } from "react";
+import React, { useRef } from "react";
 import rotate from "@/modules/photo_editor/components/menu_lateral/edition/rotate/rotate.module.scss"
 
 //import { Cropper, CropperRef } from "react-advanced-cropper";
@@ -8,36 +8,45 @@ import ButtonBase from "@/components/common/ButtonBase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import reflect from "@/assets/images/horizontal_reflect_icon_216768.svg"
 import verticalReflect from "@/assets/images/vertical_reflect_icon_216727.svg"
-import { setRotate, setFlip, resetRotate } from "@/modules/photo_editor/states/cropper/transformSlice";
+import { setFlip } from "@/modules/photo_editor/states/cropper/transformSlice";
 import { RootState } from "@/states";
+import { setRotate, setResetRotate, setApplyStyles } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+//import { CropperRef } from "react-advanced-cropper";
+
 
 function Rotate () {
     const dispatch = useDispatch();
-    const transform = useSelector((state: RootState) => state.transform) 
+    const transform = useSelector((state: RootState) => state.imageCropper.rotate) 
+   // const croppperRef = useRef<CropperRef>(null)
 
-     const flipHorizontal = () => {
-        dispatch(setFlip({horizontal: !transform.flip?.horizontal}))
+    const handleRotatePositive = () => {
+        dispatch(setRotate((transform + 90) % 360))
+    };
+    
+    const flipHorizontal = () => {
+        dispatch(setFlip({
+            horizontal: !false,
+            vertical: !true
+        }))
     }; 
 
      const flipVertical = () => {
-        dispatch(setFlip({vertical: !transform.flip?.vertical}))
+        dispatch(setFlip({
+            horizontal: !true,
+            vertical: !false
+        }))
     }; 
-     
-    const handleRotatePositive = () => {
-        const newValue = (transform.rotate + 90) % 360;
-        dispatch(setRotate(newValue));
-        dispatch(setRotate(90))
-    };
-
-    const handleRotateNegative = () => {
-        const newValue = (transform.rotate - 90 + 360) % 360;
-        dispatch(setRotate(newValue));
-        dispatch(setRotate(-90))
-    };
 
     const handleResetRotationClick = () => {
-        dispatch(resetRotate())
-        dispatch(setFlip({ horizontal: false, vertical: false }))
+        //dispatch(setResetRotate(0))
+        //dispatch(setFlip({ horizontal: false, vertical: false }))
+        console.log("reset rotation");
+    }
+
+    const handleApplyRotationClick = () => {
+        dispatch(setApplyStyles(true));
+
+        console.log("apply styles");
     }
 
     return (
@@ -52,12 +61,12 @@ function Rotate () {
                      size="small">
                         <FontAwesomeIcon icon={["fas", "rotate-left"]} />
                     </ButtonBase>
-                    <ButtonBase 
-                     onClick={handleRotateNegative} 
+                    {/* <ButtonBase 
+                     onClick={() => handleRotateNegative(90)} 
                      textAlign="center" 
                      size="small">
                         <FontAwesomeIcon icon={["fas", "rotate-right"]} />
-                    </ButtonBase>
+                    </ButtonBase> */}
                     </div>
                 </div>
                 <div className={rotate.divRotateFunction}>
@@ -80,7 +89,7 @@ function Rotate () {
             </div>
             <div className={rotate.divButtonsConfirm}>
                 <ButtonBase onClick={handleResetRotationClick} textAlign="center">Cancelar</ButtonBase>
-                <ButtonBase textAlign="center" className="btn_primary">Aplicar</ButtonBase>
+                <ButtonBase onClick={handleApplyRotationClick} textAlign="center" className="btn_primary">Aplicar</ButtonBase>
             </div>
         </section>
     )
