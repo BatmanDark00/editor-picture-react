@@ -84,6 +84,11 @@ useEffect(() => {
         
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
+/* 
+        context.font = "30px Arial";
+        context.fillStyle = "red";
+        context.fillText("Hello World", 10, 50); */
+
 
         // Obtener la nueva imagen procesada
         const newImage = canva.toDataURL();

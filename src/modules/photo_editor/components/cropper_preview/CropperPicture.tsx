@@ -33,6 +33,8 @@ export default function CropperPicture() {
     <>
       {!isLoaded && <SpinnerLoaderBase />}
 
+    
+
       <Cropper
         ref={cropperRef}
         src={imageCropper?.imageCropper}

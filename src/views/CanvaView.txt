@@ -1,0 +1,299 @@
+import React, { useRef, useState, MouseEvent, useEffect } from "react";
+import ButtonBase from "@/components/common/ButtonBase";
+import "@/assets/styles/views/canvaView.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+type Shape = {
+  type: string;
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+  color: string;
+  fillColor: string;
+  lineWidth: number;
+};
+
+const CanvaView: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [drawing, setDrawing] = useState(false);
+  const [color, setColor] = useState("black");
+  const [fillColor, setFillColor] = useState("transparent");
+  const [lineWidth, setLineWidth] = useState(5);
+  const [activeTab, setActiveTab] = useState("file");
+  const [shape, setShape] = useState<string | null>(null);
+  const [startPos, setStartPos] = useState<{ x: number; y: number } | null>(null);
+  const [shapes, setShapes] = useState<Shape[]>([]);
+  const [selectedShapeIndex, setSelectedShapeIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const context = canvas.getContext("2d");
+      if (context) {
+        context.lineJoin = "round";
+        context.lineCap = "round";
+        drawAllShapes(context);
+      }
+    }
+  }, [shapes]);
+
+  const startDrawing = (e: MouseEvent<HTMLCanvasElement>) => {
+    setDrawing(true);
+    const pos = { x: e.clientX - canvasRef.current!.offsetLeft, y: e.clientY - canvasRef.current!.offsetTop };
+    setStartPos(pos);
+    if (!shape) draw(e);
+  };
+
+  const endDrawing = (e: MouseEvent<HTMLCanvasElement>) => {
+    if (!drawing) return;
+    const context = getContext();
+    if (context && shape && startPos) {
+      const newShape: Shape = {
+        type: shape,
+        startX: startPos.x,
+        startY: startPos.y,
+        endX: e.clientX - canvasRef.current!.offsetLeft,
+        endY: e.clientY - canvasRef.current!.offsetTop,
+        color: color,
+        fillColor: fillColor,
+        lineWidth: lineWidth
+      };
+      setShapes([...shapes, newShape]);
+    }
+    setDrawing(false);
+    setShape(null);
+    setStartPos(null);
+  };
+
+  const draw = (e: MouseEvent<HTMLCanvasElement>) => {
+    if (!drawing) return;
+    if (!shape) {
+      drawFreehand(e);
+    } else {
+      const context = getContext();
+      if (context && startPos) {
+        redrawAllShapes(context);
+        drawShape(context, e.clientX - canvasRef.current!.offsetLeft, e.clientY - canvasRef.current!.offsetTop, startPos.x, startPos.y, shape);
+      }
+    }
+  };
+
+  const drawFreehand = (e: MouseEvent<HTMLCanvasElement>) => {
+    const context = getContext();
+    if (!context) return;
+
+    context.lineWidth = lineWidth;
+    context.lineCap = "round";
+    context.strokeStyle = color;
+
+    context.lineTo(
+      e.clientX - canvasRef.current!.offsetLeft,
+      e.clientY - canvasRef.current!.offsetTop
+    );
+    context.stroke();
+    context.beginPath();
+    context.moveTo(
+      e.clientX - canvasRef.current!.offsetLeft,
+      e.clientY - canvasRef.current!.offsetTop
+    );
+  };
+
+  const drawShape = (context: CanvasRenderingContext2D, endX: number, endY: number, startX: number, startY: number, shape: string) => {
+    context.lineWidth = lineWidth;
+    context.strokeStyle = color;
+    context.fillStyle = fillColor;
+
+    switch (shape) {
+      case "rectangle":
+        context.strokeRect(startX, startY, endX - startX, endY - startY);
+        context.fillRect(startX, startY, endX - startX, endY - startY);
+        break;
+      case "circle":
+        const radius = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+        context.beginPath();
+        context.arc(startX, startY, radius, 0, Math.PI * 2);
+        context.stroke();
+        context.fill();
+        break;
+      case "line":
+        context.beginPath();
+        context.moveTo(startX, startY);
+        context.lineTo(endX, endY);
+        context.stroke();
+        break;
+      default:
+        break;
+    }
+  };
+
+  const redrawAllShapes = (context: CanvasRenderingContext2D) => {
+    context.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
+    shapes.forEach(shape => drawShape(context, shape.endX, shape.endY, shape.startX, shape.startY, shape.type));
+  };
+
+  const drawAllShapes = (context: CanvasRenderingContext2D) => {
+    shapes.forEach(shape => drawShape(context, shape.endX, shape.endY, shape.startX, shape.startY, shape.type));
+  };
+
+  const getContext = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return null;
+    return canvas.getContext("2d");
+  };
+
+  const downloadImage = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const image = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "canvas-drawing.png";
+    link.click();
+  };
+
+  const clearCanvas = () => {
+    const context = getContext();
+    if (context) {
+      context.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
+      setShapes([]);
+    }
+  };
+
+  const handleChangeColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setColor(e.target.value);
+  };
+
+  const handleChangeFillColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFillColor(e.target.value);
+  };
+
+  const handleChangeLineWidth = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLineWidth(Number(e.target.value));
+  };
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+  };
+
+  const handleShapeClick = (shape: string) => {
+    setShape(shape);
+  };
+
+  const handleShapeSelect = (index: number) => {
+    setSelectedShapeIndex(index);
+  };
+
+  const handleShapeMove = (e: MouseEvent<HTMLCanvasElement>) => {
+    if (selectedShapeIndex === null) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const newShapes = [...shapes];
+    const shape = newShapes[selectedShapeIndex];
+    const offsetX = e.clientX - canvas.offsetLeft - (shape.endX - shape.startX) / 2;
+    const offsetY = e.clientY - canvas.offsetTop - (shape.endY - shape.startY) / 2;
+    shape.startX = offsetX;
+    shape.startY = offsetY;
+    shape.endX = offsetX + (shape.endX - shape.startX);
+    shape.endY = offsetY + (shape.endY - shape.startY);
+
+    setShapes(newShapes);
+  };
+
+  return (
+    <div className="canva">
+      <nav className="menu">
+        <ul>
+          {["file", "edit", "show", "insert", "format"].map((tab) => (
+            <li key={tab}>
+              <a
+                href="#"
+                onClick={() => handleTabClick(tab)}
+                className={activeTab === tab ? "active" : ""}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="tools-menu">
+        <label>
+          <input type="color" value={color} onChange={handleChangeColor} />
+        </label>
+        <label>
+          Relleno:
+          <input type="color" value={fillColor} onChange={handleChangeFillColor} />
+        </label>
+        <label>
+          Grosor:
+          <input
+            type="range"
+            min="1"
+            max="50"
+            value={lineWidth}
+            onChange={handleChangeLineWidth}
+          />
+        </label>
+        <ButtonBase
+          size="small"
+          className="btn_theme"
+          textAlign="center"
+          onClick={downloadImage}
+        >
+          <FontAwesomeIcon icon="save" />
+        </ButtonBase>
+        <ButtonBase
+          size="small"
+          className="btn_theme"
+          textAlign="center"
+          onClick={clearCanvas}
+        >
+          <FontAwesomeIcon icon="trash" />
+        </ButtonBase>
+        <ButtonBase
+          size="small"
+          className="btn_theme"
+          textAlign="center"
+          onClick={() => handleShapeClick("rectangle")}
+        >
+          Rectángulo
+        </ButtonBase>
+        <ButtonBase
+          size="small"
+          className="btn_theme"
+          textAlign="center"
+          onClick={() => handleShapeClick("circle")}
+        >
+          Círculo
+        </ButtonBase>
+        <ButtonBase
+          size="small"
+          className="btn_theme"
+          textAlign="center"
+          onClick={() => handleShapeClick("line")}
+        >
+          Línea
+        </ButtonBase>
+      </div>
+
+      <main>
+        <canvas
+          id="myCanvas"
+          ref={canvasRef}
+          width="1000"
+          height="600"
+          onMouseDown={startDrawing}
+          onMouseUp={endDrawing}
+          onMouseMove={drawing ? draw : handleShapeMove}
+        >
+          Tu navegador no soporta el elemento canvas.
+        </canvas>
+      </main>
+    </div>
+  );
+};
+
+export default CanvaView;

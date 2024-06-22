@@ -1,183 +1,103 @@
-import React, { useRef, useState, useEffect, MouseEvent } from "react";
-import ButtonBase from "@/components/common/ButtonBase";
+import React, { useEffect } from "react";
 import "@/assets/styles/views/canvaView.scss";
 
-const CanvaView: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [drawing, setDrawing] = useState(false);
-  const [color, setColor] = useState("black");
-  const [lineWidth, setLineWidth] = useState(5);
-  const [activeTab, setActiveTab] = useState("file");
-
+export default function CanvaView() {
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const context = canvas.getContext("2d");
-    if (!context) return;
+    console.log("CanvaView");
 
-    const startDrawing = (e: MouseEvent<HTMLCanvasElement>) => {
-      setDrawing(true);
-      draw(e);
-    };
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+    const content = canvas.getContext("2d");
 
-    const endDrawing = () => {
-      setDrawing(false);
-      context.beginPath();
-    };
+    if (content) {
+      content.fillStyle = "red";
+      content.fillRect(20, 20, 300, 100); 
 
-    const draw = (e: MouseEvent<HTMLCanvasElement>) => {
-      if (!drawing) return;
+      content.strokeStyle =  "rgba(255, 165, 0, 1)";
+      content.strokeRect(340, 20, 300, 100);      
+      content.clearRect(30, 30, 280, 80);
+      
 
-      context.lineWidth = lineWidth;
-      context.lineCap = "round";
-      context.strokeStyle = color;
+      // create a linear gradient
+      const gradient = content.createLinearGradient(0, 0, 300, 30);
+      gradient.addColorStop(0.5, "#00AAFF");
+      gradient.addColorStop(1, "#000000");
+      content.fillStyle = gradient;
 
-      context.lineTo(
-        e.clientX - canvas.offsetLeft,
-        e.clientY - canvas.offsetTop
-      );
-      context.stroke();
-      context.beginPath();
-      context.moveTo(
-        e.clientX - canvas.offsetLeft,
-        e.clientY - canvas.offsetTop
-      );
-    };
+      content.fillRect(20, 150, 300, 100);
 
-    canvas.addEventListener("mousedown", startDrawing);
-    canvas.addEventListener("mouseup", endDrawing);
-    canvas.addEventListener("mousemove", draw);
+      // create a radial gradient
+      const radialGradient = content.createRadialGradient(500, 200, 10, 500, 200, 100);
+      radialGradient.addColorStop(0, "#00AAFF");
+      radialGradient.addColorStop(1, "#000000");
+      radialGradient.addColorStop(0.5, "#FF0000");
+      content.fillStyle = radialGradient;
+      content.fillRect(400, 150, 200, 100);
+ 
+      // draw a line
+    /*   content.beginPath();
+      content.moveTo(700, 20);
+      content.lineTo(700, 120);
+      content.lineTo(800, 120);
+      
+    
+      content.lineWidth = 5;
+      content.strokeStyle = "green";
+      content.clip();
 
-    return () => {
-      canvas.removeEventListener("mousedown", startDrawing);
-      canvas.removeEventListener("mouseup", endDrawing);
-      canvas.removeEventListener("mousemove", draw);
-    };
-  }, [drawing, color, lineWidth]);
+      content.beginPath();
+      for (let i = 0; i < 10; i++) {
+        content.moveTo(700, 20);
+        content.lineTo(700 + i * 10, 120);
+      }
+      content.closePath();
+      content.stroke(); */
+      
 
-  const downloadImage = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const image = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.href = image;
-    link.download = "canvas-drawing.png";
-    link.click();
-  };
+      //content.stroke();
 
-  const clearCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const context = canvas.getContext("2d");
-    if (!context) return;
-    context.clearRect(0, 0, canvas.width, canvas.height);
-  };
+      // draw a circle
+   /*    content.beginPath();
+      const radians = Math.PI / 180 * 45;
+      content.arc(20, 300, 50, 0, radians);
+      content.closePath();
+      content.stroke(); */
 
-  const handleChangeColor = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setColor(e.target.value);
-  };
+      // draw text
+      content.font = "30px Arial";
+      content.fillStyle = "red";
+     // content.textAlign = "center";
+      content.fillText("Hello World", 100, 300);
+      content.strokeText("Hello World", 100, 350);
 
-  const handleChangeLineWidth = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLineWidth(Number(e.target.value));
-  };
+      const size = content.measureText("Hello World");
+      content.strokeRect(100,280, size.width, 30);
 
-  const handleTabClick = (tabId: string) => {
-    setActiveTab(tabId);
-  };
+      content.shadowColor = "indigo";
+      content.shadowOffsetX = 4;
+      content.shadowOffsetY = 4;
+      content.shadowBlur = 4;
+
+      content.font = "bold 50px verdana, sans-serif";
+      content.fillText("Hello World", 100, 400);
+
+      //content.translate(100, 400);
+      content.rotate(45 * Math.PI / 180);
+      content.translate(0,100);
+
+
+
+      
+    }
+
+
+  }, []);
 
   return (
-    <div className="canva">
-      <nav className="menu">
-        <ul>
-          <li>
-            <a
-              href=""
-              onClick={() => handleTabClick("file")}
-              className={activeTab === "file" ? "active" : ""}
-            >
-              Archivo
-            </a>
-          </li>
-          <li>
-            <a
-              href=""
-              onClick={() => handleTabClick("edit")}
-              className={activeTab === "edit" ? "active" : ""}
-            >
-              Editar
-            </a>
-          </li>
-          <li>
-            <a
-              href=""
-              onClick={() => handleTabClick("show")}
-              className={activeTab === "show" ? "active" : ""}
-            >
-              Ver
-            </a>
-          </li>
-          <li>
-            <a
-              href=""
-              onClick={() => handleTabClick("insert")}
-              className={activeTab === "insert" ? "active" : ""}
-            >
-              Insertar
-            </a>
-          </li>
-          <li>
-            <a
-              href=""
-              onClick={() => handleTabClick("format")}
-              className={activeTab === "format" ? "active" : ""}
-            >
-              Formatear
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <div className="tools-menu">
-        <label>
-          Color:
-          <input type="color" value={color} onChange={handleChangeColor} />
-        </label>
-        <label>
-          Grosor:
-          <input
-            type="range"
-            min="1"
-            max="50"
-            value={lineWidth}
-            onChange={handleChangeLineWidth}
-          />
-        </label>
-        <ButtonBase
-          size="small"
-          className="btn_primary"
-          textAlign="center"
-          onClick={downloadImage}
-        >
-          Descargar resultado
-        </ButtonBase>
-        <ButtonBase
-          size="small"
-          className="btn_primary"
-          textAlign="center"
-          onClick={clearCanvas}
-        >
-          Borrar todo
-        </ButtonBase>
-      </div>
-
-      <h1>Prueba para dibujar</h1>
-      <main>
-        <canvas id="myCanvas" ref={canvasRef} width="800" height="600">
-          Tu navegador no soporta el elemento canvas.
-        </canvas>
-      </main>
+    <div>
+      <h1>Canvas</h1>
+      <section id="boxCanvas">
+        <canvas id="canvas" width="900" height="600"></canvas>
+      </section>
     </div>
   );
-};
-
-export default CanvaView;
+}
