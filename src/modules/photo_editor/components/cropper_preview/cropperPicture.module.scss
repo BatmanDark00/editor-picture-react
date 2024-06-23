@@ -1,17 +1,27 @@
-.cropper_picture{
-    display: flex;
-    flex-direction: row;
-    max-width: 100%;
-    max-height: 85vh;
-    margin: 2rem;
+.cropper_picture {
+  display: flex;
+  flex-direction: row;
+  position: relative;
 
-    canvas{
-        align-self: center;
-        /* max-width: 100%;
-        height: calc(100vh - 200px);
-        max-height: 100vh;   */   
-        object-fit: contain; 
-       
-       
+  max-width: 100%;
+  max-height: 85vh;
+  margin: 2rem;
+
+  canvas {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__editing_text {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #000;
+        border-radius: 0.25rem;
     }
+    
+  }
 }
