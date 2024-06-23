@@ -1,4 +1,17 @@
 .cropper_picture{
-    background-color: red;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    max-height: 85vh;
+    margin: 2rem;
+
+    canvas{
+        align-self: center;
+        /* max-width: 100%;
+        height: calc(100vh - 200px);
+        max-height: 100vh;   */   
+        object-fit: contain; 
+       
+       
+    }
 }

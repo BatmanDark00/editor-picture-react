@@ -1,103 +1,173 @@
-import React, { useEffect } from "react";
-import "@/assets/styles/views/canvaView.scss";
+import { RootState } from "@/states";
+import React, { useRef, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-export default function CanvaView() {
+const CanvaView = () => {
+  const imageCropper = useSelector((state: RootState) => state.imageCropper);
+  const canvasRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [draggedElementIndex, setDraggedElementIndex] = useState(null);
+  const [isEditingText, setIsEditingText] = useState(false);
+  const [textInput, setTextInput] = useState("");
+  const [elements, setElements] = useState([
+    { x: 50, y: 50, width: 0, height: 0, color: "blue", text: "A" },
+    { x: 150, y: 50, width: 0, height: 0, color: "red", text: "B" },
+    { x: 250, y: 50, width: 0, height: 0, color: "green", text: "C" },
+  ]);
+
   useEffect(() => {
-    console.log("CanvaView");
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
 
-    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-    const content = canvas.getContext("2d");
-
-    if (content) {
-      content.fillStyle = "red";
-      content.fillRect(20, 20, 300, 100); 
-
-      content.strokeStyle =  "rgba(255, 165, 0, 1)";
-      content.strokeRect(340, 20, 300, 100);      
-      content.clearRect(30, 30, 280, 80);
-      
-
-      // create a linear gradient
-      const gradient = content.createLinearGradient(0, 0, 300, 30);
-      gradient.addColorStop(0.5, "#00AAFF");
-      gradient.addColorStop(1, "#000000");
-      content.fillStyle = gradient;
-
-      content.fillRect(20, 150, 300, 100);
-
-      // create a radial gradient
-      const radialGradient = content.createRadialGradient(500, 200, 10, 500, 200, 100);
-      radialGradient.addColorStop(0, "#00AAFF");
-      radialGradient.addColorStop(1, "#000000");
-      radialGradient.addColorStop(0.5, "#FF0000");
-      content.fillStyle = radialGradient;
-      content.fillRect(400, 150, 200, 100);
- 
-      // draw a line
-    /*   content.beginPath();
-      content.moveTo(700, 20);
-      content.lineTo(700, 120);
-      content.lineTo(800, 120);
-      
-    
-      content.lineWidth = 5;
-      content.strokeStyle = "green";
-      content.clip();
-
-      content.beginPath();
-      for (let i = 0; i < 10; i++) {
-        content.moveTo(700, 20);
-        content.lineTo(700 + i * 10, 120);
-      }
-      content.closePath();
-      content.stroke(); */
-      
-
-      //content.stroke();
-
-      // draw a circle
-   /*    content.beginPath();
-      const radians = Math.PI / 180 * 45;
-      content.arc(20, 300, 50, 0, radians);
-      content.closePath();
-      content.stroke(); */
-
-      // draw text
-      content.font = "30px Arial";
-      content.fillStyle = "red";
-     // content.textAlign = "center";
-      content.fillText("Hello World", 100, 300);
-      content.strokeText("Hello World", 100, 350);
-
-      const size = content.measureText("Hello World");
-      content.strokeRect(100,280, size.width, 30);
-
-      content.shadowColor = "indigo";
-      content.shadowOffsetX = 4;
-      content.shadowOffsetY = 4;
-      content.shadowBlur = 4;
-
-      content.font = "bold 50px verdana, sans-serif";
-      content.fillText("Hello World", 100, 400);
-
-      //content.translate(100, 400);
-      content.rotate(45 * Math.PI / 180);
-      content.translate(0,100);
-
-
-
-      
+    if (!ctx) {
+      return;
     }
 
+    //dibuar imagen 
+    drawElements(ctx);
 
-  }, []);
+    function drawElements(ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      elements.forEach((element) => {
+        // Measure text width and height
+        ctx.font = "20px Arial";
+        const textWidth = ctx.measureText(element.text).width;
+        const textHeight = 20; // Font size
+
+        // Adjust element size based on text size
+        element.width = textWidth + 20; // Add padding for aesthetics
+        element.height = textHeight + 10;
+
+        // Draw rectangle and text
+        ctx.fillStyle = element.color;
+        ctx.fillRect(element.x, element.y, element.width, element.height);
+        ctx.fillStyle = "black";
+        ctx.fillText(element.text, element.x + 10, element.y + textHeight);
+      });
+    }
+
+    function getMousePos(canvas, evt) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top,
+      };
+    }
+
+    function isInsideElement(mousePos, element) {
+      return (
+        mousePos.x > element.x &&
+        mousePos.x < element.x + element.width &&
+        mousePos.y > element.y &&
+        mousePos.y < element.y + element.height
+      );
+    }
+
+    const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+      const mousePos = getMousePos(canvas, e);
+      const elementIndex = elements.findIndex((element) =>
+        isInsideElement(mousePos, element)
+      );
+      if (elementIndex !== -1) {
+        setDraggedElementIndex(elementIndex);
+        setIsDragging(true);
+        setIsEditingText(false);
+      }
+    };
+
+    const handleMouseMove = (e) => {
+      if (isDragging && draggedElementIndex !== null) {
+        const mousePos = getMousePos(canvas, e);
+        const newElements = [...elements];
+        newElements[draggedElementIndex] = {
+          ...newElements[draggedElementIndex],
+          x: mousePos.x - newElements[draggedElementIndex].width / 2,
+          y: mousePos.y - newElements[draggedElementIndex].height / 2,
+        };
+        setElements(newElements);
+        drawElements(ctx);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      setDraggedElementIndex(null);
+    };
+
+    const handleDoubleClick = (e) => {
+      const mousePos = getMousePos(canvas, e);
+      const elementIndex = elements.findIndex((element) =>
+        isInsideElement(mousePos, element)
+      );
+      if (elementIndex !== -1) {
+        setDraggedElementIndex(elementIndex);
+        setTextInput(elements[elementIndex].text);
+        setIsEditingText(true);
+      }
+    };
+
+    canvas.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener("mouseup", handleMouseUp);
+    canvas.addEventListener("dblclick", handleDoubleClick);
+
+    return () => {
+      canvas.removeEventListener("mousedown", handleMouseDown);
+      canvas.removeEventListener("mousemove", handleMouseMove);
+      canvas.removeEventListener("mouseup", handleMouseUp);
+      canvas.removeEventListener("dblclick", handleDoubleClick);
+    };
+  }, [isDragging, draggedElementIndex, elements]);
+
+  const handleTextChange = (e) => {
+    setTextInput(e.target.value);
+  };
+
+  const handleTextSubmit = () => {
+    if (draggedElementIndex !== null) {
+      const newElements = [...elements];
+      newElements[draggedElementIndex] = {
+        ...newElements[draggedElementIndex],
+        text: textInput,
+      };
+      setElements(newElements);
+      setIsEditingText(false);
+      setDraggedElementIndex(null);
+    }
+  };
+
+  const handleDownload = () => {
+    const canvas = canvasRef.current;
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "canvas.png";
+    link.click();
+  };
 
   return (
-    <div>
-      <h1>Canvas</h1>
-      <section id="boxCanvas">
-        <canvas id="canvas" width="900" height="600"></canvas>
-      </section>
-    </div>
+    <>
+      <p>Double click on the element to edit the text</p>
+      {!isEditingText && <button onClick={handleDownload}>Download</button>}
+
+      <canvas
+        ref={canvasRef}
+        width="500"
+        height="400"
+        style={{ border: "1px solid black" }}
+      />
+      {isEditingText && (
+        <div>
+          <input
+            type="text"
+            value={textInput}
+            onChange={handleTextChange}
+            onBlur={handleTextSubmit}
+            autoFocus
+          />
+        </div>
+      )}
+    </>
   );
-}
+};
+
+export default CanvaView;

@@ -10,6 +10,7 @@ interface ImageCropperState {
     maxAspectRatio?: number | 0;
   };
   isCrop?: boolean;
+  isVisibleCropper?: boolean;
   isApplyStyles?: boolean;
 }
 
@@ -29,6 +30,7 @@ const initialState: ImageCropperState = {
     maxAspectRatio: 0,
   },
   isCrop: false,
+  isVisibleCropper: false,  
   isApplyStyles: false,
 };
 
@@ -82,6 +84,10 @@ export const imageCropperSlice = createSlice({
       state.isCrop = action.payload;
     },
 
+    setVisibleCropper: (state, action: PayloadAction<boolean>) => {
+      state.isVisibleCropper = action.payload;
+    },
+
     setApplyStyles: (state, action: PayloadAction<boolean>) => {
       state.isApplyStyles = action.payload;
     },
@@ -100,6 +106,7 @@ export const {
   setSepia, */
   setStencilProps,
   setApplyCrop,
+  setVisibleCropper,
   setApplyStyles,
 } = imageCropperSlice.actions;
 export default imageCropperSlice.reducer;

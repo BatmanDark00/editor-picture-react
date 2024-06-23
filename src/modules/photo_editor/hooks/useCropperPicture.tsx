@@ -5,12 +5,13 @@ import { RootState } from "@/states";
 import {
   setImageCropper,
   setApplyCrop,
+  setVisibleCropper,
   setApplyStyles,
- } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
 import { composeFilterString } from "@/modules/photo_editor/states/cropper/filterSlice";
-import { composeTransform } from '../states/cropper/transformSlice';
+import { composeTransform } from "../states/cropper/transformSlice";
 
 const useCropperPicture = () => {
   const cropperRef = useRef<CropperRef>(null);
@@ -40,21 +41,20 @@ const useCropperPicture = () => {
     }
   });
 
-useEffect(() => {
-  console.log("aplicando transformacion", transformCropper);
-  if (cropperRef.current) {
-    const cropper = cropperRef.current;
-    
-    cropper.transformImage({
-      rotate: transformCropper.rotate,
-      flip: {
+  useEffect(() => {
+    console.log("aplicando transformacion", transformCropper);
+    if (cropperRef.current) {
+      const cropper = cropperRef.current;
+
+      cropper.transformImage({
+        rotate: transformCropper.rotate,
+        flip: {
           horizontal: transformCropper.flip?.horizontal,
           vertical: transformCropper.flip?.vertical,
-      },
-  });
-  }
+        },
+      });
+    }
   }, [transformCropper]);
-
 
   const onCrop = () => {
     if (cropperRef.current) {
@@ -81,19 +81,17 @@ useEffect(() => {
       // Aplicar filtros
       if (context) {
         context.filter = composeFilterString(filtersCropper.filters);
-        
+
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
-/* 
+
         context.font = "30px Arial";
         context.fillStyle = "red";
-        context.fillText("Hello World", 10, 50); */
-
+        context.fillText("Hello World", 10, 50);
 
         // Obtener la nueva imagen procesada
         const newImage = canva.toDataURL();
 
-        
         // Despachar la acción para actualizar la imagen
         dispatch(setImageCropper(newImage));
 
@@ -140,7 +138,7 @@ useEffect(() => {
     onChange,
     onReady,
     defaultSize,
-    transformCropper
+    transformCropper,
   };
 };
 
