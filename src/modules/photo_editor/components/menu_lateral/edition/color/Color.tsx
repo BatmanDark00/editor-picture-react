@@ -40,8 +40,9 @@ const listsFiltersColors = [
     typeVal: "%",
     type: "%",
     min: 0,
-    max: 100,
-    value: 0,
+    max: 200,
+    step: 1,
+    value: 100,
   },
 ];
 
@@ -70,7 +71,7 @@ export default function Color() {
         setFilters({
           hueRotate: listsFiltersColors[0].value,
           saturate: listsFiltersColors[1].value,
-          sepia: listsFiltersColors[2].value,
+          mixTone: listsFiltersColors[2].value
         })
       );
     }
@@ -81,14 +82,14 @@ export default function Color() {
 
     listsFiltersColors[0].value = 0;
     listsFiltersColors[1].value = 0;
-    listsFiltersColors[2].value = 0;
+    listsFiltersColors[2].value = 100; 
 
     // setFiltersValues(Array(listsFiltersColors.length).fill(0));
 
     setFilters({
       hueRotate: 0,
       saturate: 0,
-      sepia: 0,
+      mixTone: 100,
     });
 
     // resetear los valores de los filtros
@@ -115,6 +116,7 @@ export default function Color() {
                 value={item.value}
                 min={item.min}
                 max={item.max}
+                step={item.step || 1}
                 onChange={(e) => handleColorsChange(e, index)}
               />
             </div>

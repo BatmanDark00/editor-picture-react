@@ -71,9 +71,16 @@ useEffect(() => {
     }
 
     console.log("rotando", imageCropper.rotate);
-  }, [imageCropper.rotate])
+  }, [imageCropper.rotate]);
 
+  useEffect(() => {
+    if (cropperRef.current) {
+      cropperRef.current.rotateImage(-90)
+    }
 
+    console.log("rotando", imageCropper.rotateNegative);
+  }, [imageCropper.rotateNegative]);
+  
   const onCrop = () => {
     if (cropperRef.current) {
       setCoordinates(cropperRef.current.getCoordinates());

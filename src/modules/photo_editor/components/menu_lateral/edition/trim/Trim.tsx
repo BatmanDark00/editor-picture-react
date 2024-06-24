@@ -166,12 +166,14 @@ function Trim() {
            className={`preview-container ${index === indexVal ? "animated" : "not-animated"}`} 
            key={index}
            style={{
-            backgroundColor: `${index === indexVal ? "var(--secondary-100)" : ""}`
+            backgroundImage: `${index === indexVal ? `url(${imageCropper.urlImage})` : ""}`
            }}
            onClick={() => handleCutOptionClick(index)}
            >
             {index === indexVal ? (
               <div className="div-buttons-cut">
+                <div className="backdrop-buttons">
+
                 <ButtonBase
                   textAlign="center"
                   size="small"
@@ -187,6 +189,7 @@ function Trim() {
                 >
                   <FontAwesomeIcon icon={["fas", "check"]} />
                 </ButtonBase>
+                </div>
               </div>
             ) : (
               <div 
