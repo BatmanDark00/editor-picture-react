@@ -54,6 +54,7 @@ export default function CropperPicture() {
         ></canvas>
       )}
 
+
       {isEditingText && (
         <div className={cropperPictureModule.cropper_picture__editing_text}>
           <input
@@ -67,20 +68,21 @@ export default function CropperPicture() {
       )}
 
       {imageCropper?.isVisibleCropper && (
-        <Cropper
-          ref={cropperRef}
-          src={imageCropper?.imageCropper}
-          onChange={onChange}
-          onReady={onReady}
-          defaultTransforms={transformCropper}
-          style={style}
-          defaultSize={defaultSize}
-          stencilProps={{
-            aspectRatio: minAspectRatio / maxAspectRatio,
-            grid: true,
-          }}
-        ></Cropper>
+         <Cropper
+         ref={cropperRef}
+         src={imageCropper?.imageCropper}
+         onChange={onChange}
+         onReady={onReady}
+         style={style}
+         defaultSize={defaultSize}
+         stencilProps={{
+           aspectRatio: minAspectRatio / maxAspectRatio,
+           grid: true,
+         }}
+       ></Cropper>
       )}
     </div>
+
+
   );
 }

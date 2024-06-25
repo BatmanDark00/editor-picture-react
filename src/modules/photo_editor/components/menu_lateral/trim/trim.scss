@@ -5,10 +5,11 @@
   max-height: 86vh;
   border-radius: 4px;
   overflow: auto;
+  margin-top: 4px;
 
   .preview-container {
     display: block;
-    margin-bottom: 9rem;
+    margin-bottom: 1rem;
     margin-left: 0.5rem;
     height: 130px;
     width: 200px;   
@@ -22,15 +23,17 @@
       top: 0.1rem;
       width: 195px;
       height: 130px;
-      animation: 0.4s ease-out sizeOn 1;
+      animation: 0.6s sizeOn 1;
       margin-bottom: 1rem;
+      border-radius: 4px;
+      background-repeat: no-repeat;
+      background-size: 100%, 130px, cover;
+      background-position: center;
+      opacity: 0.8;
       border-radius: 4px;
     }
     &.not-animated {
-        width: 0px;
-        height: 0px;
-        //margin-bottom: 1.5rem;
-        animation: 0.4s ease-out reverseSize 1;
+        animation: 0.6s  reverseSize 1;
     } 
 
     &:hover {
@@ -51,11 +54,24 @@
 
     .div-buttons-cut {
       display: flex;
-      position: relative;
+      position: absolute;
       align-content: center;
       top: 3rem;
       width: 100%;
+
+      .backdrop-buttons {
+        position: absolute;
+        backdrop-filter: blur(6px);
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        top: -6px;
+        padding: 8px;
+        opacity: 0.9;
     }
+  }
 
     .container-preview-cut {
       width: 195px;
@@ -119,26 +135,18 @@
 
 @keyframes sizeOn {
   from {
-    width: 0px;
-    height: 0px;
-    opacity: 1;
+    opacity: 0.2;
   }
   to {
-    width: 195px;
-    height: 130px;
-    opacity: 0.6;
+    opacity: 0.8;
   }
 }
 
 @keyframes reverseSize {
   from {
-    width: 195px;
-    height: 130px;
-    opacity: 0.6;
+    opacity: 0.8;
   }
   to {
-    width: 0px;
-    height: 0px;
     opacity: 1;
   }
 }
@@ -162,17 +170,17 @@
 @media screen and (width <= 768px) {
   .trim-menu-option {
     display: flex;
-    position: relative;
     width: 100%;
     max-height: 140px;
     flex-direction: row;
     overflow-y: hidden;
+    position: relative;
 
     .preview-container {
-      display: block;
-      max-width: 160px;
+      display: flex;
+      position: relative;
       height: 120px;
-      width: 100%;
+      width: 160px;
 
       &.animated {
         display: flex;
@@ -180,13 +188,12 @@
         height: 120px;
         animation: 0.4s ease-out sizeOn 1;
         border-radius: 4px;
-        margin-left: auto;
         padding-right: 160px;
       }
 
       &.not-animated {
           animation: 0.4s ease-out reverseSize 1;
-          margin-right: 10.5rem;
+          //margin-right: 10.5rem;
       } 
 
       .div-buttons-cut {

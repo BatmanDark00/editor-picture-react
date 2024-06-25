@@ -1,7 +1,7 @@
 // component form basic concept
-import Color from "@/modules/photo_editor/components/menu_lateral/edition/color/Color";
-import Trim from "@/modules/photo_editor/components/menu_lateral/edition/trim/Trim";
-import Rotate from "@/modules/photo_editor/components/menu_lateral/edition/rotate/Rotate";
+//import Color from "@/modules/photo_editor/components/menu_lateral/edition/color/Color";
+//import Trim from "@/modules/photo_editor/components/menu_lateral/edition/trim/Trim";
+//import Rotate from "@/modules/photo_editor/components/menu_lateral/edition/rotate/Rotate";
 
 const clearProperties = () => {
   console.log("clearProperties");
@@ -22,19 +22,19 @@ const dataToolEdit = {
           get clearProperties() {
             return clearProperties;
           },
-          component: <Trim />,
+          //component: <Trim />,
         },
         {
           name: "menuLateral.toolEditor.color",
           icon: ["fas", "palette"],
 
-          component: <Color />,
+          //component: <Color />,
         },
         {
           name: "menuLateral.toolEditor.rotate",
           icon: ["fas", "rotate-right"],
 
-          component: <Rotate />,
+          //component: <Rotate />,
         },
       ],
     },
@@ -51,13 +51,13 @@ const dataToolEdit = {
           get clearProperties() {
             return clearProperties;
           },
-          component: <Trim />,
+          //component: <Trim />,
         },
         {
           name: "menuLateral.toolEditor.color",
           icon: ["fas", "palette"],
 
-          component: <Color />,
+          //component: <Color />,
         },
       ],
     },
@@ -74,13 +74,13 @@ const dataToolEdit = {
           get clearProperties() {
             return clearProperties;
           },
-          component: <Trim />,
+         // component: <Trim />,
         },
         {
           name: "menuLateral.toolEditor.color",
           icon: ["fas", "palette"],
 
-          component: <Color />,
+          //component: <Color />,
         },
       ],
     },

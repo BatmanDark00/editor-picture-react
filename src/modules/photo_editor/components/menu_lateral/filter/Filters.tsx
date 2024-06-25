@@ -21,6 +21,7 @@ const dataFilterComponent = [
     max: 100,
     typeRange: "%",
     value: 100,
+    defaultValue: 100,
   },
   {
     id: 1,
@@ -31,6 +32,7 @@ const dataFilterComponent = [
     max: 100,
     typeRange: "%",
     value: 100,
+    defaultValue: 100,
   },
   {
     id: 2,
@@ -41,6 +43,7 @@ const dataFilterComponent = [
     max: 400,
     typeRange: "px",
     value: 400,
+    defaultValue: 400,
   },
   {
     id: 3,
@@ -51,6 +54,7 @@ const dataFilterComponent = [
     max: 100,
     typeRange: "%",
     value: 50,
+    defaultValue: 50,
   },
   {
     id: 4,
@@ -61,6 +65,7 @@ const dataFilterComponent = [
     max: 100,
     typeRange: "%",
     value: 50,
+    defaultValue: 50,
   },
   {
     id: 5,
@@ -71,6 +76,7 @@ const dataFilterComponent = [
     max: 400,
     typeRange: "px",
     value: 400,
+    defaultValue: 400,
   },
   {
     id: 6,
@@ -81,6 +87,7 @@ const dataFilterComponent = [
     max: 10,
     typeRange: "rem",
     value: 4,
+    defaultValue: 3,
   },
 ];
 
@@ -147,7 +154,7 @@ function Filters() {
 
   return (
     <>
-      <Typography variant="h3">Filters</Typography>
+      <Typography variant="h3" weight="bold" >Filters</Typography>
 
       <div className={styles.containerFilter}>
         {listsFilters.map((item, index) => (
@@ -155,30 +162,11 @@ function Filters() {
             className={`${styles.divFilter} ${
               index === indexVal ? styles.actived : styles.disabled
             }`}
-            style={{
-              backgroundColor: `${
-                index === indexVal ? "var(--secondary-200)" : ""
-              }`,
-            }}
             key={index}
             onClick={() => handleOptionClick(index)}
           >
             {index === indexVal ? (
               <div className={styles.divOption}>
-                <div className={styles.divInput}>
-                  <SliderZoom
-                    min={item.min}
-                    max={item.max}
-                    value={item.value}
-                    onChange={(e) => handleSliderChange(e, index)}
-                  />
-                  <div
-                    className={styles.divRange}
-                    style={{ width: `${filtersVal[index]}${item.typeRange}` }}
-                  >
-                    {filtersVal[index]}
-                  </div>
-                </div>
                 <div className={styles.divButtonSelect}>
                   <ButtonBase
                     textAlign="center"
@@ -194,20 +182,17 @@ function Filters() {
                     <FontAwesomeIcon icon={["fas", "check"]} />
                   </ButtonBase>
                 </div>
+                <div className={styles.divInput}>
+                  <SliderZoom
+                    min={item.min}
+                    max={item.max}
+                    value={item.value}
+                    onChange={(e) => handleSliderChange(e, index)}
+                  />
+                </div>
               </div>
             ) : (
               <div className={styles.divImagePreview}>
-                <input
-                  type="button"
-                  className={styles.buttonTransparent}
-                  value={item.value}
-                  /*  onClick={() => {
-                  dispatch(setFilters({
-                    sepia: dataFilterComponent[1].value
-                  }));
-                  
-                 }} */
-                />
                 <figure
                   key={index}
                   style={{ display: `${index === indexVal ? "none" : "flex"}` }}
@@ -217,7 +202,7 @@ function Filters() {
                     alt={`picture with ${item.title}`}
                     className={styles.img}
                     style={{
-                      filter: `${item.nameValue}(${item.max}${item.type})`,
+                      filter: `${item.nameValue}(${item.defaultValue}${item.type})`,
                     }}
                   />
                   <figcaption className={styles.figcaption}>

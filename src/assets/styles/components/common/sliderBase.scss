@@ -1,78 +1,152 @@
-input[type='range'] {
-    appearance: none;
-    background: transparent;
-    cursor: pointer;
-    margin: 0rem 0 1.5rem 0.4rem;
-    width: 100%;
+input[type="range"] {
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  margin: 0rem 0 1.5rem 0.4rem;
+  width: 100%;
 
-    &:focus {
-     outline: none;
-    } 
+  &:focus {
+    outline: none;
   }
+}
 
-  input::-webkit-slider-thumb {
-    appearance: none;
-    margin-top: -4px;
-    background-color: hsl(247, 85%, 8%);
-    border-radius: 50%;
-    height: 1rem;
-    width: 1rem;
-    outline: 3px solid lightblue;
-  }
-  input:hover::-webkit-slider-thumb {
-    transition: .4s ease-out;
-    background-color: lightblue;
-    outline: 3px solid lightblue;
-    margin-top: -5px;
-    height: 1.2rem;
-    width: 1.2rem;
-  }
+input::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -4px;
+  background-color: hsl(247, 85%, 8%);
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  outline: 3px solid lightblue;
+}
+input:hover::-webkit-slider-thumb {
+  transition: 0.4s ease-out;
+  background-color: lightblue;
+  outline: 3px solid lightblue;
+  margin-top: -5px;
+  height: 1.2rem;
+  width: 1.2rem;
+}
 
-  input:focus::-webkit-slider-thumb {
-    transition: .4s ease-out;
-    background-color: lightblue;
-    outline: 3px solid lightblue;
-    margin-top: -5px;
-    height: 1.2rem;
-    width: 1.2rem;
-  }
+input:focus::-webkit-slider-thumb {
+  transition: 0.4s ease-out;
+  background-color: lightblue;
+  outline: 3px solid lightblue;
+  margin-top: -5px;
+  height: 1.2rem;
+  width: 1.2rem;
+}
 
 .input-tone::-webkit-slider-runnable-track {
-    background: linear-gradient(
-        to right, 
-        rgb(255, 0, 0) 0, 
-        rgb(255, 255, 0) 16.7%, 
-        rgb(0, 255, 0) 33.3%, 
-        rgb(0, 255, 255) 50%, 
-        rgb(0, 0, 255) 66.7%, 
-        rgb(255, 0, 255) 83.3%, 
-        rgb(255, 0, 0) 100%);
-    border-radius: .4rem;
-    height: .6rem;
+  background: linear-gradient(
+    to right,
+    rgb(255, 0, 0) 0,
+    rgb(255, 255, 0) 16.7%,
+    rgb(0, 255, 0) 33.3%,
+    rgb(0, 255, 255) 50%,
+    rgb(0, 0, 255) 66.7%,
+    rgb(255, 0, 255) 83.3%,
+    rgb(255, 0, 0) 100%
+  );
+  border-radius: 0.4rem;
+  height: 0.6rem;
 }
 
 .input-saturation::-webkit-slider-runnable-track {
-    background: linear-gradient(
-        to right, 
-        rgb(255, 200, 200) 0, 
-        rgb(255, 156, 156) 16.7%, 
-        rgb(255, 106, 106) 50%, 
-        rgb(255, 36, 36) 66.7%, 
-        rgb(255, 0, 0) 100%);
-    border-radius: .4rem;
-    height: .6rem;
+  background: linear-gradient(
+    to right,
+    rgb(255, 200, 200) 0,
+    rgb(255, 156, 156) 16.7%,
+    rgb(255, 106, 106) 50%,
+    rgb(255, 36, 36) 66.7%,
+    rgb(255, 0, 0) 100%
+  );
+  border-radius: 0.4rem;
+  height: 0.6rem;
 }
 
 .input-temperature::-webkit-slider-runnable-track {
-    background: linear-gradient(
-        to right, 
-        rgb(0, 0, 255) 0, 
-        rgb(57, 60, 255) 16.7%, 
-        rgb(176, 204, 255) 33.3%, 
-        rgb(236, 254, 255) 50%, 
-        rgb(255, 234, 165) 66.7%, 
-        rgb(255, 195, 29) 80.3%, 
-        rgb(255, 153, 0) 100%);
-    border-radius: .4rem;
-    height: .6rem;
+  background: linear-gradient(
+    to right,
+    rgb(0, 0, 255) 0,
+    rgb(57, 60, 255) 16.7%,
+    rgb(176, 204, 255) 33.3%,
+    rgb(236, 254, 255) 50%,
+    rgb(255, 234, 165) 66.7%,
+    rgb(255, 195, 29) 80.3%,
+    rgb(255, 153, 0) 100%
+  );
+  border-radius: 0.4rem;
+  height: 0.6rem;
+}
+
+input::-moz-range-thumb {
+  appearance: none;
+  margin-top: -4px;
+  background-color: hsl(247, 85%, 8%);
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  outline: 2px solid lightblue;
+}
+
+input:hover::-moz-range-thumb {
+  transition: 0.4s ease-out;
+  background-color: lightblue;
+  outline: 3px solid lightblue;
+  margin-top: -5px;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+input:focus::-moz-range-thumb {
+  transition: 0.4s ease-out;
+  background-color: lightblue;
+  outline: 3px solid lightblue;
+  margin-top: -5px;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.input-tone::-moz-range-track {
+  background: linear-gradient(
+    to right,
+    rgb(255, 0, 0) 0,
+    rgb(255, 255, 0) 16.7%,
+    rgb(0, 255, 0) 33.3%,
+    rgb(0, 255, 255) 50%,
+    rgb(0, 0, 255) 66.7%,
+    rgb(255, 0, 255) 83.3%,
+    rgb(255, 0, 0) 100%
+  );
+  border-radius: 0.4rem;
+  height: 0.7rem;
+}
+
+.input-saturation::-moz-range-track {
+  background: linear-gradient(
+    to right,
+    rgb(255, 200, 200) 0,
+    rgb(255, 156, 156) 16.7%,
+    rgb(255, 106, 106) 50%,
+    rgb(255, 36, 36) 66.7%,
+    rgb(255, 0, 0) 100%
+  );
+  border-radius: 0.4rem;
+  height: 0.7rem;
+}
+
+.input-temperature::-moz-range-track {
+  background: linear-gradient(
+    to right,
+    rgb(0, 0, 255) 0,
+    rgb(57, 60, 255) 16.7%,
+    rgb(176, 204, 255) 33.3%,
+    rgb(236, 254, 255) 50%,
+    rgb(255, 234, 165) 66.7%,
+    rgb(255, 195, 29) 80.3%,
+    rgb(255, 153, 0) 100%
+  );
+  border-radius: 0.4rem;
+  height: 0.6rem;
 }

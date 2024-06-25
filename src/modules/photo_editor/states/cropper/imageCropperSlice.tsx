@@ -12,6 +12,9 @@ interface ImageCropperState {
   isCrop?: boolean;
   isVisibleCropper?: boolean;
   isApplyStyles?: boolean;
+  rotate?: number | 0;
+  rotateNegative?: number | 0;
+  //resetRotate?: number |0;
 }
 
 interface StencilProps {
@@ -32,6 +35,9 @@ const initialState: ImageCropperState = {
   isCrop: false,
   isVisibleCropper: false,  
   isApplyStyles: false,
+  rotate: 0,
+  rotateNegative: 0,
+//resetRotate: 0,
 };
 
 export const imageCropperSlice = createSlice({
@@ -91,6 +97,15 @@ export const imageCropperSlice = createSlice({
     setApplyStyles: (state, action: PayloadAction<boolean>) => {
       state.isApplyStyles = action.payload;
     },
+    setRotate: (state, action: PayloadAction<number>) => {
+      state.rotate = action.payload;
+    },
+   /*  setResetRotate: (state, action: PayloadAction<number>) => {
+      state.resetRotate = action.payload;
+    }, */
+    setRotateNegative: (state, action: PayloadAction<number>) => {
+      state.rotateNegative = action.payload;
+    },
   },
 });
 
@@ -108,5 +123,8 @@ export const {
   setApplyCrop,
   setVisibleCropper,
   setApplyStyles,
+  setRotate,
+  //setResetRotate,
+  setRotateNegative
 } = imageCropperSlice.actions;
 export default imageCropperSlice.reducer;

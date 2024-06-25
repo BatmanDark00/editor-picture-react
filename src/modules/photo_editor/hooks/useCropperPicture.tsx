@@ -11,7 +11,6 @@ import {
 
 import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
 import { composeFilterString } from "@/modules/photo_editor/states/cropper/filterSlice";
-import { composeTransform } from "../states/cropper/transformSlice";
 
 const useCropperPicture = () => {
   const cropperRef = useRef<CropperRef>(null);
@@ -42,20 +41,47 @@ const useCropperPicture = () => {
   });
 
   useEffect(() => {
-    console.log("aplicando transformacion", transformCropper);
-    if (cropperRef.current) {
-      const cropper = cropperRef.current;
+    if (imageCropper.rotate || transformCropper.flip) {
+      console.log("🚀 ~ useEffect ~ imageCropper:", imageCropper.rotate)
+      dispatch(setApplyStyles(false))
 
-      cropper.transformImage({
-        rotate: transformCropper.rotate,
-        flip: {
-          horizontal: transformCropper.flip?.horizontal,
-          vertical: transformCropper.flip?.vertical,
-        },
-      });
     }
+  }, [dispatch, imageCropper.rotate, transformCropper.flip])
+
+useEffect(() => {
+  console.log("aplicando transformacion", transformCropper);
+  if (cropperRef.current) {
+    const cropper = cropperRef.current;
+  
+   if (cropper.transformImage) {
+   cropper.transformImage({
+      flip: {
+        horizontal: transformCropper.flip?.horizontal,
+        vertical: transformCropper.flip?.vertical,
+      }
+    }) 
+  } 
+
+  console.log("x or y", transformCropper.flip);
+  }
   }, [transformCropper]);
 
+  useEffect(() => {
+    if (cropperRef.current) {
+      cropperRef.current.rotateImage(90)
+    }
+
+    console.log("rotando", imageCropper.rotate);
+  }, [imageCropper.rotate]);
+
+  useEffect(() => {
+    if (cropperRef.current) {
+      cropperRef.current.rotateImage(-90)
+    }
+
+    console.log("rotando", imageCropper.rotateNegative);
+  }, [imageCropper.rotateNegative]);
+  
   const onCrop = () => {
     if (cropperRef.current) {
       setCoordinates(cropperRef.current.getCoordinates());
