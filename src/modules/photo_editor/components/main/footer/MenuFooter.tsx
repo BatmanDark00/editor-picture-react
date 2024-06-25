@@ -1,25 +1,21 @@
 import { useState } from "react";
-
-import { isNumber } from "react-advanced-cropper";
-
 import "@/modules/photo_editor/components/main/footer/menuFooter.scss";
+
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ButtonBase from "@/components/common/ButtonBase";
 import SliderZoom from "@/components/common/SliderZoom";
+import { setZoomValue } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
-interface ZoomProps {
-  zoom?: number;
-  onZoom?: (value: number, transitions?: boolean) => void;
-  disabled?: unknown;
-}
-
-export default function MenuFooter({ onZoom, zoom }: ZoomProps) {
+export default function MenuFooter () {
   const [sliderZoom, setSliderZoom] = useState<number>(0);
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const handleZoomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSliderZoom(parseInt(e.target.value))
-    
+    const newZoomValue = parseInt(e.target.value);
+    setSliderZoom(newZoomValue)
+    dispatch(setZoomValue(newZoomValue));
   };
 
   const handleOnkeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -30,11 +26,15 @@ export default function MenuFooter({ onZoom, zoom }: ZoomProps) {
   };
 
    const moreZoom = () => {
-    setSliderZoom((m) => Math.min(m + 20, 200));
+    const newZoom = Math.min(sliderZoom + 20, 100);
+    setSliderZoom(newZoom);
+    dispatch(setZoomValue(newZoom))
   };
 
   const lessZoom = () => {
-    setSliderZoom((m) => Math.max(m - 20, 0));
+    const newZoom = Math.max(sliderZoom - 20, 0);
+    setSliderZoom(newZoom);
+    dispatch(setZoomValue(newZoom))
   }; 
 
 
@@ -99,13 +99,13 @@ export default function MenuFooter({ onZoom, zoom }: ZoomProps) {
           <div className="section-slider">
             <SliderZoom
               min={0}
-              max={200}
+              max={100}
               value={sliderZoom}
               onChange={handleZoomChange}
             />
             <div
               className="div-range-slider-zoom"
-              style={{ width: `${sliderZoom}px` }}
+              style={{ width: `${2 * sliderZoom}px`}}
             >
               {sliderZoom}
             </div>

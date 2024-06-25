@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CropperRef, Coordinates } from "react-advanced-cropper";
 import { RootState } from "@/states";
+import { getZoomFactor, getAbsoluteZoom }from "advanced-cropper/extensions/absolute-zoom";
 import {
   setImageCropper,
   setApplyCrop,
@@ -41,33 +42,32 @@ const useCropperPicture = () => {
 
   useEffect(() => {
     if (imageCropper.rotate || transformCropper.flip) {
-      console.log("🚀 ~ useEffect ~ imageCropper:", imageCropper.rotate)
-      dispatch(setApplyStyles(false))
-
+      console.log("🚀 ~ useEffect ~ imageCropper:", imageCropper.rotate);
+      dispatch(setApplyStyles(false));
     }
-  }, [dispatch, imageCropper.rotate, transformCropper.flip])
+  }, [dispatch, imageCropper.rotate, transformCropper.flip]);
 
-useEffect(() => {
-  console.log("aplicando transformacion", transformCropper);
-  if (cropperRef.current) {
-    const cropper = cropperRef.current;
-  
-   if (cropper.transformImage) {
-   cropper.transformImage({
-      flip: {
-        horizontal: transformCropper.flip?.horizontal,
-        vertical: transformCropper.flip?.vertical,
+  useEffect(() => {
+    console.log("aplicando transformacion", transformCropper);
+    if (cropperRef.current) {
+      const cropper = cropperRef.current;
+
+      if (cropper.transformImage) {
+        cropper.transformImage({
+          flip: {
+            horizontal: transformCropper.flip?.horizontal,
+            vertical: transformCropper.flip?.vertical,
+          },
+        });
       }
-    }) 
-  } 
 
-  console.log("x or y", transformCropper.flip);
-  }
+      console.log("x or y", transformCropper.flip);
+    }
   }, [transformCropper]);
 
   useEffect(() => {
     if (cropperRef.current) {
-      cropperRef.current.rotateImage(90)
+      cropperRef.current.rotateImage(90);
     }
 
     console.log("rotando", imageCropper.rotate);
@@ -75,12 +75,22 @@ useEffect(() => {
 
   useEffect(() => {
     if (cropperRef.current) {
-      cropperRef.current.rotateImage(-90)
+      cropperRef.current.rotateImage(-90);
     }
 
     console.log("rotando", imageCropper.rotateNegative);
   }, [imageCropper.rotateNegative]);
-  
+
+  useEffect(() => {
+    if (cropperRef.current) {
+      const cropper = cropperRef.current;
+      const zoomFactor = imageCropper.zoomValue / 100;
+      cropper.zoomImage(getZoomFactor(cropper.getState(), cropper.getSettings(), zoomFactor))
+      getAbsoluteZoom(cropper.getState(), cropper.getSettings())
+      console.log("captando zoom", imageCropper.zoomValue);
+    }
+  }, [cropperRef, imageCropper.zoomValue]);
+
   const onCrop = () => {
     if (cropperRef.current) {
       setCoordinates(cropperRef.current.getCoordinates());
@@ -106,14 +116,13 @@ useEffect(() => {
       // Aplicar filtros
       if (context) {
         context.filter = composeFilterString(filtersCropper.filters);
-        
+
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
 
         // Obtener la nueva imagen procesada
         const newImage = canva.toDataURL();
 
-        
         // Despachar la acción para actualizar la imagen
         dispatch(setImageCropper(newImage));
 
