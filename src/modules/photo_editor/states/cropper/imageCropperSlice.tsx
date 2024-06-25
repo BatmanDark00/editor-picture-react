@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ImageCropperState {
   urlImage: string;
   imageCropper: string;
+  imageForDownload:string,
+  isDownloadImageCropper?: boolean;
   toneCropper?: string;
   toneTypeCropper?: string;
   filterValCropper?: number;
@@ -25,6 +27,8 @@ interface StencilProps {
 const initialState: ImageCropperState = {
   urlImage: "",
   imageCropper: "",
+  imageForDownload:"",
+  isDownloadImageCropper: false,
   toneCropper: "",
   toneTypeCropper: "",
   filterValCropper: 0,
@@ -51,6 +55,17 @@ export const imageCropperSlice = createSlice({
     setImageCropper: (state, action: PayloadAction<string>) => {
       state.imageCropper = action.payload;
     },
+
+    setImageForDownload: (state, action: PayloadAction<string>) => {
+      console.log("ImageForDownload", action.payload);
+      state.imageForDownload = action.payload;
+    },
+
+    setIsDownloadImageCropper: (state, action: PayloadAction<boolean>) => {
+      state.isDownloadImageCropper = action.payload;
+    },
+
+    
 
     /*  setHueRotate: (state, action: PayloadAction<number>) => {
       state.filters.hueRotate = action.payload;
@@ -112,6 +127,8 @@ export const imageCropperSlice = createSlice({
 export const {
   setUrlImage,
   setImageCropper,
+  setImageForDownload,
+  setIsDownloadImageCropper,
   setToneCropper,
   setToneTypeCropper,
   setFilterValCropper,

@@ -5,12 +5,17 @@ import "@/modules/photo_editor/components/main/header/menuHeader.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 import ChangeLocale from "@/modules/common/components/locale/ChangeLocale";
 import CropperResult from "@/modules/photo_editor/components/cropper_result/CropperResult";
 import Toggle from "@/modules/common/components/toggle/Toggle";
 import Unsplash from "@/modules/photo_editor/components/main/unsplash/Unsplash";
 
 import ModalBase from "@/components/common/ModalBase";
+
+import { useDispatch } from "react-redux";
+import {  setIsDownloadImageCropper } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+
 
 interface Props { 
   accept?: string;
@@ -28,6 +33,8 @@ export default function MenuHeader({
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isOpenUnsplash, setOpenUnsplash] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const user = {
     name: "Lener",
@@ -94,7 +101,8 @@ export default function MenuHeader({
   };
 
   const handleModalSaveFile = () => {
-    setIsModalOpen(true);     
+    setIsModalOpen(true);   
+    dispatch(setIsDownloadImageCropper(true));  
   };
 
   const closeModalSaveFile = () => {

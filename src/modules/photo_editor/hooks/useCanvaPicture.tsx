@@ -1,6 +1,11 @@
 import { RootState } from "@/states";
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  setImageForDownload,
+  setIsDownloadImageCropper,
+} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
 const useCanvaPicture = () => {
   const MAX_CANVAS_DIMENSION_WIDTH = 1400;
@@ -20,6 +25,8 @@ const useCanvaPicture = () => {
     { x: 150, y: 50, width: 0, height: 0, color: "red", text: "Test 2" },
     { x: 250, y: 50, width: 0, height: 0, color: "green", text: "Test 3" },
   ]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
@@ -42,6 +49,24 @@ const useCanvaPicture = () => {
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
         drawElements(context);
       };
+    }
+  });
+
+  useEffect(() => {
+    if (imageCropper.isDownloadImageCropper) {
+      const canvas = canvasRef.current as HTMLCanvasElement;
+      const context = canvas.getContext("2d");
+
+      if (context) {
+        drawElements(context);
+        dispatch(setImageForDownload(canvas.toDataURL("image/png")));
+        dispatch(setIsDownloadImageCropper(false));
+      }
+
+      /* const link = document.createElement("a");
+      link.download = "image.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click(); */
     }
   });
 
