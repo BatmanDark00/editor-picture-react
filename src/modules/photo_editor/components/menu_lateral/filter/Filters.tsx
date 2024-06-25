@@ -154,7 +154,7 @@ function Filters() {
 
   return (
     <>
-      <Typography variant="h3">Filters</Typography>
+      <Typography variant="h3" weight="bold" >Filters</Typography>
 
       <div className={styles.containerFilter}>
         {listsFilters.map((item, index) => (

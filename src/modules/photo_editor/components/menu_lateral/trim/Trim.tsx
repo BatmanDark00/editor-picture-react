@@ -1,12 +1,16 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/states";
-import "@/modules/photo_editor/components/menu_lateral/edition/trim/trim.scss";
+import "@/modules/photo_editor/components/menu_lateral/trim/trim.scss";
 
 import ButtonBase from "@/components/common/ButtonBase";
 
-import { setStencilProps, setApplyCrop } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
+import {
+  setStencilProps,
+  setApplyCrop,
+} from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Typography from "@/modules/common/components/typography/Typography";
 
 const listSizePhotos = [
   {
@@ -150,7 +154,7 @@ function Trim() {
   const handleCutOptionClick = (index: number) => {
     if (index !== indexVal) {
       setIndexVal(index);
-      console.log('entrando clic');
+      console.log("entrando clic");
     }
   };
 
@@ -160,41 +164,48 @@ function Trim() {
 
   return (
     <>
+      <Typography variant="h3" weight="bold">
+        Cut Image
+      </Typography>
+
       <div className="trim-menu-option">
         {listSizePhotos?.map((item, index) => (
-          <div 
-           className={`preview-container ${index === indexVal ? "animated" : "not-animated"}`} 
-           key={index}
-           style={{
-            backgroundImage: `${index === indexVal ? `url(${imageCropper.urlImage})` : ""}`
-           }}
-           onClick={() => handleCutOptionClick(index)}
-           >
+          <div
+            className={`preview-container ${
+              index === indexVal ? "animated" : "not-animated"
+            }`}
+            key={index}
+            style={{
+              backgroundImage: `${
+                index === indexVal ? `url(${imageCropper.urlImage})` : ""
+              }`,
+            }}
+            onClick={() => handleCutOptionClick(index)}
+          >
             {index === indexVal ? (
               <div className="div-buttons-cut">
                 <div className="backdrop-buttons">
-
-                <ButtonBase
-                  textAlign="center"
-                  size="small"
-                  onClick={handleClosedCutClick}
-                >
-                  <FontAwesomeIcon icon={["fas", "xmark"]} />
-                </ButtonBase>
-                <ButtonBase
-                  className="btn_primary"
-                  textAlign="center"
-                  size="small"
-                  onClick={applyCropper}
-                >
-                  <FontAwesomeIcon icon={["fas", "check"]} />
-                </ButtonBase>
+                  <ButtonBase
+                    textAlign="center"
+                    size="small"
+                    onClick={handleClosedCutClick}
+                  >
+                    <FontAwesomeIcon icon={["fas", "xmark"]} />
+                  </ButtonBase>
+                  <ButtonBase
+                    className="btn_primary"
+                    textAlign="center"
+                    size="small"
+                    onClick={applyCropper}
+                  >
+                    <FontAwesomeIcon icon={["fas", "check"]} />
+                  </ButtonBase>
                 </div>
               </div>
             ) : (
-              <div 
+              <div
                 className="container-preview-cut"
-                style={{display: `${index === indexVal ? "none" : "block"}`}}
+                style={{ display: `${index === indexVal ? "none" : "block"}` }}
               >
                 <button
                   className="button-transparent"

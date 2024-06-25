@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "@/modules/photo_editor/components/menu_lateral/edition/color/color.scss";
+import "@/modules/photo_editor/components/menu_lateral/color/color.scss";
 
 import SliderBase from "@/components/common/SliderBase";
 
@@ -8,6 +8,7 @@ import { setApplyStyles } from "@/modules/photo_editor/states/cropper/imageCropp
 import { setFilters } from "@/modules/photo_editor/states/cropper/filterSlice";
 
 import ButtonBase from "@/components/common/ButtonBase";
+import Typography from "@/modules/common/components/typography/Typography";
 
 const listsFiltersColors = [
   {
@@ -99,7 +100,9 @@ export default function Color() {
   };
 
   return (
-    <>
+    <>   
+      <Typography variant="h3" weight="bold">Color</Typography>
+
       <div className="menu-color">
         {listsFiltersColors.map((item, index) => (
           <div className="container-input-color" key={item.id}>

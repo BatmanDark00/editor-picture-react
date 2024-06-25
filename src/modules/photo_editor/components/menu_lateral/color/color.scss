@@ -1,7 +1,7 @@
 .menu-color {
   background-color: var(--secondary-100);
   color: var(--text-color);
-
+  margin-top: 4px;
   border-radius: 4px;
   padding: 6px;
 
@@ -186,7 +186,7 @@
   }
 } 
 
-@media screen and (width <= 390px) {
+@media screen and (width <= 410px) {
   .menu-color {
 
     .container-input-color {
@@ -196,12 +196,13 @@
       }
 
       .section-slider-change {
-        left: 4rem;
-        top: -1.85rem;
+        left: -0.3rem;
+        top: -0.2rem;
         background-color: transparent;
 
         p {
           font-size: 11px;
+          text-align: left;
         }
       }
 

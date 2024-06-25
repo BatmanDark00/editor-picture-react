@@ -7,7 +7,8 @@ interface ComponentState {
 }
 
 const initialState: ComponentState = {
-  component: "ToolEdit",
+  //component: "ToolEdit",
+  component: "Color",
   isComponentMain: true,
   applyChanges: false,
 };
