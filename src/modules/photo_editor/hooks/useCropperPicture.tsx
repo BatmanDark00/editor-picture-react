@@ -26,6 +26,7 @@ const useCropperPicture = () => {
     if (imageCropper.isCrop) {
       onCrop();
       dispatch(setApplyCrop(false));
+      dispatch(setVisibleCropper(false));
     }
   });
 
@@ -42,33 +43,32 @@ const useCropperPicture = () => {
 
   useEffect(() => {
     if (imageCropper.rotate || transformCropper.flip) {
-      console.log("🚀 ~ useEffect ~ imageCropper:", imageCropper.rotate)
-      dispatch(setApplyStyles(false))
-
+      console.log("🚀 ~ useEffect ~ imageCropper:", imageCropper.rotate);
+      dispatch(setApplyStyles(false));
     }
-  }, [dispatch, imageCropper.rotate, transformCropper.flip])
+  }, [dispatch, imageCropper.rotate, transformCropper.flip]);
 
-useEffect(() => {
-  console.log("aplicando transformacion", transformCropper);
-  if (cropperRef.current) {
-    const cropper = cropperRef.current;
-  
-   if (cropper.transformImage) {
-   cropper.transformImage({
-      flip: {
-        horizontal: transformCropper.flip?.horizontal,
-        vertical: transformCropper.flip?.vertical,
+  useEffect(() => {
+    console.log("aplicando transformacion", transformCropper);
+    if (cropperRef.current) {
+      const cropper = cropperRef.current;
+
+      if (cropper.transformImage) {
+        cropper.transformImage({
+          flip: {
+            horizontal: transformCropper.flip?.horizontal,
+            vertical: transformCropper.flip?.vertical,
+          },
+        });
       }
-    }) 
-  } 
 
-  console.log("x or y", transformCropper.flip);
-  }
+      console.log("x or y", transformCropper.flip);
+    }
   }, [transformCropper]);
 
   useEffect(() => {
     if (cropperRef.current) {
-      cropperRef.current.rotateImage(90)
+      cropperRef.current.rotateImage(90);
     }
 
     console.log("rotando", imageCropper.rotate);
@@ -76,12 +76,12 @@ useEffect(() => {
 
   useEffect(() => {
     if (cropperRef.current) {
-      cropperRef.current.rotateImage(-90)
+      cropperRef.current.rotateImage(-90);
     }
 
     console.log("rotando", imageCropper.rotateNegative);
   }, [imageCropper.rotateNegative]);
-  
+
   const onCrop = () => {
     if (cropperRef.current) {
       setCoordinates(cropperRef.current.getCoordinates());
@@ -96,11 +96,10 @@ useEffect(() => {
     const context = canva.getContext("2d");
 
     const image = new Image();
+    image.crossOrigin = "anonymous";
     image.src = imageCropper.imageCropper;
 
     image.onload = () => {
-      console.log("Image", image.width, image.height);
-
       canva.width = image.width;
       canva.height = image.height;
 
@@ -110,10 +109,6 @@ useEffect(() => {
 
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
-
-        context.font = "30px Arial";
-        context.fillStyle = "red";
-        context.fillText("Hello World", 10, 50);
 
         // Obtener la nueva imagen procesada
         const newImage = canva.toDataURL();
