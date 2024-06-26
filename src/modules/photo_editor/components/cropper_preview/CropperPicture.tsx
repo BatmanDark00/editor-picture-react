@@ -22,6 +22,7 @@ export default function CropperPicture() {
 
   const {
     canvasRef,
+    canvasRefImage,
     textInput,
     isEditingText,
     handleMouseDown,
@@ -42,15 +43,22 @@ export default function CropperPicture() {
   return (
     <div className={cropperPictureModule.cropper_picture}>
       {!imageCropper?.isVisibleCropper && (
-        <canvas
-          ref={canvasRef}
-          id="idCanvasCropper"
-          style={style}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onDoubleClick={handleDoubleClick}
-        ></canvas>
+        <>
+          <canvas
+            ref={canvasRefImage}
+            id="idCanvasImage"
+            style={style}
+          ></canvas>
+          
+          <canvas
+            ref={canvasRef}
+            id="idCanvasForm"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onDoubleClick={handleDoubleClick}
+          ></canvas>
+        </>
       )}
 
       {isEditingText && (

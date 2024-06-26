@@ -1,7 +1,6 @@
 import { RootState } from "@/states";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
   setImageForDownload,
   setIsDownloadImageCropper,
@@ -14,6 +13,7 @@ const useCanvaPicture = () => {
   const imageCropper = useSelector((state: RootState) => state.imageCropper);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRefImage = useRef<HTMLCanvasElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isEditingText, setIsEditingText] = useState(false);
   const [textInput, setTextInput] = useState("");
@@ -29,10 +29,13 @@ const useCanvaPicture = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const canvasImage = canvasRefImage.current as HTMLCanvasElement;
+    const contextImage = canvasImage?.getContext("2d");
+
     const canvas = canvasRef.current as HTMLCanvasElement;
     const context = canvas?.getContext("2d");
 
-    if (context) {
+    if (contextImage) {
       const img = new Image();
       img.src = imageCropper?.imageCropper ?? "";
 
@@ -43,34 +46,59 @@ const useCanvaPicture = () => {
           1
         );
 
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
+        const width = img.width * scale;
+        const height = img.height * scale;
 
-        context.drawImage(img, 0, 0, canvas.width, canvas.height);
-        drawElements(context);
+        canvas.width = width;
+        canvas.height = height;
+
+        canvasImage.width = width;
+        canvasImage.height = height;
+
+        contextImage.drawImage(img, 0, 0, width, height);
+        if (context) {
+          drawElements(context);
+        }
       };
     }
-  });
+  }, [imageCropper.imageCropper]);
 
   useEffect(() => {
     if (imageCropper.isDownloadImageCropper) {
+      const canvasImage = canvasRefImage.current as HTMLCanvasElement;
+      const contextImage = canvasImage.getContext("2d");
+
       const canvas = canvasRef.current as HTMLCanvasElement;
-      const context = canvas.getContext("2d");
+      const context = canvas?.getContext("2d");
 
-      if (context) {
-        drawElements(context);
-        dispatch(setImageForDownload(canvas.toDataURL("image/png")));
-        dispatch(setIsDownloadImageCropper(false));
+      if (contextImage && context) {
+        // Crear un nuevo canvas para combinar ambos canvas
+        const combinedCanvas = document.createElement("canvas");
+        combinedCanvas.width = canvasImage.width;
+        combinedCanvas.height = canvasImage.height;
+        const combinedContext = combinedCanvas.getContext("2d");
+
+        if (combinedContext) {
+          // Dibujar la imagen del canvasImage en el canvas combinado
+          combinedContext.drawImage(canvasImage, 0, 0);
+          // Dibujar la imagen del canvas en el canvas combinado
+          combinedContext.drawImage(canvas, 0, 0);
+
+          // Descargar la imagen combinada
+          dispatch(setImageForDownload(combinedCanvas.toDataURL("image/png")));
+          dispatch(setIsDownloadImageCropper(false));
+
+          const link = document.createElement("a");
+          link.download = "image.png";
+          link.href = combinedCanvas.toDataURL("image/png");
+          link.click();
+        }
       }
-
-      /* const link = document.createElement("a");
-      link.download = "image.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click(); */
     }
-  });
+  }, [imageCropper.isDownloadImageCropper, dispatch]);
 
   const drawElements = (ctx: CanvasRenderingContext2D) => {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     elements.forEach((element) => {
       ctx.font = "20px Arial";
       const textWidth = ctx.measureText(element.text).width;
@@ -130,7 +158,10 @@ const useCanvaPicture = () => {
       setElements(newElements);
 
       const canvas = canvasRef.current as HTMLCanvasElement;
-      drawElements(canvas.getContext("2d")!);
+      const context = canvas.getContext("2d");
+      if (context) {
+        drawElements(context);
+      }
     }
   };
 
@@ -145,10 +176,9 @@ const useCanvaPicture = () => {
       isInsideElement(mousePos, element)
     );
     if (elementIndex !== -1) {
-      console.log("Element Index", elementIndex);
+      setIsEditingText(true);
       setDraggedElementIndex(elementIndex);
       setTextInput(elements[elementIndex].text);
-      setIsEditingText(true);
     }
   };
 
@@ -159,18 +189,24 @@ const useCanvaPicture = () => {
   const handleTextSubmit = () => {
     if (draggedElementIndex !== null) {
       const newElements = [...elements];
-      newElements[draggedElementIndex] = {
-        ...newElements[draggedElementIndex],
-        text: textInput,
-      };
+      newElements[draggedElementIndex].text = textInput;
       setElements(newElements);
+
+      const canvas = canvasRef.current as HTMLCanvasElement;
+      const context = canvas.getContext("2d");
+      if (context) {
+        drawElements(context);
+      }
+
       setIsEditingText(false);
       setDraggedElementIndex(null);
+      setTextInput("");
     }
   };
 
   return {
     canvasRef,
+    canvasRefImage,
     textInput,
     isEditingText,
     handleMouseDown,
