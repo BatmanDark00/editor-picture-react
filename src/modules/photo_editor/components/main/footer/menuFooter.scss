@@ -37,19 +37,21 @@
 
   .section-slider {
     display: flex;
-    position: relative;
+   // position: relative;
     width: 12rem;
+    height: 4px;
     margin-right: 10px;
-    float: left;
-    top: 0.7rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    padding: 0;
 
     .div-range-slider-zoom {
       font-size: 4px;
       color: transparent;
-      background-color: aliceblue;
+      background-color: var(--secondary-700);
       position: absolute;
-      left: 3px;
-      bottom: 21px;
+     // left: 3px;
+      bottom: 18.5px;
       border-radius: 4px;
       max-width: 180px;
     }

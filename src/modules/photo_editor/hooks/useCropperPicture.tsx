@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CropperRef, Coordinates } from "react-advanced-cropper";
 import { RootState } from "@/states";
+import { getZoomFactor, getAbsoluteZoom }from "advanced-cropper/extensions/absolute-zoom";
 import {
   setImageCropper,
   setApplyCrop,
@@ -81,6 +82,18 @@ const useCropperPicture = () => {
 
     console.log("rotando", imageCropper.rotateNegative);
   }, [imageCropper.rotateNegative]);
+
+
+  useEffect(() => {
+    if (cropperRef.current) {
+      const cropper = cropperRef.current;
+      const zoomFactor = imageCropper.zoomValue / 100;
+      cropper.zoomImage(getZoomFactor(cropper.getState(), cropper.getSettings(), zoomFactor))
+      getAbsoluteZoom(cropper.getState(), cropper.getSettings())
+      console.log("captando zoom", imageCropper.zoomValue);
+    }
+  }, [cropperRef, imageCropper.zoomValue]);
+
 
   const onCrop = () => {
     if (cropperRef.current) {
