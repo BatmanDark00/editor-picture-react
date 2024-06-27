@@ -109,6 +109,7 @@ const useCropperPicture = () => {
 
         // Dibujar la imagen con los filtros aplicados
         context.drawImage(image, 0, 0, canva.width, canva.height);
+        
 
         // Obtener la nueva imagen procesada
         const newImage = canva.toDataURL();

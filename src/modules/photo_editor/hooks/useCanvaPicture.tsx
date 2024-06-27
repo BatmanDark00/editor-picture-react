@@ -88,10 +88,7 @@ const useCanvaPicture = () => {
           dispatch(setImageForDownload(combinedCanvas.toDataURL("image/png")));
           dispatch(setIsDownloadImageCropper(false));
 
-          const link = document.createElement("a");
-          link.download = "image.png";
-          link.href = combinedCanvas.toDataURL("image/png");
-          link.click();
+        
         }
       }
     }

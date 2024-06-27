@@ -56,8 +56,7 @@ export const imageCropperSlice = createSlice({
       state.imageCropper = action.payload;
     },
 
-    setImageForDownload: (state, action: PayloadAction<string>) => {
-      console.log("ImageForDownload", action.payload);
+    setImageForDownload: (state, action: PayloadAction<string>) => {     
       state.imageForDownload = action.payload;
     },
 
