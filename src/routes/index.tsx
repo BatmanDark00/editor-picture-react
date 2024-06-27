@@ -4,6 +4,7 @@ import { RouteObject } from "react-router-dom";
 import HomeView from '@/views/HomeView.tsx';
 import PictureView from '@/views/PictureView.tsx';
 import TextureView from "@/views/TextureView";
+import Features from "@/modules/common/components/pages/features/Features";
 
 const routes: RouteObject[] = [
     {
@@ -19,7 +20,10 @@ const routes: RouteObject[] = [
       path: "/picshur/image-texture",
       Component: TextureView,
     },    
-  
+    {
+      path: "/picshur/features",
+      Component: Features,
+    }
   
   ];
   

@@ -1,14 +1,18 @@
 
 import headerModule from "@/modules/common/components/home/header/header.module.scss";
 
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export default function Header() {
   return (
     <header className={headerModule.header}>
       <nav>
         <ul>
-          <li><a href="">Inicio</a></li>
-          <li><a href="">Acerca de</a></li>
-          <li><a href="">Contacto</a></li>
+          <li><NavLink to="/picshur/"><span className={headerModule.text}>Home</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "house"]} /></span></NavLink></li>
+          <li><NavLink to="/picshur/features"><span className={headerModule.text}>Features</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "sliders"]} /></span></NavLink></li>
+          <li><NavLink to="/"><span className={headerModule.text}>About us</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "users-gear"]} /></span></NavLink></li>
+          <li><a href="#"><span className={headerModule.text}>Contact</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "envelope"]} /></span></a></li>
         </ul>
       </nav>
     </header>

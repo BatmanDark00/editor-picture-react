@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import homeViewModule from "@/assets/styles/views/homeView.module.scss";
 import girlsFlowers from "@/assets/images/home/girls_flowers.png";
 import grid_girls from "@/assets/images/home/grid_girls.png";
+import filters from "@/assets/images/pages/features/filters_image.png"
 
 import ButtonBase from "@/components/common/ButtonBase";
 
@@ -45,6 +46,7 @@ function HomeView() {
 
           <div className={homeViewModule.main__section_one__image}>
             <img src={grid_girls} alt="landscape" />
+            <img src={filters} alt="picshur filters" /> 
           </div>
         </section>
 
