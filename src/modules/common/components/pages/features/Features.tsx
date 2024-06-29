@@ -1,11 +1,15 @@
 import featuresStyles from "@/modules/common/components/pages/features/features.module.scss";
+
 import Header from "../../home/header/Header";
 import Footer from "../../home/footer/Footer";
 import Typography from "@/modules/common/components/typography/Typography";
+import PictureBox from "@/components/common/PictureBox";
+
 import cut from "@/assets/images/pages/features/Cut_Image.png";
 import color from "@/assets/images/pages/features/Color_Image.png";
 import rotate from "@/assets/images/pages/features/Rotate_Image.png";
-import filters from "@/assets/images/pages/features/filters_image.png"
+import filters from "@/assets/images/pages/features/filters_image.png";
+import unplash from "@/assets/images/pages/features/biblioteca_unplash.png"
 
 const FEATURESPICSHURDATA = [
   {
@@ -36,6 +40,13 @@ const FEATURESPICSHURDATA = [
       "¡Convierte en un artista! Aplica diferentes filtros a tus fotos como Black & White, Vintage, Blur y entre otros. ",
     img: filters,
   },
+  {
+    id: "4",
+    title: "Biblioteca Unplash",
+    description:
+      "Diviertete con una amplia colección de imágenes de alta calidad, cuidadosamente seleccionadas para satisfacer todas tus necesidades creativas y profesionales.",
+    img: unplash,
+  }
 ];
 
 function Features() {
@@ -45,17 +56,14 @@ function Features() {
 
       <section className={featuresStyles.featuresContainer}>
         <div className={featuresStyles.featuresTitle}>
-          <Typography
-            align="center"
-            variant="h1"
-            weight="bold"
-            color="var(--secondary-800)"
-          >
-            Descubre las funciones de <strong>PicShur</strong>
-          </Typography>
+          <span>
+            <Typography variant="h1" weight="bold" color="var(--secondary-800)">
+              Descubre las funciones de <strong>PicShur</strong>
+            </Typography>
+          </span>
           <p className={featuresStyles.subtitle}>
             Explora todas las herramientas que puedes utilizar para crear
-            <br /> hermosas fotografías e ilustraciones increíbles como un
+            hermosas fotografías e ilustraciones increíbles como un
             profesional.
           </p>
         </div>
@@ -63,11 +71,7 @@ function Features() {
         <section className={featuresStyles.featuresSection}>
           {FEATURESPICSHURDATA?.map((item) => (
             <div key={item.id} className={featuresStyles.divFeatures}>
-              <img className={featuresStyles.img} src={item.img} />
-              <div className={featuresStyles.divDescription}>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
+              <PictureBox src={item.img} alt={item.description} title={item.title} description={item.description} />
             </div>
           ))}
         </section>

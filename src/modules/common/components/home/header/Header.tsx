@@ -11,8 +11,8 @@ export default function Header() {
         <ul>
           <li><NavLink to="/picshur/"><span className={headerModule.text}>Home</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "house"]} /></span></NavLink></li>
           <li><NavLink to="/picshur/features"><span className={headerModule.text}>Features</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "sliders"]} /></span></NavLink></li>
-          <li><NavLink to="/"><span className={headerModule.text}>About us</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "users-gear"]} /></span></NavLink></li>
-          <li><a href="#"><span className={headerModule.text}>Contact</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "envelope"]} /></span></a></li>
+          <li><NavLink to="/picshur/about"><span className={headerModule.text}>About us</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "users-gear"]} /></span></NavLink></li>
+          <li><NavLink to="/picshur/contact"><span className={headerModule.text}>Contact</span> <span className={headerModule.icon}><FontAwesomeIcon icon={["fas", "envelope"]} /></span></NavLink></li>
         </ul>
       </nav>
     </header>

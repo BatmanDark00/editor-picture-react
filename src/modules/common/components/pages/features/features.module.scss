@@ -4,33 +4,34 @@
   display: flex;
   width: 100%;
   font-family: "Poppins", sans-serif;
-  background-color: aliceblue;
   justify-content: center;
   flex-direction: column;
-  margin: 0;
-  position: relative;
 
   .featuresTitle {
     display: block;
     width: 100%;
-    height: 50vh;
+    height: 60vh;
     align-content: center;
-    align-items: center;
-    justify-content: center;
     background: linear-gradient(
-      var(--secondary-800),
-      var(--secondary-500),
-      var(--secondary-200)
+      220deg,
+      rgba(79, 156, 156, 0.205) 20%,
+      rgba(24, 23, 23, 0.795) 80%
     );
+    padding-left: 8rem;
 
-    strong {
+    span {
+      font-size: 24px;
+
+      strong {
       color: var(--primary-500);
+    }
     }
 
     .subtitle {
-      text-align: center;
-      font-size: 18px;
-      font-weight: 600;
+      width: 600px;
+      text-align: left;
+      font-size: 22px;
+      font-weight: 500;
       color: var(--text-color);
     }
   }
@@ -38,50 +39,24 @@
   .featuresSection {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 3rem 0;
+    padding: 3rem 0;
+    background-color: aliceblue;
 
     .divFeatures {
-      display: flex;
-      flex-direction: column;
       width: 380px;
       height: 70vh;
-      background-color: aliceblue;
       margin: 1.5rem;
+      border-radius: 6px;
+      background-color: aliceblue;
 
       &:hover {
         opacity: 0.9;
         animation: 0.6s scale 1;
         transform: scale(1.1);
         border-radius: 6px;
-        box-shadow: -4px 4px 5px var(--secondary-500),
-          4px 0px 5px var(--secondary-500);
+        box-shadow: var(--shadow-elevation-3);
+      } 
 
-        .img {
-          border-bottom-left-radius: 0px;
-          border-bottom-right-radius: 0px;
-        }
-      }
-
-      .img {
-        object-fit: contain;
-        width: 100%;
-        min-height: 13rem;
-        max-height: 14rem;
-        border-radius: 6px;
-      }
-
-      .divDescription {
-        width: 100%;
-        padding: 1rem;
-
-        h3 {
-          color: var(--secondary-200);
-          margin: 6px 0;
-        }
-        p {
-          color: var(--secondary-300);
-        }
-      }
     }
   }
 }
@@ -100,7 +75,6 @@
     display: flex;
     width: 100%;
     font-family: "Poppins", sans-serif;
-    background-color: aliceblue;
     justify-content: center;
     flex-direction: column;
     margin: 0;
@@ -110,21 +84,23 @@
       display: block;
       width: 100%;
       height: 70vh;
-      align-content: center;
-      align-items: center;
-      justify-content: center;
+      align-content: left;
       background: linear-gradient(
-        var(--secondary-800),
-        var(--secondary-500),
-        var(--secondary-200)
+        220deg,
+        rgba(79, 156, 156, 0.205) 20%,
+      rgba(24, 23, 23, 0.795) 80%
       );
+      padding-left: 8rem;
+    
+    span {
+      font-size: 24px;
 
       strong {
-        color: var(--primary-500);
-      }
-
+      color: var(--primary-500);
+    }
+    }
       .subtitle {
-        text-align: center;
+        text-align: left;
         font-size: 18px;
         font-weight: 600;
         color: var(--text-color);
@@ -134,50 +110,22 @@
     .featuresSection {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      margin: 3rem 0;
+      padding: 3rem 0;
   
       .divFeatures {
         display: flex;
         flex-direction: column;
         width: 400px;
         height: 70vh;
-        background-color: aliceblue;
         margin: 1.5rem;
+        background-color: aliceblue;
   
         &:hover {
           opacity: 0.9;
           animation: 0.6s scale 1;
           transform: scale(1.1);
           border-radius: 6px;
-          box-shadow: -4px 4px 5px var(--secondary-500),
-            4px 0px 5px var(--secondary-500);
-  
-          .img {
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
-          }
-        }
-  
-        .img {
-          object-fit: contain;
-          width: 100%;
-          min-height: 13rem;
-          max-height: 14rem;
-          border-radius: 6px;
-        }
-        
-        .divDescription {
-          width: 100%;
-          margin: 6px;
-          padding: 6px;
-
-          h3 {
-            color: var(--secondary-200);
-            margin: 6px 0;
-          }
-          p {
-            color: var(--secondary-300);
-          }
+          box-shadow: var(--shadow-elevation-3);
         }
       }
     }
@@ -195,10 +143,11 @@
 
 @media screen and (width <= 835px) {
   .featuresContainer {
+
     .featuresSection {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      margin-left: 10rem;
+      padding-left: 10rem;
 
       .divFeatures {
         display: flex;
@@ -206,7 +155,7 @@
         width: 400px;
         height: 90vh;
         background-color: aliceblue;
-        margin: 1.5rem;
+        margin: 1rem;
         border-radius: 6px;
       }
     }
@@ -215,10 +164,16 @@
 
 @media screen and (width <= 768px) {
   .featuresContainer {
+    .featuresTitle {
+      .subtitle {
+        width: 400px;
+      }
+    }
+
     .featuresSection {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      margin-left: 10rem;
+      padding-left: 10rem;
 
       .divFeatures {
         display: flex;
@@ -238,11 +193,9 @@
     .featuresSection {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      margin: 5rem;
+      padding-left: 5rem;
 
       .divFeatures {
-        display: flex;
-        flex-direction: column;
         width: 400px;
         height: 80vh;
         background-color: aliceblue;
@@ -258,11 +211,9 @@
     .featuresSection {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      margin: 0rem;
+      padding-left: 0rem;
 
       .divFeatures {
-        display: flex;
-        flex-direction: column;
         width: 400px;
         height: 80vh;
         background-color: aliceblue;
@@ -273,11 +224,30 @@
   }
 }
 
+@media screen and (width <= 550px) {
+  .featuresContainer{
+    .featuresTitle {
+      padding-left: 2rem;
+
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
 @media screen and (width <= 444px) {
   .featuresContainer {
     .featuresTitle {
+      padding-left: 1rem;
+
+      span {
+        font-size: 20px;
+      }
+
       .subtitle {
-        font-size: 14px;
+        font-size: 16px;
+        width: 300px;
       }
     }
     .featuresSection {
@@ -300,32 +270,14 @@
 
 @media screen and (width <= 400px) {
   .featuresContainer {
-    .featuresSection {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      margin: 0;
+    .featuresTitle {
+      height: 80vh;
 
-      .divFeatures {
-        display: flex;
-        flex-direction: column;
-        width: 320px;
-        height: 80vh;
-        background-color: aliceblue;
-        margin: 1.5rem;
-        border-radius: 6px;
-
-        .divDescription {
-          p {
-            font-size: 16px;
-          }
-        }
+      span {
+        font-size: 18px;
       }
     }
-  }
-}
 
-@media screen and (width <= 400px) {
-  .featuresContainer {
     .featuresSection {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
@@ -340,14 +292,6 @@
         margin: 1.5rem;
         border-radius: 6px;
 
-        .divDescription {
-          h3 {
-            font-size: 18px;
-          }
-          p {
-            font-size: 14px;
-          }
-        }
       }
     }
   }

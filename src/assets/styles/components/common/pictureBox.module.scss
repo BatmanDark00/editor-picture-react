@@ -1,0 +1,52 @@
+.pictureBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+
+  &:hover {
+    border-radius: 6px;
+
+    .img {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+
+  .img {
+    object-fit: contain;
+    width: 100%;
+    height: 13rem;
+    min-height: 12rem;
+    max-height: 14rem;
+    border-radius: 6px;
+  }
+
+  .divDescription {
+    width: 100%;
+    padding: 1rem;
+
+    h3 {
+      color: var(--secondary-200);
+      margin: 6px 0;
+    }
+    p {
+      color: var(--secondary-300);
+    }
+  }
+}
+
+@media screen and (width <= 400px) {
+    .pictureBox {
+        .divDescription {
+            h3 {
+                font-size: 18px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+    
+}
