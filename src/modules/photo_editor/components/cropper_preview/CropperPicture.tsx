@@ -30,7 +30,6 @@ export default function CropperPicture() {
     isEditingElement,
     elementSelect,
     selectElementIndex,
-    /* setSelectElementIndex, */
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,
@@ -57,12 +56,10 @@ export default function CropperPicture() {
   };
 
   const handleResizeMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-
+    //e.stopPropagation();
     const handle = e.currentTarget.dataset.handle;
-
     if (handle) {
-      setResizeHandle(handle);
+     // setResizeHandle(handle);
 
       console.log("handle", handle);
       document.addEventListener("mousemove", handleResize);
@@ -71,85 +68,77 @@ export default function CropperPicture() {
   };
 
   const handleResize = (e: MouseEvent) => {
-    if (resizeHandle ) {
-      if (!elementSelect) {
-        return
-      }
-      console.log("handleResize, llegando");
+    if (!elementSelect) return;
 
-      const canvas = canvasRef.current as HTMLCanvasElement;
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
+    const canvas = canvasRef.current as HTMLCanvasElement;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
 
-      let newWidth = elementSelect.width;
-      let newHeight = elementSelect.height;
-      let newX = elementSelect.x;
-      let newY = elementSelect.y;
+    let newWidth = elementSelect.width;
+    let newHeight = elementSelect.height;
+    let newX = elementSelect.x;
+    let newY = elementSelect.y;
 
-      const mouseX = (e.clientX - rect.left) * scaleX;
-      const mouseY = (e.clientY - rect.top) * scaleY;
+    const mouseX = (e.clientX - rect.left) * scaleX;
+    const mouseY = (e.clientY - rect.top) * scaleY;
 
-      console.log("mouseX", mouseX);
-      console.log("mouseY", mouseY);
+    console.log("mouseX", mouseX);
+   /*  newWidth = elementSelect.width + elementSelect.x - mouseX;
+    newHeight = elementSelect.height + elementSelect.y - mouseY; */
 
-      switch (resizeHandle) {
-        case "top-left":
-          newWidth = elementSelect.width + elementSelect.x - mouseX;
-          newHeight = elementSelect.height + elementSelect.y - mouseY;
-          newX = mouseX;
-          newY = mouseY;
-          break;
-        case "top-right":
-          newWidth = mouseX - elementSelect.x;
-          newHeight = elementSelect.height + elementSelect.y - mouseY;
-          newY = mouseY;
-          break;
-        case "bottom-left":
-          newWidth = elementSelect.width + elementSelect.x - mouseX;
-          newHeight = mouseY - elementSelect.y;
-          newX = mouseX;
-          break;
-        case "bottom-right":
-          newWidth = mouseX - elementSelect.x;
-          newHeight = mouseY - elementSelect.y;
-          break;
+    newWidth = mouseX - elementSelect.x;
+    newHeight = mouseY - elementSelect.y;
+  /*   newX = mouseX;
+    newY = mouseY; */
 
-        default:
-          break;
-      }
+    /* switch (resizeHandle) {
+      case "top-left":
+        newWidth = elementSelect.width + elementSelect.x - mouseX;
+        newHeight = elementSelect.height + elementSelect.y - mouseY;
+        newX = mouseX;
+        newY = mouseY;
+        break;
+      case "top-right":
+        newWidth = mouseX - elementSelect.x;
+        newHeight = elementSelect.height + elementSelect.y - mouseY;
+        newY = mouseY;
+        break;
+      case "bottom-left":
+        newWidth = elementSelect.width + elementSelect.x - mouseX;
+        newHeight = mouseY - elementSelect.y;
+        newX = mouseX;
+        break;
+      case "bottom-right":
+        newWidth = mouseX - elementSelect.x;
+        newHeight = mouseY - elementSelect.y;
+        break;
+      default:
+        break;
+    }
+ */
+    /* newWidth = Math.max(newWidth, 10);
+    newHeight = Math.max(newHeight, 10); */
 
-      // Limit minimum size
-      newWidth = Math.max(newWidth, 10);
-      newHeight = Math.max(newHeight, 10);
+    if (selectElementIndex !== null) {
+      const newElements = [...elements];
+    /*   newElements[selectElementIndex].x = newX;
+      newElements[selectElementIndex].y = newY; */
+      newElements[selectElementIndex].width = newWidth;
+      newElements[selectElementIndex].height = newHeight;
 
-      console.log("llegue a cambiar texto", newWidth);
+      setElements(newElements);
+      setElementSelect(newElements[selectElementIndex]);
 
-      if (selectElementIndex !== null) {
-        console.log("selectElementIndex", selectElementIndex);
-        const newElements = [...elements];
-        newElements[selectElementIndex].x = newX;
-        newElements[selectElementIndex].y = newY;
-        newElements[selectElementIndex].width = newWidth;
-        newElements[selectElementIndex].height = newHeight;
-
-        setElements(newElements);
-        setElementSelect(newElements[selectElementIndex]);
-
-        const canvas = canvasRef.current as HTMLCanvasElement;
-        const context = canvas.getContext("2d");
-
-        if (context) {
-          drawElements(context);
-        }
+      const context = canvas.getContext("2d");
+      if (context) {
+        drawElements(context);
       }
     }
   };
 
   const handleResizeEnd = () => {
     setResizeHandle("");
-
-    console.log("handleResizeEnd");
     document.removeEventListener("mousemove", handleResize);
     document.removeEventListener("mouseup", handleResizeEnd);
   };
