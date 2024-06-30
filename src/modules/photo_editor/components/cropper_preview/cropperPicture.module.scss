@@ -4,32 +4,80 @@
   max-width: 100%;
   max-height: 85vh;
   margin: 2rem;
-}
-
-.cropper_picture canvas {
-  grid-area: 1 / 1;  /* Ambos canvas ocupan la misma área de la cuadrícula */
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-#idCanvasImage {
-order: -1;  /* Imagen de fondo */
-  background-color: red;
-}
-
-#idCanvasForm {
-  z-index: 2;  /* Canvas de formas */
-}
-
-.cropper_picture__editing_text {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #000;
-    border-radius: 0.25rem;
+  canvas {
+    grid-area: 1 / 1; /* Ambos canvas ocupan la misma área de la cuadrícula */
+ /*    width: 100%;
+    height: 100%; */
+    object-fit: contain;
+  }
+  #idCanvasImage {
+    order: -1; /* Imagen de fondo */
+  }
+  #idCanvasForm {
+    z-index: 2; /* Canvas de formas */
+  }
+  &__resize {
+    cursor: pointer;
+    position: absolute;
+    border: 2px dashed #000;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 30px;
+      border-right: 2px dashed #000;
+    }
+    &__rotate,
+    &__top_left,
+    &__top_right,
+    &__bottom_left,
+    &__bottom_right {
+      position: absolute;
+      background-color: #fff;
+      border: solid 1px var(--color-primary);
+      min-width: 15px;
+      min-height: 15px;
+      border-radius: 50%;
+    }
+    &__rotate {
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: col-resize;
+    }
+    &__top_left {
+      top: -6px;
+      left: -6px;
+      cursor: nw-resize;
+    }
+    &__top_right {
+      top: -6px;
+      right: -6px;
+      cursor: ne-resize;
+    }
+    &__bottom_left {
+      bottom: -6px;
+      left: -6px;
+      cursor: sw-resize;
+    }
+    &__bottom_right {
+      bottom: -6px;
+      right: -6px;
+      cursor: se-resize;
+    }
+  }
+  &__editing_text {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #000;
+      border-radius: 0.25rem;
+    }
   }
 }

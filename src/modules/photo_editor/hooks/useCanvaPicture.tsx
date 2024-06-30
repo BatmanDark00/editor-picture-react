@@ -6,6 +6,20 @@ import {
   setIsDownloadImageCropper,
 } from "@/modules/photo_editor/states/cropper/imageCropperSlice";
 
+interface elementSelectedCanvas {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  color: string;
+  text: string;
+}
+
+interface coordinates {
+  x: number;
+  y: number;
+}
+
 const useCanvaPicture = () => {
   const MAX_CANVAS_DIMENSION_WIDTH = 1400;
   const MAX_CANVAS_DIMENSION_HEIGHT = 700;
@@ -20,10 +34,20 @@ const useCanvaPicture = () => {
   const [draggedElementIndex, setDraggedElementIndex] = useState<null | number>(
     null
   );
+  const [selectElementIndex, setSelectElementIndex] = useState<null | number>(
+    null
+  );
+  const [elementSelect, setElementSelect] = useState<elementSelectedCanvas>();
+  const [isEditingElement, setIsEditElement] = useState(false);
+  const [coordinatesElement, setCoordinatesElement] = useState<coordinates>({
+    x: 0,
+    y: 0,
+  });
+
   const [elements, setElements] = useState([
-    { x: 50, y: 50, width: 0, height: 0, color: "blue", text: "Test 1" },
-    { x: 150, y: 50, width: 0, height: 0, color: "red", text: "Test 2" },
-    { x: 250, y: 50, width: 0, height: 0, color: "green", text: "Test 3" },
+    { x: 50, y: 50, width: 100, height: 50, color: "blue", text: "Test 1" },
+    { x: 150, y: 50, width: 100, height: 50, color: "red", text: "Test 2" },
+    { x: 250, y: 200, width: 100, height: 80, color: "green", text: "Test 3" },
   ]);
 
   const dispatch = useDispatch();
@@ -87,8 +111,6 @@ const useCanvaPicture = () => {
           // Descargar la imagen combinada
           dispatch(setImageForDownload(combinedCanvas.toDataURL("image/png")));
           dispatch(setIsDownloadImageCropper(false));
-
-        
         }
       }
     }
@@ -98,11 +120,11 @@ const useCanvaPicture = () => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     elements.forEach((element) => {
       ctx.font = "20px Arial";
-      const textWidth = ctx.measureText(element.text).width;
+      //const textWidth = ctx.measureText(element.text).width;
       const textHeight = 20;
 
-      element.width = textWidth + 20;
-      element.height = textHeight + 10;
+     /*  element.width = textWidth + 20;
+      element.height = textHeight + 10; */
 
       ctx.fillStyle = element.color;
       ctx.fillRect(element.x, element.y, element.width, element.height);
@@ -179,6 +201,26 @@ const useCanvaPicture = () => {
     }
   };
 
+  const handleSelectElement = (e: React.MouseEvent<HTMLCanvasElement>) => {   
+    const mousePos = getMousePosition(e);
+    const elementIndex = elements.findIndex((element) =>
+      isInsideElement(mousePos, element)
+    );
+
+    if (elementIndex !== -1) {
+      setIsEditElement(true);
+      setSelectElementIndex(elementIndex);
+      setElementSelect(elements[elementIndex]);
+
+      // Set coordinatesElement with the adjusted position
+      setCoordinatesElement({ x: elements[elementIndex].x, y: elements[elementIndex].y });
+
+      // Log for debugging purposes
+      console.log("elementSelect", elements[elementIndex]);
+      console.log("coordinatesElement", coordinatesElement);
+    }
+  };
+
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(e.target.value);
   };
@@ -187,6 +229,8 @@ const useCanvaPicture = () => {
     if (draggedElementIndex !== null) {
       const newElements = [...elements];
       newElements[draggedElementIndex].text = textInput;
+      //newElements[draggedElementIndex].width = 300;
+
       setElements(newElements);
 
       const canvas = canvasRef.current as HTMLCanvasElement;
@@ -199,19 +243,30 @@ const useCanvaPicture = () => {
       setDraggedElementIndex(null);
       setTextInput("");
     }
+    
   };
 
   return {
     canvasRef,
     canvasRefImage,
     textInput,
+    elements,
+    setElements,
+    setElementSelect,
     isEditingText,
+    isEditingElement,
+    selectElementIndex,
+    setSelectElementIndex,    
+    elementSelect,
+    coordinatesElement,
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,
+    handleSelectElement,
     handleDoubleClick,
     handleTextChange,
     handleTextSubmit,
+    drawElements
   };
 };
 
